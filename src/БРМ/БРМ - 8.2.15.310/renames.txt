@@ -42,7 +42,7 @@ e99c1db6-6f32-4c4f-b261-80d18245115d-->und\e99c1db6-6f32-4c4f-b261-80d18245115d
 e99c1db6-6f32-4c4f-b261-80d18245115d.0-->und\e99c1db6-6f32-4c4f-b261-80d18245115d.0
 f381e241-e0fb-48b3-aea3-4402f0bcc8a6-->und\f381e241-e0fb-48b3-aea3-4402f0bcc8a6
 f381e241-e0fb-48b3-aea3-4402f0bcc8a6.0-->und\f381e241-e0fb-48b3-aea3-4402f0bcc8a6.0
-f8d02a19-d4f6-4676-9bd8-65c0e2edd2cc.0\info-->C:\Users\pbazelyuk\AppData\Local\Temp\3\БРМ - 8.2.15.310.epf.und\f8d02a19-d4f6-4676-9bd8-65c0e2edd2cc.0\info
+f8d02a19-d4f6-4676-9bd8-65c0e2edd2cc.0\info-->D:\precommit1c-master\ГАВ\БРМ - 8.2.15.310.epf.und\БРМ - 8.2.15.310.epf.und\БРМ - 8.2.15.310.epf.und\f8d02a19-d4f6-4676-9bd8-65c0e2edd2cc.0\info
 f8d02a19-d4f6-4676-9bd8-65c0e2edd2cc.0\text-->ObjectModule.txt
 root-->und\root
 version-->und\version
