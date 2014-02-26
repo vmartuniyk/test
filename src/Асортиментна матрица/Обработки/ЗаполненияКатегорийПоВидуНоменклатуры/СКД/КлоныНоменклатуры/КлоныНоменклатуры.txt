@@ -126,6 +126,28 @@
 			<field>СвОст</field>
 		</item>
 	</selection>
+	<conditionalAppearance>
+		<item>
+			<selection>
+				<item>
+					<field>Номенклатура</field>
+				</item>
+			</selection>
+			<filter>
+				<item xsi:type="FilterItemComparison">
+					<left xsi:type="dcscor:Field">Номенклатура.ПометкаУдаления</left>
+					<comparisonType>Equal</comparisonType>
+					<right xsi:type="xs:boolean">true</right>
+				</item>
+			</filter>
+			<appearance>
+				<dcscor:item xsi:type="SettingsParameterValue">
+					<dcscor:parameter>ЦветТекста</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:Color">style:SpecialTextColor</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</item>
+	</conditionalAppearance>
 	<item xsi:type="StructureItemGroup">
 		<name>Группировка</name>
 		<groupItems>
