@@ -260,19 +260,6 @@
 				</valueType>
 			</field>
 			<field xsi:type="DataSetFieldField">
-				<dataPath>ПроверкаМеншуМинЦенуПоставщикаЧемЦенаЗакупки</dataPath>
-				<field>ПроверкаМеншуМинЦенуПоставщикаЧемЦенаЗакупки</field>
-				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
-					<d5p1:item>
-						<d5p1:lang>ru</d5p1:lang>
-						<d5p1:content>Проверка меншу мин цену поставщика чем цена закупки</d5p1:content>
-					</d5p1:item>
-				</title>
-				<valueType>
-					<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:boolean</Type>
-				</valueType>
-			</field>
-			<field xsi:type="DataSetFieldField">
 				<dataPath>ПроверкаНаОднуЦенуПрихода</dataPath>
 				<field>ПроверкаНаОднуЦенуПрихода</field>
 				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
@@ -325,44 +312,65 @@
 			<objectName>ОтчетПоОстаткамПоставщиков</objectName>
 		</dataSet>
 		<totalField>
-			<dataPath>ЦенаПрихода</dataPath>
-			<expression>ЦенаПрихода</expression>
+			<dataPath>ДатаПрихода</dataPath>
+			<expression>ДатаПрихода</expression>
+			<group>ДокументПоступления</group>
+			<group>Номенклатура</group>
+			<group>Номенклатура Иерархия</group>
 		</totalField>
 		<totalField>
-			<dataPath>ПродажаДилера</dataPath>
-			<expression>ПродажаДилера</expression>
+			<dataPath>КоличествоЗакупки</dataPath>
+			<expression>Сумма(КоличествоЗакупки)</expression>
+			<group>ДокументПоступления</group>
+			<group>Номенклатура</group>
+			<group>Номенклатура Иерархия</group>
+			<group>ОбщийИтог</group>
+		</totalField>
+		<totalField>
+			<dataPath>МинЦенаПоставщикаЗаПериод</dataPath>
+			<expression>МинЦенаПоставщикаЗаПериод</expression>
+		</totalField>
+		<totalField>
+			<dataPath>МинЦенаПоставщикаЦенаЗаСегодня</dataPath>
+			<expression>МинЦенаПоставщикаЦенаЗаСегодня</expression>
+		</totalField>
+		<totalField>
+			<dataPath>ОбщийОстатокНаСкладе</dataPath>
+			<expression>Сумма(ОбщийОстатокНаСкладе)</expression>
+			<group>Номенклатура</group>
+			<group>Номенклатура Иерархия</group>
+			<group>ОбщийИтог</group>
 		</totalField>
 		<totalField>
 			<dataPath>ОстатокТоваровПоставщика</dataPath>
 			<expression>Сумма(ОстатокТоваровПоставщика)</expression>
 		</totalField>
 		<totalField>
-			<dataPath>ОбщийОстатокНаСкладе</dataPath>
-			<expression>(ОбщийОстатокНаСкладе)</expression>
+			<dataPath>ПродажаДилера</dataPath>
+			<expression>Сумма(ПродажаДилера)</expression>
+			<group>ДокументПоступления</group>
+			<group>Номенклатура</group>
+			<group>Номенклатура Иерархия</group>
+			<group>ОбщийИтог</group>
 		</totalField>
 		<totalField>
-			<dataPath>МинЦенаПоставщикаЦенаЗаСегодня</dataPath>
-			<expression>(МинЦенаПоставщикаЦенаЗаСегодня)</expression>
+			<dataPath>ЦенаПрихода</dataPath>
+			<expression>ЦенаПрихода</expression>
+			<group>ДокументПоступления</group>
+			<group>Номенклатура</group>
+			<group>Номенклатура Иерархия</group>
 		</totalField>
 		<totalField>
-			<dataPath>МинЦенаПоставщикаЗаПериод</dataPath>
-			<expression>(МинЦенаПоставщикаЗаПериод)</expression>
-		</totalField>
-		<totalField>
-			<dataPath>ПоставщикМинЦеныЗаПериод</dataPath>
-			<expression>(ПоставщикМинЦеныЗаПериод)</expression>
+			<dataPath>ПроверкаНаОднуЦенуПрихода</dataPath>
+			<expression>(ПроверкаНаОднуЦенуПрихода)</expression>
 		</totalField>
 		<totalField>
 			<dataPath>ПоставщикМинЦеныЗаСегодня</dataPath>
 			<expression>(ПоставщикМинЦеныЗаСегодня)</expression>
 		</totalField>
 		<totalField>
-			<dataPath>КоличествоЗакупки</dataPath>
-			<expression>КоличествоЗакупки</expression>
-		</totalField>
-		<totalField>
-			<dataPath>ДатаПрихода</dataPath>
-			<expression>ДатаПрихода</expression>
+			<dataPath>ПоставщикМинЦеныЗаПериод</dataPath>
+			<expression>(ПоставщикМинЦеныЗаПериод)</expression>
 		</totalField>
 		<parameter>
 			<name>ПериодОтчета</name>
@@ -398,7 +406,7 @@
 			<valueListAllowed>true</valueListAllowed>
 		</parameter>
 		<settingsVariant>
-			<name xmlns="http://v8.1c.ru/8.1/data-composition-system/settings">Основной</name>
+			<name xmlns="http://v8.1c.ru/8.1/data-composition-system/settings">ОсновнойОтчет</name>
 			<presentation xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
 				<d4p1:item>
 					<d4p1:lang>ru</d4p1:lang>
@@ -407,11 +415,11 @@
 			</presentation>
 		</settingsVariant>
 		<settingsVariant>
-			<name xmlns="http://v8.1c.ru/8.1/data-composition-system/settings">ОстаткиПриходовПоставщиковДляПП</name>
+			<name xmlns="http://v8.1c.ru/8.1/data-composition-system/settings">ОППдляПП</name>
 			<presentation xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
 				<d4p1:item>
 					<d4p1:lang>ru</d4p1:lang>
-					<d4p1:content>Остатки приходов поставщиков для ПП</d4p1:content>
+					<d4p1:content>ОППдляПП</d4p1:content>
 				</d4p1:item>
 			</presentation>
 		</settingsVariant>
@@ -426,10 +434,10 @@
 			<field>КоличествоЗакупки</field>
 		</item>
 		<item xsi:type="SelectedItemField">
-			<field>ПродажаДилера</field>
+			<field>ОстатокТоваровПоставщика</field>
 		</item>
 		<item xsi:type="SelectedItemField">
-			<field>ОстатокТоваровПоставщика</field>
+			<field>ПродажаДилера</field>
 		</item>
 		<item xsi:type="SelectedItemField">
 			<field>ДатаПрихода</field>
@@ -459,23 +467,14 @@
 			<comparisonType>Equal</comparisonType>
 			<userSettingID>e9fa8f17-39d8-4f11-80ae-a6ddbcad3c85</userSettingID>
 		</item>
-		<item xsi:type="FilterItemComparison">
-			<use>false</use>
-			<left xsi:type="dcscor:Field">Склад</left>
-			<comparisonType>Equal</comparisonType>
-			<userSettingID>3d7d0b1c-c7e7-4918-b89a-260843a77507</userSettingID>
-		</item>
 		<viewMode>Normal</viewMode>
 		<userSettingID>a9e15e96-c558-46d4-bec5-a34c0c3c799e</userSettingID>
 	</filter>
 	<dataParameters>
 		<dcscor:item xsi:type="SettingsParameterValue">
-			<dcscor:use>false</dcscor:use>
 			<dcscor:parameter>ПериодОтчета</dcscor:parameter>
 			<dcscor:value xsi:type="v8:StandardPeriod">
-				<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
-				<v8:startDate>0001-01-01T00:00:00</v8:startDate>
-				<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+				<v8:variant xsi:type="v8:StandardPeriodVariant">Month</v8:variant>
 			</dcscor:value>
 			<userSettingID>d1edee14-d216-476f-a53b-ac5be8605819</userSettingID>
 		</dcscor:item>
@@ -496,6 +495,62 @@
 				<item>
 					<field>ЦенаПрихода</field>
 				</item>
+				<item>
+					<field>МинЦенаПоставщикаЗаПериод</field>
+				</item>
+				<item>
+					<field>МинЦенаПоставщикаЦенаЗаСегодня</field>
+				</item>
+				<item>
+					<field>ПоставщикМинЦеныЗаПериод</field>
+				</item>
+				<item>
+					<field>ПоставщикМинЦеныЗаСегодня</field>
+				</item>
+			</selection>
+			<filter>
+				<item xsi:type="FilterItemGroup">
+					<groupType>OrGroup</groupType>
+					<item xsi:type="FilterItemGroup">
+						<groupType>AndGroup</groupType>
+						<item xsi:type="FilterItemComparison">
+							<left xsi:type="dcscor:Field">ЦенаПрихода</left>
+							<comparisonType>Greater</comparisonType>
+							<right xsi:type="dcscor:Field">МинЦенаПоставщикаЗаПериод</right>
+						</item>
+						<item xsi:type="FilterItemComparison">
+							<left xsi:type="dcscor:Field">МинЦенаПоставщикаЗаПериод</left>
+							<comparisonType>Greater</comparisonType>
+							<right xsi:type="xs:decimal">0</right>
+						</item>
+					</item>
+					<item xsi:type="FilterItemGroup">
+						<groupType>AndGroup</groupType>
+						<item xsi:type="FilterItemComparison">
+							<left xsi:type="dcscor:Field">ЦенаПрихода</left>
+							<comparisonType>Greater</comparisonType>
+							<right xsi:type="dcscor:Field">МинЦенаПоставщикаЦенаЗаСегодня</right>
+						</item>
+						<item xsi:type="FilterItemComparison">
+							<left xsi:type="dcscor:Field">МинЦенаПоставщикаЦенаЗаСегодня</left>
+							<comparisonType>Greater</comparisonType>
+							<right xsi:type="xs:decimal">0</right>
+						</item>
+					</item>
+				</item>
+			</filter>
+			<appearance>
+				<dcscor:item xsi:type="SettingsParameterValue">
+					<dcscor:parameter>ЦветФона</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:Color">web:MediumGreen</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</item>
+		<item>
+			<selection>
+				<item>
+					<field>ЦенаПрихода</field>
+				</item>
 			</selection>
 			<filter>
 				<item xsi:type="FilterItemComparison">
@@ -507,20 +562,24 @@
 			<appearance>
 				<dcscor:item xsi:type="SettingsParameterValue">
 					<dcscor:parameter>ЦветФона</dcscor:parameter>
-					<dcscor:value xsi:type="v8ui:Color">web:LightSalmon</dcscor:value>
+					<dcscor:value xsi:type="v8ui:Color">0:8961a859-2203-4678-ae1f-63e2474a787a</dcscor:value>
 				</dcscor:item>
 			</appearance>
-			<useInHierarchicalGroup>DontUse</useInHierarchicalGroup>
-			<useInOverall>DontUse</useInOverall>
-			<useInFieldsHeader>DontUse</useInFieldsHeader>
-			<useInHeader>DontUse</useInHeader>
-			<useInParameters>DontUse</useInParameters>
-			<useInFilter>DontUse</useInFilter>
 		</item>
 		<viewMode>Normal</viewMode>
 		<userSettingID>a65715e7-90e1-49d5-accc-c9196c97f6fe</userSettingID>
 	</conditionalAppearance>
 	<outputParameters>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:use>false</dcscor:use>
+			<dcscor:parameter>РасположениеИтогов</dcscor:parameter>
+			<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">None</dcscor:value>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:use>false</dcscor:use>
+			<dcscor:parameter>РасположениеПолейГруппировки</dcscor:parameter>
+			<dcscor:value xsi:type="DataCompositionGroupFieldsPlacement">Separately</dcscor:value>
+		</dcscor:item>
 		<dcscor:item xsi:type="SettingsParameterValue">
 			<dcscor:parameter>ГоризонтальноеРасположениеОбщихИтогов</dcscor:parameter>
 			<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">None</dcscor:value>
@@ -546,6 +605,12 @@
 		<selection>
 			<item xsi:type="SelectedItemAuto"/>
 		</selection>
+		<outputParameters>
+			<dcscor:item xsi:type="SettingsParameterValue">
+				<dcscor:parameter>ВертикальноеРасположениеОбщихИтогов</dcscor:parameter>
+				<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">None</dcscor:value>
+			</dcscor:item>
+		</outputParameters>
 		<item xsi:type="StructureItemGroup">
 			<groupItems>
 				<item xsi:type="GroupItemField">
@@ -562,6 +627,12 @@
 			<selection>
 				<item xsi:type="SelectedItemAuto"/>
 			</selection>
+			<outputParameters>
+				<dcscor:item xsi:type="SettingsParameterValue">
+					<dcscor:parameter>ВертикальноеРасположениеОбщихИтогов</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">None</dcscor:value>
+				</dcscor:item>
+			</outputParameters>
 			<item xsi:type="StructureItemGroup">
 				<groupItems>
 					<item xsi:type="GroupItemField">
@@ -599,6 +670,13 @@
 						<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
 						<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
 					</item>
+					<item xsi:type="GroupItemField">
+						<field>ДокументПоступления</field>
+						<groupType>Items</groupType>
+						<periodAdditionType>None</periodAdditionType>
+						<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+						<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+					</item>
 				</groupItems>
 				<order>
 					<item xsi:type="OrderItemAuto"/>
@@ -606,6 +684,12 @@
 				<selection>
 					<item xsi:type="SelectedItemAuto"/>
 				</selection>
+				<outputParameters>
+					<dcscor:item xsi:type="SettingsParameterValue">
+						<dcscor:parameter>ВертикальноеРасположениеОбщихИтогов</dcscor:parameter>
+						<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">None</dcscor:value>
+					</dcscor:item>
+				</outputParameters>
 			</item>
 		</item>
 	</item>
@@ -648,10 +732,39 @@
 		<userSettingID>cc559159-148c-404d-9a08-137a52220e0b</userSettingID>
 	</selection>
 	<filter>
-		<item xsi:type="FilterItemComparison">
-			<left xsi:type="dcscor:Field">ПроверкаМеншуМинЦенуПоставщикаЧемЦенаЗакупки</left>
-			<comparisonType>Equal</comparisonType>
-			<right xsi:type="xs:boolean">true</right>
+		<item xsi:type="FilterItemGroup">
+			<groupType>OrGroup</groupType>
+			<item xsi:type="FilterItemGroup">
+				<groupType>AndGroup</groupType>
+				<item xsi:type="FilterItemComparison">
+					<left xsi:type="dcscor:Field">МинЦенаПоставщикаЗаПериод</left>
+					<comparisonType>Less</comparisonType>
+					<right xsi:type="dcscor:Field">ЦенаПрихода</right>
+					<viewMode>Normal</viewMode>
+				</item>
+				<item xsi:type="FilterItemComparison">
+					<left xsi:type="dcscor:Field">МинЦенаПоставщикаЗаПериод</left>
+					<comparisonType>Filled</comparisonType>
+					<viewMode>Normal</viewMode>
+				</item>
+				<viewMode>Normal</viewMode>
+			</item>
+			<item xsi:type="FilterItemGroup">
+				<groupType>AndGroup</groupType>
+				<item xsi:type="FilterItemComparison">
+					<left xsi:type="dcscor:Field">МинЦенаПоставщикаЦенаЗаСегодня</left>
+					<comparisonType>Less</comparisonType>
+					<right xsi:type="dcscor:Field">ЦенаПрихода</right>
+					<viewMode>Normal</viewMode>
+				</item>
+				<item xsi:type="FilterItemComparison">
+					<left xsi:type="dcscor:Field">МинЦенаПоставщикаЗаПериод</left>
+					<comparisonType>Filled</comparisonType>
+					<viewMode>Normal</viewMode>
+				</item>
+				<viewMode>Normal</viewMode>
+			</item>
+			<viewMode>Normal</viewMode>
 		</item>
 		<item xsi:type="FilterItemComparison">
 			<use>false</use>
@@ -659,23 +772,14 @@
 			<comparisonType>Equal</comparisonType>
 			<userSettingID>c2e68dbb-0a44-4dbd-954f-9a61f114b323</userSettingID>
 		</item>
-		<item xsi:type="FilterItemComparison">
-			<use>false</use>
-			<left xsi:type="dcscor:Field">Склад</left>
-			<comparisonType>Equal</comparisonType>
-			<userSettingID>ab43cc9b-1b74-4fdb-91c8-a7625e14624e</userSettingID>
-		</item>
 		<viewMode>Normal</viewMode>
 		<userSettingID>a9e15e96-c558-46d4-bec5-a34c0c3c799e</userSettingID>
 	</filter>
 	<dataParameters>
 		<dcscor:item xsi:type="SettingsParameterValue">
-			<dcscor:use>false</dcscor:use>
 			<dcscor:parameter>ПериодОтчета</dcscor:parameter>
 			<dcscor:value xsi:type="v8:StandardPeriod">
-				<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
-				<v8:startDate>0001-01-01T00:00:00</v8:startDate>
-				<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+				<v8:variant xsi:type="v8:StandardPeriodVariant">Month</v8:variant>
 			</dcscor:value>
 			<userSettingID>d1edee14-d216-476f-a53b-ac5be8605819</userSettingID>
 		</dcscor:item>
@@ -710,12 +814,6 @@
 					<dcscor:value xsi:type="v8ui:Color">web:LightSalmon</dcscor:value>
 				</dcscor:item>
 			</appearance>
-			<useInHierarchicalGroup>DontUse</useInHierarchicalGroup>
-			<useInOverall>DontUse</useInOverall>
-			<useInFieldsHeader>DontUse</useInFieldsHeader>
-			<useInHeader>DontUse</useInHeader>
-			<useInParameters>DontUse</useInParameters>
-			<useInFilter>DontUse</useInFilter>
 		</item>
 		<viewMode>Normal</viewMode>
 		<userSettingID>a65715e7-90e1-49d5-accc-c9196c97f6fe</userSettingID>
