@@ -512,6 +512,7 @@
 		<dcscor:item xsi:type="SettingsParameterValue">
 			<dcscor:use>false</dcscor:use>
 			<dcscor:parameter>Соглашения</dcscor:parameter>
+			<dcscor:value xsi:nil="true"/>
 			<userSettingID>5d8076fc-d5f7-4118-af64-e9874049b8d3</userSettingID>
 		</dcscor:item>
 	</dataParameters>
@@ -822,6 +823,7 @@
 		<dcscor:item xsi:type="SettingsParameterValue">
 			<dcscor:use>false</dcscor:use>
 			<dcscor:parameter>Соглашения</dcscor:parameter>
+			<dcscor:value xsi:nil="true"/>
 			<userSettingID>0bc65658-84b8-448f-a23c-a0511d590554</userSettingID>
 		</dcscor:item>
 	</dataParameters>
@@ -1001,6 +1003,7 @@
 		<dcscor:item xsi:type="SettingsParameterValue">
 			<dcscor:use>false</dcscor:use>
 			<dcscor:parameter>Соглашения</dcscor:parameter>
+			<dcscor:value xsi:nil="true"/>
 			<userSettingID>5d8076fc-d5f7-4118-af64-e9874049b8d3</userSettingID>
 		</dcscor:item>
 	</dataParameters>
