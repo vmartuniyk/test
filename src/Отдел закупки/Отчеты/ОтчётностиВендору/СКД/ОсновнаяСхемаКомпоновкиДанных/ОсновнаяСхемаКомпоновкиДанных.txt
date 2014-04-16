@@ -162,14 +162,6 @@
 			<dataSource>ИсточникДанных1</dataSource>
 			<objectName>СписокНоменклатуры</objectName>
 		</dataSet>
-		<totalField>
-			<dataPath>Себестоимость</dataPath>
-			<expression>Сумма(Себестоимость)</expression>
-		</totalField>
-		<totalField>
-			<dataPath>СуммаПродажиГРН</dataPath>
-			<expression>Сумма(СуммаПродажиГРН)</expression>
-		</totalField>
 		<parameter>
 			<name>ПериодОтчета</name>
 			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
@@ -218,10 +210,10 @@
 			<field>Номенклатура</field>
 		</item>
 		<item xsi:type="SelectedItemField">
-			<field>СерийныеНомера</field>
+			<field>СуммаПродажиГРН</field>
 		</item>
 		<item xsi:type="SelectedItemField">
-			<field>СуммаПродажиГРН</field>
+			<field>СерийныеНомера</field>
 		</item>
 		<viewMode>Normal</viewMode>
 		<userSettingID>9a552b66-5c8c-4e73-ad01-5f2d37b294df</userSettingID>
@@ -414,11 +406,11 @@
 	<appearance xmlns="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="TableCellAppearance">
 		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
 			<parameter>МинимальнаяШирина</parameter>
-			<value xsi:type="xs:decimal">20.125</value>
+			<value xsi:type="xs:decimal">28.375</value>
 		</item>
 		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
 			<parameter>МаксимальнаяШирина</parameter>
-			<value xsi:type="xs:decimal">20.125</value>
+			<value xsi:type="xs:decimal">28.375</value>
 		</item>
 		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
 			<parameter>Расшифровка</parameter>
