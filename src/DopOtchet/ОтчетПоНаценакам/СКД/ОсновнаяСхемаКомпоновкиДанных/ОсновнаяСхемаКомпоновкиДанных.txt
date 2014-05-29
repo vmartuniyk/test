@@ -263,42 +263,6 @@
 			<expression>Сумма(СтоимостьЗаВесьТовар)</expression>
 		</totalField>
 		<parameter>
-			<name>НачалоПериода</name>
-			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
-				<d4p1:item>
-					<d4p1:lang>ru</d4p1:lang>
-					<d4p1:content>Начало периода</d4p1:content>
-				</d4p1:item>
-			</title>
-			<valueType>
-				<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:dateTime</Type>
-				<DateQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
-					<DateFractions>DateTime</DateFractions>
-				</DateQualifiers>
-			</valueType>
-			<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
-			<useRestriction>true</useRestriction>
-			<expression>&amp;ПериодОтчета.ДатаНачала</expression>
-		</parameter>
-		<parameter>
-			<name>КонецПериода</name>
-			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
-				<d4p1:item>
-					<d4p1:lang>ru</d4p1:lang>
-					<d4p1:content>Конец периода</d4p1:content>
-				</d4p1:item>
-			</title>
-			<valueType>
-				<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:dateTime</Type>
-				<DateQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
-					<DateFractions>DateTime</DateFractions>
-				</DateQualifiers>
-			</valueType>
-			<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
-			<useRestriction>true</useRestriction>
-			<expression>&amp;ПериодОтчета.ДатаОкончания</expression>
-		</parameter>
-		<parameter>
 			<name>ПериодОтчета</name>
 			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
 				<d4p1:item>
@@ -307,13 +271,12 @@
 				</d4p1:item>
 			</title>
 			<valueType>
-				<Type xmlns="http://v8.1c.ru/8.1/data/core">StandardPeriod</Type>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:dateTime</Type>
+				<DateQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
+					<DateFractions>Date</DateFractions>
+				</DateQualifiers>
 			</valueType>
-			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:StandardPeriod">
-				<d4p1:variant xsi:type="d4p1:StandardPeriodVariant">Custom</d4p1:variant>
-				<d4p1:startDate>0001-01-01T00:00:00</d4p1:startDate>
-				<d4p1:endDate>0001-01-01T00:00:00</d4p1:endDate>
-			</value>
+			<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
 			<useRestriction>false</useRestriction>
 			<denyIncompleteValues>true</denyIncompleteValues>
 		</parameter>
@@ -371,8 +334,8 @@
 	<dataParameters>
 		<dcscor:item xsi:type="SettingsParameterValue">
 			<dcscor:parameter>ПериодОтчета</dcscor:parameter>
-			<dcscor:value xsi:type="v8:StandardPeriod">
-				<v8:variant xsi:type="v8:StandardPeriodVariant">LastMonth</v8:variant>
+			<dcscor:value xsi:type="v8:StandardBeginningDate">
+				<v8:variant xsi:type="v8:StandardBeginningDateVariant">BeginningOfThisWeek</v8:variant>
 			</dcscor:value>
 			<userSettingID>b11aee57-db07-46eb-810f-182340555b82</userSettingID>
 		</dcscor:item>
