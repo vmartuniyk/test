@@ -16,6 +16,12 @@
 						<d5p1:content>Дата начала этапа</d5p1:content>
 					</d5p1:item>
 				</title>
+				<valueType>
+					<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:dateTime</Type>
+					<DateQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
+						<DateFractions>DateTime</DateFractions>
+					</DateQualifiers>
+				</valueType>
 			</field>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>Заказчик</dataPath>
@@ -26,10 +32,16 @@
 						<d5p1:content>Заказчик</d5p1:content>
 					</d5p1:item>
 				</title>
+				<valueType>
+					<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:CatalogRef.Партнеры</Type>
+				</valueType>
 			</field>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>ЗаявкаСервисногоЦентра</dataPath>
 				<field>ЗаявкаСервисногоЦентра</field>
+				<valueType>
+					<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:DocumentRef.ГНАТ_ЗаявкаСервисногоЦентра</Type>
+				</valueType>
 			</field>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>Инженер</dataPath>
@@ -40,6 +52,9 @@
 						<d5p1:content>Инженер</d5p1:content>
 					</d5p1:item>
 				</title>
+				<valueType>
+					<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:CatalogRef.Пользователи</Type>
+				</valueType>
 			</field>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>Месторасположение</dataPath>
@@ -50,6 +65,9 @@
 						<d5p1:content>Месторасположение</d5p1:content>
 					</d5p1:item>
 				</title>
+				<valueType>
+					<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:CatalogRef.ГНАТ_МесторасположениеВСервисе</Type>
+				</valueType>
 			</field>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>Номенклатура</dataPath>
@@ -60,6 +78,9 @@
 						<d5p1:content>Номенклатура</d5p1:content>
 					</d5p1:item>
 				</title>
+				<valueType>
+					<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:CatalogRef.Номенклатура</Type>
+				</valueType>
 			</field>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>НомерРемонта</dataPath>
@@ -70,6 +91,13 @@
 						<d5p1:content>№ ремонта</d5p1:content>
 					</d5p1:item>
 				</title>
+				<valueType>
+					<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:string</Type>
+					<StringQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
+						<Length>20</Length>
+						<AllowedLength>Variable</AllowedLength>
+					</StringQualifiers>
+				</valueType>
 				<appearance>
 					<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
 						<use>false</use>
@@ -92,6 +120,9 @@
 						<d5p1:content>Серийный номер</d5p1:content>
 					</d5p1:item>
 				</title>
+				<valueType>
+					<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:CatalogRef.СерийныеНомераНоменклатуры</Type>
+				</valueType>
 			</field>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>ТекущийЭтап</dataPath>
@@ -102,6 +133,9 @@
 						<d5p1:content>Текущий этап</d5p1:content>
 					</d5p1:item>
 				</title>
+				<valueType>
+					<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:CatalogRef.ГНАТ_ЭтапыРаботы</Type>
+				</valueType>
 			</field>
 			<dataSource>ИсточникДанных1</dataSource>
 			<query>ВЫБРАТЬ
@@ -117,7 +151,7 @@
 ИЗ
 	РегистрСведений.ГНАТ_ЭтапыРаботЗаявокСервисногоЦентра.СрезПоследних КАК ГНАТ_ЭтапыРаботЗаявокСервисногоЦентраСрезПоследних
 ГДЕ
-	ГНАТ_ЭтапыРаботЗаявокСервисногоЦентраСрезПоследних.МесторасположениеФактическое = ЗНАЧЕНИЕ(Справочник.ГНАТ_МесторасположениеВСервисе.ПустаяСсылка)</query>
+	ГНАТ_ЭтапыРаботЗаявокСервисногоЦентраСрезПоследних.МесторасположениеФактическое &lt;&gt; ЗНАЧЕНИЕ(Справочник.ГНАТ_МесторасположениеВСервисе.ПустаяСсылка)</query>
 		</dataSet>
 		<parameter>
 			<name>Период</name>
@@ -176,6 +210,7 @@
 		<item xsi:type="SelectedItemField">
 			<field>Инженер</field>
 		</item>
+		<userSettingID>9f4ea968-28e5-4c65-92d1-1aa57c5348d1</userSettingID>
 	</selection>
 	<filter>
 		<item xsi:type="FilterItemComparison">
@@ -192,6 +227,7 @@
 			<right xsi:type="dcscor:DesignTimeValue">Справочник.Пользователи.ПустаяСсылка</right>
 			<userSettingID>86fa90dc-5761-4af1-949f-c86afa66c032</userSettingID>
 		</item>
+		<userSettingID>eaf01a0f-044d-49f5-85d2-ff8a22616e6a</userSettingID>
 	</filter>
 	<dataParameters>
 		<dcscor:item xsi:type="SettingsParameterValue">
@@ -201,6 +237,9 @@
 			</dcscor:value>
 		</dcscor:item>
 	</dataParameters>
+	<order>
+		<userSettingID>7af18919-c010-4463-b408-49b2d75ad92c</userSettingID>
+	</order>
 	<conditionalAppearance>
 		<item>
 			<selection>
@@ -346,6 +385,7 @@
 				</dcscor:item>
 			</appearance>
 		</item>
+		<userSettingID>1b9e6bf5-ee03-4f7d-b456-e0bc2e40360c</userSettingID>
 	</conditionalAppearance>
 	<outputParameters>
 		<dcscor:item xsi:type="SettingsParameterValue">
@@ -382,6 +422,7 @@
 			</selection>
 		</item>
 	</item>
+	<itemsUserSettingID>3a78d515-df45-476f-a5c1-54a49d99dc9b</itemsUserSettingID>
 </Settings>﻿<?xml version="1.0" encoding="UTF-8"?>
 <SchemaFile xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<dataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema"/>
