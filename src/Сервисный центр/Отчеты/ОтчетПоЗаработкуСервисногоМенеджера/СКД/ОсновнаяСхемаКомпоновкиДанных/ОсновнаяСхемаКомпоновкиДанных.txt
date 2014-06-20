@@ -1,0 +1,434 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<SchemaFile xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema">
+		<dataSource>
+			<name>ИсточникДанных1</name>
+			<dataSourceType>Local</dataSourceType>
+		</dataSource>
+		<dataSet xsi:type="DataSetQuery">
+			<name>НаборДанных1</name>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>АналитикаУчетаПоПартнерам</dataPath>
+				<field>АналитикаУчетаПоПартнерам</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Валюта</dataPath>
+				<field>Валюта</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ВозможныйЗаработок</dataPath>
+				<field>ВозможныйЗаработок</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Возможный заработок</d5p1:content>
+					</d5p1:item>
+				</title>
+				<valueType>
+					<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:decimal</Type>
+					<NumberQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
+						<Digits>0</Digits>
+						<FractionDigits>0</FractionDigits>
+						<AllowedSign>Any</AllowedSign>
+					</NumberQualifiers>
+				</valueType>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ЗаказКлиента</dataPath>
+				<field>ЗаказКлиента</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Заработок</dataPath>
+				<field>Заработок</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Заработок</d5p1:content>
+					</d5p1:item>
+				</title>
+				<valueType>
+					<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:decimal</Type>
+					<NumberQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
+						<Digits>0</Digits>
+						<FractionDigits>0</FractionDigits>
+						<AllowedSign>Any</AllowedSign>
+					</NumberQualifiers>
+				</valueType>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ЗаявкаСервисногоЦентра</dataPath>
+				<field>ЗаявкаСервисногоЦентра</field>
+				<role>
+					<dimension xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</dimension>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Инженер</dataPath>
+				<field>Инженер</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Инженер</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Номенклатура</dataPath>
+				<field>Номенклатура</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Номенклатура</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Партнер</dataPath>
+				<field>Партнер</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Партнер</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>РеализацияТоваровУслуг</dataPath>
+				<field>РеализацияТоваровУслуг</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Реализация товаров услуг</d5p1:content>
+					</d5p1:item>
+				</title>
+				<role>
+					<dimension xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</dimension>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ОплаченоВДанномПериоде</dataPath>
+				<field>ОплаченоВДанномПериоде</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Оплачено в данном периоде</d5p1:content>
+					</d5p1:item>
+				</title>
+				<role>
+					<required xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</required>
+				</role>
+			</field>
+			<dataSource>ИсточникДанных1</dataSource>
+			<query>////////////////////////////////////////////////////////////////////////////////
+//
+ВЫБРАТЬ
+	ГНАТ_ЭтапыРаботы.Ссылка КАК ГНАТ_ЭтапРаботы
+ПОМЕСТИТЬ КешЭтаповРабот
+ИЗ
+	Справочник.ГНАТ_ЭтапыРаботы КАК ГНАТ_ЭтапыРаботы
+ГДЕ
+	ГНАТ_ЭтапыРаботы.ЭтоРемонт = ИСТИНА
+;
+////////////////////////////////////////////////////////////////////////////////
+//
+ВЫБРАТЬ РАЗЛИЧНЫЕ
+	МАКСИМУМ(ЭтапыРаботЗСЦ.Период)		 КАК Период,
+	ЭтапыРаботЗСЦ.ЗаявкаСервисногоЦентра КАК ЗаявкаСервисногоЦентра 
+ПОМЕСТИТЬ КешЗСЦ
+ИЗ
+	РегистрСведений.ГНАТ_ЭтапыРаботЗаявокСервисногоЦентра КАК ЭтапыРаботЗСЦ
+	
+ВНУТРЕННЕЕ СОЕДИНЕНИЕ КешЭтаповРабот КАК ЭтапыРаботы
+ПО	ЭтапыРаботы.ГНАТ_ЭтапРаботы = ЭтапыРаботЗСЦ.ЭтапРаботы
+
+//ГДЕ
+//	ЭтапыРаботЗСЦ.ЗаявкаСервисногоЦентра.Рекламация = Ложь
+
+СГРУППИРОВАТЬ ПО
+	ЭтапыРаботЗСЦ.ЗаявкаСервисногоЦентра
+		
+ИНДЕКСИРОВАТЬ ПО
+	ЗаявкаСервисногоЦентра			
+;
+////////////////////////////////////////////////////////////////////////////////
+//
+ВЫБРАТЬ
+	КешЗСЦ.Период					КАК Период,
+	КешЗСЦ.ЗаявкаСервисногоЦентра	КАК ЗаявкаСервисногоЦентра,
+	РТиУ.Ссылка 					КАК ОбъектРасчетов
+ПОМЕСТИТЬ ОбъектыРасчетов	
+ИЗ
+	КешЗСЦ КАК КешЗСЦ
+	
+ВНУТРЕННЕЕ СОЕДИНЕНИЕ Документ.РеализацияТоваровУслуг КАК РТиУ
+ПО	РТиУ.ЗаявкаСервисногоЦентра         = КешЗСЦ.ЗаявкаСервисногоЦентра
+И	РТиУ.ВидПодчиненногоДокументаГНАТ	= ЗНАЧЕНИЕ(Перечисление.ГНАТ_ВидыПодчиненныхДокументов.РеализацияЗапчастейУслуг)	
+И   РТиУ.Проведен                       = Истина
+
+ОБЪЕДИНИТЬ
+
+ВЫБРАТЬ
+	КешЗСЦ.Период,
+	КешЗСЦ.ЗаявкаСервисногоЦентра,
+	РТиУ.Ссылка	
+ИЗ
+	КешЗСЦ КАК КешЗСЦ
+	
+ВНУТРЕННЕЕ СОЕДИНЕНИЕ Документ.ЗаказКлиента КАК ЗК
+ПО	ЗК.ЗаявкаСервисногоЦентра       = КешЗСЦ.ЗаявкаСервисногоЦентра
+И	ЗК.ВидПодчиненногоДокументаГНАТ	= ЗНАЧЕНИЕ(Перечисление.ГНАТ_ВидыПодчиненныхДокументов.РеализацияЗапчастейУслуг)	
+И   ЗК.Проведен                     = Истина
+
+ВНУТРЕННЕЕ СОЕДИНЕНИЕ Документ.РеализацияТоваровУслуг КАК РТиУ
+ПО	РТиУ.ЗаказКлиента = ЗК.Ссылка	
+И   РТиУ.Проведен     = Истина
+
+;
+////////////////////////////////////////////////////////////////////////////////
+//
+ВЫБРАТЬ
+	ЗаказКлиента			КАК ОбъектРасчетов,
+	КОплатеРасход			КАК КОплатеРасход,	
+	КОплатеКонечныйОстаток 	КАК КОплате
+ПОМЕСТИТЬ СостояниеОплатыВПериоде
+ИЗ
+	РегистрНакопления.РасчетыСКлиентами.ОстаткиИОбороты(&amp;НачалоПериода, &amp;КонецПериода, , , ЗаказКлиента В (ВЫБРАТЬ ОбъектРасчетов ИЗ ОбъектыРасчетов))
+;	
+////////////////////////////////////////////////////////////////////////////////
+//
+ВЫБРАТЬ
+	СостояниеОплатыВПериоде.ОбъектРасчетов.Партнер 	КАК Партнер,
+	СостояниеОплатыВПериоде.ОбъектРасчетов 			КАК РеализацияТоваровУслуг,
+	ОбъектыРасчетов.ЗаявкаСервисногоЦентра          КАК ЗаявкаСервисногоЦентра,
+	ЭтапыРаботЗСЦ.Ответственный						КАК Инженер,
+	
+	ВИСП.АналитикаУчетаНоменклатуры.Номенклатура	КАК Номенклатура,
+	ВЫБОР
+		КОГДА СостояниеОплатыВПериоде.КОплате &lt;&gt; 0
+		ТОГДА ВИСП.СуммаВыручкиРегл							
+		ИНАЧЕ 0
+	КОНЕЦ											КАК ВозможныйЗаработок,
+	ВЫБОР
+		КОГДА СостояниеОплатыВПериоде.КОплате = 0
+		ТОГДА ВИСП.СуммаВыручкиРегл							
+		ИНАЧЕ 0
+	КОНЕЦ											КАК Заработок,
+	СостояниеОплатыВПериоде.КОплатеРасход	        КАК ОплаченоВДанномПериоде
+	
+ИЗ
+	СостояниеОплатыВПериоде КАК СостояниеОплатыВПериоде	
+	
+ВНУТРЕННЕЕ СОЕДИНЕНИЕ ОбъектыРасчетов КАК ОбъектыРасчетов
+ПО	ОбъектыРасчетов.ОбъектРасчетов = СостояниеОплатыВПериоде.ОбъектРасчетов
+	
+ВНУТРЕННЕЕ СОЕДИНЕНИЕ РегистрСведений.ГНАТ_ЭтапыРаботЗаявокСервисногоЦентра КАК ЭтапыРаботЗСЦ
+ПО	ЭтапыРаботЗСЦ.ЗаявкаСервисногоЦентра = ОбъектыРасчетов.ЗаявкаСервисногоЦентра
+И	ЭтапыРаботЗСЦ.Период				 = ОбъектыРасчетов.Период
+
+ЛЕВОЕ СОЕДИНЕНИЕ РегистрНакопления.ВыручкаИСебестоимостьПродаж КАК ВИСП
+ПО	ВЫРАЗИТЬ(ВИСП.Регистратор КАК Документ.РеализацияТоваровУслуг) = СостояниеОплатыВПериоде.ОбъектРасчетов
+И	ВИСП.ТипЗапасов = ЗНАЧЕНИЕ(Перечисление.ТипыЗапасов.Услуга)
+	</query>
+		</dataSet>
+		<totalField>
+			<dataPath>ВозможныйЗаработок</dataPath>
+			<expression>Сумма(ВозможныйЗаработок)</expression>
+		</totalField>
+		<totalField>
+			<dataPath>Заработок</dataPath>
+			<expression>Сумма(Заработок)</expression>
+		</totalField>
+		<totalField>
+			<dataPath>ОплаченоВДанномПериоде</dataPath>
+			<expression>Сумма(ОплаченоВДанномПериоде)</expression>
+		</totalField>
+		<parameter>
+			<name>Период</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Период</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core">StandardPeriod</Type>
+			</valueType>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:StandardPeriod">
+				<d4p1:variant xsi:type="d4p1:StandardPeriodVariant">Custom</d4p1:variant>
+				<d4p1:startDate>0001-01-01T00:00:00</d4p1:startDate>
+				<d4p1:endDate>0001-01-01T00:00:00</d4p1:endDate>
+			</value>
+			<useRestriction>false</useRestriction>
+		</parameter>
+		<parameter>
+			<name>НачалоПериода</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Начало периода</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:dateTime</Type>
+				<DateQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
+					<DateFractions>DateTime</DateFractions>
+				</DateQualifiers>
+			</valueType>
+			<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+			<useRestriction>true</useRestriction>
+			<expression>&amp;Период.ДатаНачала</expression>
+			<availableAsField>false</availableAsField>
+		</parameter>
+		<parameter>
+			<name>КонецПериода</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Окончание периода</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:dateTime</Type>
+				<DateQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
+					<DateFractions>DateTime</DateFractions>
+				</DateQualifiers>
+			</valueType>
+			<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+			<useRestriction>true</useRestriction>
+			<expression>&amp;Период.ДатаОкончания</expression>
+			<availableAsField>false</availableAsField>
+		</parameter>
+		<settingsVariant>
+			<name xmlns="http://v8.1c.ru/8.1/data-composition-system/settings">Основной</name>
+			<presentation xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="xs:string">Основной</presentation>
+		</settingsVariant>
+	</dataCompositionSchema>
+</SchemaFile>﻿<?xml version="1.0" encoding="UTF-8"?>
+<Settings xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<selection>
+		<item xsi:type="SelectedItemField">
+			<use>false</use>
+			<field>ОплаченоВДанномПериоде</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>ВозможныйЗаработок</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>Заработок</field>
+		</item>
+		<viewMode>Normal</viewMode>
+		<userSettingID>57392a3b-8645-4fc2-a6d0-7e8c66312881</userSettingID>
+	</selection>
+	<filter>
+		<viewMode>Normal</viewMode>
+		<userSettingID>189879aa-8183-4279-9f01-ead824312926</userSettingID>
+	</filter>
+	<dataParameters>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>Период</dcscor:parameter>
+			<dcscor:value xsi:type="v8:StandardPeriod">
+				<v8:variant xsi:type="v8:StandardPeriodVariant">ThisMonth</v8:variant>
+			</dcscor:value>
+			<userSettingID>d5ae912c-e179-4ddd-8544-46663a681f03</userSettingID>
+		</dcscor:item>
+	</dataParameters>
+	<order>
+		<viewMode>Normal</viewMode>
+		<userSettingID>92cb8071-3792-41b3-a306-cbf915e22a7d</userSettingID>
+	</order>
+	<conditionalAppearance>
+		<viewMode>Normal</viewMode>
+		<userSettingID>6046cb53-3925-4c58-9db8-7725eec039e7</userSettingID>
+	</conditionalAppearance>
+	<item xsi:type="StructureItemGroup">
+		<groupItems>
+			<item xsi:type="GroupItemField">
+				<field>Инженер</field>
+				<groupType>Items</groupType>
+				<periodAdditionType>None</periodAdditionType>
+				<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+				<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+			</item>
+		</groupItems>
+		<order>
+			<item xsi:type="OrderItemAuto"/>
+		</order>
+		<selection>
+			<item xsi:type="SelectedItemAuto"/>
+			<item xsi:type="SelectedItemField">
+				<field>Заработок</field>
+			</item>
+			<item xsi:type="SelectedItemField">
+				<field>ВозможныйЗаработок</field>
+			</item>
+		</selection>
+		<item xsi:type="StructureItemGroup">
+			<groupItems>
+				<item xsi:type="GroupItemField">
+					<field>Партнер</field>
+					<groupType>Items</groupType>
+					<periodAdditionType>None</periodAdditionType>
+					<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+					<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+				</item>
+				<item xsi:type="GroupItemField">
+					<field>РеализацияТоваровУслуг</field>
+					<groupType>Items</groupType>
+					<periodAdditionType>None</periodAdditionType>
+					<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+					<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+				</item>
+				<item xsi:type="GroupItemField">
+					<field>ЗаявкаСервисногоЦентра</field>
+					<groupType>Items</groupType>
+					<periodAdditionType>None</periodAdditionType>
+					<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+					<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+				</item>
+			</groupItems>
+			<order>
+				<item xsi:type="OrderItemField">
+					<field>РеализацияТоваровУслуг.Дата</field>
+					<orderType>Asc</orderType>
+				</item>
+			</order>
+			<selection>
+				<item xsi:type="SelectedItemAuto"/>
+				<item xsi:type="SelectedItemField">
+					<field>Заработок</field>
+				</item>
+				<item xsi:type="SelectedItemField">
+					<field>ВозможныйЗаработок</field>
+				</item>
+			</selection>
+			<item xsi:type="StructureItemGroup">
+				<groupItems>
+					<item xsi:type="GroupItemField">
+						<field>Номенклатура</field>
+						<groupType>Items</groupType>
+						<periodAdditionType>None</periodAdditionType>
+						<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+						<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+					</item>
+				</groupItems>
+				<order>
+					<item xsi:type="OrderItemAuto"/>
+				</order>
+				<selection>
+					<item xsi:type="SelectedItemAuto"/>
+					<item xsi:type="SelectedItemField">
+						<field>Заработок</field>
+					</item>
+					<item xsi:type="SelectedItemField">
+						<field>ВозможныйЗаработок</field>
+					</item>
+				</selection>
+			</item>
+		</item>
+	</item>
+	<itemsViewMode>Normal</itemsViewMode>
+	<itemsUserSettingID>94999231-9548-4493-ad1a-031b15df16a2</itemsUserSettingID>
+</Settings>﻿<?xml version="1.0" encoding="UTF-8"?>
+<SchemaFile xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema"/>
+</SchemaFile>
