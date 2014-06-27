@@ -47,24 +47,21 @@
 				<dataPath>СуммаПросроченныхОплат</dataPath>
 				<field>СуммаПросроченныхОплат</field>
 			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ГруппаДоступа</dataPath>
+				<field>ГруппаДоступа</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Группа доступа</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
 			<dataSource>ИсточникДанных1</dataSource>
 			<query>ВЫБРАТЬ
-	Партнеры.Ссылка 								КАК Партнер
-ПОМЕСТИТЬ КешПартнены
-ИЗ
-	Справочник.ПрофилиГруппДоступа.ЗначенияДоступа КАК ПрофилиГруппДоступаЗначенияДоступа
-	ВНУТРЕННЕЕ СОЕДИНЕНИЕ Справочник.Партнеры КАК Партнеры
-	ПО 
-		ПрофилиГруппДоступаЗначенияДоступа.ЗначениеДоступа = Партнеры.ГруппаДоступа
-ГДЕ
-	ПрофилиГруппДоступаЗначенияДоступа.Ссылка = &amp;Профиль
-	И ПрофилиГруппДоступаЗначенияДоступа.ВидДоступа = ЗНАЧЕНИЕ(ПланВидовХарактеристик.ВидыДоступа.ГруппыПартнеров)
-
-;
-
-ВЫБРАТЬ
 	0 КАК ВсяСумма,
    	ГрафикПлатежейПартнеров.Партнер 				КАК Контрагент,
+   	ГрафикПлатежейПартнеров.Партнер.ГруппаДоступа	КАК ГруппаДоступа,
    	ГрафикПлатежейПартнеров.Документ	 			КАК ДокументПени,
   	ГрафикПлатежейПартнеров.СуммаОстаток			КАК СуммаОстаток,
    	ГрафикПлатежейПартнеров.НачальнаяСумма			КАК НачальнаяСумма,
@@ -83,12 +80,7 @@
     КОНЕЦ КАК СуммаПросроченныхОплат
 
 ИЗ
-	РегистрСведений.КТС_ГрафикПлатежейПартнеров.СрезПервых(&amp;ТекущаяДата,
-															Партнер В
-															(ВЫБРАТЬ
-																КешПартнены.Партнер
-															 ИЗ
-																КешПартнены КАК КешПартнены)) КАК ГрафикПлатежейПартнеров
+	РегистрСведений.КТС_ГрафикПлатежейПартнеров.СрезПервых(&amp;ТекущаяДата) КАК ГрафикПлатежейПартнеров
    
 УПОРЯДОЧИТЬ ПО 
 	ГрафикПлатежейПартнеров.ДатаПлатежа			        	</query>
@@ -148,20 +140,6 @@
 			<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
 			<useRestriction>false</useRestriction>
 		</parameter>
-		<parameter>
-			<name>Профиль</name>
-			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
-				<d4p1:item>
-					<d4p1:lang>ru</d4p1:lang>
-					<d4p1:content>Профиль</d4p1:content>
-				</d4p1:item>
-			</title>
-			<valueType>
-				<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.ПрофилиГруппДоступа</Type>
-			</valueType>
-			<value xsi:nil="true"/>
-			<useRestriction>false</useRestriction>
-		</parameter>
 		<settingsVariant>
 			<name xmlns="http://v8.1c.ru/8.1/data-composition-system/settings">Основной</name>
 			<presentation xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="xs:string">Основной</presentation>
@@ -181,6 +159,13 @@
 					<v8:content>Партнер</v8:content>
 				</v8:item>
 			</userSettingPresentation>
+		</item>
+		<item xsi:type="FilterItemComparison">
+			<use>false</use>
+			<left xsi:type="dcscor:Field">ГруппаДоступа</left>
+			<comparisonType>Equal</comparisonType>
+			<right xsi:type="dcscor:DesignTimeValue">Справочник.ГруппыДоступаПартнеров.ПустаяСсылка</right>
+			<userSettingID>08e586c1-9cc8-4fe2-b518-e137bddacecb</userSettingID>
 		</item>
 		<userSettingID>dd59581c-623a-48e2-a5f6-ced3b09c548b</userSettingID>
 		<userSettingPresentation xsi:type="v8:LocalStringType">
