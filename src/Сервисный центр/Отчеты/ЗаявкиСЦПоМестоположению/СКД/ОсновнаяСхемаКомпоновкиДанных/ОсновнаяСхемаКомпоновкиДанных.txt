@@ -137,6 +137,16 @@
 					<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:CatalogRef.ГНАТ_ЭтапыРаботы</Type>
 				</valueType>
 			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Себестоимость</dataPath>
+				<field>Себестоимость</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Себестоимость</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
 			<dataSource>ИсточникДанных1</dataSource>
 			<query>ВЫБРАТЬ
 	ГНАТ_ЭтапыРаботЗаявокСервисногоЦентраСрезПоследних.ЗаявкаСервисногоЦентра.НомерРемонта КАК НомерРемонта,
@@ -147,12 +157,17 @@
 	ГНАТ_ЭтапыРаботЗаявокСервисногоЦентраСрезПоследних.Период КАК ДатаНачалаЭтапа,
 	ГНАТ_ЭтапыРаботЗаявокСервисногоЦентраСрезПоследних.МесторасположениеФактическое КАК Месторасположение,
 	ГНАТ_ЭтапыРаботЗаявокСервисногоЦентраСрезПоследних.Ответственный КАК Инженер,
-	ГНАТ_ЭтапыРаботЗаявокСервисногоЦентраСрезПоследних.ЭтапРаботы КАК ТекущийЭтап
+	ГНАТ_ЭтапыРаботЗаявокСервисногоЦентраСрезПоследних.ЭтапРаботы КАК ТекущийЭтап,
+	ГНАТ_ЭтапыРаботЗаявокСервисногоЦентраСрезПоследних.ЗаявкаСервисногоЦентра.Себестоимость КАК Себестоимость
 ИЗ
 	РегистрСведений.ГНАТ_ЭтапыРаботЗаявокСервисногоЦентра.СрезПоследних КАК ГНАТ_ЭтапыРаботЗаявокСервисногоЦентраСрезПоследних
 ГДЕ
 	ГНАТ_ЭтапыРаботЗаявокСервисногоЦентраСрезПоследних.МесторасположениеФактическое &lt;&gt; ЗНАЧЕНИЕ(Справочник.ГНАТ_МесторасположениеВСервисе.ПустаяСсылка)</query>
 		</dataSet>
+		<totalField>
+			<dataPath>Себестоимость</dataPath>
+			<expression>Сумма(Себестоимость)</expression>
+		</totalField>
 		<parameter>
 			<name>Период</name>
 			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
@@ -209,6 +224,9 @@
 		</item>
 		<item xsi:type="SelectedItemField">
 			<field>Инженер</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>Себестоимость</field>
 		</item>
 		<userSettingID>9f4ea968-28e5-4c65-92d1-1aa57c5348d1</userSettingID>
 	</selection>
@@ -388,6 +406,10 @@
 		<userSettingID>1b9e6bf5-ee03-4f7d-b456-e0bc2e40360c</userSettingID>
 	</conditionalAppearance>
 	<outputParameters>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>ВертикальноеРасположениеОбщихИтогов</dcscor:parameter>
+			<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">End</dcscor:value>
+		</dcscor:item>
 		<dcscor:item xsi:type="SettingsParameterValue">
 			<dcscor:parameter>ВыводитьПараметрыДанных</dcscor:parameter>
 			<dcscor:value xsi:type="DataCompositionTextOutputType">DontOutput</dcscor:value>
