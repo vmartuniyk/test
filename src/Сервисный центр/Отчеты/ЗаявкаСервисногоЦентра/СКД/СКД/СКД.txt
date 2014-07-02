@@ -95,25 +95,49 @@
 					</d5p1:item>
 				</title>
 			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ИсполненияДата</dataPath>
+				<field>ИсполненияДата</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Исполнения дата</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
 			<dataSource>ИсточникДанных1</dataSource>
 			<query>ВЫБРАТЬ
 	Этапы.Период КАК ДатаЭтапа,
 	РАЗНОСТЬДАТ(Этапы.ДатаИсполнения, НАЧАЛОПЕРИОДА(&amp;ТекущаяДата, ДЕНЬ), ДЕНЬ) КАК РазницаДат,
 	Этапы.ЭтапРаботы КАК ЭтапРаботы,
 	Этапы.ПартнерАСЦ КАК АСЦ,
-	ДокументГНАТ_ЗаявкаСервисногоЦентра.Ссылка КАК ЗаявкаСервисногоЦентра,
+	Этапы.ЗаявкаСервисногоЦентра КАК ЗаявкаСервисногоЦентра,
 	Этапы.МесторасположениеФактическое КАК МесторасположениеФактическое,
-	Этапы.Ответственный,
-	Этапы.Комментарий,
-	ДокументГНАТ_ЗаявкаСервисногоЦентра.ЗаказчикРемонта КАК Партнер,
-	ДокументГНАТ_ЗаявкаСервисногоЦентра.Номенклатура,
-	ДокументГНАТ_ЗаявкаСервисногоЦентра.СерийныйНомер,
-	ДокументГНАТ_ЗаявкаСервисногоЦентра.Себестоимость,
-	Этапы.ЭтапРаботы.НормативноеВремя КАК НормативноеВремя
+	Этапы.Ответственный КАК Ответственный,
+	Этапы.Комментарий КАК Комментарий,
+	Этапы.ЗаявкаСервисногоЦентра.ЗаказчикРемонта КАК Партнер,
+	Этапы.ЗаявкаСервисногоЦентра.Номенклатура КАК Номенклатура,
+	Этапы.ЗаявкаСервисногоЦентра.СерийныйНомер КАК СерийныйНомер,
+	Этапы.ЗаявкаСервисногоЦентра.Себестоимость КАК Себестоимость,
+	Этапы.ЭтапРаботы.НормативноеВремя КАК НормативноеВремя,
+	Этапы.ДатаИсполнения КАК ИсполненияДата
 ИЗ
-	Документ.ГНАТ_ЗаявкаСервисногоЦентра КАК ДокументГНАТ_ЗаявкаСервисногоЦентра
-		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ГНАТ_ЭтапыРаботЗаявокСервисногоЦентра.СрезПоследних КАК Этапы
-		ПО (Этапы.ЗаявкаСервисногоЦентра = ДокументГНАТ_ЗаявкаСервисногоЦентра.Ссылка)</query>
+	РегистрСведений.ГНАТ_ЭтапыРаботЗаявокСервисногоЦентра.СрезПоследних КАК Этапы
+ГДЕ
+	ВЫБОР
+			КОГДА &amp;Фильтр = "Просроченные"
+				ТОГДА РАЗНОСТЬДАТ(Этапы.ДатаИсполнения, НАЧАЛОПЕРИОДА(&amp;ТекущаяДата, ДЕНЬ), ДЕНЬ) &gt; 0
+						И Этапы.ДатаИсполнения &lt;&gt; &amp;ПроизвольнаяДата
+						И Этапы.ЭтапРаботы &lt;&gt; ЗНАЧЕНИЕ(Справочник.ГНАТ_ЭтапыРаботы.Выдано)
+			КОГДА &amp;Фильтр = "Дедлайн сегодня"
+				ТОГДА РАЗНОСТЬДАТ(Этапы.ДатаИсполнения, НАЧАЛОПЕРИОДА(&amp;ТекущаяДата, ДЕНЬ), ДЕНЬ) = 0
+						И Этапы.ДатаИсполнения &lt;&gt; &amp;ПроизвольнаяДата
+			КОГДА &amp;Фильтр = "Только закрытые"
+				ТОГДА Этапы.ЭтапРаботы = ЗНАЧЕНИЕ(Справочник.ГНАТ_ЭтапыРаботы.Выдано)
+			КОГДА &amp;Фильтр = "Только открытые"
+				ТОГДА РАЗНОСТЬДАТ(Этапы.ДатаИсполнения, НАЧАЛОПЕРИОДА(&amp;ТекущаяДата, ДЕНЬ), ДЕНЬ) &lt; 0
+			ИНАЧЕ ИСТИНА
+		КОНЕЦ</query>
 		</dataSet>
 		<parameter>
 			<name>Период</name>
@@ -144,6 +168,56 @@
 				<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:dateTime</Type>
 				<DateQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
 					<DateFractions>DateTime</DateFractions>
+				</DateQualifiers>
+			</valueType>
+			<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+			<useRestriction>false</useRestriction>
+		</parameter>
+		<parameter>
+			<name>Фильтр</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Фильтр</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:string</Type>
+				<StringQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
+					<Length>0</Length>
+					<AllowedLength>Variable</AllowedLength>
+				</StringQualifiers>
+			</valueType>
+			<value xsi:type="xs:string">Все</value>
+			<useRestriction>false</useRestriction>
+			<availableValue>
+				<value xsi:type="xs:string">Все</value>
+			</availableValue>
+			<availableValue>
+				<value xsi:type="xs:string">Дедлайн сегодня</value>
+			</availableValue>
+			<availableValue>
+				<value xsi:type="xs:string">Просроченные</value>
+			</availableValue>
+			<availableValue>
+				<value xsi:type="xs:string">Только открытые</value>
+			</availableValue>
+			<availableValue>
+				<value xsi:type="xs:string">Только закрытые</value>
+			</availableValue>
+		</parameter>
+		<parameter>
+			<name>ПроизвольнаяДата</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Произвольная дата</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:dateTime</Type>
+				<DateQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
+					<DateFractions>Date</DateFractions>
 				</DateQualifiers>
 			</valueType>
 			<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
@@ -193,6 +267,15 @@
 				<v8:variant xsi:type="v8:StandardBeginningDateVariant">BeginningOfNextDay</v8:variant>
 			</dcscor:value>
 		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>Фильтр</dcscor:parameter>
+			<dcscor:value xsi:type="xs:string">Все</dcscor:value>
+			<userSettingID>5eabf58e-8754-49c0-ac15-f4e5c7b2348a</userSettingID>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>ПроизвольнаяДата</dcscor:parameter>
+			<dcscor:value xsi:type="xs:dateTime">0001-01-01T00:00:00</dcscor:value>
+		</dcscor:item>
 	</dataParameters>
 	<order>
 		<item xsi:type="OrderItemField">
@@ -218,23 +301,26 @@
 			</selection>
 			<filter>
 				<item xsi:type="FilterItemGroup">
-					<groupType>OrGroup</groupType>
+					<groupType>AndGroup</groupType>
 					<item xsi:type="FilterItemComparison">
-						<left xsi:type="dcscor:Field">НормативноеВремя</left>
+						<left xsi:type="dcscor:Field">РазницаДат</left>
 						<comparisonType>Equal</comparisonType>
 						<right xsi:type="xs:decimal">0</right>
 					</item>
 					<item xsi:type="FilterItemComparison">
-						<left xsi:type="dcscor:Field">РазницаДат</left>
-						<comparisonType>LessOrEqual</comparisonType>
-						<right xsi:type="xs:decimal">0</right>
+						<left xsi:type="dcscor:Field">ИсполненияДата</left>
+						<comparisonType>NotEqual</comparisonType>
+						<right xsi:type="v8:StandardBeginningDate">
+							<v8:variant xsi:type="v8:StandardBeginningDateVariant">Custom</v8:variant>
+							<v8:date>0001-01-01T00:00:00</v8:date>
+						</right>
 					</item>
 				</item>
 			</filter>
 			<appearance>
 				<dcscor:item xsi:type="SettingsParameterValue">
 					<dcscor:parameter>ЦветФона</dcscor:parameter>
-					<dcscor:value xsi:type="v8ui:Color">0:968588bb-ee60-4399-955a-3ec4228d3c40</dcscor:value>
+					<dcscor:value xsi:type="v8ui:Color">0:0235bc31-2797-4753-a53b-80a5aed107aa</dcscor:value>
 				</dcscor:item>
 			</appearance>
 		</item>
@@ -256,16 +342,19 @@
 						<right xsi:type="xs:decimal">0</right>
 					</item>
 					<item xsi:type="FilterItemComparison">
-						<left xsi:type="dcscor:Field">РазницаДат</left>
-						<comparisonType>LessOrEqual</comparisonType>
-						<right xsi:type="xs:decimal">24</right>
+						<left xsi:type="dcscor:Field">ИсполненияДата</left>
+						<comparisonType>NotEqual</comparisonType>
+						<right xsi:type="v8:StandardBeginningDate">
+							<v8:variant xsi:type="v8:StandardBeginningDateVariant">Custom</v8:variant>
+							<v8:date>0001-01-01T00:00:00</v8:date>
+						</right>
 					</item>
 				</item>
 			</filter>
 			<appearance>
 				<dcscor:item xsi:type="SettingsParameterValue">
 					<dcscor:parameter>ЦветФона</dcscor:parameter>
-					<dcscor:value xsi:type="v8ui:Color">0:0235bc31-2797-4753-a53b-80a5aed107aa</dcscor:value>
+					<dcscor:value xsi:type="v8ui:Color">0:968588bb-ee60-4399-955a-3ec4228d3c40</dcscor:value>
 				</dcscor:item>
 			</appearance>
 		</item>
@@ -295,6 +384,16 @@
 		<viewMode>Normal</viewMode>
 		<userSettingID>92686ea5-d0ac-4542-9be6-d9766933502c</userSettingID>
 	</conditionalAppearance>
+	<outputParameters>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>ВыводитьПараметрыДанных</dcscor:parameter>
+			<dcscor:value xsi:type="DataCompositionTextOutputType">DontOutput</dcscor:value>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>ВыводитьОтбор</dcscor:parameter>
+			<dcscor:value xsi:type="DataCompositionTextOutputType">DontOutput</dcscor:value>
+		</dcscor:item>
+	</outputParameters>
 	<item xsi:type="StructureItemGroup">
 		<groupItems>
 			<item xsi:type="GroupItemField">
