@@ -128,11 +128,12 @@
 ОБЪЕДИНИТЬ
 
 ВЫБРАТЬ
-	Партнер
+	ВЫРАЗИТЬ(Объект КАК Справочник.Партнеры) 
 ИЗ
-	РегистрСведений.ПартнерыСегмента КАК ПартнерыСегмента
+	РегистрСведений.ДополнительныеСведения КАК ПартнерыСегмента
 ГДЕ	
-	ПартнерыСегмента.Сегмент В (ВЫБРАТЬ СегментСервисныхЦентровУСЦ ИЗ КОНСТАНТЫ)
+	Свойство = &amp;Свойство
+И	Значение = Истина
 ИНДЕКСИРОВАТЬ ПО
 	Партнер	
 ;
@@ -327,6 +328,20 @@
 			<useRestriction>true</useRestriction>
 			<expression>&amp;Период.ДатаОкончания</expression>
 			<availableAsField>false</availableAsField>
+		</parameter>
+		<parameter>
+			<name>Свойство</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Свойство</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:ChartOfCharacteristicTypesRef.ДополнительныеРеквизитыИСведения</Type>
+			</valueType>
+			<value xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xsi:type="dcscor:DesignTimeValue"/>
+			<useRestriction>true</useRestriction>
 		</parameter>
 		<settingsVariant>
 			<name xmlns="http://v8.1c.ru/8.1/data-composition-system/settings">Основной</name>
