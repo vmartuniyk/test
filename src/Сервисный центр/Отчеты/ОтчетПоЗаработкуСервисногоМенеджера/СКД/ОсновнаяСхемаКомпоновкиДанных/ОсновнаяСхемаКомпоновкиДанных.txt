@@ -128,12 +128,9 @@
 ОБЪЕДИНИТЬ
 
 ВЫБРАТЬ
-	ВЫРАЗИТЬ(Объект КАК Справочник.Партнеры) 
+	Партнеры.Партнер 
 ИЗ
-	РегистрСведений.ДополнительныеСведения КАК ПартнерыСегмента
-ГДЕ	
-	Свойство = &amp;Свойство
-И	Значение = Истина
+	РегистрСведений.ГНАТ_ВендорыСервисногоЦентра КАК Партнеры
 ИНДЕКСИРОВАТЬ ПО
 	Партнер	
 ;
@@ -226,6 +223,8 @@
 	
 	ВИСП.АналитикаУчетаНоменклатуры.Номенклатура	КАК Номенклатура,
 	ВЫБОР
+		КОГДА ВидыНоменклатуры.Ссылка  ЕСТЬ NULL
+		ТОГДА 0
 		КОГДА ПартнерыСегмента.Партнер ЕСТЬ NULL
 		ТОГДА 	ВЫБОР
 					КОГДА СостояниеОплатыВПериоде.КОплате &lt;&gt; 0
@@ -235,6 +234,8 @@
 		ИНАЧЕ 0
 	КОНЕЦ											КАК ВозможныйЗаработок,
 	ВЫБОР
+		КОГДА ВидыНоменклатуры.Ссылка ЕСТЬ NULL
+		ТОГДА 0
 		КОГДА IsNull(ПартнерыСегмента.Партнер, ЛОЖЬ) &lt;&gt; ЛОЖЬ
 		ТОГДА ВИСП.СуммаВыручкиРегл
 		КОГДА СостояниеОплатыВПериоде.КОплате = 0
@@ -256,6 +257,10 @@
 ЛЕВОЕ СОЕДИНЕНИЕ РегистрНакопления.ВыручкаИСебестоимостьПродаж КАК ВИСП
 ПО	ВЫРАЗИТЬ(ВИСП.Регистратор КАК Документ.РеализацияТоваровУслуг) = СостояниеОплатыВПериоде.ОбъектРасчетов
 И	ВИСП.ТипЗапасов = ЗНАЧЕНИЕ(Перечисление.ТипыЗапасов.Услуга)
+
+ЛЕВОЕ СОЕДИНЕНИЕ Справочник.ВидыНоменклатуры КАК ВидыНоменклатуры
+ПО	ВидыНоменклатуры.Родитель = &amp;ГруппаВидНоменклатуры
+И	ВидыНоменклатуры.Ссылка	  = ВИСП.АналитикаУчетаНоменклатуры.Номенклатура.ВидНоменклатуры 
 
 ЛЕВОЕ СОЕДИНЕНИЕ КешОплатаСразу КАК ПартнерыСегмента
 ПО	ПартнерыСегмента.Партнер = СостояниеОплатыВПериоде.Партнер
@@ -330,15 +335,15 @@
 			<availableAsField>false</availableAsField>
 		</parameter>
 		<parameter>
-			<name>Свойство</name>
+			<name>ГруппаВидНоменклатуры</name>
 			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
 				<d4p1:item>
 					<d4p1:lang>ru</d4p1:lang>
-					<d4p1:content>Свойство</d4p1:content>
+					<d4p1:content>Группа вид номенклатуры</d4p1:content>
 				</d4p1:item>
 			</title>
 			<valueType>
-				<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:ChartOfCharacteristicTypesRef.ДополнительныеРеквизитыИСведения</Type>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.ВидыНоменклатуры</Type>
 			</valueType>
 			<value xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xsi:type="dcscor:DesignTimeValue"/>
 			<useRestriction>true</useRestriction>
@@ -375,6 +380,16 @@
 				<v8:variant xsi:type="v8:StandardPeriodVariant">ThisMonth</v8:variant>
 			</dcscor:value>
 			<userSettingID>d5ae912c-e179-4ddd-8544-46663a681f03</userSettingID>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:use>false</dcscor:use>
+			<dcscor:parameter>КонецПериода</dcscor:parameter>
+			<dcscor:value xsi:nil="true"/>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:use>false</dcscor:use>
+			<dcscor:parameter>ГруппаВидНоменклатуры</dcscor:parameter>
+			<dcscor:value xsi:nil="true"/>
 		</dcscor:item>
 	</dataParameters>
 	<order>
