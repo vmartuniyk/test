@@ -5,8 +5,8 @@
 			<name>ИсточникДанных1</name>
 			<dataSourceType>Local</dataSourceType>
 		</dataSource>
-		<dataSet xsi:type="DataSetQuery">
-			<name>НаборДанных1</name>
+		<dataSet xsi:type="DataSetObject">
+			<name>НаборДанных</name>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>ВнешнийВид</dataPath>
 				<field>ВнешнийВид</field>
@@ -16,6 +16,13 @@
 						<d5p1:content>Внешний вид</d5p1:content>
 					</d5p1:item>
 				</title>
+				<valueType>
+					<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:string</Type>
+					<StringQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
+						<Length>0</Length>
+						<AllowedLength>Variable</AllowedLength>
+					</StringQualifiers>
+				</valueType>
 			</field>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>ДатаПрийома</dataPath>
@@ -26,6 +33,12 @@
 						<d5p1:content>Дата прийома</d5p1:content>
 					</d5p1:item>
 				</title>
+				<valueType>
+					<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:dateTime</Type>
+					<DateQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
+						<DateFractions>DateTime</DateFractions>
+					</DateQualifiers>
+				</valueType>
 			</field>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>ДатаПродажи</dataPath>
@@ -36,6 +49,12 @@
 						<d5p1:content>Дата продажи</d5p1:content>
 					</d5p1:item>
 				</title>
+				<valueType>
+					<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:dateTime</Type>
+					<DateQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
+						<DateFractions>DateTime</DateFractions>
+					</DateQualifiers>
+				</valueType>
 			</field>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>ЗаявленыйДефект</dataPath>
@@ -46,6 +65,13 @@
 						<d5p1:content>Заявленый дефект</d5p1:content>
 					</d5p1:item>
 				</title>
+				<valueType>
+					<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:string</Type>
+					<StringQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
+						<Length>0</Length>
+						<AllowedLength>Variable</AllowedLength>
+					</StringQualifiers>
+				</valueType>
 			</field>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>Комплектность</dataPath>
@@ -56,6 +82,13 @@
 						<d5p1:content>Комплектность</d5p1:content>
 					</d5p1:item>
 				</title>
+				<valueType>
+					<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:string</Type>
+					<StringQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
+						<Length>0</Length>
+						<AllowedLength>Variable</AllowedLength>
+					</StringQualifiers>
+				</valueType>
 			</field>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>Номенклатура</dataPath>
@@ -66,6 +99,9 @@
 						<d5p1:content>Номенклатура</d5p1:content>
 					</d5p1:item>
 				</title>
+				<valueType>
+					<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:CatalogRef.Номенклатура</Type>
+				</valueType>
 			</field>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>СерийныйНомер</dataPath>
@@ -76,6 +112,14 @@
 						<d5p1:content>Серийный номер</d5p1:content>
 					</d5p1:item>
 				</title>
+				<valueType>
+					<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:string</Type>
+					<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:CatalogRef.СерийныеНомераНоменклатуры</Type>
+					<StringQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
+						<Length>0</Length>
+						<AllowedLength>Variable</AllowedLength>
+					</StringQualifiers>
+				</valueType>
 			</field>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>ТекущийЭтап</dataPath>
@@ -86,6 +130,9 @@
 						<d5p1:content>Текущий этап</d5p1:content>
 					</d5p1:item>
 				</title>
+				<valueType>
+					<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:CatalogRef.ГНАТ_ЭтапыРаботы</Type>
+				</valueType>
 			</field>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>ДатаЭтапа</dataPath>
@@ -96,38 +143,16 @@
 						<d5p1:content>Дата начала этапа ремонта</d5p1:content>
 					</d5p1:item>
 				</title>
+				<valueType>
+					<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:dateTime</Type>
+					<DateQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
+						<DateFractions>DateTime</DateFractions>
+					</DateQualifiers>
+				</valueType>
 			</field>
 			<dataSource>ИсточникДанных1</dataSource>
-			<query>ВЫБРАТЬ
-	ГНАТ_ЭтапыРаботЗаявокСервисногоЦентраСрезПоследних.ЗаявкаСервисногоЦентра.Дата КАК ДатаПрийома,
-	ГНАТ_ЭтапыРаботЗаявокСервисногоЦентраСрезПоследних.ЗаявкаСервисногоЦентра.Номенклатура КАК Номенклатура,
-	ГНАТ_ЭтапыРаботЗаявокСервисногоЦентраСрезПоследних.ЗаявкаСервисногоЦентра.СерийныйНомер КАК СерийныйНомер,
-	ГНАТ_ЭтапыРаботЗаявокСервисногоЦентраСрезПоследних.ЗаявкаСервисногоЦентра.РеализацияТоваровУслуг.Дата КАК ДатаПродажи,
-	ГНАТ_ЭтапыРаботЗаявокСервисногоЦентраСрезПоследних.ЗаявкаСервисногоЦентра.ВнешнийВид КАК ВнешнийВид,
-	ГНАТ_ЭтапыРаботЗаявокСервисногоЦентраСрезПоследних.ЗаявкаСервисногоЦентра.Комплектность КАК Комплектность,
-	ГНАТ_ЭтапыРаботЗаявокСервисногоЦентраСрезПоследних.ЗаявкаСервисногоЦентра.ЗаявленыйДефект КАК ЗаявленыйДефект,
-	ГНАТ_ЭтапыРаботЗаявокСервисногоЦентраСрезПоследних.Период КАК ДатаЭтапа,
-	ГНАТ_ЭтапыРаботЗаявокСервисногоЦентраСрезПоследних.ЭтапРаботы КАК ТекущийЭтап
-ИЗ
-	РегистрСведений.ГНАТ_ЭтапыРаботЗаявокСервисногоЦентра.СрезПоследних(
-			,
-			ЗаявкаСервисногоЦентра.ЗаказчикРемонта = &amp;Партнер
-				И ЭтапРаботы.ВыгружатьЭтапДляПартнера) КАК ГНАТ_ЭтапыРаботЗаявокСервисногоЦентраСрезПоследних</query>
+			<objectName>Отчет</objectName>
 		</dataSet>
-		<parameter>
-			<name>Партнер</name>
-			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
-				<d4p1:item>
-					<d4p1:lang>ru</d4p1:lang>
-					<d4p1:content>Партнер</d4p1:content>
-				</d4p1:item>
-			</title>
-			<valueType>
-				<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.Партнеры</Type>
-			</valueType>
-			<value xsi:nil="true"/>
-			<useRestriction>false</useRestriction>
-		</parameter>
 		<parameter>
 			<name>Период</name>
 			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
@@ -144,10 +169,31 @@
 			</valueType>
 			<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
 			<useRestriction>false</useRestriction>
+			<denyIncompleteValues>true</denyIncompleteValues>
+		</parameter>
+		<parameter>
+			<name>Партнер</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Партнер</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.Партнеры</Type>
+			</valueType>
+			<value xsi:nil="true"/>
+			<useRestriction>false</useRestriction>
+			<denyIncompleteValues>true</denyIncompleteValues>
 		</parameter>
 		<settingsVariant>
 			<name xmlns="http://v8.1c.ru/8.1/data-composition-system/settings">Основной</name>
-			<presentation xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="xs:string">Основной</presentation>
+			<presentation xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>ОтчетЗаявкиСервисногоЦентруПоПартнеру</d4p1:content>
+				</d4p1:item>
+			</presentation>
 		</settingsVariant>
 	</dataCompositionSchema>
 </SchemaFile>﻿<?xml version="1.0" encoding="UTF-8"?>
@@ -183,17 +229,16 @@
 	</selection>
 	<dataParameters>
 		<dcscor:item xsi:type="SettingsParameterValue">
-			<dcscor:use>false</dcscor:use>
-			<dcscor:parameter>Партнер</dcscor:parameter>
-			<dcscor:value xsi:nil="true"/>
-			<userSettingID>adf53fb9-ab22-4a10-9d75-2ded5c276aee</userSettingID>
-		</dcscor:item>
-		<dcscor:item xsi:type="SettingsParameterValue">
 			<dcscor:parameter>Период</dcscor:parameter>
 			<dcscor:value xsi:type="v8:StandardBeginningDate">
 				<v8:variant xsi:type="v8:StandardBeginningDateVariant">BeginningOfThisDay</v8:variant>
 			</dcscor:value>
-			<userSettingID>2699882c-67d8-4b70-b898-41085d1489c0</userSettingID>
+			<userSettingID>6b9aeb36-5dfc-4e50-af7c-ba91732cf2f4</userSettingID>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>Партнер</dcscor:parameter>
+			<dcscor:value xsi:nil="true"/>
+			<userSettingID>10145787-6db6-45fc-876f-0ee2ebd52a51</userSettingID>
 		</dcscor:item>
 	</dataParameters>
 	<outputParameters>
