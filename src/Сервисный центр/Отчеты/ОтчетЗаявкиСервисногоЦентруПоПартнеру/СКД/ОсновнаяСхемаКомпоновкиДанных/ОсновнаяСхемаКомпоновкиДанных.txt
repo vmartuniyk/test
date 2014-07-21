@@ -231,7 +231,7 @@
 		<dcscor:item xsi:type="SettingsParameterValue">
 			<dcscor:parameter>Период</dcscor:parameter>
 			<dcscor:value xsi:type="v8:StandardBeginningDate">
-				<v8:variant xsi:type="v8:StandardBeginningDateVariant">BeginningOfThisDay</v8:variant>
+				<v8:variant xsi:type="v8:StandardBeginningDateVariant">BeginningOfNextMonth</v8:variant>
 			</dcscor:value>
 			<userSettingID>6b9aeb36-5dfc-4e50-af7c-ba91732cf2f4</userSettingID>
 		</dcscor:item>
