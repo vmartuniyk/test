@@ -522,7 +522,6 @@
 		<dcscor:item xsi:type="SettingsParameterValue">
 			<dcscor:use>false</dcscor:use>
 			<dcscor:parameter>Соглашения</dcscor:parameter>
-			<dcscor:value xsi:nil="true"/>
 			<userSettingID>5d8076fc-d5f7-4118-af64-e9874049b8d3</userSettingID>
 		</dcscor:item>
 		<dcscor:item xsi:type="SettingsParameterValue">
@@ -536,6 +535,29 @@
 		<userSettingID>09baf754-e723-41f5-82f8-aac8960f6664</userSettingID>
 	</order>
 	<conditionalAppearance>
+		<item>
+			<selection>
+				<item>
+					<field>Номенклатура</field>
+				</item>
+				<item>
+					<field>Цена</field>
+				</item>
+			</selection>
+			<filter>
+				<item xsi:type="FilterItemComparison">
+					<left xsi:type="dcscor:Field">МинЦенаПоставщикаЗаПериод</left>
+					<comparisonType>Greater</comparisonType>
+					<right xsi:type="dcscor:Field">Цена</right>
+				</item>
+			</filter>
+			<appearance>
+				<dcscor:item xsi:type="SettingsParameterValue">
+					<dcscor:parameter>ЦветФона</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:Color">#000000</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</item>
 		<viewMode>Normal</viewMode>
 		<userSettingID>a65715e7-90e1-49d5-accc-c9196c97f6fe</userSettingID>
 	</conditionalAppearance>
