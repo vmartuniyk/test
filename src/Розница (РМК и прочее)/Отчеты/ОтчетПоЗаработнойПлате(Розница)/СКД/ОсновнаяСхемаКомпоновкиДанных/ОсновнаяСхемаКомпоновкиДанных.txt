@@ -132,6 +132,9 @@
 						<d5p1:content>Номенклатура</d5p1:content>
 					</d5p1:item>
 				</title>
+				<useRestriction>
+					<field>true</field>
+				</useRestriction>
 				<role>
 					<ignoreNullValues xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</ignoreNullValues>
 				</role>
@@ -484,7 +487,7 @@
 							<dcsat:value xmlns:d8p1="http://v8.1c.ru/8.1/data/core" xsi:type="d8p1:LocalStringType">
 								<d8p1:item>
 									<d8p1:lang>ru</d8p1:lang>
-									<d8p1:content>Зароботок</d8p1:content>
+									<d8p1:content>Заработок</d8p1:content>
 								</d8p1:item>
 							</dcsat:value>
 						</dcsat:item>
