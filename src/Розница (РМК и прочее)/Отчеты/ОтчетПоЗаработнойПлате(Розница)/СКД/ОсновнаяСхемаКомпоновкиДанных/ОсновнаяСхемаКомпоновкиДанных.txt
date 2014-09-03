@@ -6,7 +6,7 @@
 			<dataSourceType>Local</dataSourceType>
 		</dataSource>
 		<dataSet xsi:type="DataSetObject">
-			<name>ОтчетПоПрадажам</name>
+			<name>ОтчетПоПродажам</name>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>Дата</dataPath>
 				<field>Дата</field>
@@ -219,7 +219,7 @@
 				</valueType>
 			</field>
 			<dataSource>ИсточникДанных1</dataSource>
-			<objectName>ОтчетПоПрадажам</objectName>
+			<objectName>ОтчетПоПродажам</objectName>
 		</dataSet>
 		<totalField>
 			<dataPath>Сумма</dataPath>
