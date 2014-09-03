@@ -12,16 +12,8 @@
 				<field>АналитикаУчетаНоменклатуры</field>
 			</field>
 			<field xsi:type="DataSetFieldField">
-				<dataPath>АналитикаУчетаПартий</dataPath>
-				<field>АналитикаУчетаПартий</field>
-			</field>
-			<field xsi:type="DataSetFieldField">
 				<dataPath>ВидЗапасов</dataPath>
 				<field>ВидЗапасов</field>
-			</field>
-			<field xsi:type="DataSetFieldField">
-				<dataPath>ДокументПоступления</dataPath>
-				<field>ДокументПоступления</field>
 			</field>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>Организация</dataPath>
@@ -61,46 +53,59 @@
 					</d5p1:item>
 				</title>
 			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>НалогообложениеНДС</dataPath>
+				<field>НалогообложениеНДС</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Налогообложение НДС</d5p1:content>
+					</d5p1:item>
+				</title>
+				<role>
+					<periodNumber xmlns="http://v8.1c.ru/8.1/data-composition-system/common">2</periodNumber>
+					<periodType xmlns="http://v8.1c.ru/8.1/data-composition-system/common">Main</periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>РазделУчета</dataPath>
+				<field>РазделУчета</field>
+			</field>
 			<dataSource>ИсточникДанных1</dataSource>
 			<query>ВЫБРАТЬ
-	ПоступлениеТоваровУслугТовары.Ссылка КАК Документ,
-	СУММА(ПоступлениеТоваровУслугТовары.Сумма) КАК Сумма,
-	СУММА(ПоступлениеТоваровУслугТовары.СуммаСНДС) КАК СуммаСНДС
-ПОМЕСТИТЬ КешСсылок
+	ВЫРАЗИТЬ(СебестоимостьТоваровОбороты.Регистратор КАК Документ.ПоступлениеТоваровУслуг) КАК Партия,
+	СУММА(СебестоимостьТоваровОбороты.СтоимостьОборот) КАК Стоимость,
+	СУММА(СебестоимостьТоваровОбороты.СтоимостьБезНДСОборот) КАК СтоимостьБезНДС,
+	ВЫРАЗИТЬ(СебестоимостьТоваровОбороты.Регистратор КАК Документ.ПоступлениеТоваровУслуг).НалогообложениеНДС КАК НалогообложениеНДС
 ИЗ
-	Документ.ПоступлениеТоваровУслуг.Товары КАК ПоступлениеТоваровУслугТовары
+	РегистрНакопления.СебестоимостьТоваров.Обороты(&amp;ДатаНачала, &amp;ДатаОкончания, Регистратор, ) КАК СебестоимостьТоваровОбороты
 ГДЕ
-	ПоступлениеТоваровУслугТовары.Ссылка.Дата МЕЖДУ &amp;ДатаНачала И &amp;ДатаОкончания
-	И ПоступлениеТоваровУслугТовары.Ссылка.Проведен
-	И НЕ ПоступлениеТоваровУслугТовары.Ссылка.ПометкаУдаления
+	СебестоимостьТоваровОбороты.Регистратор ССЫЛКА Документ.ПоступлениеТоваровУслуг
+	И СебестоимостьТоваровОбороты.СтоимостьОборот - СебестоимостьТоваровОбороты.СтоимостьБезНДСОборот &gt;0.01
+
+	И ВЫРАЗИТЬ(СебестоимостьТоваровОбороты.Регистратор КАК Документ.ПоступлениеТоваровУслуг).НалогообложениеНДС = ЗНАЧЕНИЕ(Перечисление.ТипыНалогообложенияНДС.ПродажаНеОблагаетсяНДС)
 
 СГРУППИРОВАТЬ ПО
-	ПоступлениеТоваровУслугТовары.Ссылка
+	ВЫРАЗИТЬ(СебестоимостьТоваровОбороты.Регистратор КАК Документ.ПоступлениеТоваровУслуг),
+	ВЫРАЗИТЬ(СебестоимостьТоваровОбороты.Регистратор КАК Документ.ПоступлениеТоваровУслуг).НалогообложениеНДС
 
-ИНДЕКСИРОВАТЬ ПО
-	Документ
-;
+ОБЪЕДИНИТЬ ВСЕ
 
-////////////////////////////////////////////////////////////////////////////////
 ВЫБРАТЬ
-	ВЫРАЗИТЬ(Обороты_ПТиУ.Регистратор КАК Документ.ПоступлениеТоваровУслуг) КАК Партия,
-	Обороты_ПТиУ.СтоимостьОборот КАК Стоимость,
-	Обороты_ПТиУ.СтоимостьБезНДСОборот КАК СтоимостьБезНДС
+	ВЫРАЗИТЬ(СебестоимостьТоваровОбороты.Регистратор КАК Документ.ПоступлениеТоваровУслуг),
+	СУММА(СебестоимостьТоваровОбороты.СтоимостьОборот),
+	СУММА(СебестоимостьТоваровОбороты.СтоимостьБезНДСОборот),
+	ВЫРАЗИТЬ(СебестоимостьТоваровОбороты.Регистратор КАК Документ.ПоступлениеТоваровУслуг).НалогообложениеНДС
 ИЗ
-	КешСсылок КАК КешСсылок
-		ВНУТРЕННЕЕ СОЕДИНЕНИЕ РегистрНакопления.ПартииТоваровОрганизаций.Обороты(&amp;ДатаНачала, &amp;ДатаОкончания, Регистратор, ) КАК Обороты_ПТиУ
-		ПО КешСсылок.Документ = Обороты_ПТиУ.Регистратор
+	РегистрНакопления.СебестоимостьТоваров.Обороты(&amp;ДатаНачала, &amp;ДатаОкончания, Регистратор, ) КАК СебестоимостьТоваровОбороты
 ГДЕ
-	Обороты_ПТиУ.Регистратор ССЫЛКА Документ.ПоступлениеТоваровУслуг
-	И Обороты_ПТиУ.Регистратор В
-			(ВЫБРАТЬ
-				КешСсылок.Документ
-			ИЗ
-				КешСсылок КАК КешСсылок)
-	И (КешСсылок.Сумма = КешСсылок.СуммаСНДС
-				И Обороты_ПТиУ.СтоимостьОборот - Обороты_ПТиУ.СтоимостьБезНДСОборот &gt; 0.01
-			ИЛИ КешСсылок.Сумма &lt;&gt; КешСсылок.СуммаСНДС
-				И Обороты_ПТиУ.СтоимостьБезНДСОборот = Обороты_ПТиУ.СтоимостьОборот)</query>
+	СебестоимостьТоваровОбороты.Регистратор ССЫЛКА Документ.ПоступлениеТоваровУслуг
+	И СебестоимостьТоваровОбороты.СтоимостьОборот - СебестоимостьТоваровОбороты.СтоимостьБезНДСОборот=0
+	И ВЫРАЗИТЬ(СебестоимостьТоваровОбороты.Регистратор КАК Документ.ПоступлениеТоваровУслуг).НалогообложениеНДС = ЗНАЧЕНИЕ(Перечисление.ТипыНалогообложенияНДС.ПродажаОблагаетсяНДС)
+
+СГРУППИРОВАТЬ ПО
+	ВЫРАЗИТЬ(СебестоимостьТоваровОбороты.Регистратор КАК Документ.ПоступлениеТоваровУслуг),
+	ВЫРАЗИТЬ(СебестоимостьТоваровОбороты.Регистратор КАК Документ.ПоступлениеТоваровУслуг).НалогообложениеНДС</query>
 		</dataSet>
 		<parameter>
 			<name>НачалоПериода</name>
@@ -187,6 +192,9 @@
 		<item xsi:type="SelectedItemField">
 			<field>СтоимостьБезНДС</field>
 		</item>
+		<item xsi:type="SelectedItemField">
+			<field>НалогообложениеНДС</field>
+		</item>
 	</selection>
 	<order>
 		<item xsi:type="OrderItemField">
@@ -194,6 +202,24 @@
 			<orderType>Asc</orderType>
 		</item>
 	</order>
+	<conditionalAppearance>
+		<item>
+			<selection/>
+			<filter>
+				<item xsi:type="FilterItemComparison">
+					<left xsi:type="dcscor:Field">НалогообложениеНДС</left>
+					<comparisonType>Equal</comparisonType>
+					<right xsi:type="dcscor:DesignTimeValue">Перечисление.ТипыНалогообложенияНДС.ПродажаНеОблагаетсяНДС</right>
+				</item>
+			</filter>
+			<appearance>
+				<dcscor:item xsi:type="SettingsParameterValue">
+					<dcscor:parameter>ЦветФона</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:Color">#CCFFFF</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</item>
+	</conditionalAppearance>
 	<outputParameters>
 		<dcscor:item xsi:type="SettingsParameterValue">
 			<dcscor:parameter>ВыводитьПараметрыДанных</dcscor:parameter>
@@ -261,6 +287,12 @@
 						</dcsat:item>
 						<dcsat:appIndex>2</dcsat:appIndex>
 					</dcsat:tableCell>
+					<dcsat:tableCell>
+						<dcsat:item xsi:type="dcsat:Field">
+							<dcsat:value xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xsi:type="dcscor:Parameter">НалогообложениеНДС</dcsat:value>
+						</dcsat:item>
+						<dcsat:appIndex>3</dcsat:appIndex>
+					</dcsat:tableCell>
 				</dcsat:item>
 			</template>
 			<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
@@ -274,6 +306,10 @@
 			<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
 				<dcsat:name>СтоимостьБезНДС</dcsat:name>
 				<dcsat:expression>СтоимостьБезНДС</dcsat:expression>
+			</parameter>
+			<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
+				<dcsat:name>НалогообложениеНДС</dcsat:name>
+				<dcsat:expression>НалогообложениеНДС</dcsat:expression>
 			</parameter>
 		</template>
 		<template>
@@ -289,7 +325,7 @@
 								</d8p1:item>
 							</dcsat:value>
 						</dcsat:item>
-						<dcsat:appIndex>3</dcsat:appIndex>
+						<dcsat:appIndex>4</dcsat:appIndex>
 					</dcsat:tableCell>
 					<dcsat:tableCell>
 						<dcsat:item xsi:type="dcsat:Field">
@@ -300,7 +336,7 @@
 								</d8p1:item>
 							</dcsat:value>
 						</dcsat:item>
-						<dcsat:appIndex>4</dcsat:appIndex>
+						<dcsat:appIndex>5</dcsat:appIndex>
 					</dcsat:tableCell>
 					<dcsat:tableCell>
 						<dcsat:item xsi:type="dcsat:Field">
@@ -311,7 +347,18 @@
 								</d8p1:item>
 							</dcsat:value>
 						</dcsat:item>
-						<dcsat:appIndex>5</dcsat:appIndex>
+						<dcsat:appIndex>6</dcsat:appIndex>
+					</dcsat:tableCell>
+					<dcsat:tableCell>
+						<dcsat:item xsi:type="dcsat:Field">
+							<dcsat:value xmlns:d8p1="http://v8.1c.ru/8.1/data/core" xsi:type="d8p1:LocalStringType">
+								<d8p1:item>
+									<d8p1:lang>ru</d8p1:lang>
+									<d8p1:content>Налогообложение НДС</d8p1:content>
+								</d8p1:item>
+							</dcsat:value>
+						</dcsat:item>
+						<dcsat:appIndex>7</dcsat:appIndex>
 					</dcsat:tableCell>
 				</dcsat:item>
 			</template>
@@ -461,6 +508,20 @@
 	</appearance>
 	<appearance xmlns="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="TableCellAppearance">
 		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>МинимальнаяШирина</parameter>
+			<value xsi:type="xs:decimal">22.625</value>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>МаксимальнаяШирина</parameter>
+			<value xsi:type="xs:decimal">22.625</value>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>Расшифровка</parameter>
+			<value xsi:type="Parameter">Партия</value>
+		</item>
+	</appearance>
+	<appearance xmlns="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="TableCellAppearance">
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
 			<parameter>ЦветФона</parameter>
 			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xmlns:d4p2="http://v8.1c.ru/8.1/data/ui/style" xsi:type="d4p1:Color">d4p2:ReportGroup1BackColor</value>
 		</item>
@@ -625,6 +686,62 @@
 		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
 			<parameter>МаксимальнаяШирина</parameter>
 			<value xsi:type="xs:decimal">12.625</value>
+		</item>
+	</appearance>
+	<appearance xmlns="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="TableCellAppearance">
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>ЦветФона</parameter>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xmlns:d4p2="http://v8.1c.ru/8.1/data/ui/style" xsi:type="d4p1:Color">d4p2:ReportGroup1BackColor</value>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>СтильГраницы</parameter>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d4p1:Line" width="0" gap="false">
+				<d4p1:style xsi:type="d4p1:SpreadsheetDocumentCellLineType">None</d4p1:style>
+			</value>
+			<item>
+				<parameter>СтильГраницы.Слева</parameter>
+				<value xmlns:d5p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d5p1:Line" width="1" gap="false">
+					<d5p1:style xsi:type="d5p1:SpreadsheetDocumentCellLineType">Solid</d5p1:style>
+				</value>
+			</item>
+			<item>
+				<parameter>СтильГраницы.Сверху</parameter>
+				<value xmlns:d5p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d5p1:Line" width="1" gap="false">
+					<d5p1:style xsi:type="d5p1:SpreadsheetDocumentCellLineType">Solid</d5p1:style>
+				</value>
+			</item>
+			<item>
+				<parameter>СтильГраницы.Справа</parameter>
+				<value xmlns:d5p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d5p1:Line" width="1" gap="false">
+					<d5p1:style xsi:type="d5p1:SpreadsheetDocumentCellLineType">Solid</d5p1:style>
+				</value>
+			</item>
+			<item>
+				<parameter>СтильГраницы.Снизу</parameter>
+				<value xmlns:d5p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d5p1:Line" width="1" gap="false">
+					<d5p1:style xsi:type="d5p1:SpreadsheetDocumentCellLineType">Solid</d5p1:style>
+				</value>
+			</item>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>ГоризонтальноеПоложение</parameter>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d4p1:HorizontalAlign">Center</value>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>ВертикальноеПоложение</parameter>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d4p1:VerticalAlign">Center</value>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>Размещение</parameter>
+			<value xsi:type="DataCompositionTextPlacementType">Wrap</value>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>МинимальнаяШирина</parameter>
+			<value xsi:type="xs:decimal">22.625</value>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>МаксимальнаяШирина</parameter>
+			<value xsi:type="xs:decimal">22.625</value>
 		</item>
 	</appearance>
 </SchemaFile>
