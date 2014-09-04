@@ -411,6 +411,9 @@
 					<dcsat:tableCell>
 						<dcsat:appIndex>1</dcsat:appIndex>
 					</dcsat:tableCell>
+					<dcsat:tableCell>
+						<dcsat:appIndex>1</dcsat:appIndex>
+					</dcsat:tableCell>
 				</dcsat:item>
 			</template>
 		</template>
@@ -434,6 +437,9 @@
 							<dcsat:value xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xsi:type="dcscor:Parameter">Ссылка</dcsat:value>
 						</dcsat:item>
 						<dcsat:appIndex>2</dcsat:appIndex>
+					</dcsat:tableCell>
+					<dcsat:tableCell>
+						<dcsat:appIndex>1</dcsat:appIndex>
 					</dcsat:tableCell>
 					<dcsat:tableCell>
 						<dcsat:appIndex>1</dcsat:appIndex>
@@ -497,6 +503,12 @@
 					<dcsat:tableCell>
 						<dcsat:item xsi:type="dcsat:Field">
 							<dcsat:value xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xsi:type="dcscor:Parameter">КПП</dcsat:value>
+						</dcsat:item>
+						<dcsat:appIndex>3</dcsat:appIndex>
+					</dcsat:tableCell>
+					<dcsat:tableCell>
+						<dcsat:item xsi:type="dcsat:Field">
+							<dcsat:value xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xsi:type="dcscor:Parameter">ЗначениеКПП</dcsat:value>
 						</dcsat:item>
 						<dcsat:appIndex>3</dcsat:appIndex>
 					</dcsat:tableCell>
@@ -577,6 +589,10 @@
 				<dcsat:name>СкладВыполнилПлан</dcsat:name>
 				<dcsat:expression>СкладВыполнилПлан</dcsat:expression>
 			</parameter>
+			<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
+				<dcsat:name>ЗначениеКПП</dcsat:name>
+				<dcsat:expression>ЗначениеКПП</dcsat:expression>
+			</parameter>
 		</template>
 		<template>
 			<name>Макет4</name>
@@ -597,6 +613,12 @@
 					<dcsat:tableCell>
 						<dcsat:item xsi:type="dcsat:Field">
 							<dcsat:value xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xsi:type="dcscor:Parameter">КПП</dcsat:value>
+						</dcsat:item>
+						<dcsat:appIndex>3</dcsat:appIndex>
+					</dcsat:tableCell>
+					<dcsat:tableCell>
+						<dcsat:item xsi:type="dcsat:Field">
+							<dcsat:value xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xsi:type="dcscor:Parameter">ЗначениеКПП</dcsat:value>
 						</dcsat:item>
 						<dcsat:appIndex>3</dcsat:appIndex>
 					</dcsat:tableCell>
@@ -684,6 +706,10 @@
 				<dcsat:name>ДокументРеализации</dcsat:name>
 				<dcsat:expression>ДокументРеализации</dcsat:expression>
 			</parameter>
+			<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
+				<dcsat:name>ЗначениеКПП</dcsat:name>
+				<dcsat:expression>ЗначениеКПП</dcsat:expression>
+			</parameter>
 		</template>
 		<template>
 			<name>Макет5</name>
@@ -717,6 +743,17 @@
 								<d8p1:item>
 									<d8p1:lang>ru</d8p1:lang>
 									<d8p1:content>КПП</d8p1:content>
+								</d8p1:item>
+							</dcsat:value>
+						</dcsat:item>
+						<dcsat:appIndex>4</dcsat:appIndex>
+					</dcsat:tableCell>
+					<dcsat:tableCell>
+						<dcsat:item xsi:type="dcsat:Field">
+							<dcsat:value xmlns:d8p1="http://v8.1c.ru/8.1/data/core" xsi:type="d8p1:LocalStringType">
+								<d8p1:item>
+									<d8p1:lang>ru</d8p1:lang>
+									<d8p1:content>КПП, %</d8p1:content>
 								</d8p1:item>
 							</dcsat:value>
 						</dcsat:item>
@@ -826,6 +863,17 @@
 								<d8p1:item>
 									<d8p1:lang>ru</d8p1:lang>
 									<d8p1:content>КПП</d8p1:content>
+								</d8p1:item>
+							</dcsat:value>
+						</dcsat:item>
+						<dcsat:appIndex>4</dcsat:appIndex>
+					</dcsat:tableCell>
+					<dcsat:tableCell>
+						<dcsat:item xsi:type="dcsat:Field">
+							<dcsat:value xmlns:d8p1="http://v8.1c.ru/8.1/data/core" xsi:type="d8p1:LocalStringType">
+								<d8p1:item>
+									<d8p1:lang>ru</d8p1:lang>
+									<d8p1:content>КПП, %</d8p1:content>
 								</d8p1:item>
 							</dcsat:value>
 						</dcsat:item>
