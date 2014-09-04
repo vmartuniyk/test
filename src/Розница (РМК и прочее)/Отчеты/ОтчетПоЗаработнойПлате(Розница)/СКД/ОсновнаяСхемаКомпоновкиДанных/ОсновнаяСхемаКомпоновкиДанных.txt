@@ -569,12 +569,12 @@
 				<dcsat:expression>Сумма</dcsat:expression>
 			</parameter>
 			<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
-				<dcsat:name>ВозможныйЗароботок</dcsat:name>
-				<dcsat:expression>ВозможныйЗароботок</dcsat:expression>
-			</parameter>
-			<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
 				<dcsat:name>Зароботок</dcsat:name>
 				<dcsat:expression>Заработок</dcsat:expression>
+			</parameter>
+			<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
+				<dcsat:name>ВозможныйЗароботок</dcsat:name>
+				<dcsat:expression>ВозможныйЗароботок</dcsat:expression>
 			</parameter>
 		</template>
 		<template>
@@ -650,12 +650,12 @@
 				<dcsat:expression>Сумма</dcsat:expression>
 			</parameter>
 			<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
-				<dcsat:name>ВозможныйЗароботок</dcsat:name>
-				<dcsat:expression>ВозможныйЗароботок</dcsat:expression>
-			</parameter>
-			<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
 				<dcsat:name>Зароботок</dcsat:name>
 				<dcsat:expression>Заработок</dcsat:expression>
+			</parameter>
+			<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
+				<dcsat:name>ВозможныйЗароботок</dcsat:name>
+				<dcsat:expression>ВозможныйЗароботок</dcsat:expression>
 			</parameter>
 		</template>
 		<template>
@@ -731,12 +731,19 @@
 				<dcsat:expression>Сумма</dcsat:expression>
 			</parameter>
 			<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
+				<dcsat:name>Зароботок</dcsat:name>
+				<dcsat:expression>Заработок</dcsat:expression>
+			</parameter>
+			<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
 				<dcsat:name>ВозможныйЗароботок</dcsat:name>
 				<dcsat:expression>ВозможныйЗароботок</dcsat:expression>
 			</parameter>
-			<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
-				<dcsat:name>Зароботок</dcsat:name>
-				<dcsat:expression>Заработок</dcsat:expression>
+			<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:DetailsAreaTemplateParameter">
+				<dcsat:name>ПараметрРасшифровки</dcsat:name>
+				<dcsat:fieldExpression>
+					<dcsat:field>Ссылка</dcsat:field>
+					<dcsat:expression>Ссылка</dcsat:expression>
+				</dcsat:fieldExpression>
 			</parameter>
 		</template>
 		<template>
@@ -812,12 +819,12 @@
 				<dcsat:expression>Сумма</dcsat:expression>
 			</parameter>
 			<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
-				<dcsat:name>ВозможныйЗароботок</dcsat:name>
-				<dcsat:expression>ВозможныйЗароботок</dcsat:expression>
-			</parameter>
-			<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
 				<dcsat:name>Зароботок</dcsat:name>
 				<dcsat:expression>Заработок</dcsat:expression>
+			</parameter>
+			<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
+				<dcsat:name>ВозможныйЗароботок</dcsat:name>
+				<dcsat:expression>ВозможныйЗароботок</dcsat:expression>
 			</parameter>
 		</template>
 		<groupTemplate>
@@ -1608,6 +1615,10 @@
 		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
 			<parameter>МаксимальнаяШирина</parameter>
 			<value xsi:type="xs:decimal">13</value>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>Расшифровка</parameter>
+			<value xsi:type="Parameter">ПараметрРасшифровки</value>
 		</item>
 	</appearance>
 	<appearance xmlns="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="TableCellAppearance">
