@@ -287,9 +287,10 @@
 	</filter>
 	<dataParameters>
 		<dcscor:item xsi:type="SettingsParameterValue">
-			<dcscor:use>false</dcscor:use>
 			<dcscor:parameter>НачалоДня</dcscor:parameter>
-			<dcscor:value xsi:type="xs:dateTime">0001-01-01T00:00:00</dcscor:value>
+			<dcscor:value xsi:type="v8:StandardBeginningDate">
+				<v8:variant xsi:type="v8:StandardBeginningDateVariant">BeginningOfThisDay</v8:variant>
+			</dcscor:value>
 			<userSettingID>f0bd1f1e-546d-4dba-b6c1-af54b68ede7a</userSettingID>
 		</dcscor:item>
 	</dataParameters>
@@ -445,7 +446,6 @@
 		<item xsi:type="FilterItemComparison">
 			<left xsi:type="dcscor:Field">Партнер</left>
 			<comparisonType>Equal</comparisonType>
-			<right xsi:type="dcscor:DesignTimeValue"/>
 			<userSettingID>a01d3544-f0c8-4b1f-ab12-afc347432130</userSettingID>
 		</item>
 		<viewMode>Normal</viewMode>
@@ -472,13 +472,6 @@
 		<groupItems>
 			<item xsi:type="GroupItemField">
 				<field>Партнер</field>
-				<groupType>Items</groupType>
-				<periodAdditionType>None</periodAdditionType>
-				<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
-				<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
-			</item>
-			<item xsi:type="GroupItemField">
-				<field>ВариантМаршрута</field>
 				<groupType>Items</groupType>
 				<periodAdditionType>None</periodAdditionType>
 				<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
