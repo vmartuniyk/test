@@ -554,7 +554,7 @@
 			<appearance>
 				<dcscor:item xsi:type="SettingsParameterValue">
 					<dcscor:parameter>ЦветФона</dcscor:parameter>
-					<dcscor:value xsi:type="v8ui:Color">#000000</dcscor:value>
+					<dcscor:value xsi:type="v8ui:Color">0:0235bc31-2797-4753-a53b-80a5aed107aa</dcscor:value>
 				</dcscor:item>
 			</appearance>
 		</item>

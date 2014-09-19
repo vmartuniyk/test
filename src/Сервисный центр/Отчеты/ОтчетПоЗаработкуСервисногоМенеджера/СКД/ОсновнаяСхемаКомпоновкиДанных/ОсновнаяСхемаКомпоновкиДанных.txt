@@ -5,15 +5,53 @@
 			<name>ИсточникДанных1</name>
 			<dataSourceType>Local</dataSourceType>
 		</dataSource>
-		<dataSet xsi:type="DataSetQuery">
-			<name>НаборДанных1</name>
+		<dataSet xsi:type="DataSetObject">
+			<name>НаборДанных</name>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>АналитикаУчетаПоПартнерам</dataPath>
 				<field>АналитикаУчетаПоПартнерам</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Аналитика учета по партнерам</d5p1:content>
+					</d5p1:item>
+				</title>
+				<useRestriction>
+					<field>true</field>
+					<group>true</group>
+					<order>true</order>
+				</useRestriction>
+				<attributeUseRestriction>
+					<field>true</field>
+					<group>true</group>
+					<order>true</order>
+				</attributeUseRestriction>
+				<valueType>
+					<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:CatalogRef.КлючиАналитикиУчетаПоПартнерам</Type>
+				</valueType>
 			</field>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>Валюта</dataPath>
 				<field>Валюта</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Валюта</d5p1:content>
+					</d5p1:item>
+				</title>
+				<useRestriction>
+					<field>true</field>
+					<group>true</group>
+					<order>true</order>
+				</useRestriction>
+				<attributeUseRestriction>
+					<field>true</field>
+					<group>true</group>
+					<order>true</order>
+				</attributeUseRestriction>
+				<valueType>
+					<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:CatalogRef.Валюты</Type>
+				</valueType>
 			</field>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>ВозможныйЗаработок</dataPath>
@@ -24,14 +62,20 @@
 						<d5p1:content>Возможный заработок</d5p1:content>
 					</d5p1:item>
 				</title>
+				<attributeUseRestriction>
+					<field>true</field>
+					<condition>true</condition>
+					<group>true</group>
+					<order>true</order>
+				</attributeUseRestriction>
 				<role>
 					<required xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</required>
 				</role>
 				<valueType>
 					<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:decimal</Type>
 					<NumberQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
-						<Digits>0</Digits>
-						<FractionDigits>0</FractionDigits>
+						<Digits>15</Digits>
+						<FractionDigits>2</FractionDigits>
 						<AllowedSign>Any</AllowedSign>
 					</NumberQualifiers>
 				</valueType>
@@ -39,6 +83,25 @@
 			<field xsi:type="DataSetFieldField">
 				<dataPath>ЗаказКлиента</dataPath>
 				<field>ЗаказКлиента</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Заказ клиента</d5p1:content>
+					</d5p1:item>
+				</title>
+				<useRestriction>
+					<field>true</field>
+					<group>true</group>
+					<order>true</order>
+				</useRestriction>
+				<attributeUseRestriction>
+					<field>true</field>
+					<group>true</group>
+					<order>true</order>
+				</attributeUseRestriction>
+				<valueType>
+					<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:DocumentRef.ЗаказКлиента</Type>
+				</valueType>
 			</field>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>Заработок</dataPath>
@@ -49,14 +112,20 @@
 						<d5p1:content>Заработок</d5p1:content>
 					</d5p1:item>
 				</title>
+				<attributeUseRestriction>
+					<field>true</field>
+					<condition>true</condition>
+					<group>true</group>
+					<order>true</order>
+				</attributeUseRestriction>
 				<role>
 					<required xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</required>
 				</role>
 				<valueType>
 					<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:decimal</Type>
 					<NumberQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
-						<Digits>0</Digits>
-						<FractionDigits>0</FractionDigits>
+						<Digits>15</Digits>
+						<FractionDigits>2</FractionDigits>
 						<AllowedSign>Any</AllowedSign>
 					</NumberQualifiers>
 				</valueType>
@@ -64,9 +133,18 @@
 			<field xsi:type="DataSetFieldField">
 				<dataPath>ЗаявкаСервисногоЦентра</dataPath>
 				<field>ЗаявкаСервисногоЦентра</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Заявка сервисного центра</d5p1:content>
+					</d5p1:item>
+				</title>
 				<role>
 					<dimension xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</dimension>
 				</role>
+				<valueType>
+					<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:DocumentRef.ГНАТ_ЗаявкаСервисногоЦентра</Type>
+				</valueType>
 			</field>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>Инженер</dataPath>
@@ -77,6 +155,9 @@
 						<d5p1:content>Инженер</d5p1:content>
 					</d5p1:item>
 				</title>
+				<valueType>
+					<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:CatalogRef.Пользователи</Type>
+				</valueType>
 			</field>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>Номенклатура</dataPath>
@@ -87,6 +168,9 @@
 						<d5p1:content>Номенклатура</d5p1:content>
 					</d5p1:item>
 				</title>
+				<valueType>
+					<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:CatalogRef.Номенклатура</Type>
+				</valueType>
 			</field>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>Партнер</dataPath>
@@ -97,6 +181,9 @@
 						<d5p1:content>Партнер</d5p1:content>
 					</d5p1:item>
 				</title>
+				<valueType>
+					<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:CatalogRef.Партнеры</Type>
+				</valueType>
 			</field>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>РеализацияТоваровУслуг</dataPath>
@@ -110,6 +197,9 @@
 				<role>
 					<dimension xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</dimension>
 				</role>
+				<valueType>
+					<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:DocumentRef.РеализацияТоваровУслуг</Type>
+				</valueType>
 			</field>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>ОплаченоВДанномПериоде</dataPath>
@@ -120,159 +210,21 @@
 						<d5p1:content>Оплачено в данном периоде</d5p1:content>
 					</d5p1:item>
 				</title>
+				<attributeUseRestriction>
+					<field>true</field>
+					<condition>true</condition>
+					<group>true</group>
+					<order>true</order>
+				</attributeUseRestriction>
 				<role>
 					<required xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</required>
 				</role>
+				<valueType>
+					<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:boolean</Type>
+				</valueType>
 			</field>
 			<dataSource>ИсточникДанных1</dataSource>
-			<query>////////////////////////////////////////////////////////////////////////////////
-//
-ВЫБРАТЬ  
-	Партнеры.Партнер 
-ПОМЕСТИТЬ КешОплатаСразу
-
-ИЗ
-	РегистрСведений.Модуль_ДоступныеСклады КАК Партнеры
-	
-ГДЕ
-	Партнеры.Партнер &lt;&gt; Значение(Справочник.Партнеры.ПустаяСсылка)
-	
-ОБЪЕДИНИТЬ
-
-ВЫБРАТЬ
-	Партнеры.Партнер 
-ИЗ
-	РегистрСведений.ГНАТ_ВендорыСервисногоЦентра КАК Партнеры
-ИНДЕКСИРОВАТЬ ПО
-	Партнер	
-;
-////////////////////////////////////////////////////////////////////////////////
-//
-ВЫБРАТЬ
-	ГНАТ_ЭтапыРаботы.Ссылка КАК ГНАТ_ЭтапРаботы
-ПОМЕСТИТЬ КешЭтаповРабот
-ИЗ
-	Справочник.ГНАТ_ЭтапыРаботы КАК ГНАТ_ЭтапыРаботы
-ГДЕ
-	ГНАТ_ЭтапыРаботы.ЭтоРемонт = ИСТИНА
-;
-////////////////////////////////////////////////////////////////////////////////
-//
-ВЫБРАТЬ РАЗЛИЧНЫЕ
-	МАКСИМУМ(ЭтапыРаботЗСЦ.Период)		 КАК Период,
-	ЭтапыРаботЗСЦ.ЗаявкаСервисногоЦентра КАК ЗаявкаСервисногоЦентра 
-ПОМЕСТИТЬ КешЗСЦ
-ИЗ
-	РегистрСведений.ГНАТ_ЭтапыРаботЗаявокСервисногоЦентра КАК ЭтапыРаботЗСЦ
-	
-ВНУТРЕННЕЕ СОЕДИНЕНИЕ КешЭтаповРабот КАК ЭтапыРаботы
-ПО	ЭтапыРаботы.ГНАТ_ЭтапРаботы = ЭтапыРаботЗСЦ.ЭтапРаботы
-
-ГДЕ
-	ЭтапыРаботЗСЦ.ЗаявкаСервисногоЦентра.Рекламация = Ложь
-
-СГРУППИРОВАТЬ ПО
-	ЭтапыРаботЗСЦ.ЗаявкаСервисногоЦентра
-		
-ИНДЕКСИРОВАТЬ ПО
-	ЗаявкаСервисногоЦентра			
-;
-////////////////////////////////////////////////////////////////////////////////
-//
-ВЫБРАТЬ
-	КешЗСЦ.Период					КАК Период,
-	КешЗСЦ.ЗаявкаСервисногоЦентра	КАК ЗаявкаСервисногоЦентра,
-	РТиУ.Ссылка 					КАК ОбъектРасчетов
-ПОМЕСТИТЬ ОбъектыРасчетов	
-ИЗ
-	КешЗСЦ КАК КешЗСЦ
-	
-ВНУТРЕННЕЕ СОЕДИНЕНИЕ Документ.РеализацияТоваровУслуг КАК РТиУ
-ПО	РТиУ.ЗаявкаСервисногоЦентра         = КешЗСЦ.ЗаявкаСервисногоЦентра
-И	РТиУ.ВидПодчиненногоДокументаГНАТ	= ЗНАЧЕНИЕ(Перечисление.ГНАТ_ВидыПодчиненныхДокументов.РеализацияЗапчастейУслуг)	
-И   РТиУ.Проведен                       = Истина
-
-ОБЪЕДИНИТЬ
-
-ВЫБРАТЬ
-	КешЗСЦ.Период,
-	КешЗСЦ.ЗаявкаСервисногоЦентра,
-	РТиУ.Ссылка	
-ИЗ
-	КешЗСЦ КАК КешЗСЦ
-	
-ВНУТРЕННЕЕ СОЕДИНЕНИЕ Документ.ЗаказКлиента КАК ЗК
-ПО	ЗК.ЗаявкаСервисногоЦентра       = КешЗСЦ.ЗаявкаСервисногоЦентра
-И	ЗК.ВидПодчиненногоДокументаГНАТ	= ЗНАЧЕНИЕ(Перечисление.ГНАТ_ВидыПодчиненныхДокументов.РеализацияЗапчастейУслуг)	
-И   ЗК.Проведен                     = Истина
-
-ВНУТРЕННЕЕ СОЕДИНЕНИЕ Документ.РеализацияТоваровУслуг КАК РТиУ
-ПО	РТиУ.ЗаказКлиента = ЗК.Ссылка	
-И   РТиУ.Проведен     = Истина
-
-;
-////////////////////////////////////////////////////////////////////////////////
-//
-ВЫБРАТЬ
-	ЗаказКлиента			КАК ОбъектРасчетов,
-	ЗаказКлиента.Партнер	КАК Партнер,
-	КОплатеРасход			КАК КОплатеРасход,	
-	КОплатеКонечныйОстаток 	КАК КОплате
-ПОМЕСТИТЬ СостояниеОплатыВПериоде
-ИЗ
-	РегистрНакопления.РасчетыСКлиентами.ОстаткиИОбороты(&amp;НачалоПериода, &amp;КонецПериода, , , ЗаказКлиента В (ВЫБРАТЬ ОбъектРасчетов ИЗ ОбъектыРасчетов))
-ГДЕ
-	АналитикаУчетаПоПартнерам.Партнер НЕ В (ВЫБРАТЬ Партнер ИЗ КешОплатаСразу)
-ИЛИ	ВЫРАЗИТЬ(ЗаказКлиента КАК Документ.РеализацияТоваровУслуг).Дата &gt; &amp;НачалоПериода
-;	
-////////////////////////////////////////////////////////////////////////////////
-//
-ВЫБРАТЬ
-	СостояниеОплатыВПериоде.Партнер 				КАК Партнер,
-	СостояниеОплатыВПериоде.ОбъектРасчетов 			КАК РеализацияТоваровУслуг,
-	ОбъектыРасчетов.ЗаявкаСервисногоЦентра          КАК ЗаявкаСервисногоЦентра,
-	ЭтапыРаботЗСЦ.Ответственный						КАК Инженер,
-	
-	ВИСП.АналитикаУчетаНоменклатуры.Номенклатура	КАК Номенклатура,
-	ВЫБОР
-		КОГДА ВИСП.АналитикаУчетаНоменклатуры.Номенклатура.ВидНоменклатуры.Родитель &lt;&gt; &amp;ГруппаВидНоменклатуры
-		ТОГДА 0
-		КОГДА ПартнерыСегмента.Партнер ЕСТЬ NULL
-		ТОГДА 	ВЫБОР
-					КОГДА СостояниеОплатыВПериоде.КОплате &lt;&gt; 0
-					ТОГДА ВИСП.СуммаВыручкиРегл
-					ИНАЧЕ 0
-				КОНЕЦ							
-		ИНАЧЕ 0
-	КОНЕЦ											КАК ВозможныйЗаработок,
-	ВЫБОР
-		КОГДА ВИСП.АналитикаУчетаНоменклатуры.Номенклатура.ВидНоменклатуры.Родитель &lt;&gt; &amp;ГруппаВидНоменклатуры
-		ТОГДА 0
-		КОГДА IsNull(ПартнерыСегмента.Партнер, ЛОЖЬ) &lt;&gt; ЛОЖЬ
-		ТОГДА ВИСП.СуммаВыручкиРегл
-		КОГДА СостояниеОплатыВПериоде.КОплате = 0
-		ТОГДА ВИСП.СуммаВыручкиРегл							
-		ИНАЧЕ 0
-	КОНЕЦ											КАК Заработок,
-	СостояниеОплатыВПериоде.КОплатеРасход	        КАК ОплаченоВДанномПериоде
-	
-ИЗ
-	СостояниеОплатыВПериоде КАК СостояниеОплатыВПериоде	
-	
-ВНУТРЕННЕЕ СОЕДИНЕНИЕ ОбъектыРасчетов КАК ОбъектыРасчетов
-ПО	ОбъектыРасчетов.ОбъектРасчетов = СостояниеОплатыВПериоде.ОбъектРасчетов
-	
-ВНУТРЕННЕЕ СОЕДИНЕНИЕ РегистрСведений.ГНАТ_ЭтапыРаботЗаявокСервисногоЦентра КАК ЭтапыРаботЗСЦ
-ПО	ЭтапыРаботЗСЦ.ЗаявкаСервисногоЦентра = ОбъектыРасчетов.ЗаявкаСервисногоЦентра
-И	ЭтапыРаботЗСЦ.Период				 = ОбъектыРасчетов.Период
-
-ЛЕВОЕ СОЕДИНЕНИЕ РегистрНакопления.ВыручкаИСебестоимостьПродаж КАК ВИСП
-ПО	ВЫРАЗИТЬ(ВИСП.Регистратор КАК Документ.РеализацияТоваровУслуг) = СостояниеОплатыВПериоде.ОбъектРасчетов
-И	ВИСП.ТипЗапасов = ЗНАЧЕНИЕ(Перечисление.ТипыЗапасов.Услуга)
-
-ЛЕВОЕ СОЕДИНЕНИЕ КешОплатаСразу КАК ПартнерыСегмента
-ПО	ПартнерыСегмента.Партнер = СостояниеОплатыВПериоде.Партнер
-	</query>
+			<objectName>ОтчетПоЗарплате</objectName>
 		</dataSet>
 		<totalField>
 			<dataPath>ВозможныйЗаработок</dataPath>
@@ -303,58 +255,6 @@
 				<d4p1:endDate>0001-01-01T00:00:00</d4p1:endDate>
 			</value>
 			<useRestriction>false</useRestriction>
-		</parameter>
-		<parameter>
-			<name>НачалоПериода</name>
-			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
-				<d4p1:item>
-					<d4p1:lang>ru</d4p1:lang>
-					<d4p1:content>Начало периода</d4p1:content>
-				</d4p1:item>
-			</title>
-			<valueType>
-				<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:dateTime</Type>
-				<DateQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
-					<DateFractions>DateTime</DateFractions>
-				</DateQualifiers>
-			</valueType>
-			<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
-			<useRestriction>true</useRestriction>
-			<expression>&amp;Период.ДатаНачала</expression>
-			<availableAsField>false</availableAsField>
-		</parameter>
-		<parameter>
-			<name>КонецПериода</name>
-			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
-				<d4p1:item>
-					<d4p1:lang>ru</d4p1:lang>
-					<d4p1:content>Окончание периода</d4p1:content>
-				</d4p1:item>
-			</title>
-			<valueType>
-				<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:dateTime</Type>
-				<DateQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
-					<DateFractions>DateTime</DateFractions>
-				</DateQualifiers>
-			</valueType>
-			<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
-			<useRestriction>true</useRestriction>
-			<expression>&amp;Период.ДатаОкончания</expression>
-			<availableAsField>false</availableAsField>
-		</parameter>
-		<parameter>
-			<name>ГруппаВидНоменклатуры</name>
-			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
-				<d4p1:item>
-					<d4p1:lang>ru</d4p1:lang>
-					<d4p1:content>Группа вид номенклатуры</d4p1:content>
-				</d4p1:item>
-			</title>
-			<valueType>
-				<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.ВидыНоменклатуры</Type>
-			</valueType>
-			<value xsi:nil="true"/>
-			<useRestriction>true</useRestriction>
 		</parameter>
 		<settingsVariant>
 			<name xmlns="http://v8.1c.ru/8.1/data-composition-system/settings">Основной</name>
