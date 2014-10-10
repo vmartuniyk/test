@@ -23,6 +23,12 @@
 						<AllowedLength>Variable</AllowedLength>
 					</StringQualifiers>
 				</valueType>
+				<appearance>
+					<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+						<parameter>МаксимальнаяШирина</parameter>
+						<value xsi:type="xs:decimal">20</value>
+					</item>
+				</appearance>
 			</field>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>ДатаПрийома</dataPath>
@@ -39,6 +45,12 @@
 						<DateFractions>DateTime</DateFractions>
 					</DateQualifiers>
 				</valueType>
+				<appearance>
+					<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+						<parameter>МаксимальнаяШирина</parameter>
+						<value xsi:type="xs:decimal">17</value>
+					</item>
+				</appearance>
 			</field>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>ДатаПродажи</dataPath>
@@ -55,6 +67,12 @@
 						<DateFractions>DateTime</DateFractions>
 					</DateQualifiers>
 				</valueType>
+				<appearance>
+					<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+						<parameter>МаксимальнаяШирина</parameter>
+						<value xsi:type="xs:decimal">15</value>
+					</item>
+				</appearance>
 			</field>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>ЗаявленыйДефект</dataPath>
@@ -72,6 +90,12 @@
 						<AllowedLength>Variable</AllowedLength>
 					</StringQualifiers>
 				</valueType>
+				<appearance>
+					<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+						<parameter>МаксимальнаяШирина</parameter>
+						<value xsi:type="xs:decimal">30</value>
+					</item>
+				</appearance>
 			</field>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>Комплектность</dataPath>
@@ -89,6 +113,12 @@
 						<AllowedLength>Variable</AllowedLength>
 					</StringQualifiers>
 				</valueType>
+				<appearance>
+					<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+						<parameter>МаксимальнаяШирина</parameter>
+						<value xsi:type="xs:decimal">20</value>
+					</item>
+				</appearance>
 			</field>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>Номенклатура</dataPath>
@@ -102,6 +132,12 @@
 				<valueType>
 					<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:CatalogRef.Номенклатура</Type>
 				</valueType>
+				<appearance>
+					<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+						<parameter>МаксимальнаяШирина</parameter>
+						<value xsi:type="xs:decimal">40</value>
+					</item>
+				</appearance>
 			</field>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>СерийныйНомер</dataPath>
@@ -120,6 +156,12 @@
 						<AllowedLength>Variable</AllowedLength>
 					</StringQualifiers>
 				</valueType>
+				<appearance>
+					<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+						<parameter>МаксимальнаяШирина</parameter>
+						<value xsi:type="xs:decimal">15</value>
+					</item>
+				</appearance>
 			</field>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>ТекущийЭтап</dataPath>
@@ -133,6 +175,12 @@
 				<valueType>
 					<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:CatalogRef.ГНАТ_ЭтапыРаботы</Type>
 				</valueType>
+				<appearance>
+					<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+						<parameter>МаксимальнаяШирина</parameter>
+						<value xsi:type="xs:decimal">10</value>
+					</item>
+				</appearance>
 			</field>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>ДатаЭтапа</dataPath>
@@ -149,6 +197,12 @@
 						<DateFractions>DateTime</DateFractions>
 					</DateQualifiers>
 				</valueType>
+				<appearance>
+					<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+						<parameter>МаксимальнаяШирина</parameter>
+						<value xsi:type="xs:decimal">15</value>
+					</item>
+				</appearance>
 			</field>
 			<dataSource>ИсточникДанных1</dataSource>
 			<objectName>Отчет</objectName>
@@ -221,10 +275,10 @@
 			<field>ЗаявленыйДефект</field>
 		</item>
 		<item xsi:type="SelectedItemField">
-			<field>ДатаЭтапа</field>
+			<field>ТекущийЭтап</field>
 		</item>
 		<item xsi:type="SelectedItemField">
-			<field>ТекущийЭтап</field>
+			<field>ДатаЭтапа</field>
 		</item>
 	</selection>
 	<dataParameters>

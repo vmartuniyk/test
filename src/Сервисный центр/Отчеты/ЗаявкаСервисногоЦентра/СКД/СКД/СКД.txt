@@ -20,6 +20,12 @@
 			<field xsi:type="DataSetFieldField">
 				<dataPath>Номенклатура</dataPath>
 				<field>Номенклатура</field>
+				<appearance>
+					<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+						<parameter>МаксимальнаяШирина</parameter>
+						<value xsi:type="xs:decimal">10</value>
+					</item>
+				</appearance>
 			</field>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>НормативноеВремя</dataPath>
