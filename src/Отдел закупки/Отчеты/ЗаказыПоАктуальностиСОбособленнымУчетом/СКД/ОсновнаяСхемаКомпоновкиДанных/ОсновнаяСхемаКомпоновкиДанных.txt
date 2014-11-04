@@ -37,19 +37,6 @@
 				</valueType>
 			</field>
 			<field xsi:type="DataSetFieldField">
-				<dataPath>Назначение</dataPath>
-				<field>Назначение</field>
-				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
-					<d5p1:item>
-						<d5p1:lang>ru</d5p1:lang>
-						<d5p1:content>Назначение</d5p1:content>
-					</d5p1:item>
-				</title>
-				<valueType>
-					<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:CatalogRef.Назначения</Type>
-				</valueType>
-			</field>
-			<field xsi:type="DataSetFieldField">
 				<dataPath>ЗаказКлиента</dataPath>
 				<field>ЗаказКлиента</field>
 				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
@@ -60,24 +47,6 @@
 				</title>
 				<valueType>
 					<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:DocumentRef.ЗаказКлиента</Type>
-				</valueType>
-			</field>
-			<field xsi:type="DataSetFieldField">
-				<dataPath>НомерСтроки</dataPath>
-				<field>НомерСтроки</field>
-				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
-					<d5p1:item>
-						<d5p1:lang>ru</d5p1:lang>
-						<d5p1:content>Номер строки</d5p1:content>
-					</d5p1:item>
-				</title>
-				<valueType>
-					<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:decimal</Type>
-					<NumberQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
-						<Digits>0</Digits>
-						<FractionDigits>0</FractionDigits>
-						<AllowedSign>Any</AllowedSign>
-					</NumberQualifiers>
 				</valueType>
 			</field>
 			<field xsi:type="DataSetFieldField">
@@ -181,6 +150,58 @@
 					</NumberQualifiers>
 				</valueType>
 			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>КоличествоВЗаказе</dataPath>
+				<field>КоличествоВЗаказе</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Количество в заказе</d5p1:content>
+					</d5p1:item>
+				</title>
+				<valueType>
+					<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:decimal</Type>
+					<NumberQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
+						<Digits>15</Digits>
+						<FractionDigits>3</FractionDigits>
+						<AllowedSign>Any</AllowedSign>
+					</NumberQualifiers>
+				</valueType>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>КодСтроки</dataPath>
+				<field>КодСтроки</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Код строки</d5p1:content>
+					</d5p1:item>
+				</title>
+				<valueType>
+					<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:decimal</Type>
+					<NumberQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
+						<Digits>0</Digits>
+						<FractionDigits>0</FractionDigits>
+						<AllowedSign>Any</AllowedSign>
+					</NumberQualifiers>
+				</valueType>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ДатаАктуальности</dataPath>
+				<field>ДатаАктуальности</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Дата актуальности</d5p1:content>
+					</d5p1:item>
+				</title>
+				<valueType>
+					<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:dateTime</Type>
+					<DateQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
+						<DateFractions>Date</DateFractions>
+					</DateQualifiers>
+				</valueType>
+			</field>
 			<dataSource>ИсточникДанных1</dataSource>
 			<objectName>ЗаказыПоАктуальностиСОбособленнымУчетом</objectName>
 		</dataSet>
@@ -201,6 +222,10 @@
 			<group>Номенклатура</group>
 			<group>Номенклатура Иерархия</group>
 			<group>ОбщийИтог</group>
+		</totalField>
+		<totalField>
+			<dataPath>КоличествоВЗаказе</dataPath>
+			<expression>Сумма(КоличествоВЗаказе)</expression>
 		</totalField>
 		<parameter>
 			<name>ПериодОтчета</name>
@@ -225,11 +250,11 @@
 			<presentation xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="xs:string">Основной</presentation>
 		</settingsVariant>
 		<settingsVariant>
-			<name xmlns="http://v8.1c.ru/8.1/data-composition-system/settings">Расшифровка</name>
+			<name xmlns="http://v8.1c.ru/8.1/data-composition-system/settings">РасшифровкаПоЗалетам</name>
 			<presentation xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
 				<d4p1:item>
 					<d4p1:lang>ru</d4p1:lang>
-					<d4p1:content>Расшифровка</d4p1:content>
+					<d4p1:content>РасшифровкаПоЗалетам</d4p1:content>
 				</d4p1:item>
 			</presentation>
 		</settingsVariant>
@@ -307,7 +332,12 @@
 			</selection>
 		</series>
 		<selection>
-			<item xsi:type="SelectedItemAuto"/>
+			<item xsi:type="SelectedItemAuto">
+				<use>false</use>
+			</item>
+			<item xsi:type="SelectedItemField">
+				<field>КоличествоЗаказов</field>
+			</item>
 		</selection>
 		<outputParameters>
 			<dcscor:item xsi:type="SettingsParameterValue">
@@ -361,11 +391,77 @@
 	</item>
 </Settings>﻿<?xml version="1.0" encoding="UTF-8"?>
 <Settings xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<selection>
+		<item xsi:type="SelectedItemField">
+			<field>ЗаказКлиента</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>КодСтроки</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>Номенклатура</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>ДатаАктуальности</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>ДатаПоступления</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>КоличествоВЗаказе</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>Залет</field>
+		</item>
+	</selection>
+	<filter>
+		<userSettingID>1594e262-a1c4-4736-ac60-9dfb46b49c36</userSettingID>
+	</filter>
+	<dataParameters>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:use>false</dcscor:use>
+			<dcscor:parameter>ПериодОтчета</dcscor:parameter>
+			<dcscor:value xsi:type="v8:StandardPeriod">
+				<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+				<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+				<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+			</dcscor:value>
+			<userSettingID>bc24f0c3-b0dc-4365-8925-32da25005fbf</userSettingID>
+		</dcscor:item>
+	</dataParameters>
+	<conditionalAppearance>
+		<item>
+			<selection>
+				<item>
+					<field>Залет</field>
+				</item>
+			</selection>
+			<filter>
+				<item xsi:type="FilterItemComparison">
+					<left xsi:type="dcscor:Field">Залет</left>
+					<comparisonType>Equal</comparisonType>
+					<right xsi:type="xs:decimal">1</right>
+				</item>
+			</filter>
+			<appearance>
+				<dcscor:item xsi:type="SettingsParameterValue">
+					<dcscor:parameter>Текст</dcscor:parameter>
+					<dcscor:value xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Зальот</v8:content>
+						</v8:item>
+					</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</item>
+		<userSettingID>f4f2de59-78d9-4688-b227-ad5aee6a2644</userSettingID>
+	</conditionalAppearance>
 	<item xsi:type="StructureItemGroup">
 		<groupItems>
 			<item xsi:type="GroupItemField">
 				<field>ВидыНоменклатуры</field>
-				<groupType>Items</groupType>
+				<groupType>Hierarchy</groupType>
 				<periodAdditionType>None</periodAdditionType>
 				<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
 				<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
@@ -393,8 +489,17 @@
 			<selection>
 				<item xsi:type="SelectedItemAuto"/>
 			</selection>
+			<item xsi:type="StructureItemGroup">
+				<order>
+					<item xsi:type="OrderItemAuto"/>
+				</order>
+				<selection>
+					<item xsi:type="SelectedItemAuto"/>
+				</selection>
+			</item>
 		</item>
 	</item>
+	<itemsUserSettingID>f32d9ead-951a-4039-93a4-50c4fb2d8d76</itemsUserSettingID>
 </Settings>﻿<?xml version="1.0" encoding="UTF-8"?>
 <SchemaFile xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<dataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema"/>
