@@ -45,7 +45,7 @@
 					</d5p1:item>
 				</title>
 				<role>
-					<periodNumber xmlns="http://v8.1c.ru/8.1/data-composition-system/common">6</periodNumber>
+					<periodNumber xmlns="http://v8.1c.ru/8.1/data-composition-system/common">5</periodNumber>
 					<periodType xmlns="http://v8.1c.ru/8.1/data-composition-system/common">Main</periodType>
 				</role>
 			</field>
@@ -117,7 +117,7 @@
 					</d5p1:item>
 				</title>
 				<role>
-					<periodNumber xmlns="http://v8.1c.ru/8.1/data-composition-system/common">5</periodNumber>
+					<periodNumber xmlns="http://v8.1c.ru/8.1/data-composition-system/common">6</periodNumber>
 					<periodType xmlns="http://v8.1c.ru/8.1/data-composition-system/common">Main</periodType>
 				</role>
 			</field>
@@ -231,8 +231,8 @@
 	ВЫРАЗИТЬ(Обороты.Регистратор КАК Документ.ПоступлениеТоваровУслуг).Дата КАК Дата,
 	ВЫРАЗИТЬ(Обороты.Регистратор КАК Документ.ПоступлениеТоваровУслуг).Контрагент КАК Контрагент,
 	ВЫРАЗИТЬ(Обороты.Регистратор КАК Документ.ПоступлениеТоваровУслуг).ДоговорКонтрагента КАК Договор,
-	ВЫРАЗИТЬ(Обороты.Регистратор КАК Документ.ПоступлениеТоваровУслуг).ДоговорКонтрагента.Номер КАК ДоговорДата,
-	ВЫРАЗИТЬ(Обороты.Регистратор КАК Документ.ПоступлениеТоваровУслуг).ДоговорКонтрагента.Дата КАК ДоговорНомер,
+	ВЫРАЗИТЬ(Обороты.Регистратор КАК Документ.ПоступлениеТоваровУслуг).ДоговорКонтрагента.Номер КАК ДоговорНомер,
+	ВЫРАЗИТЬ(Обороты.Регистратор КАК Документ.ПоступлениеТоваровУслуг).ДоговорКонтрагента.Дата КАК ДоговорДата,
 	ВЫРАЗИТЬ(Обороты.Регистратор КАК Документ.ПоступлениеТоваровУслуг).СуммаДокумента КАК СуммаДокумента,
 	ЕСТЬNULL(ИнформацияФактическая.Представление, "") КАК ФактАдресКонтрагента,
 	ЕСТЬNULL(ИнформацияЮредическая.Представление, "") КАК ЮрАдресКонтрагента,
@@ -320,17 +320,23 @@
 		<item xsi:type="SelectedItemField">
 			<field>СуммаДокумента</field>
 		</item>
+		<item xsi:type="SelectedItemField">
+			<use>false</use>
+			<field>Организация</field>
+		</item>
 	</selection>
 	<filter>
 		<item xsi:type="FilterItemComparison">
 			<use>false</use>
 			<left xsi:type="dcscor:Field">Организация</left>
 			<comparisonType>Equal</comparisonType>
+			<right xsi:type="dcscor:DesignTimeValue">Справочник.Организации.ПустаяСсылка</right>
 		</item>
 		<item xsi:type="FilterItemComparison">
 			<use>false</use>
 			<left xsi:type="dcscor:Field">Контрагент</left>
 			<comparisonType>Equal</comparisonType>
+			<right xsi:type="dcscor:DesignTimeValue">Справочник.Контрагенты.ПустаяСсылка</right>
 		</item>
 	</filter>
 	<order>
