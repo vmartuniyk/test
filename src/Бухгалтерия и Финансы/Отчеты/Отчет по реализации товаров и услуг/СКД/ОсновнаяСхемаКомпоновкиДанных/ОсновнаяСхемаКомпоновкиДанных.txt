@@ -20,6 +20,10 @@
 						<d5p1:content>Сума</d5p1:content>
 					</d5p1:item>
 				</title>
+				<role>
+					<periodNumber xmlns="http://v8.1c.ru/8.1/data-composition-system/common">7</periodNumber>
+					<periodType xmlns="http://v8.1c.ru/8.1/data-composition-system/common">Main</periodType>
+				</role>
 				<appearance>
 					<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
 						<parameter>Формат</parameter>
@@ -40,6 +44,10 @@
 						<d5p1:content>Номер договору</d5p1:content>
 					</d5p1:item>
 				</title>
+				<role>
+					<periodNumber xmlns="http://v8.1c.ru/8.1/data-composition-system/common">6</periodNumber>
+					<periodType xmlns="http://v8.1c.ru/8.1/data-composition-system/common">Main</periodType>
+				</role>
 			</field>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>Контрагент</dataPath>
@@ -54,6 +62,10 @@
 						<d5p1:content>Контрагент</d5p1:content>
 					</d5p1:item>
 				</title>
+				<role>
+					<periodNumber xmlns="http://v8.1c.ru/8.1/data-composition-system/common">3</periodNumber>
+					<periodType xmlns="http://v8.1c.ru/8.1/data-composition-system/common">Main</periodType>
+				</role>
 			</field>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>Дата</dataPath>
@@ -68,6 +80,10 @@
 						<d5p1:content>Дата</d5p1:content>
 					</d5p1:item>
 				</title>
+				<role>
+					<periodNumber xmlns="http://v8.1c.ru/8.1/data-composition-system/common">2</periodNumber>
+					<periodType xmlns="http://v8.1c.ru/8.1/data-composition-system/common">Main</periodType>
+				</role>
 			</field>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>Ссылка</dataPath>
@@ -82,6 +98,10 @@
 						<d5p1:content>Документ</d5p1:content>
 					</d5p1:item>
 				</title>
+				<role>
+					<periodNumber xmlns="http://v8.1c.ru/8.1/data-composition-system/common">1</periodNumber>
+					<periodType xmlns="http://v8.1c.ru/8.1/data-composition-system/common">Main</periodType>
+				</role>
 			</field>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>ДоговорДата</dataPath>
@@ -96,6 +116,10 @@
 						<d5p1:content>Дата договору</d5p1:content>
 					</d5p1:item>
 				</title>
+				<role>
+					<periodNumber xmlns="http://v8.1c.ru/8.1/data-composition-system/common">5</periodNumber>
+					<periodType xmlns="http://v8.1c.ru/8.1/data-composition-system/common">Main</periodType>
+				</role>
 			</field>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>ФактАдресКонтрагента</dataPath>
@@ -125,40 +149,111 @@
 					</d5p1:item>
 				</title>
 			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Счет</dataPath>
+				<field>Счет</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>КорСчет</dataPath>
+				<field>КорСчет</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ВалютаКор</dataPath>
+				<field>ВалютаКор</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>КорСубконто1</dataPath>
+				<field>КорСубконто1</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>КорСубконто2</dataPath>
+				<field>КорСубконто2</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Организация</dataPath>
+				<field>Организация</field>
+				<role>
+					<periodNumber xmlns="http://v8.1c.ru/8.1/data-composition-system/common">8</periodNumber>
+					<periodType xmlns="http://v8.1c.ru/8.1/data-composition-system/common">Main</periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>КорСубконто3</dataPath>
+				<field>КорСубконто3</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Субконто1</dataPath>
+				<field>Субконто1</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Субконто2</dataPath>
+				<field>Субконто2</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Субконто3</dataPath>
+				<field>Субконто3</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>НалоговоеНазначение</dataPath>
+				<field>НалоговоеНазначение</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>НалоговоеНазначениеКор</dataPath>
+				<field>НалоговоеНазначениеКор</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Валюта</dataPath>
+				<field>Валюта</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Договор</dataPath>
+				<field>Договор</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Договор</d5p1:content>
+					</d5p1:item>
+				</title>
+				<role>
+					<periodNumber xmlns="http://v8.1c.ru/8.1/data-composition-system/common">4</periodNumber>
+					<periodType xmlns="http://v8.1c.ru/8.1/data-composition-system/common">Main</periodType>
+				</role>
+			</field>
 			<dataSource>ИсточникДанных1</dataSource>
 			<query>ВЫБРАТЬ
-	РеализацияТоваровУслуг.Ссылка,
-	РеализацияТоваровУслуг.Дата,
-	РеализацияТоваровУслуг.Контрагент,
-	РеализацияТоваровУслуг.ДоговорКонтрагента.Номер КАК ДоговорНомер,
-	РеализацияТоваровУслуг.ДоговорКонтрагента.Дата КАК ДоговорДата,
-	РеализацияТоваровУслуг.СуммаДокумента,
-	ЕСТЬNULL(КонтактнаяИнформацияФактическая.Представление, "") КАК ФактАдресКонтрагента,
-	ЕСТЬNULL(КонтактнаяИнформацияЮредическая.Представление, "") КАК ЮрАдресКонтрагента
+	Обороты.Регистратор КАК Ссылка,
+	ВЫРАЗИТЬ(Обороты.Регистратор КАК Документ.РеализацияТоваровУслуг).Дата КАК Дата,
+	ВЫРАЗИТЬ(Обороты.Регистратор КАК Документ.РеализацияТоваровУслуг).Контрагент КАК Контрагент,
+	ВЫРАЗИТЬ(Обороты.Регистратор КАК Документ.РеализацияТоваровУслуг).ДоговорКонтрагента КАК Договор,
+	ВЫРАЗИТЬ(Обороты.Регистратор КАК Документ.РеализацияТоваровУслуг).ДоговорКонтрагента.Номер КАК ДоговорДата,
+	ВЫРАЗИТЬ(Обороты.Регистратор КАК Документ.РеализацияТоваровУслуг).ДоговорКонтрагента.Дата КАК ДоговорНомер,
+	ВЫРАЗИТЬ(Обороты.Регистратор КАК Документ.РеализацияТоваровУслуг).СуммаДокумента КАК СуммаДокумента,
+	ЕСТЬNULL(ИнформацияФактическая.Представление, "") КАК ФактАдресКонтрагента,
+	ЕСТЬNULL(ИнформацияЮредическая.Представление, "") КАК ЮрАдресКонтрагента,
+	ВЫРАЗИТЬ(Обороты.Регистратор КАК Документ.РеализацияТоваровУслуг).Организация КАК Организация
 ИЗ
-	Документ.РеализацияТоваровУслуг КАК РеализацияТоваровУслуг
-		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.КонтактнаяИнформация КАК КонтактнаяИнформацияФактическая
-		ПО (РеализацияТоваровУслуг.Контрагент = (ВЫРАЗИТЬ(КонтактнаяИнформацияФактическая.Объект КАК Справочник.Контрагенты)))
-			И (КонтактнаяИнформацияФактическая.Тип = ЗНАЧЕНИЕ(Перечисление.ТипыКонтактнойИнформации.Адрес))
-			И (КонтактнаяИнформацияФактическая.Вид = ЗНАЧЕНИЕ(Справочник.ВидыКонтактнойИнформации.ФактАдресКонтрагента))
-		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.КонтактнаяИнформация КАК КонтактнаяИнформацияЮредическая
-		ПО (РеализацияТоваровУслуг.Контрагент = (ВЫРАЗИТЬ(КонтактнаяИнформацияЮредическая.Объект КАК Справочник.Контрагенты)))
-			И (КонтактнаяИнформацияЮредическая.Тип = ЗНАЧЕНИЕ(Перечисление.ТипыКонтактнойИнформации.Адрес))
-			И (КонтактнаяИнформацияЮредическая.Вид = ЗНАЧЕНИЕ(Справочник.ВидыКонтактнойИнформации.ЮрАдресКонтрагента))
+	РегистрБухгалтерии.Хозрасчетный.Обороты(&amp;НачалоПериода, &amp;КонецПериода, Регистратор, , , , , ) КАК Обороты
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.КонтактнаяИнформация КАК ИнформацияФактическая
+		ПО (ВЫРАЗИТЬ(Обороты.Регистратор КАК Документ.РеализацияТоваровУслуг).Контрагент = (ВЫРАЗИТЬ(ИнформацияФактическая.Объект КАК Справочник.Контрагенты)))
+			И (ИнформацияФактическая.Тип = ЗНАЧЕНИЕ(Перечисление.ТипыКонтактнойИнформации.Адрес))
+			И (ИнформацияФактическая.Вид = ЗНАЧЕНИЕ(Справочник.ВидыКонтактнойИнформации.ФактАдресКонтрагента))
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.КонтактнаяИнформация КАК ИнформацияЮредическая
+		ПО (ВЫРАЗИТЬ(Обороты.Регистратор КАК Документ.РеализацияТоваровУслуг).Контрагент = (ВЫРАЗИТЬ(ИнформацияЮредическая.Объект КАК Справочник.Контрагенты)))
+			И (ИнформацияЮредическая.Тип = ЗНАЧЕНИЕ(Перечисление.ТипыКонтактнойИнформации.Адрес))
+			И (ИнформацияЮредическая.Вид = ЗНАЧЕНИЕ(Справочник.ВидыКонтактнойИнформации.ЮрАдресКонтрагента))
 ГДЕ
-	РеализацияТоваровУслуг.Проведен
-	И РеализацияТоваровУслуг.Дата МЕЖДУ &amp;ДатаНачала И &amp;ДатаОкончания</query>
+	Обороты.Регистратор ССЫЛКА Документ.РеализацияТоваровУслуг</query>
 		</dataSet>
 		<totalField>
 			<dataPath>СуммаДокумента</dataPath>
 			<expression>Сумма(СуммаДокумента)</expression>
 		</totalField>
 		<parameter>
-			<name>ДатаНачала</name>
+			<name>НачалоПериода</name>
 			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
 				<d4p1:item>
 					<d4p1:lang>ru</d4p1:lang>
-					<d4p1:content>Дата начала</d4p1:content>
+					<d4p1:content>Начало периода</d4p1:content>
 				</d4p1:item>
 			</title>
 			<valueType>
@@ -171,11 +266,11 @@
 			<useRestriction>false</useRestriction>
 		</parameter>
 		<parameter>
-			<name>ДатаОкончания</name>
+			<name>КонецПериода</name>
 			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
 				<d4p1:item>
 					<d4p1:lang>ru</d4p1:lang>
-					<d4p1:content>Дата окончания</d4p1:content>
+					<d4p1:content>Конец периода</d4p1:content>
 				</d4p1:item>
 			</title>
 			<valueType>
@@ -219,7 +314,29 @@
 		<item xsi:type="SelectedItemField">
 			<field>СуммаДокумента</field>
 		</item>
+		<item xsi:type="SelectedItemField">
+			<use>false</use>
+			<field>Организация</field>
+		</item>
 	</selection>
+	<filter>
+		<item xsi:type="FilterItemComparison">
+			<use>false</use>
+			<left xsi:type="dcscor:Field">Организация</left>
+			<comparisonType>Equal</comparisonType>
+		</item>
+		<item xsi:type="FilterItemComparison">
+			<use>false</use>
+			<left xsi:type="dcscor:Field">Контрагент</left>
+			<comparisonType>Equal</comparisonType>
+		</item>
+	</filter>
+	<order>
+		<item xsi:type="OrderItemField">
+			<field>Дата</field>
+			<orderType>Asc</orderType>
+		</item>
+	</order>
 	<conditionalAppearance>
 		<item>
 			<selection>
