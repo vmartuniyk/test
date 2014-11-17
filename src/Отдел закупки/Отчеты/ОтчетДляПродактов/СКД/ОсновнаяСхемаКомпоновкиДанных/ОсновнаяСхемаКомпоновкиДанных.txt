@@ -1413,6 +1413,26 @@
 				</item>
 			</appearance>
 		</calculatedField>
+		<calculatedField>
+			<dataPath>ОбщаяВаловаяПрибыльСКРП</dataPath>
+			<expression>IsNull(ВаловаяПрибыль,0) + IsNull(КурсоваяРазница,0) + IsNull(ВаловаяПрибыльСборок,0) - IsNull(ВыплаченныеПродавцамБонусы,0)+IsNull(КурсоваяРазницаПоступлений,0) </expression>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ua</d4p1:lang>
+					<d4p1:content>Общая валовая прибыль с учетом КРП</d4p1:content>
+				</d4p1:item>
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Общая валовая прибыль с учетом КРП</d4p1:content>
+				</d4p1:item>
+			</title>
+			<appearance>
+				<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+					<parameter>Формат</parameter>
+					<value xsi:type="xs:string">ЧЦ=15; ЧДЦ=2</value>
+				</item>
+			</appearance>
+		</calculatedField>
 		<totalField>
 			<dataPath>ВаловаяПрибыль</dataPath>
 			<expression>Сумма(ВаловаяПрибыль)</expression>
@@ -1583,6 +1603,10 @@
 		<totalField>
 			<dataPath>КурсоваяРазницаПоступлений</dataPath>
 			<expression>Сумма(КурсоваяРазницаПоступлений)</expression>
+		</totalField>
+		<totalField>
+			<dataPath>ОбщаяВаловаяПрибыльСКРП</dataPath>
+			<expression>Сумма(ОбщаяВаловаяПрибыльСКРП)</expression>
 		</totalField>
 		<parameter>
 			<name>ПериодОтчета</name>
@@ -1859,20 +1883,20 @@
 			</presentation>
 		</settingsVariant>
 		<settingsVariant>
-			<name xmlns="http://v8.1c.ru/8.1/data-composition-system/settings">ОтчетДляПродактовКурсоваяРазница</name>
-			<presentation xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
-				<d4p1:item>
-					<d4p1:lang>ru</d4p1:lang>
-					<d4p1:content>Отчет для продактов (Курсовая разница)</d4p1:content>
-				</d4p1:item>
-			</presentation>
-		</settingsVariant>
-		<settingsVariant>
 			<name xmlns="http://v8.1c.ru/8.1/data-composition-system/settings">ОтчетДляПродактовКУрсоваяРазницаПоступления</name>
 			<presentation xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
 				<d4p1:item>
 					<d4p1:lang>ru</d4p1:lang>
 					<d4p1:content>Отчет для продактов (Курсовая разница по поступлениям в грн.)</d4p1:content>
+				</d4p1:item>
+			</presentation>
+		</settingsVariant>
+		<settingsVariant>
+			<name xmlns="http://v8.1c.ru/8.1/data-composition-system/settings">ОтчетДляПродактовКурсоваяРазница</name>
+			<presentation xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Отчет для продактов (Курсовая разница)</d4p1:content>
 				</d4p1:item>
 			</presentation>
 		</settingsVariant>
@@ -1900,6 +1924,9 @@
 		</item>
 		<item xsi:type="SelectedItemField">
 			<field>ОбщаяВаловаяПрибыль</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>ОбщаяВаловаяПрибыльСКРП</field>
 		</item>
 		<item xsi:type="SelectedItemField">
 			<field>СтоимостьСклада</field>
@@ -1985,9 +2012,6 @@
 			<field>ВаловаяПрибыль</field>
 		</item>
 		<item xsi:type="SelectedItemField">
-			<field>КурсоваяРазница</field>
-		</item>
-		<item xsi:type="SelectedItemField">
 			<field>ВаловаяПрибыльСборок</field>
 		</item>
 		<item xsi:type="SelectedItemField">
@@ -1995,6 +2019,9 @@
 		</item>
 		<item xsi:type="SelectedItemField">
 			<field>ОбщаяВаловаяПрибыль</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>ОбщаяВаловаяПрибыльСКРП</field>
 		</item>
 		<item xsi:type="SelectedItemField">
 			<field>СтоимостьСклада</field>
@@ -2005,14 +2032,31 @@
 		<item xsi:type="SelectedItemField">
 			<field>ДНС</field>
 		</item>
+		<item xsi:type="SelectedItemField">
+			<field>КурсоваяРазницаПоступлений</field>
+		</item>
 	</selection>
+	<filter>
+		<item xsi:type="FilterItemComparison">
+			<use>false</use>
+			<left xsi:type="dcscor:Field">СегментНоменклатуры</left>
+			<comparisonType>Equal</comparisonType>
+			<userSettingID>a717f152-961f-439c-b220-bce6b8e02245</userSettingID>
+		</item>
+		<item xsi:type="FilterItemComparison">
+			<use>false</use>
+			<left xsi:type="dcscor:Field">Номенклатура.ВидНоменклатуры</left>
+			<comparisonType>Equal</comparisonType>
+			<userSettingID>f508d832-ed91-4b09-875d-587e42006944</userSettingID>
+		</item>
+	</filter>
 	<dataParameters>
 		<dcscor:item xsi:type="SettingsParameterValue">
 			<dcscor:parameter>ПериодОтчета</dcscor:parameter>
 			<dcscor:value xsi:type="v8:StandardPeriod">
 				<v8:variant xsi:type="v8:StandardPeriodVariant">ThisMonth</v8:variant>
 			</dcscor:value>
-			<userSettingID>58e935f0-25c6-4317-b4fa-ce98442abcba</userSettingID>
+			<userSettingID>f1a380e2-6eb7-48ff-929c-54aeaef13599</userSettingID>
 		</dcscor:item>
 		<dcscor:item xsi:type="SettingsParameterValue">
 			<dcscor:parameter>ПоказыватьПродажи</dcscor:parameter>
@@ -2028,7 +2072,7 @@
 			<dcscor:use>false</dcscor:use>
 			<dcscor:parameter>КурсВалютыУправленческогоУчета</dcscor:parameter>
 			<dcscor:value xsi:type="xs:decimal">0</dcscor:value>
-			<userSettingID>263b5ff5-bfa1-4f36-b29c-b3172fb54110</userSettingID>
+			<viewMode>Inaccessible</viewMode>
 		</dcscor:item>
 	</dataParameters>
 	<item xsi:type="StructureItemGroup">
@@ -2064,6 +2108,9 @@
 			<field>ВаловаяПрибыль</field>
 		</item>
 		<item xsi:type="SelectedItemField">
+			<field>КурсоваяРазница</field>
+		</item>
+		<item xsi:type="SelectedItemField">
 			<field>ВаловаяПрибыльСборок</field>
 		</item>
 		<item xsi:type="SelectedItemField">
@@ -2071,6 +2118,9 @@
 		</item>
 		<item xsi:type="SelectedItemField">
 			<field>ОбщаяВаловаяПрибыль</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>ОбщаяВаловаяПрибыльСКРП</field>
 		</item>
 		<item xsi:type="SelectedItemField">
 			<field>СтоимостьСклада</field>
@@ -2081,33 +2131,14 @@
 		<item xsi:type="SelectedItemField">
 			<field>ДНС</field>
 		</item>
-		<item xsi:type="SelectedItemField">
-			<field>КурсоваяРазницаПоступлений</field>
-		</item>
 	</selection>
-	<filter>
-		<item xsi:type="FilterItemComparison">
-			<use>false</use>
-			<left xsi:type="dcscor:Field">СегментНоменклатуры</left>
-			<comparisonType>Equal</comparisonType>
-			<right xsi:type="dcscor:DesignTimeValue"/>
-			<userSettingID>a717f152-961f-439c-b220-bce6b8e02245</userSettingID>
-		</item>
-		<item xsi:type="FilterItemComparison">
-			<use>false</use>
-			<left xsi:type="dcscor:Field">Номенклатура.ВидНоменклатуры</left>
-			<comparisonType>Equal</comparisonType>
-			<right xsi:type="dcscor:DesignTimeValue"/>
-			<userSettingID>f508d832-ed91-4b09-875d-587e42006944</userSettingID>
-		</item>
-	</filter>
 	<dataParameters>
 		<dcscor:item xsi:type="SettingsParameterValue">
 			<dcscor:parameter>ПериодОтчета</dcscor:parameter>
 			<dcscor:value xsi:type="v8:StandardPeriod">
 				<v8:variant xsi:type="v8:StandardPeriodVariant">ThisMonth</v8:variant>
 			</dcscor:value>
-			<userSettingID>f1a380e2-6eb7-48ff-929c-54aeaef13599</userSettingID>
+			<userSettingID>58e935f0-25c6-4317-b4fa-ce98442abcba</userSettingID>
 		</dcscor:item>
 		<dcscor:item xsi:type="SettingsParameterValue">
 			<dcscor:parameter>ПоказыватьПродажи</dcscor:parameter>
@@ -2123,7 +2154,7 @@
 			<dcscor:use>false</dcscor:use>
 			<dcscor:parameter>КурсВалютыУправленческогоУчета</dcscor:parameter>
 			<dcscor:value xsi:type="xs:decimal">0</dcscor:value>
-			<viewMode>Inaccessible</viewMode>
+			<userSettingID>263b5ff5-bfa1-4f36-b29c-b3172fb54110</userSettingID>
 		</dcscor:item>
 	</dataParameters>
 	<item xsi:type="StructureItemGroup">
