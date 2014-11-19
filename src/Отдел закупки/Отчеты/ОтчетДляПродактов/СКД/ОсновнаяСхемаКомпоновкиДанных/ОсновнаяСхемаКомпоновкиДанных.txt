@@ -5,8 +5,8 @@
 			<name>ИсточникДанных1</name>
 			<dataSourceType>Local</dataSourceType>
 		</dataSource>
-		<dataSet xsi:type="DataSetQuery">
-			<name>ОсновнаяСхема</name>
+		<dataSet xsi:type="DataSetUnion">
+			<name>НаборДанных1</name>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>Номенклатура</dataPath>
 				<field>Номенклатура</field>
@@ -388,8 +388,411 @@
 					</item>
 				</appearance>
 			</field>
-			<dataSource>ИсточникДанных1</dataSource>
-			<query>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Поле2</dataPath>
+				<field>Поле2</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Поле2</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
+			<item xsi:type="DataSetQuery">
+				<name>ОсновнаяСхема</name>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>Номенклатура</dataPath>
+					<field>Номенклатура</field>
+					<role>
+						<dimension xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</dimension>
+					</role>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>СегментНоменклатуры</dataPath>
+					<field>СегментНоменклатуры</field>
+					<valueType>
+						<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d7p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d7p1:CatalogRef.СегментыНоменклатуры</Type>
+					</valueType>
+					<inputParameters>
+						<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+							<parameter>ПараметрыВыбора</parameter>
+							<value xsi:type="ChoiceParameters">
+								<item>
+									<choiceParameter>Отбор.СпособФормирования</choiceParameter>
+									<value xsi:type="DesignTimeValue">Перечисление.СпособыФормированияСегментов.ПериодическиОбновлять</value>
+									<value xsi:type="DesignTimeValue">Перечисление.СпособыФормированияСегментов.ФормироватьВручную</value>
+								</item>
+							</value>
+						</item>
+					</inputParameters>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>Характеристика</dataPath>
+					<field>Характеристика</field>
+					<role>
+						<dimension xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</dimension>
+					</role>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>АналитикаУчетаНоменклатуры</dataPath>
+					<field>АналитикаУчетаНоменклатуры</field>
+					<useRestriction>
+						<condition>true</condition>
+					</useRestriction>
+					<attributeUseRestriction>
+						<condition>true</condition>
+					</attributeUseRestriction>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>АналитикаУчетаПоПартнерам</dataPath>
+					<field>АналитикаУчетаПоПартнерам</field>
+					<useRestriction>
+						<condition>true</condition>
+					</useRestriction>
+					<attributeUseRestriction>
+						<condition>true</condition>
+					</attributeUseRestriction>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>ЗаказКлиента</dataPath>
+					<field>ЗаказКлиента</field>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>Подразделение</dataPath>
+					<field>Подразделение</field>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>ТипЗапасов</dataPath>
+					<field>ТипЗапасов</field>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>Организация</dataPath>
+					<field>Организация</field>
+					<role>
+						<dimension xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</dimension>
+					</role>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>Склад</dataPath>
+					<field>Склад</field>
+					<role>
+						<dimension xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</dimension>
+					</role>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>Год</dataPath>
+					<field>Год</field>
+					<title xmlns:d6p1="http://v8.1c.ru/8.1/data/core" xsi:type="d6p1:LocalStringType">
+						<d6p1:item>
+							<d6p1:lang>ru</d6p1:lang>
+							<d6p1:content>Период, год</d6p1:content>
+						</d6p1:item>
+					</title>
+					<role>
+						<periodNumber xmlns="http://v8.1c.ru/8.1/data-composition-system/common">8</periodNumber>
+						<periodType xmlns="http://v8.1c.ru/8.1/data-composition-system/common">Additional</periodType>
+					</role>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>Декада</dataPath>
+					<field>Декада</field>
+					<title xmlns:d6p1="http://v8.1c.ru/8.1/data/core" xsi:type="d6p1:LocalStringType">
+						<d6p1:item>
+							<d6p1:lang>ru</d6p1:lang>
+							<d6p1:content>Период, декада</d6p1:content>
+						</d6p1:item>
+					</title>
+					<role>
+						<periodNumber xmlns="http://v8.1c.ru/8.1/data-composition-system/common">4</periodNumber>
+						<periodType xmlns="http://v8.1c.ru/8.1/data-composition-system/common">Additional</periodType>
+					</role>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>День</dataPath>
+					<field>День</field>
+					<title xmlns:d6p1="http://v8.1c.ru/8.1/data/core" xsi:type="d6p1:LocalStringType">
+						<d6p1:item>
+							<d6p1:lang>ru</d6p1:lang>
+							<d6p1:content>Период, день</d6p1:content>
+						</d6p1:item>
+					</title>
+					<role>
+						<periodNumber xmlns="http://v8.1c.ru/8.1/data-composition-system/common">2</periodNumber>
+						<periodType xmlns="http://v8.1c.ru/8.1/data-composition-system/common">Additional</periodType>
+					</role>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>Квартал</dataPath>
+					<field>Квартал</field>
+					<title xmlns:d6p1="http://v8.1c.ru/8.1/data/core" xsi:type="d6p1:LocalStringType">
+						<d6p1:item>
+							<d6p1:lang>ru</d6p1:lang>
+							<d6p1:content>Период, квартал</d6p1:content>
+						</d6p1:item>
+					</title>
+					<role>
+						<periodNumber xmlns="http://v8.1c.ru/8.1/data-composition-system/common">6</periodNumber>
+						<periodType xmlns="http://v8.1c.ru/8.1/data-composition-system/common">Additional</periodType>
+					</role>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>Месяц</dataPath>
+					<field>Месяц</field>
+					<title xmlns:d6p1="http://v8.1c.ru/8.1/data/core" xsi:type="d6p1:LocalStringType">
+						<d6p1:item>
+							<d6p1:lang>ru</d6p1:lang>
+							<d6p1:content>Период, месяц</d6p1:content>
+						</d6p1:item>
+					</title>
+					<role>
+						<periodNumber xmlns="http://v8.1c.ru/8.1/data-composition-system/common">5</periodNumber>
+						<periodType xmlns="http://v8.1c.ru/8.1/data-composition-system/common">Additional</periodType>
+					</role>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>Неделя</dataPath>
+					<field>Неделя</field>
+					<title xmlns:d6p1="http://v8.1c.ru/8.1/data/core" xsi:type="d6p1:LocalStringType">
+						<d6p1:item>
+							<d6p1:lang>ru</d6p1:lang>
+							<d6p1:content>Период, неделя</d6p1:content>
+						</d6p1:item>
+					</title>
+					<role>
+						<periodNumber xmlns="http://v8.1c.ru/8.1/data-composition-system/common">3</periodNumber>
+						<periodType xmlns="http://v8.1c.ru/8.1/data-composition-system/common">Additional</periodType>
+					</role>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>Полугодие</dataPath>
+					<field>Полугодие</field>
+					<title xmlns:d6p1="http://v8.1c.ru/8.1/data/core" xsi:type="d6p1:LocalStringType">
+						<d6p1:item>
+							<d6p1:lang>ru</d6p1:lang>
+							<d6p1:content>Период, полугодие</d6p1:content>
+						</d6p1:item>
+					</title>
+					<role>
+						<periodNumber xmlns="http://v8.1c.ru/8.1/data-composition-system/common">7</periodNumber>
+						<periodType xmlns="http://v8.1c.ru/8.1/data-composition-system/common">Additional</periodType>
+					</role>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>Регистратор</dataPath>
+					<field>Регистратор</field>
+					<role>
+						<periodNumber xmlns="http://v8.1c.ru/8.1/data-composition-system/common">1</periodNumber>
+						<periodType xmlns="http://v8.1c.ru/8.1/data-composition-system/common">Additional</periodType>
+						<ignoreNullValues xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</ignoreNullValues>
+					</role>
+					<orderExpression>
+						<expression xmlns="http://v8.1c.ru/8.1/data-composition-system/common">Регистратор</expression>
+						<orderType xmlns="http://v8.1c.ru/8.1/data-composition-system/common">Asc</orderType>
+						<autoOrder xmlns="http://v8.1c.ru/8.1/data-composition-system/common">false</autoOrder>
+					</orderExpression>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>ВидЗапасов</dataPath>
+					<field>ВидЗапасов</field>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>Количество</dataPath>
+					<field>Количество</field>
+					<appearance>
+						<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+							<parameter>Формат</parameter>
+							<value xsi:type="xs:string">ЧДЦ=3</value>
+						</item>
+					</appearance>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>Выручка</dataPath>
+					<field>Выручка</field>
+					<appearance>
+						<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+							<parameter>Формат</parameter>
+							<value xsi:type="xs:string">ЧДЦ=2</value>
+						</item>
+					</appearance>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>ВыручкаНДС</dataPath>
+					<field>ВыручкаНДС</field>
+					<appearance>
+						<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+							<parameter>Формат</parameter>
+							<value xsi:type="xs:string">ЧДЦ=2</value>
+						</item>
+					</appearance>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>Себестоимость</dataPath>
+					<field>Себестоимость</field>
+					<appearance>
+						<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+							<parameter>Формат</parameter>
+							<value xsi:type="xs:string">ЧДЦ=2</value>
+						</item>
+					</appearance>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>ДопРасходы</dataPath>
+					<field>ДопРасходы</field>
+					<appearance>
+						<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+							<parameter>Формат</parameter>
+							<value xsi:type="xs:string">ЧДЦ=2</value>
+						</item>
+					</appearance>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>ВаловаяПрибыль</dataPath>
+					<field>ВаловаяПрибыль</field>
+					<appearance>
+						<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+							<parameter>Формат</parameter>
+							<value xsi:type="xs:string">ЧДЦ=2</value>
+						</item>
+					</appearance>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>КурсоваяРазница</dataPath>
+					<field>КурсоваяРазница</field>
+					<appearance>
+						<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+							<parameter>Формат</parameter>
+							<value xsi:type="xs:string">ЧДЦ=2</value>
+						</item>
+					</appearance>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>ВаловаяПрибыльСборок</dataPath>
+					<field>ВаловаяПрибыльСборок</field>
+					<appearance>
+						<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+							<parameter>Формат</parameter>
+							<value xsi:type="xs:string">ЧДЦ=2</value>
+						</item>
+					</appearance>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>ВыплаченныеПродавцамБонусы</dataPath>
+					<field>ВыплаченныеПродавцамБонусы</field>
+					<appearance>
+						<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+							<parameter>Формат</parameter>
+							<value xsi:type="xs:string">ЧДЦ=2</value>
+						</item>
+					</appearance>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>Менеджер</dataPath>
+					<field>Менеджер</field>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>КОСОборот</dataPath>
+					<field>КОСОборот</field>
+					<useRestriction>
+						<field>true</field>
+						<condition>true</condition>
+						<group>true</group>
+						<order>true</order>
+					</useRestriction>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>СтоимостьОборот</dataPath>
+					<field>СтоимостьОборот</field>
+					<useRestriction>
+						<field>true</field>
+						<condition>true</condition>
+						<group>true</group>
+						<order>true</order>
+					</useRestriction>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>ДнейВМесяце</dataPath>
+					<field>ДнейВМесяце</field>
+					<useRestriction>
+						<field>true</field>
+						<condition>true</condition>
+						<group>true</group>
+						<order>true</order>
+					</useRestriction>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>ДнейВГоду</dataPath>
+					<field>ДнейВГоду</field>
+					<useRestriction>
+						<field>true</field>
+						<condition>true</condition>
+						<group>true</group>
+						<order>true</order>
+					</useRestriction>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>ДнейВКвартале</dataPath>
+					<field>ДнейВКвартале</field>
+					<useRestriction>
+						<field>true</field>
+						<condition>true</condition>
+						<group>true</group>
+						<order>true</order>
+					</useRestriction>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>ДнейВПолугодии</dataPath>
+					<field>ДнейВПолугодии</field>
+					<useRestriction>
+						<field>true</field>
+						<condition>true</condition>
+						<group>true</group>
+						<order>true</order>
+					</useRestriction>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>Валюта</dataPath>
+					<field>Валюта</field>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>КодСтроки</dataPath>
+					<field>КодСтроки</field>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>ЗаказПоставщику</dataPath>
+					<field>ЗаказПоставщику</field>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>КурсоваяРазницаПоступлений</dataPath>
+					<field>КурсоваяРазницаПоступлений</field>
+					<title xmlns:d6p1="http://v8.1c.ru/8.1/data/core" xsi:type="d6p1:LocalStringType">
+						<d6p1:item>
+							<d6p1:lang>ru</d6p1:lang>
+							<d6p1:content>Курсовая разница поступлений</d6p1:content>
+						</d6p1:item>
+					</title>
+					<appearance>
+						<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+							<parameter>Формат</parameter>
+							<value xsi:type="xs:string">ЧДЦ=2</value>
+						</item>
+						<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+							<parameter>ВыделятьОтрицательные</parameter>
+							<value xsi:type="xs:boolean">true</value>
+						</item>
+					</appearance>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>Поле2</dataPath>
+					<field>Поле2</field>
+					<title xmlns:d6p1="http://v8.1c.ru/8.1/data/core" xsi:type="d6p1:LocalStringType">
+						<d6p1:item>
+							<d6p1:lang>ru</d6p1:lang>
+							<d6p1:content>Поле2</d6p1:content>
+						</d6p1:item>
+					</title>
+				</field>
+				<dataSource>ИсточникДанных1</dataSource>
+				<query>
 ////////////////////////////////////////////////////////////////////////////////
 // Необходимо для отбора по сегменту номенклатуры
 ВЫБРАТЬ РАЗЛИЧНЫЕ РАЗРЕШЕННЫЕ
@@ -768,48 +1171,136 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Начисления бонусом продавцам
 ВЫБРАТЬ РАЗРЕШЕННЫЕ
-	БонусыМенеджерам.Номенклатура КАК Номенклатура,
-	БонусыМенеджерам.Характеристика КАК Характеристика,
-	БонусыМенеджерам.Организация КАК Организация,
-	БонусыМенеджерам.БонусОборот * (ТаблицаКурсовРег.Курс/ТаблицаКурсовУпр.Курс) КАК Бонус,
+	БонусыМенеджерам.Номенклатура 									КАК Номенклатура,
+	ЗНАЧЕНИЕ(Справочник.ХарактеристикиНоменклатуры.ПустаяСсылка)	КАК Характеристика,
+	БонусыМенеджерам.Организация 									КАК Организация,
+	БонусыМенеджерам.ЗаработокМенеджераУпрОборот * ЕСТЬNULL(ЗаработокМенеджераМножительПоМесяцам.Коэффициент, 1) КАК Бонус,
 	БонусыМенеджерам.Регистратор КАК Регистратор,
 	
-	РАЗНОСТЬДАТ(НАЧАЛОПЕРИОДА(БонусыМенеджерам.ПериодМесяц, МЕСЯЦ), КОНЕЦПЕРИОДА(БонусыМенеджерам.ПериодМесяц, МЕСЯЦ), ДЕНЬ)+1 КАК ДнейВМесяце,
-	РАЗНОСТЬДАТ(НАЧАЛОПЕРИОДА(БонусыМенеджерам.ПериодКвартал, КВАРТАЛ), КОНЕЦПЕРИОДА(БонусыМенеджерам.ПериодКвартал, КВАРТАЛ), ДЕНЬ)+1 КАК ДнейВКвартале,
-	РАЗНОСТЬДАТ(НАЧАЛОПЕРИОДА(БонусыМенеджерам.ПериодПолугодие, ПОЛУГОДИЕ), КОНЕЦПЕРИОДА(БонусыМенеджерам.ПериодПолугодие, ПОЛУГОДИЕ), ДЕНЬ)+1 КАК ДнейВПолугодии,
-	РАЗНОСТЬДАТ(НАЧАЛОПЕРИОДА(БонусыМенеджерам.ПериодГод, ГОД), КОНЕЦПЕРИОДА(БонусыМенеджерам.ПериодГод, ГОД), ДЕНЬ)+1 КАК ДнейВГоду,
+	РАЗНОСТЬДАТ(НАЧАЛОПЕРИОДА(БонусыМенеджерам.ПериодМесяц, МЕСЯЦ), КОНЕЦПЕРИОДА(БонусыМенеджерам.ПериодМесяц, МЕСЯЦ), ДЕНЬ) + 1 					КАК ДнейВМесяце,
+	РАЗНОСТЬДАТ(НАЧАЛОПЕРИОДА(БонусыМенеджерам.ПериодКвартал, КВАРТАЛ), КОНЕЦПЕРИОДА(БонусыМенеджерам.ПериодКвартал, КВАРТАЛ), ДЕНЬ) + 1 			КАК ДнейВКвартале,
+	РАЗНОСТЬДАТ(НАЧАЛОПЕРИОДА(БонусыМенеджерам.ПериодПолугодие, ПОЛУГОДИЕ), КОНЕЦПЕРИОДА(БонусыМенеджерам.ПериодПолугодие, ПОЛУГОДИЕ), ДЕНЬ) + 1	КАК ДнейВПолугодии,
+	РАЗНОСТЬДАТ(НАЧАЛОПЕРИОДА(БонусыМенеджерам.ПериодГод, ГОД), КОНЕЦПЕРИОДА(БонусыМенеджерам.ПериодГод, ГОД), ДЕНЬ) + 1 							КАК ДнейВГоду,
 	
-	БонусыМенеджерам.ПериодДень      КАК День,
-	БонусыМенеджерам.ПериодНеделя    КАК Неделя,
-	БонусыМенеджерам.ПериодДекада    КАК Декада,
-	БонусыМенеджерам.ПериодМесяц     КАК Месяц,
-	БонусыМенеджерам.ПериодКвартал   КАК Квартал,
-	БонусыМенеджерам.ПериодПолугодие КАК Полугодие,
-	БонусыМенеджерам.ПериодГод       КАК Год
+	БонусыМенеджерам.ПериодДень 		КАК День,
+	БонусыМенеджерам.ПериодНеделя 		КАК Неделя,
+	БонусыМенеджерам.ПериодДекада 		КАК Декада,
+	БонусыМенеджерам.ПериодМесяц 		КАК Месяц,
+	БонусыМенеджерам.ПериодКвартал 		КАК Квартал,
+	БонусыМенеджерам.ПериодПолугодие 	КАК Полугодие,
+	БонусыМенеджерам.ПериодГод 			КАК Год
+
 ПОМЕСТИТЬ КешБонусыМенеджерам
 ИЗ
-	РегистрНакопления.БонусыМенеджерамНачисленые.Обороты(
-        							{(&amp;НачалоПериода)}, 
-									{(&amp;КонецПериода)},
-									Авто) КАК БонусыМенеджерам
-		ВНУТРЕННЕЕ СОЕДИНЕНИЕ ТаблицаКурсов КАК ТаблицаКурсовУпр
-		ПО БонусыМенеджерам.ПериодДень &gt;= ТаблицаКурсовУпр.НачалоПериода
-		И БонусыМенеджерам.ПериодДень &lt; ТаблицаКурсовУпр.КонецПериода
-		И ТаблицаКурсовУпр.Валюта В (ВЫБРАТЬ ВалютаУправленческогоУчета ИЗ Константы)
-		
-		ВНУТРЕННЕЕ СОЕДИНЕНИЕ ТаблицаКурсов КАК ТаблицаКурсовРег
-		ПО БонусыМенеджерам.ПериодДень &gt;= ТаблицаКурсовРег.НачалоПериода
-		И БонусыМенеджерам.ПериодДень &lt; ТаблицаКурсовРег.КонецПериода
-		И ТаблицаКурсовРег.Валюта В (ВЫБРАТЬ ВалютаРегламентированногоУчета ИЗ Константы)
+	РегистрНакопления.КПП_БонусыМенеджерамНачисленые.Обороты(
+												{(&amp;НачалоПериода)}, 
+												{(&amp;КонецПериода)}, 
+												Авто, ) КАК БонусыМенеджерам
+												
+	ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ЗаработокМенеджераМножительПоМесяцам КАК ЗаработокМенеджераМножительПоМесяцам
+	ПО 
+		БонусыМенеджерам.ПериодДень &gt;= ЗаработокМенеджераМножительПоМесяцам.НачалоПериода
+	И	БонусыМенеджерам.ПериодДень &lt; ЗаработокМенеджераМножительПоМесяцам.КонецПериода
+	
+ГДЕ
+	БонусыМенеджерам.ЗаработокМенеджераУпрОборот &lt;&gt; 0
 {ГДЕ
- (Номенклатура, Характеристика) В
+	((БонусыМенеджерам.Номенклатура, ЗНАЧЕНИЕ(Справочник.ХарактеристикиНоменклатуры.ПустаяСсылка)) В
 			(ВЫБРАТЬ
 				ОтборПоСегментуНоменклатуры.Номенклатура,
 				ОтборПоСегментуНоменклатуры.Характеристика
 			ИЗ
 				ОтборПоСегментуНоменклатуры
 			ГДЕ
-				ОтборПоСегментуНоменклатуры.ИспользуетсяОтборПоСегментуНоменклатуры = &amp;ИспользуетсяОтборПоСегментуНоменклатур)}
+				ОтборПоСегментуНоменклатуры.ИспользуетсяОтборПоСегментуНоменклатуры = &amp;ИспользуетсяОтборПоСегментуНоменклатур)) КАК Поле2}
+ОБЪЕДИНИТЬ ВСЕ
+
+// Начисления бонусом продавцам для КТС Помощь
+ВЫБРАТЬ 
+	БонусыМенеджерам.Номенклатура 									КАК Номенклатура,
+	ЗНАЧЕНИЕ(Справочник.ХарактеристикиНоменклатуры.ПустаяСсылка)	КАК Характеристика,
+	БонусыМенеджерам.Организация 									КАК Организация,
+	БонусыМенеджерам.СуммаУпрОборот * ЕСТЬNULL(ЗаработокМенеджераМножительПоМесяцам.Коэффициент, 1) * (КТСПомощь.ПроцентПродажы + КТСПомощь.ПроцентИсполнения) / 100 КАК Бонус,
+	БонусыМенеджерам.Регистратор 									КАК Регистратор,
+	
+	РАЗНОСТЬДАТ(НАЧАЛОПЕРИОДА(БонусыМенеджерам.ПериодМесяц, МЕСЯЦ), КОНЕЦПЕРИОДА(БонусыМенеджерам.ПериодМесяц, МЕСЯЦ), ДЕНЬ) + 1 					КАК ДнейВМесяце,
+	РАЗНОСТЬДАТ(НАЧАЛОПЕРИОДА(БонусыМенеджерам.ПериодКвартал, КВАРТАЛ), КОНЕЦПЕРИОДА(БонусыМенеджерам.ПериодКвартал, КВАРТАЛ), ДЕНЬ) + 1 			КАК ДнейВКвартале,
+	РАЗНОСТЬДАТ(НАЧАЛОПЕРИОДА(БонусыМенеджерам.ПериодПолугодие, ПОЛУГОДИЕ), КОНЕЦПЕРИОДА(БонусыМенеджерам.ПериодПолугодие, ПОЛУГОДИЕ), ДЕНЬ) + 1	КАК ДнейВПолугодии,
+	РАЗНОСТЬДАТ(НАЧАЛОПЕРИОДА(БонусыМенеджерам.ПериодГод, ГОД), КОНЕЦПЕРИОДА(БонусыМенеджерам.ПериодГод, ГОД), ДЕНЬ) + 1 							КАК ДнейВГоду,
+	
+	БонусыМенеджерам.ПериодДень			КАК День,
+	БонусыМенеджерам.ПериодНеделя		КАК Неделя,
+	БонусыМенеджерам.ПериодДекада		КАК Декада,
+	БонусыМенеджерам.ПериодМесяц		КАК Месяц,
+	БонусыМенеджерам.ПериодКвартал		КАК Квартал,
+	БонусыМенеджерам.ПериодПолугодие	КАК Полугодие,
+	БонусыМенеджерам.ПериодГод			КАК Год
+ИЗ
+	РегистрНакопления.КПП_БонусыМенеджерамНачисленые.Обороты(
+												{(&amp;НачалоПериода)}, 
+												{(&amp;КонецПериода)}, 
+												Авто, ) КАК БонусыМенеджерам
+
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ЗаработокМенеджераМножительПоМесяцам КАК ЗаработокМенеджераМножительПоМесяцам
+		ПО БонусыМенеджерам.ПериодДень &gt;= ЗаработокМенеджераМножительПоМесяцам.НачалоПериода
+			И БонусыМенеджерам.ПериодДень &lt; ЗаработокМенеджераМножительПоМесяцам.КонецПериода
+		
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ РегистрСведений.КТСПомощь КАК КТСПомощь
+		ПО БонусыМенеджерам.Номенклатура = КТСПомощь.Номенклатура
+		
+ГДЕ
+	БонусыМенеджерам.ЗаработокМенеджераУпрОборот = 0
+{ГДЕ
+	((БонусыМенеджерам.Номенклатура, ЗНАЧЕНИЕ(Справочник.ХарактеристикиНоменклатуры.ПустаяСсылка)) В
+			(ВЫБРАТЬ
+				ОтборПоСегментуНоменклатуры.Номенклатура,
+				ОтборПоСегментуНоменклатуры.Характеристика
+			ИЗ
+				ОтборПоСегментуНоменклатуры
+			ГДЕ
+				ОтборПоСегментуНоменклатуры.ИспользуетсяОтборПоСегментуНоменклатуры = &amp;ИспользуетсяОтборПоСегментуНоменклатур)) КАК Поле2}
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	БонусыМенеджерам.Номенклатура,
+	ЗНАЧЕНИЕ(Справочник.ХарактеристикиНоменклатуры.ПустаяСсылка),
+	БонусыМенеджерам.Организация,
+	ВЫБОР
+		КОГДА ДополнительныеСведения.Значение = БонусыМенеджерам.Менеджер
+			ТОГДА БонусыМенеджерам.СуммаУпрОборот * ЕСТЬNULL(ЗаработокМенеджераМножительПоМесяцам.Коэффициент, 1) * &amp;ПроцентПродажыУслуги / 100
+		ИНАЧЕ БонусыМенеджерам.СуммаУпрОборот * ЕСТЬNULL(ЗаработокМенеджераМножительПоМесяцам.Коэффициент, 1) * &amp;ПроцентИсполненияУслуги / 100
+	КОНЕЦ,
+	БонусыМенеджерам.Регистратор,
+	РАЗНОСТЬДАТ(НАЧАЛОПЕРИОДА(БонусыМенеджерам.ПериодМесяц, МЕСЯЦ), КОНЕЦПЕРИОДА(БонусыМенеджерам.ПериодМесяц, МЕСЯЦ), ДЕНЬ) + 1,
+	РАЗНОСТЬДАТ(НАЧАЛОПЕРИОДА(БонусыМенеджерам.ПериодКвартал, КВАРТАЛ), КОНЕЦПЕРИОДА(БонусыМенеджерам.ПериодКвартал, КВАРТАЛ), ДЕНЬ) + 1,
+	РАЗНОСТЬДАТ(НАЧАЛОПЕРИОДА(БонусыМенеджерам.ПериодПолугодие, ПОЛУГОДИЕ), КОНЕЦПЕРИОДА(БонусыМенеджерам.ПериодПолугодие, ПОЛУГОДИЕ), ДЕНЬ) + 1,
+	РАЗНОСТЬДАТ(НАЧАЛОПЕРИОДА(БонусыМенеджерам.ПериодГод, ГОД), КОНЕЦПЕРИОДА(БонусыМенеджерам.ПериодГод, ГОД), ДЕНЬ) + 1,
+	БонусыМенеджерам.ПериодДень,
+	БонусыМенеджерам.ПериодНеделя,
+	БонусыМенеджерам.ПериодДекада,
+	БонусыМенеджерам.ПериодМесяц,
+	БонусыМенеджерам.ПериодКвартал,
+	БонусыМенеджерам.ПериодПолугодие,
+	БонусыМенеджерам.ПериодГод
+ИЗ
+	РегистрНакопления.КПП_БонусыМенеджерамНачисленые.Обороты(
+												{(&amp;НачалоПериода)}, 
+												{(&amp;КонецПериода)}, 
+												Авто, 
+												НЕ Номенклатура В
+																(ВЫБРАТЬ Номенклатура ИЗ РегистрСведений.КТСПомощь)) КАК БонусыМенеджерам
+
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ЗаработокМенеджераМножительПоМесяцам КАК ЗаработокМенеджераМножительПоМесяцам
+		ПО БонусыМенеджерам.ПериодДень &gt;= ЗаработокМенеджераМножительПоМесяцам.НачалоПериода
+			И БонусыМенеджерам.ПериодДень &lt; ЗаработокМенеджераМножительПоМесяцам.КонецПериода
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ РегистрСведений.ДополнительныеСведения КАК ДополнительныеСведения
+		ПО ДополнительныеСведения.Свойство = &amp;СвойствоПомощьКТС
+		И БонусыМенеджерам.Регистратор = ВЫРАЗИТЬ(ДополнительныеСведения.Объект КАК Документ.РеализацияТоваровУслуг)
+		И ДополнительныеСведения.Значение &lt;&gt; ЗНАЧЕНИЕ(Справочник.Пользователи.ПустаяСсылка)
+ГДЕ
+	БонусыМенеджерам.ЗаработокМенеджераУпрОборот = 0
+	И БонусыМенеджерам.Номенклатура.ВидНоменклатуры = &amp;ВидНоменклатурыКТСПомощь				
 ;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -1332,6 +1823,315 @@
 	КурсоваяРазницаПоступлений			КАК КурсоваяРазницаПоступлений
 ИЗ
 	ТаблицаКурсовыхРазницПоступлений					</query>
+			</item>
+			<item xsi:type="DataSetObject">
+				<name>НаборДанных</name>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>Номенклатура</dataPath>
+					<field>Номенклатура</field>
+					<title xmlns:d6p1="http://v8.1c.ru/8.1/data/core" xsi:type="d6p1:LocalStringType">
+						<d6p1:item>
+							<d6p1:lang>ru</d6p1:lang>
+							<d6p1:content>Номенклатура</d6p1:content>
+						</d6p1:item>
+					</title>
+					<valueType>
+						<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d7p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d7p1:CatalogRef.Номенклатура</Type>
+					</valueType>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>Характеристика</dataPath>
+					<field>Характеристика</field>
+					<title xmlns:d6p1="http://v8.1c.ru/8.1/data/core" xsi:type="d6p1:LocalStringType">
+						<d6p1:item>
+							<d6p1:lang>ru</d6p1:lang>
+							<d6p1:content>Характеристика</d6p1:content>
+						</d6p1:item>
+					</title>
+					<valueType>
+						<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d7p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d7p1:CatalogRef.ХарактеристикиНоменклатуры</Type>
+					</valueType>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>Организация</dataPath>
+					<field>Организация</field>
+					<title xmlns:d6p1="http://v8.1c.ru/8.1/data/core" xsi:type="d6p1:LocalStringType">
+						<d6p1:item>
+							<d6p1:lang>ru</d6p1:lang>
+							<d6p1:content>Организация</d6p1:content>
+						</d6p1:item>
+					</title>
+					<valueType>
+						<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d7p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d7p1:CatalogRef.Организации</Type>
+					</valueType>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>Склад</dataPath>
+					<field>Склад</field>
+					<title xmlns:d6p1="http://v8.1c.ru/8.1/data/core" xsi:type="d6p1:LocalStringType">
+						<d6p1:item>
+							<d6p1:lang>ru</d6p1:lang>
+							<d6p1:content>Склад</d6p1:content>
+						</d6p1:item>
+					</title>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>Регистратор</dataPath>
+					<field>Регистратор</field>
+					<title xmlns:d6p1="http://v8.1c.ru/8.1/data/core" xsi:type="d6p1:LocalStringType">
+						<d6p1:item>
+							<d6p1:lang>ru</d6p1:lang>
+							<d6p1:content>Регистратор</d6p1:content>
+						</d6p1:item>
+					</title>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>ДнейВМесяце</dataPath>
+					<field>ДнейВМесяце</field>
+					<title xmlns:d6p1="http://v8.1c.ru/8.1/data/core" xsi:type="d6p1:LocalStringType">
+						<d6p1:item>
+							<d6p1:lang>ru</d6p1:lang>
+							<d6p1:content>Дней в месяце</d6p1:content>
+						</d6p1:item>
+					</title>
+					<useRestriction>
+						<field>true</field>
+						<condition>true</condition>
+						<group>true</group>
+						<order>true</order>
+					</useRestriction>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>ДнейВКвартале</dataPath>
+					<field>ДнейВКвартале</field>
+					<title xmlns:d6p1="http://v8.1c.ru/8.1/data/core" xsi:type="d6p1:LocalStringType">
+						<d6p1:item>
+							<d6p1:lang>ru</d6p1:lang>
+							<d6p1:content>Дней в квартале</d6p1:content>
+						</d6p1:item>
+					</title>
+					<useRestriction>
+						<field>true</field>
+						<condition>true</condition>
+						<group>true</group>
+						<order>true</order>
+					</useRestriction>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>ДнейВПолугодии</dataPath>
+					<field>ДнейВПолугодии</field>
+					<title xmlns:d6p1="http://v8.1c.ru/8.1/data/core" xsi:type="d6p1:LocalStringType">
+						<d6p1:item>
+							<d6p1:lang>ru</d6p1:lang>
+							<d6p1:content>Дней в полугодии</d6p1:content>
+						</d6p1:item>
+					</title>
+					<useRestriction>
+						<field>true</field>
+						<condition>true</condition>
+						<group>true</group>
+						<order>true</order>
+					</useRestriction>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>ДнейВГоду</dataPath>
+					<field>ДнейВГоду</field>
+					<title xmlns:d6p1="http://v8.1c.ru/8.1/data/core" xsi:type="d6p1:LocalStringType">
+						<d6p1:item>
+							<d6p1:lang>ru</d6p1:lang>
+							<d6p1:content>Дней в году</d6p1:content>
+						</d6p1:item>
+					</title>
+					<useRestriction>
+						<field>true</field>
+						<condition>true</condition>
+						<group>true</group>
+						<order>true</order>
+					</useRestriction>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>День</dataPath>
+					<field>День</field>
+					<title xmlns:d6p1="http://v8.1c.ru/8.1/data/core" xsi:type="d6p1:LocalStringType">
+						<d6p1:item>
+							<d6p1:lang>ru</d6p1:lang>
+							<d6p1:content>День</d6p1:content>
+						</d6p1:item>
+					</title>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>Неделя</dataPath>
+					<field>Неделя</field>
+					<title xmlns:d6p1="http://v8.1c.ru/8.1/data/core" xsi:type="d6p1:LocalStringType">
+						<d6p1:item>
+							<d6p1:lang>ru</d6p1:lang>
+							<d6p1:content>Неделя</d6p1:content>
+						</d6p1:item>
+					</title>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>Декада</dataPath>
+					<field>Декада</field>
+					<title xmlns:d6p1="http://v8.1c.ru/8.1/data/core" xsi:type="d6p1:LocalStringType">
+						<d6p1:item>
+							<d6p1:lang>ru</d6p1:lang>
+							<d6p1:content>Декада</d6p1:content>
+						</d6p1:item>
+					</title>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>Месяц</dataPath>
+					<field>Месяц</field>
+					<title xmlns:d6p1="http://v8.1c.ru/8.1/data/core" xsi:type="d6p1:LocalStringType">
+						<d6p1:item>
+							<d6p1:lang>ru</d6p1:lang>
+							<d6p1:content>Месяц</d6p1:content>
+						</d6p1:item>
+					</title>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>Квартал</dataPath>
+					<field>Квартал</field>
+					<title xmlns:d6p1="http://v8.1c.ru/8.1/data/core" xsi:type="d6p1:LocalStringType">
+						<d6p1:item>
+							<d6p1:lang>ru</d6p1:lang>
+							<d6p1:content>Квартал</d6p1:content>
+						</d6p1:item>
+					</title>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>Полугодие</dataPath>
+					<field>Полугодие</field>
+					<title xmlns:d6p1="http://v8.1c.ru/8.1/data/core" xsi:type="d6p1:LocalStringType">
+						<d6p1:item>
+							<d6p1:lang>ru</d6p1:lang>
+							<d6p1:content>Полугодие</d6p1:content>
+						</d6p1:item>
+					</title>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>Год</dataPath>
+					<field>Год</field>
+					<title xmlns:d6p1="http://v8.1c.ru/8.1/data/core" xsi:type="d6p1:LocalStringType">
+						<d6p1:item>
+							<d6p1:lang>ru</d6p1:lang>
+							<d6p1:content>Год</d6p1:content>
+						</d6p1:item>
+					</title>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>Количество</dataPath>
+					<field>Количество</field>
+					<title xmlns:d6p1="http://v8.1c.ru/8.1/data/core" xsi:type="d6p1:LocalStringType">
+						<d6p1:item>
+							<d6p1:lang>ru</d6p1:lang>
+							<d6p1:content>Количество</d6p1:content>
+						</d6p1:item>
+					</title>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>Выручка</dataPath>
+					<field>Выручка</field>
+					<title xmlns:d6p1="http://v8.1c.ru/8.1/data/core" xsi:type="d6p1:LocalStringType">
+						<d6p1:item>
+							<d6p1:lang>ru</d6p1:lang>
+							<d6p1:content>Выручка</d6p1:content>
+						</d6p1:item>
+					</title>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>ВыручкаНДС</dataPath>
+					<field>ВыручкаНДС</field>
+					<title xmlns:d6p1="http://v8.1c.ru/8.1/data/core" xsi:type="d6p1:LocalStringType">
+						<d6p1:item>
+							<d6p1:lang>ru</d6p1:lang>
+							<d6p1:content>Выручка НДС</d6p1:content>
+						</d6p1:item>
+					</title>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>Себестоимость</dataPath>
+					<field>Себестоимость</field>
+					<title xmlns:d6p1="http://v8.1c.ru/8.1/data/core" xsi:type="d6p1:LocalStringType">
+						<d6p1:item>
+							<d6p1:lang>ru</d6p1:lang>
+							<d6p1:content>Себестоимость</d6p1:content>
+						</d6p1:item>
+					</title>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>ДопРасходы</dataPath>
+					<field>ДопРасходы</field>
+					<title xmlns:d6p1="http://v8.1c.ru/8.1/data/core" xsi:type="d6p1:LocalStringType">
+						<d6p1:item>
+							<d6p1:lang>ru</d6p1:lang>
+							<d6p1:content>Доп расходы</d6p1:content>
+						</d6p1:item>
+					</title>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>ВаловаяПрибыль</dataPath>
+					<field>ВаловаяПрибыль</field>
+					<title xmlns:d6p1="http://v8.1c.ru/8.1/data/core" xsi:type="d6p1:LocalStringType">
+						<d6p1:item>
+							<d6p1:lang>ru</d6p1:lang>
+							<d6p1:content>Валовая прибыль</d6p1:content>
+						</d6p1:item>
+					</title>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>КурсоваяРазница</dataPath>
+					<field>КурсоваяРазница</field>
+					<title xmlns:d6p1="http://v8.1c.ru/8.1/data/core" xsi:type="d6p1:LocalStringType">
+						<d6p1:item>
+							<d6p1:lang>ru</d6p1:lang>
+							<d6p1:content>Курсовая разница</d6p1:content>
+						</d6p1:item>
+					</title>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>ВаловаяПрибыльСборок</dataPath>
+					<field>ВаловаяПрибыльСборок</field>
+					<title xmlns:d6p1="http://v8.1c.ru/8.1/data/core" xsi:type="d6p1:LocalStringType">
+						<d6p1:item>
+							<d6p1:lang>ru</d6p1:lang>
+							<d6p1:content>Валовая прибыль сборок</d6p1:content>
+						</d6p1:item>
+					</title>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>ВыплаченныеПродавцамБонусы</dataPath>
+					<field>ВыплаченныеПродавцамБонусы</field>
+					<title xmlns:d6p1="http://v8.1c.ru/8.1/data/core" xsi:type="d6p1:LocalStringType">
+						<d6p1:item>
+							<d6p1:lang>ru</d6p1:lang>
+							<d6p1:content>Выплаченные продавцам бонусы</d6p1:content>
+						</d6p1:item>
+					</title>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>СтоимостьОборот</dataPath>
+					<field>СтоимостьОборот</field>
+					<title xmlns:d6p1="http://v8.1c.ru/8.1/data/core" xsi:type="d6p1:LocalStringType">
+						<d6p1:item>
+							<d6p1:lang>ru</d6p1:lang>
+							<d6p1:content>Стоимость оборот</d6p1:content>
+						</d6p1:item>
+					</title>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>КОСОборот</dataPath>
+					<field>КОСОборот</field>
+					<title xmlns:d6p1="http://v8.1c.ru/8.1/data/core" xsi:type="d6p1:LocalStringType">
+						<d6p1:item>
+							<d6p1:lang>ru</d6p1:lang>
+							<d6p1:content>КОСОборот</d6p1:content>
+						</d6p1:item>
+					</title>
+				</field>
+				<dataSource>ИсточникДанных1</dataSource>
+				<objectName>БонусыМенеджерамЗаСертификаты</objectName>
+			</item>
 		</dataSet>
 		<calculatedField>
 			<dataPath>ОбщаяВаловаяПрибыль</dataPath>
@@ -1729,10 +2529,10 @@
 					<AllowedSign>Any</AllowedSign>
 				</NumberQualifiers>
 			</valueType>
-			<value xsi:type="xs:decimal">1</value>
+			<value xsi:nil="true"/>
 			<useRestriction>false</useRestriction>
 			<availableValue>
-				<value xsi:type="xs:decimal">1</value>
+				<value xsi:nil="true"/>
 				<presentation xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
 					<d5p1:item>
 						<d5p1:lang>ru</d5p1:lang>
@@ -1741,7 +2541,7 @@
 				</presentation>
 			</availableValue>
 			<availableValue>
-				<value xsi:type="xs:decimal">2</value>
+				<value xsi:type="xs:decimal">1</value>
 				<presentation xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
 					<d5p1:item>
 						<d5p1:lang>ru</d5p1:lang>
@@ -1750,7 +2550,7 @@
 				</presentation>
 			</availableValue>
 			<availableValue>
-				<value xsi:type="xs:decimal">3</value>
+				<value xsi:type="xs:decimal">2</value>
 				<presentation xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
 					<d5p1:item>
 						<d5p1:lang>ru</d5p1:lang>
@@ -1872,6 +2672,76 @@
 			</valueType>
 			<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
 			<useRestriction>false</useRestriction>
+		</parameter>
+		<parameter>
+			<name>ПроцентИсполненияУслуги</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Процент исполнения услуги</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:decimal</Type>
+				<NumberQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
+					<Digits>0</Digits>
+					<FractionDigits>0</FractionDigits>
+					<AllowedSign>Any</AllowedSign>
+				</NumberQualifiers>
+			</valueType>
+			<value xsi:type="xs:decimal">0</value>
+			<useRestriction>false</useRestriction>
+			<use>Always</use>
+		</parameter>
+		<parameter>
+			<name>ВидНоменклатурыКТСПомощь</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Вид номенклатуры КТСПомощь</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.ВидыНоменклатуры</Type>
+			</valueType>
+			<value xsi:nil="true"/>
+			<useRestriction>false</useRestriction>
+			<use>Always</use>
+		</parameter>
+		<parameter>
+			<name>ПроцентПродажыУслуги</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Процент продажы услуги</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:decimal</Type>
+				<NumberQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
+					<Digits>0</Digits>
+					<FractionDigits>0</FractionDigits>
+					<AllowedSign>Any</AllowedSign>
+				</NumberQualifiers>
+			</valueType>
+			<value xsi:type="xs:decimal">0</value>
+			<useRestriction>false</useRestriction>
+			<use>Always</use>
+		</parameter>
+		<parameter>
+			<name>СвойствоПомощьКТС</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Свойство помощь КТС</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:ChartOfCharacteristicTypesRef.ДополнительныеРеквизитыИСведения</Type>
+			</valueType>
+			<value xsi:nil="true"/>
+			<useRestriction>false</useRestriction>
+			<use>Always</use>
 		</parameter>
 		<settingsVariant>
 			<name xmlns="http://v8.1c.ru/8.1/data-composition-system/settings">Основной</name>
@@ -2147,7 +3017,7 @@
 		</dcscor:item>
 		<dcscor:item xsi:type="SettingsParameterValue">
 			<dcscor:parameter>ДанныеПоПродажам</dcscor:parameter>
-			<dcscor:value xsi:type="xs:decimal">1</dcscor:value>
+			<dcscor:value xsi:type="xs:decimal">0</dcscor:value>
 			<viewMode>Inaccessible</viewMode>
 		</dcscor:item>
 		<dcscor:item xsi:type="SettingsParameterValue">
@@ -2155,6 +3025,16 @@
 			<dcscor:parameter>КурсВалютыУправленческогоУчета</dcscor:parameter>
 			<dcscor:value xsi:type="xs:decimal">0</dcscor:value>
 			<userSettingID>263b5ff5-bfa1-4f36-b29c-b3172fb54110</userSettingID>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:use>false</dcscor:use>
+			<dcscor:parameter>ВидНоменклатурыКТСПомощь</dcscor:parameter>
+			<dcscor:value xsi:type="dcscor:DesignTimeValue">Справочник.ВидыНоменклатуры.ПустаяСсылка</dcscor:value>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:use>false</dcscor:use>
+			<dcscor:parameter>СвойствоПомощьКТС</dcscor:parameter>
+			<dcscor:value xsi:type="dcscor:DesignTimeValue">ПланВидовХарактеристик.ДополнительныеРеквизитыИСведения.ПустаяСсылка</dcscor:value>
 		</dcscor:item>
 	</dataParameters>
 	<item xsi:type="StructureItemGroup">
