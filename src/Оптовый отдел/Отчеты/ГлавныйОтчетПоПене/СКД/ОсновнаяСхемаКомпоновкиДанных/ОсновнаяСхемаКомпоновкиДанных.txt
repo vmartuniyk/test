@@ -80,7 +80,7 @@
     КОНЕЦ КАК СуммаПросроченныхОплат
 
 ИЗ
-	РегистрСведений.КТС_ГрафикПлатежейПартнеров.СрезПервых(&amp;ТекущаяДата) КАК ГрафикПлатежейПартнеров
+	РегистрСведений.КТС_ГрафикПлатежейПартнеров.СрезПервых(&amp;ТекущаяДата, Партнер В (&amp;СписокРазрешенныхПартнеров)) КАК ГрафикПлатежейПартнеров
    
 УПОРЯДОЧИТЬ ПО 
 	ГрафикПлатежейПартнеров.ДатаПлатежа			        	</query>
@@ -138,6 +138,20 @@
 				</DateQualifiers>
 			</valueType>
 			<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+			<useRestriction>false</useRestriction>
+		</parameter>
+		<parameter>
+			<name>СписокРазрешенныхПартнеров</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Список разрешенных партнеров</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.Партнеры</Type>
+			</valueType>
+			<value xsi:nil="true"/>
 			<useRestriction>false</useRestriction>
 		</parameter>
 		<settingsVariant>
@@ -215,11 +229,21 @@
 			</dcscor:value>
 		</dcscor:item>
 		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>ВыводитьПараметрыДанных</dcscor:parameter>
+			<dcscor:value xsi:type="DataCompositionTextOutputType">DontOutput</dcscor:value>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
 			<dcscor:use>false</dcscor:use>
 			<dcscor:parameter>ВыводитьОтбор</dcscor:parameter>
 			<dcscor:value xsi:type="DataCompositionTextOutputType">DontOutput</dcscor:value>
 		</dcscor:item>
 	</outputParameters>
+	<item xsi:type="StructureItemGroup">
+		<name>Дата отчета</name>
+		<selection>
+			<item xsi:type="SelectedItemAuto"/>
+		</selection>
+	</item>
 	<item xsi:type="StructureItemGroup">
 		<groupItems>
 			<item xsi:type="GroupItemField">
@@ -651,6 +675,40 @@
 				<dcsat:expression>СуммаПросроченныхОплат</dcsat:expression>
 			</parameter>
 		</template>
+		<template>
+			<name>Макет5</name>
+			<template xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:AreaTemplate">
+				<dcsat:item xsi:type="dcsat:TableRow">
+					<dcsat:tableCell>
+						<dcsat:item xsi:type="dcsat:Field">
+							<dcsat:value xmlns:d8p1="http://v8.1c.ru/8.1/data/core" xsi:type="d8p1:LocalStringType">
+								<d8p1:item>
+									<d8p1:lang>ua</d8p1:lang>
+									<d8p1:content>Текущая дата:</d8p1:content>
+								</d8p1:item>
+								<d8p1:item>
+									<d8p1:lang>ru</d8p1:lang>
+									<d8p1:content>Текущая дата: </d8p1:content>
+								</d8p1:item>
+							</dcsat:value>
+						</dcsat:item>
+						<dcsat:item xsi:type="dcsat:Field">
+							<dcsat:value xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xsi:type="dcscor:Parameter">ТекущаяДата</dcsat:value>
+						</dcsat:item>
+						<dcsat:appIndex>22</dcsat:appIndex>
+					</dcsat:tableCell>
+				</dcsat:item>
+				<dcsat:item xsi:type="dcsat:TableRow">
+					<dcsat:tableCell>
+						<dcsat:appIndex>23</dcsat:appIndex>
+					</dcsat:tableCell>
+				</dcsat:item>
+			</template>
+			<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
+				<dcsat:name>ТекущаяДата</dcsat:name>
+				<dcsat:expression>ФОРМАТ(ПараметрыДанных.ТекущаяДата, "ДЛФ=DT")</dcsat:expression>
+			</parameter>
+		</template>
 		<groupTemplate>
 			<groupField>Контрагент</groupField>
 			<templateType>Header</templateType>
@@ -670,6 +728,11 @@
 			<groupField>ВсяСумма</groupField>
 			<templateType>Header</templateType>
 			<template>Макет4</template>
+		</groupTemplate>
+		<groupTemplate>
+			<groupName>Дата отчета</groupName>
+			<templateType>Header</templateType>
+			<template>Макет5</template>
 		</groupTemplate>
 	</dataCompositionSchema>
 	<appearance xmlns="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="TableCellAppearance">
@@ -1692,6 +1755,30 @@
 		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
 			<parameter>МаксимальнаяШирина</parameter>
 			<value xsi:type="xs:decimal">11.375</value>
+		</item>
+	</appearance>
+	<appearance xmlns="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="TableCellAppearance">
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>ЦветФона</parameter>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xmlns:d4p2="http://v8.1c.ru/8.1/data/ui/style" xsi:type="d4p1:Color">d4p2:FieldBackColor</value>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>ЦветГраницы</parameter>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xmlns:d4p2="http://v8.1c.ru/8.1/data/ui/style" xsi:type="d4p1:Color">d4p2:FieldBackColor</value>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>Отступ</parameter>
+			<value xsi:type="xs:decimal">2</value>
+		</item>
+	</appearance>
+	<appearance xmlns="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="TableCellAppearance">
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>ЦветФона</parameter>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xmlns:d4p2="http://v8.1c.ru/8.1/data/ui/style" xsi:type="d4p1:Color">d4p2:FieldBackColor</value>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>ЦветГраницы</parameter>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xmlns:d4p2="http://v8.1c.ru/8.1/data/ui/style" xsi:type="d4p1:Color">d4p2:FieldBackColor</value>
 		</item>
 	</appearance>
 </SchemaFile>
