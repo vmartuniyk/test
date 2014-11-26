@@ -203,6 +203,7 @@
 			</value>
 			<useRestriction>false</useRestriction>
 			<denyIncompleteValues>true</denyIncompleteValues>
+			<use>Always</use>
 		</parameter>
 		<parameter>
 			<name>ДатаНачала</name>
@@ -389,7 +390,6 @@
 			<use>false</use>
 			<left xsi:type="dcscor:Field">Подразделение</left>
 			<comparisonType>Equal</comparisonType>
-			<right xsi:type="dcscor:DesignTimeValue"/>
 			<userSettingID>589f9d88-d786-405c-bfb0-e3837b78e45d</userSettingID>
 		</item>
 		<userSettingID>851dd678-35cd-49a3-a66e-5b27f97f92b6</userSettingID>
