@@ -415,7 +415,8 @@
 		|	ЕСТЬNULL(ВложенныйFrankivskMagazin.ОстатокНоменклатуры, 0) 		КАК IF,
 		|	ЕСТЬNULL(ВложенныйTernopilMagazin2.ОстатокНоменклатуры, 0) 		КАК TM2,
 		|	ЕСТЬNULL(ВложенныйShepetivkaMagazin.ОстатокНоменклатуры, 0) 	КАК SHM,
-		|	ЕСТЬNULL(ВложенныйChervonogradMagazin.ОстатокНоменклатуры, 0) 	КАК CHM
+		|	ЕСТЬNULL(ВложенныйChervonogradMagazin.ОстатокНоменклатуры, 0) 	КАК CHM,
+		|	ЕСТЬNULL(ВложенныйRivneAllo.ОстатокНоменклатуры, 0) 			КАК RIA
 		|
 		|Из
 		|  	СпрНоменклатура КАК СпрНоменклатура
@@ -463,6 +464,10 @@
 		|ЛЕВОЕ СОЕДИНЕНИЕ ТоварыВНаличии КАК ВложенныйChervonogradMagazin 
 		|ПО  СпрНоменклатура.Номенклатура = ВложенныйChervonogradMagazin.Номенклатура
 		|И	 &ChervonogradMagazin		  = ВложенныйChervonogradMagazin.Склад
+		|
+		|ЛЕВОЕ СОЕДИНЕНИЕ ТоварыВНаличии КАК ВложенныйRivneAllo 
+		|ПО  СпрНоменклатура.Номенклатура = ВложенныйRivneAllo.Номенклатура
+		|И	 &RivneAllo		  			  = ВложенныйRivneAllo.Склад
 		|";	
 		
 	Запрос.УстановитьПараметр("RivneSoborna", 		Справочники.Склады.ПолучитьСсылку(Новый УникальныйИдентификатор("d10d3409-40c2-11e0-9f98-001517115d85")));
@@ -476,6 +481,8 @@
 	Запрос.УстановитьПараметр("TernopilMagazin2", 	Справочники.Склады.ПолучитьСсылку(Новый УникальныйИдентификатор("48373cf1-cd07-11e2-8f22-001e673c80fa")));
 	Запрос.УстановитьПараметр("ShepetivkaMagazin",  Справочники.Склады.ПолучитьСсылку(Новый УникальныйИдентификатор("06a8bcd6-2507-11e3-bb25-001e673c80fc")));
 	Запрос.УстановитьПараметр("ChervonogradMagazin",Справочники.Склады.ПолучитьСсылку(Новый УникальныйИдентификатор("4cffa248-1895-11e4-80d4-001e676b0175")));
+	Запрос.УстановитьПараметр("RivneAllo",			Справочники.Склады.ПолучитьСсылку(Новый УникальныйИдентификатор("f714c3c6-665e-11e4-80e2-001e676b0175")));
+
 	
 	res_goods_stores = Запрос.Выполнить();
     tz_goods_stores  = res_goods_stores.Выгрузить();
@@ -498,7 +505,8 @@
 			|	IF,
 			|	TM2,
 			|	SHM,
-			|   CHM
+			|   CHM,
+			|	RIA
 			|ПОМЕСТИТЬ cache_last
 			|ИЗ
 			|	&td_cache_last КАК td_cache
@@ -515,7 +523,8 @@
 			|	IF,
 			|	TM2,
 			|	SHM,
-			|	CHM
+			|	CHM,
+			|	RIA
 			|ПОМЕСТИТЬ cache_next
 			|ИЗ
 			|	&td_cache_next КАК td_cache
@@ -550,6 +559,7 @@
 			|	ИЛИ	IsNull(cache_last.TM2,0) 	<> IsNull(cache_next.TM2,0)
 			|	ИЛИ	IsNull(cache_last.SHM,0) 	<> IsNull(cache_next.SHM,0)
 			|	ИЛИ	IsNull(cache_last.CHM,0) 	<> IsNull(cache_next.CHM,0)
+			|	ИЛИ	IsNull(cache_last.RIA,0) 	<> IsNull(cache_next.RIA,0)
 			|   ) КАК ВЛ
 			|		
 			|";
@@ -625,7 +635,8 @@
 			+ goods_stores.RS57 
 			+ goods_stores.IF 
 			+ goods_stores.TM2 
-			+ goods_stores.SHM > 0 Тогда
+			+ goods_stores.SHM
+			+ goods_stores.RIA > 0 Тогда
 			
 			Строка = "";
 			ОбъектБиблиотека.ДобавитьЭлементВFullCSVСтроку(Строка, Формат(Число(goods_stores.sku), "ЧГ = 0"));
@@ -639,7 +650,8 @@
 																		  + ?(goods_stores.IF>0, 	"FrankivskMagazin,", 	"")
 																		  + ?(goods_stores.TM2>0, 	"TernopilMagazin2,", 	"")
 																		  + ?(goods_stores.SHM>0, 	"ShepetivkaMagazin,", 	"")
-																		  + ?(goods_stores.CHM>0, 	"ChervonogradMagazin,", ""));
+																		  + ?(goods_stores.CHM>0, 	"ChervonogradMagazin,", "")
+																		  + ?(goods_stores.RIA>0, 	"RivneAllo,", 			""));
 			td_goods_stores.ДобавитьСтроку(Лев(Строка, СтрДлина(Строка)-1));
 		КонецЕсли;
 	КонецЦикла;
@@ -677,7 +689,8 @@
 							+ mdb_goods_Выборка.IF 
 							+ mdb_goods_Выборка.TM2
 							+ mdb_goods_Выборка.SHM
-							+ mdb_goods_Выборка.CHM;
+							+ mdb_goods_Выборка.CHM
+							+ mdb_goods_Выборка.RIA;
 		Если mdb_goods_ВНаличии > 0 ИЛИ mdb_goods_Выборка.actual  <> "" ИЛИ mdb_goods_Выборка.waiting <> "" Тогда
 			Строка = "";
 			Строка = Строка + Формат(Число(mdb_goods_Выборка.sku), "ЧГ = 0")			+ ",";
@@ -695,7 +708,8 @@
 												  + ?(mdb_goods_Выборка.IF>0, 	"FrankivskMagazin;", 	"")
 												  + ?(mdb_goods_Выборка.TM2>0, 	"TernopilMagazin2;",	"")
 												  + ?(mdb_goods_Выборка.SHM>0, 	"ShepetivkaMagazin;",	"")
-												  + ?(mdb_goods_Выборка.CHM>0, 	"ChervonogradMagazin;",	""),
+												  + ?(mdb_goods_Выборка.CHM>0, 	"ChervonogradMagazin;",	"")
+												  + ?(mdb_goods_Выборка.RIA>0, 	"RivneAllo;",			""),
 												  														";");
 			mdb_goods.ДобавитьСтроку(Лев(Строка, СтрДлина(Строка)-1));
 		КонецЕсли;
@@ -716,6 +730,7 @@
 	sklad_id.ДобавитьСтроку("TernopilMagazin2;Тернопіль магазин 2");
 	sklad_id.ДобавитьСтроку("ShepetivkaMagazin;Шепетівка магазин");
 	sklad_id.ДобавитьСтроку("ChervonogradMagazin;Червоноград магазин");
+	sklad_id.ДобавитьСтроку("RivneAllo;Соборна магазин 3");
 	sklad_id.Записать("C:\1C_LOGS\YT11_CSV\www.ktc-ua.com\sklad_id.csv", "UTF-8");
 	
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -779,7 +794,8 @@
 		|	IsNull(ВложенныйFrankivskMagazin.ОстатокНоменклатуры, 0)	КАК IF,
 		|	IsNull(ВложенныйTernopilMagazin2.ОстатокНоменклатуры, 0)	КАК TM2,
 		|	IsNull(ВложенныйShepetivkaMagazin.ОстатокНоменклатуры, 0)	КАК SHM,
-		|	IsNull(ВложенныйChervonogradMagazin.ОстатокНоменклатуры, 0)	КАК CHM
+		|	IsNull(ВложенныйChervonogradMagazin.ОстатокНоменклатуры, 0)	КАК CHM,
+		|	IsNull(ВложенныйRivneAllo.ОстатокНоменклатуры, 0)			КАК RIA
 		|
 		|Из
 		|  	НеАрхивнаяНоменклатура КАК СпрНоменклатура
@@ -841,10 +857,10 @@
 		|ЛЕВОЕ СОЕДИНЕНИЕ ТоварыВНаличии КАК ВложенныйChervonogradMagazin 
 		|ПО  ВложенныйChervonogradMagazin.Номенклатура 	= СпрНоменклатура.Номенклатура
 		|И	 ВложенныйChervonogradMagazin.Склад        	= &ChervonogradMagazin
-		//|
-		//|ЛЕВОЕ СОЕДИНЕНИЕ ТоварыВНаличии КАК ВложенныйRivneSoborna57 
-		//|ПО  ВложенныйRivneSoborna57.Номенклатура 	= СпрНоменклатура.Ссылка 
-		//|И	 ВложенныйRivneSoborna57.Склад        	= &RivneSoborna57 
+		|
+		|ЛЕВОЕ СОЕДИНЕНИЕ ТоварыВНаличии КАК ВложенныйRivneAllo 
+		|ПО  ВложенныйRivneAllo.Номенклатура 	= СпрНоменклатура.Номенклатура 
+		|И	 ВложенныйRivneAllo.Склад        	= &RivneAllo 
 		//|
 		//|ЛЕВОЕ СОЕДИНЕНИЕ ТоварыВНаличии КАК ВложенныйKyznya 
 		//|ПО  ВложенныйKyznya.Номенклатура 			= СпрНоменклатура.Ссылка 
@@ -971,7 +987,7 @@
 Функция СведенияОВнешнейОбработке() Экспорт
 	
 	//Версия обработки
-	Версия = "2.5.5";
+	Версия = "2.5.7";
 	// Объявим переменную, в которой мы сохраним и вернем "наружу" необходимые данные
     ПараметрыРегистрации = Новый Структура;
 
