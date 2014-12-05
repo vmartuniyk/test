@@ -304,7 +304,6 @@
 			<userSettingID>cf55ce5a-a8ac-4399-986a-ce726c8491e4</userSettingID>
 		</dcscor:item>
 	</dataParameters>
-	<order/>
 	<conditionalAppearance>
 		<userSettingID>7d0757c1-d391-4a99-90d1-5f162c5c8fb0</userSettingID>
 	</conditionalAppearance>
@@ -445,7 +444,6 @@
 			<field>Залет</field>
 		</item>
 	</selection>
-	<filter/>
 	<dataParameters>
 		<dcscor:item xsi:type="SettingsParameterValue">
 			<dcscor:use>false</dcscor:use>
@@ -458,7 +456,6 @@
 			<userSettingID>bc24f0c3-b0dc-4365-8925-32da25005fbf</userSettingID>
 		</dcscor:item>
 	</dataParameters>
-	<order/>
 	<conditionalAppearance>
 		<item>
 			<selection>
