@@ -205,6 +205,22 @@
 			<dataSource>ИсточникДанных1</dataSource>
 			<objectName>ЗаказыПоАктуальностиСОбособленнымУчетом</objectName>
 		</dataSet>
+		<calculatedField>
+			<dataPath>ПроцентЗалета</dataPath>
+			<expression>100*Сумма(Залет) /Сумма(КоличествоЗаказов)</expression>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Процент залета</d4p1:content>
+				</d4p1:item>
+			</title>
+			<appearance>
+				<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+					<parameter>Формат</parameter>
+					<value xsi:type="xs:string">ЧДЦ=</value>
+				</item>
+			</appearance>
+		</calculatedField>
 		<totalField>
 			<dataPath>Залет</dataPath>
 			<expression>Сумма(Залет)</expression>
@@ -226,6 +242,10 @@
 		<totalField>
 			<dataPath>КоличествоВЗаказе</dataPath>
 			<expression>Сумма(КоличествоВЗаказе)</expression>
+		</totalField>
+		<totalField>
+			<dataPath>ПроцентЗалета</dataPath>
+			<expression>ПроцентЗалета</expression>
 		</totalField>
 		<parameter>
 			<name>ПериодОтчета</name>
@@ -268,6 +288,9 @@
 		<item xsi:type="SelectedItemField">
 			<field>Залет</field>
 		</item>
+		<item xsi:type="SelectedItemField">
+			<field>ПроцентЗалета</field>
+		</item>
 	</selection>
 	<filter>
 		<userSettingID>ae421506-177d-41a6-a430-b0a6e004b52a</userSettingID>
@@ -281,9 +304,7 @@
 			<userSettingID>cf55ce5a-a8ac-4399-986a-ce726c8491e4</userSettingID>
 		</dcscor:item>
 	</dataParameters>
-	<order>
-		<userSettingID>d191fe9a-8864-4ed4-9605-cf482ebb3f74</userSettingID>
-	</order>
+	<order/>
 	<conditionalAppearance>
 		<userSettingID>7d0757c1-d391-4a99-90d1-5f162c5c8fb0</userSettingID>
 	</conditionalAppearance>
@@ -393,8 +414,20 @@
 		<item xsi:type="SelectedItemField">
 			<field>ЗаказКлиента</field>
 		</item>
-		<item xsi:type="SelectedItemField">
-			<field>КодСтроки</field>
+		<item xsi:type="SelectedItemFolder">
+			<lwsTitle>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ЗаказКлиента</v8:content>
+				</v8:item>
+			</lwsTitle>
+			<item xsi:type="SelectedItemField">
+				<field>ЗаказКлиента.Партнер</field>
+			</item>
+			<item xsi:type="SelectedItemField">
+				<field>ЗаказКлиента.Склад</field>
+			</item>
+			<placement>Horizontally</placement>
 		</item>
 		<item xsi:type="SelectedItemField">
 			<field>Номенклатура</field>
@@ -412,9 +445,7 @@
 			<field>Залет</field>
 		</item>
 	</selection>
-	<filter>
-		<userSettingID>1594e262-a1c4-4736-ac60-9dfb46b49c36</userSettingID>
-	</filter>
+	<filter/>
 	<dataParameters>
 		<dcscor:item xsi:type="SettingsParameterValue">
 			<dcscor:use>false</dcscor:use>
@@ -427,6 +458,7 @@
 			<userSettingID>bc24f0c3-b0dc-4365-8925-32da25005fbf</userSettingID>
 		</dcscor:item>
 	</dataParameters>
+	<order/>
 	<conditionalAppearance>
 		<item>
 			<selection>
@@ -453,7 +485,6 @@
 				</dcscor:item>
 			</appearance>
 		</item>
-		<userSettingID>f4f2de59-78d9-4688-b227-ad5aee6a2644</userSettingID>
 	</conditionalAppearance>
 	<item xsi:type="StructureItemGroup">
 		<groupItems>
@@ -497,7 +528,6 @@
 			</item>
 		</item>
 	</item>
-	<itemsUserSettingID>f32d9ead-951a-4039-93a4-50c4fb2d8d76</itemsUserSettingID>
 </Settings>﻿<?xml version="1.0" encoding="UTF-8"?>
 <SchemaFile xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<dataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema"/>
