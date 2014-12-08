@@ -16,128 +16,6 @@
 						<d5p1:content>Сумма</d5p1:content>
 					</d5p1:item>
 				</title>
-				<valueType>
-					<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:decimal</Type>
-					<NumberQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
-						<Digits>15</Digits>
-						<FractionDigits>2</FractionDigits>
-						<AllowedSign>Any</AllowedSign>
-					</NumberQualifiers>
-				</valueType>
-			</field>
-			<field xsi:type="DataSetFieldField">
-				<dataPath>ЗаработокМенеджера</dataPath>
-				<field>ЗаработокМенеджера</field>
-				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
-					<d5p1:item>
-						<d5p1:lang>ru</d5p1:lang>
-						<d5p1:content>Заработок менеджера</d5p1:content>
-					</d5p1:item>
-				</title>
-				<valueType>
-					<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:decimal</Type>
-					<NumberQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
-						<Digits>15</Digits>
-						<FractionDigits>2</FractionDigits>
-						<AllowedSign>Any</AllowedSign>
-					</NumberQualifiers>
-				</valueType>
-			</field>
-			<field xsi:type="DataSetFieldField">
-				<dataPath>Подразделение</dataPath>
-				<field>Подразделение</field>
-				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
-					<d5p1:item>
-						<d5p1:lang>ru</d5p1:lang>
-						<d5p1:content>Подразделение</d5p1:content>
-					</d5p1:item>
-				</title>
-				<valueType>
-					<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:CatalogRef.СтруктураПредприятия</Type>
-				</valueType>
-			</field>
-			<field xsi:type="DataSetFieldField">
-				<dataPath>Ссылка</dataPath>
-				<field>Ссылка</field>
-				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
-					<d5p1:item>
-						<d5p1:lang>ru</d5p1:lang>
-						<d5p1:content>Ссылка</d5p1:content>
-					</d5p1:item>
-				</title>
-				<attributeUseRestriction>
-					<field>true</field>
-					<condition>true</condition>
-					<group>true</group>
-					<order>true</order>
-				</attributeUseRestriction>
-				<valueType>
-					<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:DocumentRef.ВозвратТоваровОтКлиента</Type>
-					<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:DocumentRef.РеализацияТоваровУслуг</Type>
-				</valueType>
-			</field>
-			<field xsi:type="DataSetFieldField">
-				<dataPath>Склад</dataPath>
-				<field>Склад</field>
-				<useRestriction>
-					<field>true</field>
-					<condition>true</condition>
-					<group>true</group>
-					<order>true</order>
-				</useRestriction>
-				<attributeUseRestriction>
-					<field>true</field>
-					<condition>true</condition>
-					<group>true</group>
-					<order>true</order>
-				</attributeUseRestriction>
-				<valueType>
-					<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:CatalogRef.Склады</Type>
-				</valueType>
-			</field>
-			<field xsi:type="DataSetFieldField">
-				<dataPath>Количество</dataPath>
-				<field>Количество</field>
-				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
-					<d5p1:item>
-						<d5p1:lang>ru</d5p1:lang>
-						<d5p1:content>Количество</d5p1:content>
-					</d5p1:item>
-				</title>
-				<valueType>
-					<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:decimal</Type>
-					<NumberQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
-						<Digits>15</Digits>
-						<FractionDigits>2</FractionDigits>
-						<AllowedSign>Any</AllowedSign>
-					</NumberQualifiers>
-				</valueType>
-			</field>
-			<field xsi:type="DataSetFieldField">
-				<dataPath>Номенклатура</dataPath>
-				<field>Номенклатура</field>
-				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
-					<d5p1:item>
-						<d5p1:lang>ru</d5p1:lang>
-						<d5p1:content>Номенклатура</d5p1:content>
-					</d5p1:item>
-				</title>
-				<valueType>
-					<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:CatalogRef.Номенклатура</Type>
-				</valueType>
-			</field>
-			<field xsi:type="DataSetFieldField">
-				<dataPath>Менеджер</dataPath>
-				<field>Менеджер</field>
-				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
-					<d5p1:item>
-						<d5p1:lang>ru</d5p1:lang>
-						<d5p1:content>Менеджер</d5p1:content>
-					</d5p1:item>
-				</title>
-				<valueType>
-					<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:CatalogRef.Пользователи</Type>
-				</valueType>
 			</field>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>ВозможныйЗаработок</dataPath>
@@ -148,14 +26,92 @@
 						<d5p1:content>Возможный заработок</d5p1:content>
 					</d5p1:item>
 				</title>
-				<valueType>
-					<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:decimal</Type>
-					<NumberQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
-						<Digits>15</Digits>
-						<FractionDigits>2</FractionDigits>
-						<AllowedSign>Any</AllowedSign>
-					</NumberQualifiers>
-				</valueType>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ЗаработокМенеджера</dataPath>
+				<field>ЗаработокМенеджера</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Заработок менеджера</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Подразделение</dataPath>
+				<field>Подразделение</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Подразделение</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Ссылка</dataPath>
+				<field>Ссылка</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Ссылка</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Склад</dataPath>
+				<field>Склад</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Склад</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Количество</dataPath>
+				<field>Количество</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Количество</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Номенклатура</dataPath>
+				<field>Номенклатура</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Номенклатура</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Менеджер</dataPath>
+				<field>Менеджер</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Менеджер</d5p1:content>
+					</d5p1:item>
+				</title>
+				<useRestriction>
+					<condition>true</condition>
+				</useRestriction>
+				<attributeUseRestriction>
+					<condition>true</condition>
+				</attributeUseRestriction>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>МенеджерОтбор</dataPath>
+				<field>МенеджерОтбор</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Менеджер</d5p1:content>
+					</d5p1:item>
+				</title>
 			</field>
 			<dataSource>ИсточникДанных1</dataSource>
 			<query>ВЫБРАТЬ
@@ -164,6 +120,7 @@
 	ЗНАЧЕНИЕ(Справочник.Склады.ПустаяСсылка) КАК Склад,
 	ЗНАЧЕНИЕ(Справочник.СтруктураПредприятия.ПустаяСсылка) КАК Подразделение,
 	ЗНАЧЕНИЕ(Справочник.Пользователи.ПустаяСсылка) КАК Менеджер,
+	ЗНАЧЕНИЕ(Справочник.Пользователи.ПустаяСсылка) КАК МенеджерОтбор,
 	0 КАК Количество,
 	0 КАК Сумма,
 	0 КАК ЗаработокМенеджера,
@@ -382,15 +339,16 @@
 	<filter>
 		<item xsi:type="FilterItemComparison">
 			<use>false</use>
-			<left xsi:type="dcscor:Field">Менеджер</left>
-			<comparisonType>Equal</comparisonType>
-			<userSettingID>4d0cac36-4b51-401c-a890-4f614d3845b7</userSettingID>
-		</item>
-		<item xsi:type="FilterItemComparison">
-			<use>false</use>
 			<left xsi:type="dcscor:Field">Подразделение</left>
 			<comparisonType>Equal</comparisonType>
 			<userSettingID>589f9d88-d786-405c-bfb0-e3837b78e45d</userSettingID>
+		</item>
+		<item xsi:type="FilterItemComparison">
+			<use>false</use>
+			<left xsi:type="dcscor:Field">МенеджерОтбор</left>
+			<comparisonType>Equal</comparisonType>
+			<right xsi:type="dcscor:DesignTimeValue"/>
+			<userSettingID>87b15e5b-738f-43ad-85ba-c3922ef9c8de</userSettingID>
 		</item>
 		<userSettingID>851dd678-35cd-49a3-a66e-5b27f97f92b6</userSettingID>
 	</filter>
