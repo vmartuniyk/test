@@ -139,16 +139,19 @@
 			<field>СерийныйНомер</field>
 		</item>
 		<item xsi:type="SelectedItemField">
+			<field>Подразделение</field>
+		</item>
+		<item xsi:type="SelectedItemField">
 			<field>Распакован</field>
 		</item>
 		<item xsi:type="SelectedItemField">
 			<field>Ответственный</field>
 		</item>
 		<item xsi:type="SelectedItemField">
-			<field>Подразделение</field>
+			<field>Комментарий</field>
 		</item>
 		<item xsi:type="SelectedItemField">
-			<field>Комментарий</field>
+			<field>Дата</field>
 		</item>
 	</selection>
 	<item xsi:type="StructureItemGroup">
