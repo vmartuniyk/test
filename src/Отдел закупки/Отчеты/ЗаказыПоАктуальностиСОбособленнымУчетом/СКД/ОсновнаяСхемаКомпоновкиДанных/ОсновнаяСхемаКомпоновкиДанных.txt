@@ -444,6 +444,12 @@
 			<field>Залет</field>
 		</item>
 	</selection>
+	<filter>
+		<item xsi:type="FilterItemComparison">
+			<left xsi:type="dcscor:Field">ДатаАктуальности</left>
+			<comparisonType>Filled</comparisonType>
+		</item>
+	</filter>
 	<dataParameters>
 		<dcscor:item xsi:type="SettingsParameterValue">
 			<dcscor:use>false</dcscor:use>
