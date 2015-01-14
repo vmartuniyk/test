@@ -138,7 +138,7 @@
 			КОГДА &amp;Фильтр = "Дедлайн сегодня"
 				ТОГДА РАЗНОСТЬДАТ(Этапы.ДатаИсполнения, НАЧАЛОПЕРИОДА(&amp;ТекущаяДата, ДЕНЬ), ДЕНЬ) = 0
 						И Этапы.ДатаИсполнения &lt;&gt; &amp;ПроизвольнаяДата
-			КОГДА &amp;ОтборСрокВыполнения = "Дедлайн более чем через 3 дня"
+			КОГДА &amp;Фильтр = "Дедлайн более чем через 3 дня"
 				ТОГДА РАЗНОСТЬДАТ(Этапы.ДатаИсполнения, НАЧАЛОПЕРИОДА(&amp;ТекущаяДата, ДЕНЬ), ДЕНЬ) &lt;= -5
 						И Этапы.ДатаИсполнения &lt;&gt; &amp;ПроизвольнаяДата
 						И Этапы.ЭтапРаботы &lt;&gt; ЗНАЧЕНИЕ(Справочник.ГНАТ_ЭтапыРаботы.Выдано)
@@ -236,24 +236,6 @@
 			<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
 			<useRestriction>false</useRestriction>
 		</parameter>
-		<parameter>
-			<name>ОтборСрокВыполнения</name>
-			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
-				<d4p1:item>
-					<d4p1:lang>ru</d4p1:lang>
-					<d4p1:content>Отбор срок выполнения</d4p1:content>
-				</d4p1:item>
-			</title>
-			<valueType>
-				<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:string</Type>
-				<StringQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
-					<Length>29</Length>
-					<AllowedLength>Variable</AllowedLength>
-				</StringQualifiers>
-			</valueType>
-			<value xsi:type="xs:string"/>
-			<useRestriction>true</useRestriction>
-		</parameter>
 		<settingsVariant>
 			<name xmlns="http://v8.1c.ru/8.1/data-composition-system/settings">Основной</name>
 			<presentation xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
@@ -305,7 +287,10 @@
 		</dcscor:item>
 		<dcscor:item xsi:type="SettingsParameterValue">
 			<dcscor:parameter>ПроизвольнаяДата</dcscor:parameter>
-			<dcscor:value xsi:type="xs:dateTime">0001-01-01T00:00:00</dcscor:value>
+			<dcscor:value xsi:type="v8:StandardBeginningDate">
+				<v8:variant xsi:type="v8:StandardBeginningDateVariant">Custom</v8:variant>
+				<v8:date>0001-01-01T00:00:00</v8:date>
+			</dcscor:value>
 		</dcscor:item>
 	</dataParameters>
 	<order>
@@ -336,7 +321,7 @@
 					<item xsi:type="FilterItemComparison">
 						<left xsi:type="dcscor:Field">РазницаДат</left>
 						<comparisonType>Equal</comparisonType>
-						<right xsi:type="xs:decimal">0</right>
+						<right xsi:type="xs:decimal">-1</right>
 					</item>
 					<item xsi:type="FilterItemComparison">
 						<left xsi:type="dcscor:Field">ИсполненияДата</left>
@@ -365,11 +350,34 @@
 				</item>
 			</selection>
 			<filter>
+				<item xsi:type="FilterItemComparison">
+					<left xsi:type="dcscor:Field">ЭтапРаботы</left>
+					<comparisonType>Equal</comparisonType>
+					<right xsi:type="dcscor:DesignTimeValue">Справочник.ГНАТ_ЭтапыРаботы.Выдано</right>
+				</item>
+			</filter>
+			<appearance>
+				<dcscor:item xsi:type="SettingsParameterValue">
+					<dcscor:parameter>ЦветФона</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:Color">0:f19b9ce7-47c4-4e47-b61a-a5973d91859f</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</item>
+		<item>
+			<selection>
+				<item>
+					<field>ЗаявкаСервисногоЦентра</field>
+				</item>
+				<item>
+					<field>Ответственный</field>
+				</item>
+			</selection>
+			<filter>
 				<item xsi:type="FilterItemGroup">
 					<groupType>AndGroup</groupType>
 					<item xsi:type="FilterItemComparison">
 						<left xsi:type="dcscor:Field">РазницаДат</left>
-						<comparisonType>Greater</comparisonType>
+						<comparisonType>GreaterOrEqual</comparisonType>
 						<right xsi:type="xs:decimal">0</right>
 					</item>
 					<item xsi:type="FilterItemComparison">
@@ -399,16 +407,56 @@
 				</item>
 			</selection>
 			<filter>
-				<item xsi:type="FilterItemComparison">
-					<left xsi:type="dcscor:Field">ЭтапРаботы</left>
-					<comparisonType>Equal</comparisonType>
-					<right xsi:type="dcscor:DesignTimeValue">Справочник.ГНАТ_ЭтапыРаботы.Выдано</right>
+				<item xsi:type="FilterItemGroup">
+					<groupType>AndGroup</groupType>
+					<item xsi:type="FilterItemComparison">
+						<left xsi:type="dcscor:Field">ИсполненияДата</left>
+						<comparisonType>Equal</comparisonType>
+						<right xsi:type="v8:StandardBeginningDate">
+							<v8:variant xsi:type="v8:StandardBeginningDateVariant">Custom</v8:variant>
+							<v8:date>0001-01-01T00:00:00</v8:date>
+						</right>
+					</item>
 				</item>
 			</filter>
 			<appearance>
 				<dcscor:item xsi:type="SettingsParameterValue">
 					<dcscor:parameter>ЦветФона</dcscor:parameter>
-					<dcscor:value xsi:type="v8ui:Color">0:f19b9ce7-47c4-4e47-b61a-a5973d91859f</dcscor:value>
+					<dcscor:value xsi:type="v8ui:Color">0:968588bb-ee60-4399-955a-3ec4228d3c40</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</item>
+		<item>
+			<selection>
+				<item>
+					<field>ЗаявкаСервисногоЦентра</field>
+				</item>
+				<item>
+					<field>Ответственный</field>
+				</item>
+			</selection>
+			<filter>
+				<item xsi:type="FilterItemGroup">
+					<groupType>AndGroup</groupType>
+					<item xsi:type="FilterItemComparison">
+						<left xsi:type="dcscor:Field">РазницаДат</left>
+						<comparisonType>LessOrEqual</comparisonType>
+						<right xsi:type="xs:decimal">-5</right>
+					</item>
+					<item xsi:type="FilterItemComparison">
+						<left xsi:type="dcscor:Field">ИсполненияДата</left>
+						<comparisonType>NotEqual</comparisonType>
+						<right xsi:type="v8:StandardBeginningDate">
+							<v8:variant xsi:type="v8:StandardBeginningDateVariant">Custom</v8:variant>
+							<v8:date>0001-01-01T00:00:00</v8:date>
+						</right>
+					</item>
+				</item>
+			</filter>
+			<appearance>
+				<dcscor:item xsi:type="SettingsParameterValue">
+					<dcscor:parameter>ЦветФона</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:Color">web:DarkSeaGreen</dcscor:value>
 				</dcscor:item>
 			</appearance>
 		</item>
