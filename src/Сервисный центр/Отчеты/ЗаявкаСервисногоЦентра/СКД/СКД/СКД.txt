@@ -138,6 +138,10 @@
 			КОГДА &amp;Фильтр = "Дедлайн сегодня"
 				ТОГДА РАЗНОСТЬДАТ(Этапы.ДатаИсполнения, НАЧАЛОПЕРИОДА(&amp;ТекущаяДата, ДЕНЬ), ДЕНЬ) = 0
 						И Этапы.ДатаИсполнения &lt;&gt; &amp;ПроизвольнаяДата
+			КОГДА &amp;ОтборСрокВыполнения = "Дедлайн более чем через 3 дня"
+				ТОГДА РАЗНОСТЬДАТ(Этапы.ДатаИсполнения, НАЧАЛОПЕРИОДА(&amp;ТекущаяДата, ДЕНЬ), ДЕНЬ) &lt;= -5
+						И Этапы.ДатаИсполнения &lt;&gt; &amp;ПроизвольнаяДата
+						И Этапы.ЭтапРаботы &lt;&gt; ЗНАЧЕНИЕ(Справочник.ГНАТ_ЭтапыРаботы.Выдано)
 			КОГДА &amp;Фильтр = "Только закрытые"
 				ТОГДА Этапы.ЭтапРаботы = ЗНАЧЕНИЕ(Справочник.ГНАТ_ЭтапыРаботы.Выдано)
 			КОГДА &amp;Фильтр = "Только открытые"
@@ -211,6 +215,9 @@
 			<availableValue>
 				<value xsi:type="xs:string">Только закрытые</value>
 			</availableValue>
+			<availableValue>
+				<value xsi:type="xs:string">Дедлайн более чем через 3 дня</value>
+			</availableValue>
 		</parameter>
 		<parameter>
 			<name>ПроизвольнаяДата</name>
@@ -228,6 +235,24 @@
 			</valueType>
 			<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
 			<useRestriction>false</useRestriction>
+		</parameter>
+		<parameter>
+			<name>ОтборСрокВыполнения</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Отбор срок выполнения</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:string</Type>
+				<StringQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
+					<Length>29</Length>
+					<AllowedLength>Variable</AllowedLength>
+				</StringQualifiers>
+			</valueType>
+			<value xsi:type="xs:string"/>
+			<useRestriction>true</useRestriction>
 		</parameter>
 		<settingsVariant>
 			<name xmlns="http://v8.1c.ru/8.1/data-composition-system/settings">Основной</name>
