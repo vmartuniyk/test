@@ -347,7 +347,6 @@
 			<use>false</use>
 			<left xsi:type="dcscor:Field">МенеджерОтбор</left>
 			<comparisonType>Equal</comparisonType>
-			<right xsi:type="dcscor:DesignTimeValue"/>
 			<userSettingID>87b15e5b-738f-43ad-85ba-c3922ef9c8de</userSettingID>
 		</item>
 		<userSettingID>851dd678-35cd-49a3-a66e-5b27f97f92b6</userSettingID>
