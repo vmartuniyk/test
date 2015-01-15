@@ -56,7 +56,7 @@
 	Выборка = РезультатЗапроса.Выбрать();
 	Если Выборка.Следующий() Тогда
 
-		Определения = Новый WSОпределения("http://localhost:81/complexacc/ws/YT11_BUH?wsdl", "UserKTC", "ktc16384");
+		Определения = Новый WSОпределения("http://ga2.ktc.local/complexacc/ws/YT11_BUH?wsdl", "UserKTC", "ktc16384");
 		Прокси = Новый WSПрокси(Определения, "http://www.pogani-buhi.com", "YT11_BUH", "YT11_BUHSoap");	
 		Прокси.Пользователь = "UserKTC";
 		Прокси.Пароль = "ktc16384";
