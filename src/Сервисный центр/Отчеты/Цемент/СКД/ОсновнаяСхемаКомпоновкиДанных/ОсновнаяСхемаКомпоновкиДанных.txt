@@ -289,8 +289,8 @@
 				</valueType>
 			</field>
 			<field xsi:type="DataSetFieldField">
-				<dataPath>Желтый</dataPath>
-				<field>Желтый</field>
+				<dataPath>Желтые</dataPath>
+				<field>Желтые</field>
 				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
 					<d5p1:item>
 						<d5p1:lang>ru</d5p1:lang>
@@ -307,12 +307,12 @@
 				</valueType>
 			</field>
 			<field xsi:type="DataSetFieldField">
-				<dataPath>Красный</dataPath>
-				<field>Красный</field>
+				<dataPath>Красные</dataPath>
+				<field>Красные</field>
 				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
 					<d5p1:item>
 						<d5p1:lang>ru</d5p1:lang>
-						<d5p1:content>Красный</d5p1:content>
+						<d5p1:content>Красные</d5p1:content>
 					</d5p1:item>
 				</title>
 				<valueType>
@@ -398,12 +398,12 @@
 			<expression>Сумма(Белые)</expression>
 		</totalField>
 		<totalField>
-			<dataPath>Желтый</dataPath>
-			<expression>Сумма(Желтый)</expression>
+			<dataPath>Желтые</dataPath>
+			<expression>Сумма(Желтые)</expression>
 		</totalField>
 		<totalField>
-			<dataPath>Красный</dataPath>
-			<expression>Сумма(Красный)</expression>
+			<dataPath>Красные</dataPath>
+			<expression>Сумма(Красные)</expression>
 		</totalField>
 		<totalField>
 			<dataPath>КоличествоЗСЦ</dataPath>
@@ -411,11 +411,11 @@
 		</totalField>
 		<totalField>
 			<dataPath>ПроцентЖелтых</dataPath>
-			<expression>ВЫБОР КОГДА Сумма(КоличествоЗСЦ) = 0 ТОГДА 0 ИНАЧЕ Сумма(Желтый) / Сумма(КоличествоЗСЦ) * 100 КОНЕЦ </expression>
+			<expression>ВЫБОР КОГДА Сумма(КоличествоЗСЦ) = 0 ТОГДА 0 ИНАЧЕ Сумма(Желтые) / Сумма(КоличествоЗСЦ) * 100 КОНЕЦ </expression>
 		</totalField>
 		<totalField>
 			<dataPath>ПроцентКрасных</dataPath>
-			<expression>ВЫБОР КОГДА Сумма(КоличествоЗСЦ) = 0 ТОГДА 0 ИНАЧЕ Сумма(Красный) / Сумма(КоличествоЗСЦ) * 100 КОНЕЦ</expression>
+			<expression>ВЫБОР КОГДА Сумма(КоличествоЗСЦ) = 0 ТОГДА 0 ИНАЧЕ Сумма(Желтые) / Сумма(КоличествоЗСЦ) * 100 КОНЕЦ</expression>
 		</totalField>
 		<parameter>
 			<name>ПериодОтчета</name>
@@ -455,19 +455,20 @@
 			<field>ЗаявкаСервисногоЦентра</field>
 		</item>
 		<item xsi:type="SelectedItemField">
+			<use>false</use>
 			<field>КоличествоЗСЦ</field>
 		</item>
 		<item xsi:type="SelectedItemField">
 			<field>Белые</field>
 		</item>
 		<item xsi:type="SelectedItemField">
-			<field>Желтый</field>
+			<field>Желтые</field>
 		</item>
 		<item xsi:type="SelectedItemField">
 			<field>ПроцентЖелтых</field>
 		</item>
 		<item xsi:type="SelectedItemField">
-			<field>Красный</field>
+			<field>Красные</field>
 		</item>
 		<item xsi:type="SelectedItemField">
 			<field>ПроцентКрасных</field>
