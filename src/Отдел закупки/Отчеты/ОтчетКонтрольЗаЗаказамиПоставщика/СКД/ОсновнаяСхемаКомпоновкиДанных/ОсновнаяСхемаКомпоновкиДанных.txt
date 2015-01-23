@@ -522,6 +522,7 @@
 		<dcscor:item xsi:type="SettingsParameterValue">
 			<dcscor:use>false</dcscor:use>
 			<dcscor:parameter>Соглашения</dcscor:parameter>
+			<dcscor:value xsi:nil="true"/>
 			<userSettingID>5d8076fc-d5f7-4118-af64-e9874049b8d3</userSettingID>
 		</dcscor:item>
 		<dcscor:item xsi:type="SettingsParameterValue">
