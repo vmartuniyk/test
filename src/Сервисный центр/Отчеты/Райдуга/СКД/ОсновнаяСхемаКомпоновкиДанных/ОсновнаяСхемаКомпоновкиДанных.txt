@@ -356,7 +356,7 @@
 				<appearance>
 					<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
 						<parameter>Формат</parameter>
-						<value xsi:type="xs:string">ЧДЦ=; ЧН=0</value>
+						<value xsi:type="xs:string">ЧДЦ=</value>
 					</item>
 				</appearance>
 			</field>
@@ -380,7 +380,7 @@
 				<appearance>
 					<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
 						<parameter>Формат</parameter>
-						<value xsi:type="xs:string">ЧДЦ=; ЧН=0</value>
+						<value xsi:type="xs:string">ЧДЦ=</value>
 					</item>
 				</appearance>
 			</field>
@@ -482,38 +482,17 @@
 		<item xsi:type="SelectedItemField">
 			<field>Белые</field>
 		</item>
-		<item xsi:type="SelectedItemFolder">
-			<item xsi:type="SelectedItemField">
-				<field>Желтые</field>
-			</item>
-			<item xsi:type="SelectedItemFolder">
-				<item xsi:type="SelectedItemFolder">
-					<item xsi:type="SelectedItemField">
-						<field>ПроцентЖелтых</field>
-					</item>
-					<item xsi:type="SelectedItemField">
-						<field>ПроцентЖ</field>
-					</item>
-					<placement>Together</placement>
-				</item>
-				<placement>SpecialColumn</placement>
-			</item>
-			<placement>Horizontally</placement>
+		<item xsi:type="SelectedItemField">
+			<field>Желтые</field>
 		</item>
-		<item xsi:type="SelectedItemFolder">
-			<item xsi:type="SelectedItemField">
-				<field>Красные</field>
-			</item>
-			<item xsi:type="SelectedItemFolder">
-				<item xsi:type="SelectedItemField">
-					<field>ПроцентКрасных</field>
-				</item>
-				<item xsi:type="SelectedItemField">
-					<field>ПроцентК</field>
-				</item>
-				<placement>Together</placement>
-			</item>
-			<placement>Horizontally</placement>
+		<item xsi:type="SelectedItemField">
+			<field>ПроцентЖелтых</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>Красные</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>ПроцентКрасных</field>
 		</item>
 		<viewMode>Normal</viewMode>
 		<userSettingID>c503de53-7dc7-452d-a2ca-b06fab379da6</userSettingID>
@@ -541,14 +520,30 @@
 					<field>ПроцентЖелтых</field>
 				</item>
 				<item>
+					<use>false</use>
 					<field>Желтые</field>
 				</item>
 			</selection>
 			<filter/>
 			<appearance>
 				<dcscor:item xsi:type="SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
 					<dcscor:parameter>ЦветФона</dcscor:parameter>
 					<dcscor:value xsi:type="v8ui:Color">0:0235bc31-2797-4753-a53b-80a5aed107aa</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="SettingsParameterValue">
+					<dcscor:parameter>ЦветТекста</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:Color">#FF9900</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>Шрифт</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:Font" ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+				</dcscor:item>
+				<dcscor:item xsi:type="SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>ГоризонтальноеПоложение</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:HorizontalAlign">Right</dcscor:value>
 				</dcscor:item>
 			</appearance>
 		</item>
@@ -558,17 +553,25 @@
 					<field>ПроцентКрасных</field>
 				</item>
 				<item>
+					<use>false</use>
 					<field>Красные</field>
-				</item>
-				<item>
-					<field>ПроцентК</field>
 				</item>
 			</selection>
 			<filter/>
 			<appearance>
 				<dcscor:item xsi:type="SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
 					<dcscor:parameter>ЦветФона</dcscor:parameter>
 					<dcscor:value xsi:type="v8ui:Color">0:968588bb-ee60-4399-955a-3ec4228d3c40</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="SettingsParameterValue">
+					<dcscor:parameter>ЦветТекста</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:Color">web:Red</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>ГоризонтальноеПоложение</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:HorizontalAlign">Right</dcscor:value>
 				</dcscor:item>
 			</appearance>
 		</item>
@@ -582,17 +585,60 @@
 			<appearance>
 				<dcscor:item xsi:type="SettingsParameterValue">
 					<dcscor:parameter>Шрифт</dcscor:parameter>
-					<dcscor:value xsi:type="v8ui:Font" ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+					<dcscor:value xsi:type="v8ui:Font" ref="sys:DefaultGUIFont" bold="false" italic="true" underline="false" strikeout="false" kind="WindowsFont"/>
+				</dcscor:item>
+			</appearance>
+			<useInOverall>DontUse</useInOverall>
+		</item>
+		<item>
+			<selection>
+				<item>
+					<field>ПроцентЖелтых</field>
+				</item>
+				<item>
+					<field>ПроцентКрасных</field>
+				</item>
+			</selection>
+			<filter/>
+			<appearance>
+				<dcscor:item xsi:type="SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>ЦветФона</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:Color">0:0235bc31-2797-4753-a53b-80a5aed107aa</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="SettingsParameterValue">
+					<dcscor:parameter>Шрифт</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:Font" ref="sys:DefaultGUIFont" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+				</dcscor:item>
+				<dcscor:item xsi:type="SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>ГоризонтальноеПоложение</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:HorizontalAlign">Right</dcscor:value>
 				</dcscor:item>
 			</appearance>
 		</item>
 		<viewMode>Normal</viewMode>
 		<userSettingID>5cae4c2e-4906-4fe7-b9a0-ecf7b5111a16</userSettingID>
 	</conditionalAppearance>
+	<outputParameters>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>МакетОформления</dcscor:parameter>
+			<dcscor:value xsi:type="xs:string">Зеленый</dcscor:value>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:use>false</dcscor:use>
+			<dcscor:parameter>РасположениеИтогов</dcscor:parameter>
+			<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">BeginAndEnd</dcscor:value>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>ВертикальноеРасположениеОбщихИтогов</dcscor:parameter>
+			<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">BeginAndEnd</dcscor:value>
+		</dcscor:item>
+	</outputParameters>
 	<item xsi:type="StructureItemGroup">
 		<groupItems>
 			<item xsi:type="GroupItemField">
-				<field>ПериодДень</field>
+				<field>Инженер</field>
 				<groupType>Items</groupType>
 				<periodAdditionType>None</periodAdditionType>
 				<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
@@ -605,10 +651,70 @@
 		<selection>
 			<item xsi:type="SelectedItemAuto"/>
 		</selection>
+		<conditionalAppearance>
+			<item>
+				<use>false</use>
+				<selection/>
+				<filter/>
+				<appearance>
+					<dcscor:item xsi:type="SettingsParameterValue">
+						<dcscor:use>false</dcscor:use>
+						<dcscor:parameter>ЦветТекста</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">#3B6E99</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="SettingsParameterValue">
+						<dcscor:parameter>Шрифт</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Font" ref="sys:DefaultGUIFont" height="11" kind="WindowsFont"/>
+					</dcscor:item>
+				</appearance>
+				<useInHierarchicalGroup>DontUse</useInHierarchicalGroup>
+				<useInOverall>DontUse</useInOverall>
+				<useInFieldsHeader>DontUse</useInFieldsHeader>
+				<useInHeader>DontUse</useInHeader>
+				<useInParameters>DontUse</useInParameters>
+				<useInFilter>DontUse</useInFilter>
+			</item>
+			<item>
+				<use>false</use>
+				<selection>
+					<item>
+						<field>ПроцентЖелтых</field>
+					</item>
+					<item>
+						<field>ПроцентКрасных</field>
+					</item>
+				</selection>
+				<filter/>
+				<appearance>
+					<dcscor:item xsi:type="SettingsParameterValue">
+						<dcscor:use>false</dcscor:use>
+						<dcscor:parameter>ЦветТекста</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">#3B6E99</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="SettingsParameterValue">
+						<dcscor:parameter>Шрифт</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Font" ref="sys:DefaultGUIFont" height="11" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+					</dcscor:item>
+				</appearance>
+				<useInHierarchicalGroup>DontUse</useInHierarchicalGroup>
+				<useInOverall>DontUse</useInOverall>
+				<useInFieldsHeader>DontUse</useInFieldsHeader>
+				<useInHeader>DontUse</useInHeader>
+				<useInParameters>DontUse</useInParameters>
+				<useInFilter>DontUse</useInFilter>
+			</item>
+		</conditionalAppearance>
+		<outputParameters>
+			<dcscor:item xsi:type="SettingsParameterValue">
+				<dcscor:use>false</dcscor:use>
+				<dcscor:parameter>МакетОформления</dcscor:parameter>
+				<dcscor:value xsi:type="xs:string">Яркий</dcscor:value>
+			</dcscor:item>
+		</outputParameters>
 		<item xsi:type="StructureItemGroup">
 			<groupItems>
 				<item xsi:type="GroupItemField">
-					<field>Инженер</field>
+					<field>ПериодДень</field>
 					<groupType>Items</groupType>
 					<periodAdditionType>None</periodAdditionType>
 					<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
