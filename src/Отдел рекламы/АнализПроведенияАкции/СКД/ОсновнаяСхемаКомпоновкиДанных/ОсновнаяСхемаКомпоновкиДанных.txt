@@ -601,6 +601,7 @@
 		</dcscor:item>
 		<dcscor:item xsi:type="SettingsParameterValue">
 			<dcscor:parameter>Склад</dcscor:parameter>
+			<dcscor:value xsi:nil="true"/>
 			<userSettingID>5fa31d85-0b60-4455-a211-e02763101e20</userSettingID>
 		</dcscor:item>
 	</dataParameters>
