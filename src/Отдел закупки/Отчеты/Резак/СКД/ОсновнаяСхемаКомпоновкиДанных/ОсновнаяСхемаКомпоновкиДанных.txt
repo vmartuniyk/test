@@ -111,16 +111,6 @@
 				</title>
 			</field>
 			<field xsi:type="DataSetFieldField">
-				<dataPath>Поставщик</dataPath>
-				<field>Поставщик</field>
-				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
-					<d5p1:item>
-						<d5p1:lang>ru</d5p1:lang>
-						<d5p1:content>Поставщик</d5p1:content>
-					</d5p1:item>
-				</title>
-			</field>
-			<field xsi:type="DataSetFieldField">
 				<dataPath>ОбщийОстатокНаСкладе</dataPath>
 				<field>ОбщийОстатокНаСкладе</field>
 				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
@@ -150,22 +140,32 @@
 					</d5p1:item>
 				</title>
 			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПоставщикТовара</dataPath>
+				<field>ПоставщикТовара</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Поставщик товара</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
 			<dataSource>ИсточникДанных1</dataSource>
 			<query>ВЫБРАТЬ
-	ЗНАЧЕНИЕ(Документ.ЗаказКлиента.ПустаяСсылка) 	КАК ЗаказКлиента,
-	ЗНАЧЕНИЕ(Справочник.Номенклатура.ПустаяСсылка) 	КАК Номенклатура,
-	ЗНАЧЕНИЕ(Справочник.Партнеры.ПустаяСсылка)		КАК Клиенты,
-	ДАТАВРЕМЯ(1,1,1)								КАК ДатаАктуальности,
-	ДАТАВРЕМЯ(1,1,1)								КАК ДатаПоступления,
-	0												КАК КоличествоВЗаказе,
-	ЛОЖЬ											КАК Залет,
-	ЗНАЧЕНИЕ(Справочник.Партнеры.ПустаяСсылка)		КАК Поставщик,
-	ЗНАЧЕНИЕ(Справочник.Склады.ПустаяСсылка)		КАК Склад,
-	0 												КАК МинЦенаПоставщикаЗаПериод,
-	ЗНАЧЕНИЕ(Справочник.Партнеры.ПустаяСсылка)		КАК ПоставщикМинЦеныЗаПериод,
-	0												КАК МинЦенаПоставщикаЦенаЗаСегодня,
-	ЗНАЧЕНИЕ(Справочник.Партнеры.ПустаяСсылка)		КАК ПоставщикМинЦеныЗаСегодня,
-	0												КАК ОбщийОстатокНаСкладе</query>
+	ЗНАЧЕНИЕ(Документ.ЗаказКлиента.ПустаяСсылка) 					КАК ЗаказКлиента,
+	ЗНАЧЕНИЕ(Справочник.Номенклатура.ПустаяСсылка) 					КАК Номенклатура,
+	ЗНАЧЕНИЕ(Справочник.Партнеры.ПустаяСсылка)						КАК Клиенты,
+	ДАТАВРЕМЯ(1,1,1)												КАК ДатаАктуальности,
+	ДАТАВРЕМЯ(1,1,1)												КАК ДатаПоступления,
+	0																КАК КоличествоВЗаказе,
+	ЛОЖЬ															КАК Залет,
+	ЗНАЧЕНИЕ(Справочник.Партнеры.ПустаяСсылка)						КАК ПоставщикТовара,
+	ЗНАЧЕНИЕ(Справочник.Склады.ПустаяСсылка)						КАК Склад,
+	0 																КАК МинЦенаПоставщикаЗаПериод,
+	ЗНАЧЕНИЕ(Справочник.СоглашенияСПоставщиками.ПустаяСсылка)		КАК ПоставщикМинЦеныЗаПериод,
+	0																КАК МинЦенаПоставщикаЦенаЗаСегодня,
+	ЗНАЧЕНИЕ(Справочник.СоглашенияСПоставщиками.ПустаяСсылка)		КАК ПоставщикМинЦеныЗаСегодня,
+	0																КАК ОбщийОстатокНаСкладе</query>
 		</dataSet>
 		<totalField>
 			<dataPath>КоличествоВЗаказе</dataPath>
@@ -183,6 +183,31 @@
 		<totalField>
 			<dataPath>ОбщийОстатокНаСкладе</dataPath>
 			<expression>Сумма(ОбщийОстатокНаСкладе)</expression>
+		</totalField>
+		<totalField>
+			<dataPath>ПоставщикМинЦеныЗаПериод</dataPath>
+			<expression>ПоставщикМинЦеныЗаПериод</expression>
+			<group>Номенклатура</group>
+		</totalField>
+		<totalField>
+			<dataPath>МинЦенаПоставщикаЗаПериод</dataPath>
+			<expression>МинЦенаПоставщикаЗаПериод</expression>
+			<group>Номенклатура</group>
+		</totalField>
+		<totalField>
+			<dataPath>МинЦенаПоставщикаЦенаЗаСегодня</dataPath>
+			<expression>МинЦенаПоставщикаЦенаЗаСегодня</expression>
+			<group>Номенклатура</group>
+		</totalField>
+		<totalField>
+			<dataPath>ПоставщикМинЦеныЗаСегодня</dataPath>
+			<expression>ПоставщикМинЦеныЗаСегодня</expression>
+			<group>Номенклатура</group>
+		</totalField>
+		<totalField>
+			<dataPath>ПоставщикТовара</dataPath>
+			<expression>ПоставщикТовара</expression>
+			<group>Номенклатура</group>
 		</totalField>
 		<parameter>
 			<name>ЛогистическийСклад</name>
@@ -335,6 +360,21 @@
 		</item>
 		<item xsi:type="SelectedItemField">
 			<field>ОбщийОстатокНаСкладе</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>ПоставщикТовара</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>ПоставщикМинЦеныЗаПериод</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>МинЦенаПоставщикаЗаПериод</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>ПоставщикМинЦеныЗаСегодня</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>МинЦенаПоставщикаЦенаЗаСегодня</field>
 		</item>
 	</selection>
 	<dataParameters>
