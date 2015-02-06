@@ -16,6 +16,9 @@
 						<d5p1:content>Заказ клиента</d5p1:content>
 					</d5p1:item>
 				</title>
+				<valueType>
+					<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:DocumentRef.ЗаказКлиента</Type>
+				</valueType>
 			</field>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>КоличествоВЗаказе</dataPath>
@@ -58,16 +61,6 @@
 				</title>
 			</field>
 			<field xsi:type="DataSetFieldField">
-				<dataPath>Склады</dataPath>
-				<field>Склады</field>
-				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
-					<d5p1:item>
-						<d5p1:lang>ru</d5p1:lang>
-						<d5p1:content>Склады</d5p1:content>
-					</d5p1:item>
-				</title>
-			</field>
-			<field xsi:type="DataSetFieldField">
 				<dataPath>Клиенты</dataPath>
 				<field>Клиенты</field>
 				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
@@ -87,16 +80,92 @@
 					</d5p1:item>
 				</title>
 			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПоставщикМинЦеныЗаСегодня</dataPath>
+				<field>ПоставщикМинЦеныЗаСегодня</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Поставщик мин цены за сегодня</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПоставщикМинЦеныЗаПериод</dataPath>
+				<field>ПоставщикМинЦеныЗаПериод</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Поставщик мин цены за период</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>МинЦенаПоставщикаЗаПериод</dataPath>
+				<field>МинЦенаПоставщикаЗаПериод</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Мин цена поставщика за период</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Поставщик</dataPath>
+				<field>Поставщик</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Поставщик</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ОбщийОстатокНаСкладе</dataPath>
+				<field>ОбщийОстатокНаСкладе</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Общий остаток на складе</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>МинЦенаПоставщикаЦенаЗаСегодня</dataPath>
+				<field>МинЦенаПоставщикаЦенаЗаСегодня</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Мин цена поставщика цена за сегодня</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Склад</dataPath>
+				<field>Склад</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Склад</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
 			<dataSource>ИсточникДанных1</dataSource>
 			<query>ВЫБРАТЬ
 	ЗНАЧЕНИЕ(Документ.ЗаказКлиента.ПустаяСсылка) 	КАК ЗаказКлиента,
 	ЗНАЧЕНИЕ(Справочник.Номенклатура.ПустаяСсылка) 	КАК Номенклатура,
 	ЗНАЧЕНИЕ(Справочник.Партнеры.ПустаяСсылка)		КАК Клиенты,
-	ЗНАЧЕНИЕ(Справочник.Склады.ПустаяСсылка)		КАК Склады,
 	ДАТАВРЕМЯ(1,1,1)								КАК ДатаАктуальности,
 	ДАТАВРЕМЯ(1,1,1)								КАК ДатаПоступления,
 	0												КАК КоличествоВЗаказе,
-	ЛОЖЬ											КАК Залет</query>
+	ЛОЖЬ											КАК Залет,
+	ЗНАЧЕНИЕ(Справочник.Партнеры.ПустаяСсылка)		КАК Поставщик,
+	ЗНАЧЕНИЕ(Справочник.Склады.ПустаяСсылка)		КАК Склад,
+	0 												КАК МинЦенаПоставщикаЗаПериод,
+	ЗНАЧЕНИЕ(Справочник.Партнеры.ПустаяСсылка)		КАК ПоставщикМинЦеныЗаПериод,
+	0												КАК МинЦенаПоставщикаЦенаЗаСегодня,
+	ЗНАЧЕНИЕ(Справочник.Партнеры.ПустаяСсылка)		КАК ПоставщикМинЦеныЗаСегодня,
+	0												КАК ОбщийОстатокНаСкладе</query>
 		</dataSet>
 		<totalField>
 			<dataPath>КоличествоВЗаказе</dataPath>
@@ -105,6 +174,15 @@
 		<totalField>
 			<dataPath>Залет</dataPath>
 			<expression>Залет</expression>
+		</totalField>
+		<totalField>
+			<dataPath>ОбщийОстатокНаСкладе</dataPath>
+			<expression>ОбщийОстатокНаСкладе</expression>
+			<group>Номенклатура</group>
+		</totalField>
+		<totalField>
+			<dataPath>ОбщийОстатокНаСкладе</dataPath>
+			<expression>Сумма(ОбщийОстатокНаСкладе)</expression>
 		</totalField>
 		<parameter>
 			<name>ЛогистическийСклад</name>
@@ -117,44 +195,8 @@
 			<valueType>
 				<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.Склады</Type>
 			</valueType>
-			<value xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xsi:type="dcscor:DesignTimeValue"/>
+			<value xsi:nil="true"/>
 			<useRestriction>true</useRestriction>
-		</parameter>
-		<parameter>
-			<name>НачалоПериода</name>
-			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
-				<d4p1:item>
-					<d4p1:lang>ru</d4p1:lang>
-					<d4p1:content>Начало периода</d4p1:content>
-				</d4p1:item>
-			</title>
-			<valueType>
-				<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:dateTime</Type>
-				<DateQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
-					<DateFractions>DateTime</DateFractions>
-				</DateQualifiers>
-			</valueType>
-			<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
-			<useRestriction>true</useRestriction>
-			<expression>&amp;ПериодОтчета.ДатаНачала</expression>
-		</parameter>
-		<parameter>
-			<name>КонецПериода</name>
-			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
-				<d4p1:item>
-					<d4p1:lang>ru</d4p1:lang>
-					<d4p1:content>Конец периода</d4p1:content>
-				</d4p1:item>
-			</title>
-			<valueType>
-				<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:dateTime</Type>
-				<DateQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
-					<DateFractions>DateTime</DateFractions>
-				</DateQualifiers>
-			</valueType>
-			<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
-			<useRestriction>true</useRestriction>
-			<expression>&amp;ПериодОтчета.ДатаОкончания</expression>
 		</parameter>
 		<parameter>
 			<name>ПериодОтчета</name>
@@ -173,6 +215,8 @@
 				<d4p1:endDate>0001-01-01T00:00:00</d4p1:endDate>
 			</value>
 			<useRestriction>false</useRestriction>
+			<denyIncompleteValues>true</denyIncompleteValues>
+			<use>Always</use>
 		</parameter>
 		<parameter>
 			<name>ТекущаяДата</name>
@@ -191,6 +235,75 @@
 			<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
 			<useRestriction>true</useRestriction>
 		</parameter>
+		<parameter>
+			<name>ВалютаУпрУчета</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Валюта управленческого учета</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.Валюты</Type>
+			</valueType>
+			<value xsi:nil="true"/>
+			<useRestriction>true</useRestriction>
+		</parameter>
+		<parameter>
+			<name>КонецСвета</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Конец света</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:dateTime</Type>
+				<DateQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
+					<DateFractions>DateTime</DateFractions>
+				</DateQualifiers>
+			</valueType>
+			<value xsi:type="xs:dateTime">3999-01-01T00:00:00</value>
+			<useRestriction>true</useRestriction>
+			<denyIncompleteValues>true</denyIncompleteValues>
+			<use>Always</use>
+		</parameter>
+		<parameter>
+			<name>ДатаНачала</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Дата начала</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:dateTime</Type>
+				<DateQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
+					<DateFractions>DateTime</DateFractions>
+				</DateQualifiers>
+			</valueType>
+			<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+			<useRestriction>true</useRestriction>
+			<expression>&amp;ПериодОтчета.ДатаНачала</expression>
+		</parameter>
+		<parameter>
+			<name>ДатаОкончания</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Дата окончания</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:dateTime</Type>
+				<DateQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
+					<DateFractions>DateTime</DateFractions>
+				</DateQualifiers>
+			</valueType>
+			<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+			<useRestriction>true</useRestriction>
+			<expression>&amp;ПериодОтчета.ДатаОкончания</expression>
+		</parameter>
 		<settingsVariant>
 			<name xmlns="http://v8.1c.ru/8.1/data-composition-system/settings">Основной</name>
 			<presentation xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="xs:string">Основной</presentation>
@@ -204,9 +317,6 @@
 		</item>
 		<item xsi:type="SelectedItemField">
 			<field>Клиенты</field>
-		</item>
-		<item xsi:type="SelectedItemField">
-			<field>Склады</field>
 		</item>
 		<item xsi:type="SelectedItemField">
 			<field>Номенклатура</field>
@@ -223,13 +333,11 @@
 		<item xsi:type="SelectedItemField">
 			<field>Залет</field>
 		</item>
+		<item xsi:type="SelectedItemField">
+			<field>ОбщийОстатокНаСкладе</field>
+		</item>
 	</selection>
 	<dataParameters>
-		<dcscor:item xsi:type="SettingsParameterValue">
-			<dcscor:use>false</dcscor:use>
-			<dcscor:parameter>ЛогистическийСклад</dcscor:parameter>
-			<dcscor:value xsi:nil="true"/>
-		</dcscor:item>
 		<dcscor:item xsi:type="SettingsParameterValue">
 			<dcscor:use>false</dcscor:use>
 			<dcscor:parameter>ПериодОтчета</dcscor:parameter>
@@ -244,8 +352,8 @@
 	<item xsi:type="StructureItemGroup">
 		<groupItems>
 			<item xsi:type="GroupItemField">
-				<field>Номенклатура.ВидНоменклатуры</field>
-				<groupType>Hierarchy</groupType>
+				<field>Склад</field>
+				<groupType>Items</groupType>
 				<periodAdditionType>None</periodAdditionType>
 				<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
 				<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
@@ -260,8 +368,8 @@
 		<item xsi:type="StructureItemGroup">
 			<groupItems>
 				<item xsi:type="GroupItemField">
-					<field>ЗаказКлиента</field>
-					<groupType>Items</groupType>
+					<field>Номенклатура.ВидНоменклатуры</field>
+					<groupType>Hierarchy</groupType>
 					<periodAdditionType>None</periodAdditionType>
 					<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
 					<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
@@ -274,12 +382,29 @@
 				<item xsi:type="SelectedItemAuto"/>
 			</selection>
 			<item xsi:type="StructureItemGroup">
+				<groupItems>
+					<item xsi:type="GroupItemField">
+						<field>ЗаказКлиента</field>
+						<groupType>Items</groupType>
+						<periodAdditionType>None</periodAdditionType>
+						<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+						<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+					</item>
+				</groupItems>
 				<order>
 					<item xsi:type="OrderItemAuto"/>
 				</order>
 				<selection>
 					<item xsi:type="SelectedItemAuto"/>
 				</selection>
+				<item xsi:type="StructureItemGroup">
+					<order>
+						<item xsi:type="OrderItemAuto"/>
+					</order>
+					<selection>
+						<item xsi:type="SelectedItemAuto"/>
+					</selection>
+				</item>
 			</item>
 		</item>
 	</item>
