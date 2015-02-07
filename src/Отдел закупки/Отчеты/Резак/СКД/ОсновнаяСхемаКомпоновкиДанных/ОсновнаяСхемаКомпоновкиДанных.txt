@@ -160,6 +160,36 @@
 					</d5p1:item>
 				</title>
 			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Выручка</dataPath>
+				<field>Выручка</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Выручка</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ВаловаяПрибыль</dataPath>
+				<field>ВаловаяПрибыль</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Валовая прибыль</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Рентабельность</dataPath>
+				<field>Рентабельность</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Рентабельность</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
 			<dataSource>ИсточникДанных1</dataSource>
 			<query>ВЫБРАТЬ
 	ЗНАЧЕНИЕ(Документ.ЗаказКлиента.ПустаяСсылка) 					КАК ЗаказКлиента,
@@ -176,7 +206,10 @@
 	0																КАК МинЦенаПоставщикаЦенаЗаСегодня,
 	ЗНАЧЕНИЕ(Справочник.СоглашенияСПоставщиками.ПустаяСсылка)		КАК ПоставщикМинЦеныЗаСегодня,
 	0																КАК ОбщийОстатокНаСкладе,
-	0																КАК Себестоимость</query>
+	0																КАК Себестоимость,
+	0																КАК Выручка,
+	0																КАК ВаловаяПрибыль,
+	0																КАК Рентабельность</query>
 		</dataSet>
 		<totalField>
 			<dataPath>КоличествоВЗаказе</dataPath>
@@ -219,6 +252,29 @@
 		<totalField>
 			<dataPath>Себестоимость</dataPath>
 			<expression>Сумма(Себестоимость)</expression>
+		</totalField>
+		<totalField>
+			<dataPath>Выручка</dataPath>
+			<expression>Сумма(Выручка)</expression>
+		</totalField>
+		<totalField>
+			<dataPath>ВаловаяПрибыль</dataPath>
+			<expression>Сумма(ВаловаяПрибыль)</expression>
+		</totalField>
+		<totalField>
+			<dataPath>Рентабельность</dataPath>
+			<expression>Сумма(Рентабельность)</expression>
+			<group>Номенклатура</group>
+		</totalField>
+		<totalField>
+			<dataPath>Рентабельность</dataPath>
+			<expression>ВЫРАЗИТЬ(
+    ВЫБОР КОГДА СУММА(Выручка) &lt;&gt; 0 ТОГДА
+            (СУММА(Выручка)- СУММА(Себестоимость) )
+            / СУММА(Выручка)
+    ИНАЧЕ
+        0
+    КОНЕЦ * 100, "ЧИСЛО(15,2)")</expression>
 		</totalField>
 		<parameter>
 			<name>ЛогистическийСклад</name>
@@ -367,7 +423,16 @@
 			<field>КоличествоВЗаказе</field>
 		</item>
 		<item xsi:type="SelectedItemField">
+			<field>Выручка</field>
+		</item>
+		<item xsi:type="SelectedItemField">
 			<field>Себестоимость</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>ВаловаяПрибыль</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>Рентабельность</field>
 		</item>
 		<item xsi:type="SelectedItemField">
 			<field>Залет</field>
