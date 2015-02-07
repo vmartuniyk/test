@@ -150,6 +150,16 @@
 					</d5p1:item>
 				</title>
 			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Себестоимость</dataPath>
+				<field>Себестоимость</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Себестоимость</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
 			<dataSource>ИсточникДанных1</dataSource>
 			<query>ВЫБРАТЬ
 	ЗНАЧЕНИЕ(Документ.ЗаказКлиента.ПустаяСсылка) 					КАК ЗаказКлиента,
@@ -165,7 +175,8 @@
 	ЗНАЧЕНИЕ(Справочник.СоглашенияСПоставщиками.ПустаяСсылка)		КАК ПоставщикМинЦеныЗаПериод,
 	0																КАК МинЦенаПоставщикаЦенаЗаСегодня,
 	ЗНАЧЕНИЕ(Справочник.СоглашенияСПоставщиками.ПустаяСсылка)		КАК ПоставщикМинЦеныЗаСегодня,
-	0																КАК ОбщийОстатокНаСкладе</query>
+	0																КАК ОбщийОстатокНаСкладе,
+	0																КАК Себестоимость</query>
 		</dataSet>
 		<totalField>
 			<dataPath>КоличествоВЗаказе</dataPath>
@@ -179,10 +190,6 @@
 			<dataPath>ОбщийОстатокНаСкладе</dataPath>
 			<expression>ОбщийОстатокНаСкладе</expression>
 			<group>Номенклатура</group>
-		</totalField>
-		<totalField>
-			<dataPath>ОбщийОстатокНаСкладе</dataPath>
-			<expression>Сумма(ОбщийОстатокНаСкладе)</expression>
 		</totalField>
 		<totalField>
 			<dataPath>ПоставщикМинЦеныЗаПериод</dataPath>
@@ -208,6 +215,10 @@
 			<dataPath>ПоставщикТовара</dataPath>
 			<expression>ПоставщикТовара</expression>
 			<group>Номенклатура</group>
+		</totalField>
+		<totalField>
+			<dataPath>Себестоимость</dataPath>
+			<expression>Сумма(Себестоимость)</expression>
 		</totalField>
 		<parameter>
 			<name>ЛогистическийСклад</name>
@@ -354,6 +365,9 @@
 		</item>
 		<item xsi:type="SelectedItemField">
 			<field>КоличествоВЗаказе</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>Себестоимость</field>
 		</item>
 		<item xsi:type="SelectedItemField">
 			<field>Залет</field>
