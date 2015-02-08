@@ -190,6 +190,26 @@
 					</d5p1:item>
 				</title>
 			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>СуммаВЗаказе</dataPath>
+				<field>СуммаВЗаказе</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Сумма в заказе</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ЦенаВЗаказе</dataPath>
+				<field>ЦенаВЗаказе</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Цена в заказе</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
 			<dataSource>ИсточникДанных1</dataSource>
 			<query>ВЫБРАТЬ
 	ЗНАЧЕНИЕ(Документ.ЗаказКлиента.ПустаяСсылка) 					КАК ЗаказКлиента,
@@ -209,7 +229,9 @@
 	0																КАК Себестоимость,
 	0																КАК Выручка,
 	0																КАК ВаловаяПрибыль,
-	0																КАК Рентабельность</query>
+	0																КАК Рентабельность,
+	0																КАК ЦенаВЗаказе,
+	0																КАК СуммаВЗаказе</query>
 		</dataSet>
 		<totalField>
 			<dataPath>КоличествоВЗаказе</dataPath>
@@ -275,6 +297,14 @@
     ИНАЧЕ
         0
     КОНЕЦ * 100, "ЧИСЛО(15,2)")</expression>
+		</totalField>
+		<totalField>
+			<dataPath>ЦенаВЗаказе</dataPath>
+			<expression>Сумма(ЦенаВЗаказе)</expression>
+		</totalField>
+		<totalField>
+			<dataPath>СуммаВЗаказе</dataPath>
+			<expression>Сумма(СуммаВЗаказе)</expression>
 		</totalField>
 		<parameter>
 			<name>ЛогистическийСклад</name>
