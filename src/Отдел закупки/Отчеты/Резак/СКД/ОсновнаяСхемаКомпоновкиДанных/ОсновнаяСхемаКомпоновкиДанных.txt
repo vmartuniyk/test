@@ -16,6 +16,12 @@
 						<d5p1:content>Заказ клиента</d5p1:content>
 					</d5p1:item>
 				</title>
+				<attributeUseRestriction>
+					<field>true</field>
+					<condition>true</condition>
+					<group>true</group>
+					<order>true</order>
+				</attributeUseRestriction>
 				<valueType>
 					<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:DocumentRef.ЗаказКлиента</Type>
 				</valueType>
@@ -29,6 +35,12 @@
 						<d5p1:content>Количество в заказе</d5p1:content>
 					</d5p1:item>
 				</title>
+				<appearance>
+					<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+						<parameter>Формат</parameter>
+						<value xsi:type="xs:string">ЧДЦ=3</value>
+					</item>
+				</appearance>
 			</field>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>Залет</dataPath>
@@ -59,16 +71,12 @@
 						<d5p1:content>Номенклатура</d5p1:content>
 					</d5p1:item>
 				</title>
-			</field>
-			<field xsi:type="DataSetFieldField">
-				<dataPath>Клиенты</dataPath>
-				<field>Клиенты</field>
-				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
-					<d5p1:item>
-						<d5p1:lang>ru</d5p1:lang>
-						<d5p1:content>Клиенты</d5p1:content>
-					</d5p1:item>
-				</title>
+				<attributeUseRestriction>
+					<field>true</field>
+					<condition>true</condition>
+					<group>true</group>
+					<order>true</order>
+				</attributeUseRestriction>
 			</field>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>ДатаПоступления</dataPath>
@@ -89,6 +97,12 @@
 						<d5p1:content>Поставщик мин цены за сегодня</d5p1:content>
 					</d5p1:item>
 				</title>
+				<attributeUseRestriction>
+					<field>true</field>
+					<condition>true</condition>
+					<group>true</group>
+					<order>true</order>
+				</attributeUseRestriction>
 			</field>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>ПоставщикМинЦеныЗаПериод</dataPath>
@@ -99,6 +113,12 @@
 						<d5p1:content>Поставщик мин цены за период</d5p1:content>
 					</d5p1:item>
 				</title>
+				<attributeUseRestriction>
+					<field>true</field>
+					<condition>true</condition>
+					<group>true</group>
+					<order>true</order>
+				</attributeUseRestriction>
 			</field>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>МинЦенаПоставщикаЗаПериод</dataPath>
@@ -109,6 +129,12 @@
 						<d5p1:content>Мин цена поставщика за период</d5p1:content>
 					</d5p1:item>
 				</title>
+				<appearance>
+					<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+						<parameter>Формат</parameter>
+						<value xsi:type="xs:string">ЧДЦ=2</value>
+					</item>
+				</appearance>
 			</field>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>ОбщийОстатокНаСкладе</dataPath>
@@ -129,6 +155,12 @@
 						<d5p1:content>Мин цена поставщика цена за сегодня</d5p1:content>
 					</d5p1:item>
 				</title>
+				<appearance>
+					<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+						<parameter>Формат</parameter>
+						<value xsi:type="xs:string">ЧДЦ=2</value>
+					</item>
+				</appearance>
 			</field>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>Склад</dataPath>
@@ -139,6 +171,15 @@
 						<d5p1:content>Склад</d5p1:content>
 					</d5p1:item>
 				</title>
+				<useRestriction>
+					<condition>true</condition>
+				</useRestriction>
+				<attributeUseRestriction>
+					<field>true</field>
+					<condition>true</condition>
+					<group>true</group>
+					<order>true</order>
+				</attributeUseRestriction>
 			</field>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>ПоставщикТовара</dataPath>
@@ -149,6 +190,12 @@
 						<d5p1:content>Поставщик товара</d5p1:content>
 					</d5p1:item>
 				</title>
+				<attributeUseRestriction>
+					<field>true</field>
+					<condition>true</condition>
+					<group>true</group>
+					<order>true</order>
+				</attributeUseRestriction>
 			</field>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>Себестоимость</dataPath>
@@ -159,6 +206,12 @@
 						<d5p1:content>Себестоимость</d5p1:content>
 					</d5p1:item>
 				</title>
+				<appearance>
+					<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+						<parameter>Формат</parameter>
+						<value xsi:type="xs:string">ЧДЦ=2</value>
+					</item>
+				</appearance>
 			</field>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>Выручка</dataPath>
@@ -169,6 +222,12 @@
 						<d5p1:content>Выручка</d5p1:content>
 					</d5p1:item>
 				</title>
+				<appearance>
+					<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+						<parameter>Формат</parameter>
+						<value xsi:type="xs:string">ЧДЦ=2</value>
+					</item>
+				</appearance>
 			</field>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>ВаловаяПрибыль</dataPath>
@@ -179,6 +238,12 @@
 						<d5p1:content>Валовая прибыль</d5p1:content>
 					</d5p1:item>
 				</title>
+				<appearance>
+					<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+						<parameter>Формат</parameter>
+						<value xsi:type="xs:string">ЧДЦ=2</value>
+					</item>
+				</appearance>
 			</field>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>Рентабельность</dataPath>
@@ -189,6 +254,12 @@
 						<d5p1:content>Рентабельность</d5p1:content>
 					</d5p1:item>
 				</title>
+				<appearance>
+					<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+						<parameter>Формат</parameter>
+						<value xsi:type="xs:string">ЧДЦ=2</value>
+					</item>
+				</appearance>
 			</field>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>СуммаВЗаказе</dataPath>
@@ -199,6 +270,12 @@
 						<d5p1:content>Сумма в заказе</d5p1:content>
 					</d5p1:item>
 				</title>
+				<appearance>
+					<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+						<parameter>Формат</parameter>
+						<value xsi:type="xs:string">ЧДЦ=2</value>
+					</item>
+				</appearance>
 			</field>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>ЦенаВЗаказе</dataPath>
@@ -209,17 +286,151 @@
 						<d5p1:content>Цена в заказе</d5p1:content>
 					</d5p1:item>
 				</title>
+				<appearance>
+					<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+						<parameter>Формат</parameter>
+						<value xsi:type="xs:string">ЧДЦ=2</value>
+					</item>
+				</appearance>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Организация</dataPath>
+				<field>Организация</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Организация</d5p1:content>
+					</d5p1:item>
+				</title>
+				<attributeUseRestriction>
+					<field>true</field>
+					<condition>true</condition>
+					<group>true</group>
+					<order>true</order>
+				</attributeUseRestriction>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Подразделение</dataPath>
+				<field>Подразделение</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Подразделение</d5p1:content>
+					</d5p1:item>
+				</title>
+				<attributeUseRestriction>
+					<field>true</field>
+					<condition>true</condition>
+					<group>true</group>
+					<order>true</order>
+				</attributeUseRestriction>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Клиент</dataPath>
+				<field>Клиент</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Клиент</d5p1:content>
+					</d5p1:item>
+				</title>
+				<attributeUseRestriction>
+					<field>true</field>
+					<condition>true</condition>
+					<group>true</group>
+					<order>true</order>
+				</attributeUseRestriction>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ВидОбеспечения</dataPath>
+				<field>ВидОбеспечения</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Вид обеспечения</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ВидНоменклатуры</dataPath>
+				<field>ВидНоменклатуры</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Вид номенклатуры</d5p1:content>
+					</d5p1:item>
+				</title>
+				<attributeUseRestriction>
+					<field>true</field>
+					<condition>true</condition>
+					<group>true</group>
+					<order>true</order>
+				</attributeUseRestriction>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>СрокДоставки</dataPath>
+				<field>СрокДоставки</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Срок доставки</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Поставщик</dataPath>
+				<field>Поставщик</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Поставщик</d5p1:content>
+					</d5p1:item>
+				</title>
+				<useRestriction>
+					<field>true</field>
+					<group>true</group>
+					<order>true</order>
+				</useRestriction>
+				<attributeUseRestriction>
+					<field>true</field>
+					<condition>true</condition>
+					<group>true</group>
+					<order>true</order>
+				</attributeUseRestriction>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>СкладЗаказа</dataPath>
+				<field>СкладЗаказа</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Склад заказа</d5p1:content>
+					</d5p1:item>
+				</title>
+				<useRestriction>
+					<field>true</field>
+					<group>true</group>
+					<order>true</order>
+				</useRestriction>
+				<attributeUseRestriction>
+					<field>true</field>
+					<condition>true</condition>
+					<group>true</group>
+					<order>true</order>
+				</attributeUseRestriction>
 			</field>
 			<dataSource>ИсточникДанных1</dataSource>
 			<query>ВЫБРАТЬ
 	ЗНАЧЕНИЕ(Документ.ЗаказКлиента.ПустаяСсылка) 					КАК ЗаказКлиента,
 	ЗНАЧЕНИЕ(Справочник.Номенклатура.ПустаяСсылка) 					КАК Номенклатура,
-	ЗНАЧЕНИЕ(Справочник.Партнеры.ПустаяСсылка)						КАК Клиенты,
+	ЗНАЧЕНИЕ(Справочник.Партнеры.ПустаяСсылка)						КАК Клиент,
 	ДАТАВРЕМЯ(1,1,1)												КАК ДатаАктуальности,
 	ДАТАВРЕМЯ(1,1,1)												КАК ДатаПоступления,
 	0																КАК КоличествоВЗаказе,
 	ЛОЖЬ															КАК Залет,
 	ЗНАЧЕНИЕ(Справочник.Партнеры.ПустаяСсылка)						КАК ПоставщикТовара,
+	ЗНАЧЕНИЕ(Справочник.Организации.ПустаяСсылка)					КАК Организация,
+	ЗНАЧЕНИЕ(Справочник.СтруктураПредприятия.ПустаяСсылка)			КАК Подразделение,
 	ЗНАЧЕНИЕ(Справочник.Склады.ПустаяСсылка)						КАК Склад,
 	0 																КАК МинЦенаПоставщикаЗаПериод,
 	ЗНАЧЕНИЕ(Справочник.СоглашенияСПоставщиками.ПустаяСсылка)		КАК ПоставщикМинЦеныЗаПериод,
@@ -231,7 +442,12 @@
 	0																КАК ВаловаяПрибыль,
 	0																КАК Рентабельность,
 	0																КАК ЦенаВЗаказе,
-	0																КАК СуммаВЗаказе</query>
+	0																КАК СуммаВЗаказе,
+	""																КАК ВидОбеспечения,
+	ЗНАЧЕНИЕ(Справочник.ВидыНоменклатуры.ПустаяСсылка)				КАК ВидНоменклатуры,
+	0																КАК СрокДоставки,
+	ЗНАЧЕНИЕ(Справочник.Партнеры.ПустаяСсылка)						КАК Поставщик,
+	ЗНАЧЕНИЕ(Справочник.Склады.ПустаяСсылка)						КАК СкладЗаказа</query>
 		</dataSet>
 		<totalField>
 			<dataPath>КоличествоВЗаказе</dataPath>
@@ -305,6 +521,19 @@
 		<totalField>
 			<dataPath>СуммаВЗаказе</dataPath>
 			<expression>Сумма(СуммаВЗаказе)</expression>
+		</totalField>
+		<totalField>
+			<dataPath>СрокДоставки</dataPath>
+			<expression>Сумма(СрокДоставки)</expression>
+			<group>Номенклатура</group>
+		</totalField>
+		<totalField>
+			<dataPath>ДатаАктуальности</dataPath>
+			<expression>ДатаАктуальности</expression>
+		</totalField>
+		<totalField>
+			<dataPath>ДатаПоступления</dataPath>
+			<expression>ДатаПоступления</expression>
 		</totalField>
 		<parameter>
 			<name>ЛогистическийСклад</name>
@@ -427,33 +656,35 @@
 			<expression>&amp;ПериодОтчета.ДатаОкончания</expression>
 		</parameter>
 		<settingsVariant>
-			<name xmlns="http://v8.1c.ru/8.1/data-composition-system/settings">Основной</name>
-			<presentation xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="xs:string">Основной</presentation>
+			<name xmlns="http://v8.1c.ru/8.1/data-composition-system/settings">АнализЗаказов</name>
+			<presentation xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Анализ заказов</d4p1:content>
+				</d4p1:item>
+			</presentation>
 		</settingsVariant>
 	</dataCompositionSchema>
 </SchemaFile>﻿<?xml version="1.0" encoding="UTF-8"?>
 <Settings xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<selection>
 		<item xsi:type="SelectedItemField">
-			<field>ЗаказКлиента</field>
-		</item>
-		<item xsi:type="SelectedItemField">
-			<field>Клиенты</field>
-		</item>
-		<item xsi:type="SelectedItemField">
 			<field>Номенклатура</field>
 		</item>
 		<item xsi:type="SelectedItemField">
-			<field>ДатаАктуальности</field>
+			<field>ЗаказКлиента</field>
 		</item>
 		<item xsi:type="SelectedItemField">
-			<field>ДатаПоступления</field>
+			<field>Клиент</field>
 		</item>
 		<item xsi:type="SelectedItemField">
 			<field>КоличествоВЗаказе</field>
 		</item>
 		<item xsi:type="SelectedItemField">
-			<field>Выручка</field>
+			<field>ЦенаВЗаказе</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>СуммаВЗаказе</field>
 		</item>
 		<item xsi:type="SelectedItemField">
 			<field>Себестоимость</field>
@@ -462,7 +693,13 @@
 			<field>ВаловаяПрибыль</field>
 		</item>
 		<item xsi:type="SelectedItemField">
+			<field>Выручка</field>
+		</item>
+		<item xsi:type="SelectedItemField">
 			<field>Рентабельность</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>ДатаАктуальности</field>
 		</item>
 		<item xsi:type="SelectedItemField">
 			<field>Залет</field>
@@ -474,18 +711,39 @@
 			<field>ПоставщикТовара</field>
 		</item>
 		<item xsi:type="SelectedItemField">
-			<field>ПоставщикМинЦеныЗаПериод</field>
+			<field>ДатаПоступления</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>СрокДоставки</field>
 		</item>
 		<item xsi:type="SelectedItemField">
 			<field>МинЦенаПоставщикаЗаПериод</field>
 		</item>
 		<item xsi:type="SelectedItemField">
-			<field>ПоставщикМинЦеныЗаСегодня</field>
+			<field>ПоставщикМинЦеныЗаПериод</field>
 		</item>
 		<item xsi:type="SelectedItemField">
 			<field>МинЦенаПоставщикаЦенаЗаСегодня</field>
 		</item>
+		<item xsi:type="SelectedItemField">
+			<field>ПоставщикМинЦеныЗаСегодня</field>
+		</item>
 	</selection>
+	<filter>
+		<item xsi:type="FilterItemComparison">
+			<use>false</use>
+			<left xsi:type="dcscor:Field">Поставщик</left>
+			<comparisonType>Equal</comparisonType>
+			<right xsi:type="dcscor:DesignTimeValue"/>
+		</item>
+		<item xsi:type="FilterItemComparison">
+			<use>false</use>
+			<left xsi:type="dcscor:Field">СкладЗаказа</left>
+			<comparisonType>Equal</comparisonType>
+			<right xsi:type="dcscor:DesignTimeValue"/>
+		</item>
+		<userSettingID>acbdaa1d-4459-4d91-b73a-028197c18c77</userSettingID>
+	</filter>
 	<dataParameters>
 		<dcscor:item xsi:type="SettingsParameterValue">
 			<dcscor:use>false</dcscor:use>
@@ -498,10 +756,14 @@
 			<userSettingID>2b7255eb-af32-462f-9040-11122845b370</userSettingID>
 		</dcscor:item>
 	</dataParameters>
+	<order>
+		<userSettingID>d7c53fe3-779b-4c45-95bd-c3c29c9dff3b</userSettingID>
+	</order>
+	<conditionalAppearance/>
 	<item xsi:type="StructureItemGroup">
 		<groupItems>
 			<item xsi:type="GroupItemField">
-				<field>Склад</field>
+				<field>Организация</field>
 				<groupType>Items</groupType>
 				<periodAdditionType>None</periodAdditionType>
 				<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
@@ -517,7 +779,7 @@
 		<item xsi:type="StructureItemGroup">
 			<groupItems>
 				<item xsi:type="GroupItemField">
-					<field>Номенклатура.ВидНоменклатуры</field>
+					<field>ВидНоменклатуры</field>
 					<groupType>Hierarchy</groupType>
 					<periodAdditionType>None</periodAdditionType>
 					<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
@@ -533,7 +795,7 @@
 			<item xsi:type="StructureItemGroup">
 				<groupItems>
 					<item xsi:type="GroupItemField">
-						<field>ЗаказКлиента</field>
+						<field>Склад</field>
 						<groupType>Items</groupType>
 						<periodAdditionType>None</periodAdditionType>
 						<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
@@ -557,6 +819,7 @@
 			</item>
 		</item>
 	</item>
+	<itemsUserSettingID>fa37d2a8-0ec1-44a1-957d-e8ca8f538480</itemsUserSettingID>
 </Settings>﻿<?xml version="1.0" encoding="UTF-8"?>
 <SchemaFile xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<dataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema"/>
