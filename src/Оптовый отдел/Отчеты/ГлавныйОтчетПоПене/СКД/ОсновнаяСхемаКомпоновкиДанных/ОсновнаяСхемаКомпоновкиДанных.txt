@@ -57,14 +57,64 @@
 					</d5p1:item>
 				</title>
 			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>СуммаОстатокГРН</dataPath>
+				<field>СуммаОстатокГРН</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Сумма остаток ГРН</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>НачальнаяСуммаГРН</dataPath>
+				<field>НачальнаяСуммаГРН</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Начальная сумма ГРН</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>СуммаПросроченныхОплатГРН</dataPath>
+				<field>СуммаПросроченныхОплатГРН</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Сумма просроченных оплат ГРН</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
 			<dataSource>ИсточникДанных1</dataSource>
 			<query>ВЫБРАТЬ
 	0 КАК ВсяСумма,
    	ГрафикПлатежейПартнеров.Партнер 				КАК Контрагент,
    	ГрафикПлатежейПартнеров.Партнер.ГруппаДоступа	КАК ГруппаДоступа,
    	ГрафикПлатежейПартнеров.Документ	 			КАК ДокументПени,
-  	ГрафикПлатежейПартнеров.СуммаОстаток			КАК СуммаОстаток,
-   	ГрафикПлатежейПартнеров.НачальнаяСумма			КАК НачальнаяСумма,
+   	ВЫБОР
+   		КОГДА ГрафикПлатежейПартнеров.Валюта = ВалютаУпрУчета.Значение
+   		ТОГДА ГрафикПлатежейПартнеров.СуммаОстаток
+   		ИНАЧЕ 0
+   	КОНЕЦ КАК СуммаОстаток,
+   	ВЫБОР
+   		КОГДА ГрафикПлатежейПартнеров.Валюта = ВалютаРеглУчета.Значение
+   		ТОГДА ГрафикПлатежейПартнеров.СуммаОстаток
+   		ИНАЧЕ 0
+   	КОНЕЦ КАК СуммаОстатокГРН,
+  	//ГрафикПлатежейПартнеров.СуммаОстаток			КАК СуммаОстаток,
+  	ВЫБОР
+   		КОГДА ГрафикПлатежейПартнеров.Валюта = ВалютаУпрУчета.Значение
+   		ТОГДА ГрафикПлатежейПартнеров.НачальнаяСумма
+   		ИНАЧЕ 0
+   	КОНЕЦ КАК НачальнаяСумма,
+   	ВЫБОР
+   		КОГДА ГрафикПлатежейПартнеров.Валюта = ВалютаРеглУчета.Значение
+   		ТОГДА ГрафикПлатежейПартнеров.НачальнаяСумма
+   		ИНАЧЕ 0
+   	КОНЕЦ КАК НачальнаяСуммаГРН,
+   	//ГрафикПлатежейПартнеров.НачальнаяСумма			КАК НачальнаяСумма,
    	ГрафикПлатежейПартнеров.КоличествоДнейОтстрочки КАК КоличествоДнейОтстрочки,
    	ГрафикПлатежейПартнеров.ДатаДокумента 			КАК ДокументПениДата,
    	ГрафикПлатежейПартнеров.ДатаПлатежа 			КАК ДатаОплаты,
@@ -75,12 +125,37 @@
     КОНЕЦ КАК Прострочено,
     ВЫБОР
     	КОГДА ГрафикПлатежейПартнеров.ДатаПлатежа &lt; &amp;ТекущаяДата
-    	ТОГДА ГрафикПлатежейПартнеров.СуммаОстаток
+    	ТОГДА 	ВЫБОР
+    				КОГДА ГрафикПлатежейПартнеров.Валюта = ВалютаУпрУчета.Значение
+    				ТОГДА ГрафикПлатежейПартнеров.СуммаОстаток
+    				ИНАЧЕ 0
+    			КОНЕЦ
     	ИНАЧЕ 0
-    КОНЕЦ КАК СуммаПросроченныхОплат
+    КОНЕЦ КАК СуммаПросроченныхОплат,
+    ВЫБОР
+    	КОГДА ГрафикПлатежейПартнеров.ДатаПлатежа &lt; &amp;ТекущаяДата
+    	ТОГДА 	ВЫБОР
+    				КОГДА ГрафикПлатежейПартнеров.Валюта = ВалютаРеглУчета.Значение
+    				ТОГДА ГрафикПлатежейПартнеров.СуммаОстаток
+    				ИНАЧЕ 0
+    			КОНЕЦ
+    	ИНАЧЕ 0
+    КОНЕЦ КАК СуммаПросроченныхОплатГРН
+    //ВЫБОР
+    //	КОГДА ГрафикПлатежейПартнеров.ДатаПлатежа &lt; &amp;ТекущаяДата
+    //	ТОГДА ГрафикПлатежейПартнеров.СуммаОстаток
+    //	ИНАЧЕ 0
+    //КОНЕЦ КАК СуммаПросроченныхОплат
 
 ИЗ
 	РегистрСведений.КТС_ГрафикПлатежейПартнеров.СрезПервых(&amp;ТекущаяДата, Партнер В (&amp;СписокРазрешенныхПартнеров)) КАК ГрафикПлатежейПартнеров
+	
+ЛЕВОЕ СОЕДИНЕНИЕ Константа.ВалютаУправленческогоУчета КАК ВалютаУпрУчета
+ПО ИСТИНА
+
+ЛЕВОЕ СОЕДИНЕНИЕ Константа.ВалютаРегламентированногоУчета КАК ВалютаРеглУчета
+ПО ИСТИНА
+
    
 УПОРЯДОЧИТЬ ПО 
 	ГрафикПлатежейПартнеров.ДатаПлатежа			        	</query>
@@ -104,6 +179,14 @@
 		<totalField>
 			<dataPath>Прострочено</dataPath>
 			<expression>Прострочено</expression>
+		</totalField>
+		<totalField>
+			<dataPath>СуммаОстатокГРН</dataPath>
+			<expression>Сумма(СуммаОстатокГРН)</expression>
+		</totalField>
+		<totalField>
+			<dataPath>СуммаПросроченныхОплатГРН</dataPath>
+			<expression>Сумма(СуммаПросроченныхОплатГРН)</expression>
 		</totalField>
 		<parameter>
 			<name>ТекущаяДата</name>
@@ -512,11 +595,11 @@
 			</parameter>
 			<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
 				<dcsat:name>СуммаПросроченныхОплатГРН</dcsat:name>
-				<dcsat:expression>0</dcsat:expression>
+				<dcsat:expression>СуммаПросроченныхОплатГРН</dcsat:expression>
 			</parameter>
 			<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
 				<dcsat:name>СуммаОстатокГРН</dcsat:name>
-				<dcsat:expression>0</dcsat:expression>
+				<dcsat:expression>СуммаОстатокГРН</dcsat:expression>
 			</parameter>
 			<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
 				<dcsat:name>СуммаПросроченныхОплат</dcsat:name>
@@ -677,7 +760,7 @@
 							<dcsat:value xmlns:d8p1="http://v8.1c.ru/8.1/data/core" xsi:type="d8p1:LocalStringType">
 								<d8p1:item>
 									<d8p1:lang>ru</d8p1:lang>
-									<d8p1:content>Итоги</d8p1:content>
+									<d8p1:content>Итоги (ГРН)</d8p1:content>
 								</d8p1:item>
 							</dcsat:value>
 						</dcsat:item>
@@ -688,7 +771,7 @@
 							<dcsat:value xmlns:d8p1="http://v8.1c.ru/8.1/data/core" xsi:type="d8p1:LocalStringType">
 								<d8p1:item>
 									<d8p1:lang>ru</d8p1:lang>
-									<d8p1:content>Долг всех контрагентов:</d8p1:content>
+									<d8p1:content>Долг всех контрагентов (ГРН):</d8p1:content>
 								</d8p1:item>
 							</dcsat:value>
 						</dcsat:item>
@@ -696,7 +779,12 @@
 					</dcsat:tableCell>
 					<dcsat:tableCell>
 						<dcsat:item xsi:type="dcsat:Field">
-							<dcsat:value xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xsi:type="dcscor:Parameter">СуммаОстаток</dcsat:value>
+							<dcsat:value xmlns:d8p1="http://v8.1c.ru/8.1/data/core" xsi:type="d8p1:LocalStringType">
+								<d8p1:item>
+									<d8p1:lang>ru</d8p1:lang>
+									<d8p1:content>СуммаОстатокГРН</d8p1:content>
+								</d8p1:item>
+							</dcsat:value>
 							<dcsat:appearance>
 								<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
 									<parameter>Формат</parameter>
@@ -711,7 +799,7 @@
 							<dcsat:value xmlns:d8p1="http://v8.1c.ru/8.1/data/core" xsi:type="d8p1:LocalStringType">
 								<d8p1:item>
 									<d8p1:lang>ru</d8p1:lang>
-									<d8p1:content>Сумма просрочки:</d8p1:content>
+									<d8p1:content>Сумма просрочки(ГРН):	</d8p1:content>
 								</d8p1:item>
 							</dcsat:value>
 						</dcsat:item>
@@ -722,7 +810,12 @@
 					</dcsat:tableCell>
 					<dcsat:tableCell>
 						<dcsat:item xsi:type="dcsat:Field">
-							<dcsat:value xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xsi:type="dcscor:Parameter">СуммаПросроченныхОплат</dcsat:value>
+							<dcsat:value xmlns:d8p1="http://v8.1c.ru/8.1/data/core" xsi:type="d8p1:LocalStringType">
+								<d8p1:item>
+									<d8p1:lang>ru</d8p1:lang>
+									<d8p1:content>СуммаПросроченныхОплатГРН</d8p1:content>
+								</d8p1:item>
+							</dcsat:value>
 							<dcsat:appearance>
 								<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
 									<parameter>Формат</parameter>
@@ -734,18 +827,13 @@
 					</dcsat:tableCell>
 				</dcsat:item>
 			</template>
-			<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
-				<dcsat:name>СуммаОстаток</dcsat:name>
-				<dcsat:expression>СуммаОстаток</dcsat:expression>
-			</parameter>
-			<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
-				<dcsat:name>СуммаПросроченныхОплат</dcsat:name>
-				<dcsat:expression>СуммаПросроченныхОплат</dcsat:expression>
-			</parameter>
 		</template>
 		<template>
 			<name>Макет5</name>
 			<template xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:AreaTemplate">
+				<dcsat:item xsi:type="dcsat:TableRow">
+					<dcsat:tableCell/>
+				</dcsat:item>
 				<dcsat:item xsi:type="dcsat:TableRow">
 					<dcsat:tableCell>
 						<dcsat:item xsi:type="dcsat:Field">
@@ -764,11 +852,6 @@
 							<dcsat:value xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xsi:type="dcscor:Parameter">ТекущаяДата</dcsat:value>
 						</dcsat:item>
 						<dcsat:appIndex>25</dcsat:appIndex>
-					</dcsat:tableCell>
-				</dcsat:item>
-				<dcsat:item xsi:type="dcsat:TableRow">
-					<dcsat:tableCell>
-						<dcsat:appIndex>26</dcsat:appIndex>
 					</dcsat:tableCell>
 				</dcsat:item>
 			</template>
@@ -1886,10 +1969,6 @@
 			<parameter>МаксимальнаяШирина</parameter>
 			<value xsi:type="xs:decimal">12.625</value>
 		</item>
-		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
-			<parameter>ОбъединятьПоГоризонтали</parameter>
-			<value xsi:type="xs:boolean">true</value>
-		</item>
 	</appearance>
 	<appearance xmlns="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="TableCellAppearance">
 		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
@@ -1955,16 +2034,6 @@
 		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
 			<parameter>Отступ</parameter>
 			<value xsi:type="xs:decimal">2</value>
-		</item>
-	</appearance>
-	<appearance xmlns="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="TableCellAppearance">
-		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
-			<parameter>ЦветФона</parameter>
-			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xmlns:d4p2="http://v8.1c.ru/8.1/data/ui/style" xsi:type="d4p1:Color">d4p2:FieldBackColor</value>
-		</item>
-		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
-			<parameter>ЦветГраницы</parameter>
-			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xmlns:d4p2="http://v8.1c.ru/8.1/data/ui/style" xsi:type="d4p1:Color">d4p2:FieldBackColor</value>
 		</item>
 	</appearance>
 </SchemaFile>
