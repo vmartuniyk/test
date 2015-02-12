@@ -57,14 +57,64 @@
 					</d5p1:item>
 				</title>
 			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>СуммаОстатокГРН</dataPath>
+				<field>СуммаОстатокГРН</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Сумма остаток ГРН</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>НачальнаяСуммаГРН</dataPath>
+				<field>НачальнаяСуммаГРН</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Начальная сумма ГРН</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>СуммаПросроченныхОплатГРН</dataPath>
+				<field>СуммаПросроченныхОплатГРН</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Сумма просроченных оплат ГРН</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
 			<dataSource>ИсточникДанных1</dataSource>
 			<query>ВЫБРАТЬ
 	0 КАК ВсяСумма,
    	ГрафикПлатежейПартнеров.Партнер 				КАК Контрагент,
    	ГрафикПлатежейПартнеров.Партнер.ГруппаДоступа	КАК ГруппаДоступа,
    	ГрафикПлатежейПартнеров.Документ	 			КАК ДокументПени,
-  	ГрафикПлатежейПартнеров.СуммаОстаток			КАК СуммаОстаток,
-   	ГрафикПлатежейПартнеров.НачальнаяСумма			КАК НачальнаяСумма,
+   	ВЫБОР
+   		КОГДА ГрафикПлатежейПартнеров.Валюта = ВалютаУпрУчета.Значение
+   		ТОГДА ГрафикПлатежейПартнеров.СуммаОстаток
+   		ИНАЧЕ 0
+   	КОНЕЦ КАК СуммаОстаток,
+   	ВЫБОР
+   		КОГДА ГрафикПлатежейПартнеров.Валюта = ВалютаРеглУчета.Значение
+   		ТОГДА ГрафикПлатежейПартнеров.СуммаОстаток
+   		ИНАЧЕ 0
+   	КОНЕЦ КАК СуммаОстатокГРН,
+  	//ГрафикПлатежейПартнеров.СуммаОстаток			КАК СуммаОстаток,
+  	ВЫБОР
+   		КОГДА ГрафикПлатежейПартнеров.Валюта = ВалютаУпрУчета.Значение
+   		ТОГДА ГрафикПлатежейПартнеров.НачальнаяСумма
+   		ИНАЧЕ 0
+   	КОНЕЦ КАК НачальнаяСумма,
+   	ВЫБОР
+   		КОГДА ГрафикПлатежейПартнеров.Валюта = ВалютаРеглУчета.Значение
+   		ТОГДА ГрафикПлатежейПартнеров.НачальнаяСумма
+   		ИНАЧЕ 0
+   	КОНЕЦ КАК НачальнаяСуммаГРН,
+   	//ГрафикПлатежейПартнеров.НачальнаяСумма			КАК НачальнаяСумма,
    	ГрафикПлатежейПартнеров.КоличествоДнейОтстрочки КАК КоличествоДнейОтстрочки,
    	ГрафикПлатежейПартнеров.ДатаДокумента 			КАК ДокументПениДата,
    	ГрафикПлатежейПартнеров.ДатаПлатежа 			КАК ДатаОплаты,
@@ -75,12 +125,37 @@
     КОНЕЦ КАК Прострочено,
     ВЫБОР
     	КОГДА ГрафикПлатежейПартнеров.ДатаПлатежа &lt; &amp;ТекущаяДата
-    	ТОГДА ГрафикПлатежейПартнеров.СуммаОстаток
+    	ТОГДА 	ВЫБОР
+    				КОГДА ГрафикПлатежейПартнеров.Валюта = ВалютаУпрУчета.Значение
+    				ТОГДА ГрафикПлатежейПартнеров.СуммаОстаток
+    				ИНАЧЕ 0
+    			КОНЕЦ
     	ИНАЧЕ 0
-    КОНЕЦ КАК СуммаПросроченныхОплат
+    КОНЕЦ КАК СуммаПросроченныхОплат,
+    ВЫБОР
+    	КОГДА ГрафикПлатежейПартнеров.ДатаПлатежа &lt; &amp;ТекущаяДата
+    	ТОГДА 	ВЫБОР
+    				КОГДА ГрафикПлатежейПартнеров.Валюта = ВалютаРеглУчета.Значение
+    				ТОГДА ГрафикПлатежейПартнеров.СуммаОстаток
+    				ИНАЧЕ 0
+    			КОНЕЦ
+    	ИНАЧЕ 0
+    КОНЕЦ КАК СуммаПросроченныхОплатГРН
+    //ВЫБОР
+    //	КОГДА ГрафикПлатежейПартнеров.ДатаПлатежа &lt; &amp;ТекущаяДата
+    //	ТОГДА ГрафикПлатежейПартнеров.СуммаОстаток
+    //	ИНАЧЕ 0
+    //КОНЕЦ КАК СуммаПросроченныхОплат
 
 ИЗ
 	РегистрСведений.КТС_ГрафикПлатежейПартнеров.СрезПервых(&amp;ТекущаяДата, Партнер В (&amp;СписокРазрешенныхПартнеров)) КАК ГрафикПлатежейПартнеров
+	
+ЛЕВОЕ СОЕДИНЕНИЕ Константа.ВалютаУправленческогоУчета КАК ВалютаУпрУчета
+ПО ИСТИНА
+
+ЛЕВОЕ СОЕДИНЕНИЕ Константа.ВалютаРегламентированногоУчета КАК ВалютаРеглУчета
+ПО ИСТИНА
+
    
 УПОРЯДОЧИТЬ ПО 
 	ГрафикПлатежейПартнеров.ДатаПлатежа			        	</query>
@@ -104,6 +179,14 @@
 		<totalField>
 			<dataPath>Прострочено</dataPath>
 			<expression>Прострочено</expression>
+		</totalField>
+		<totalField>
+			<dataPath>СуммаОстатокГРН</dataPath>
+			<expression>Сумма(СуммаОстатокГРН)</expression>
+		</totalField>
+		<totalField>
+			<dataPath>СуммаПросроченныхОплатГРН</dataPath>
+			<expression>Сумма(СуммаПросроченныхОплатГРН)</expression>
 		</totalField>
 		<parameter>
 			<name>ТекущаяДата</name>
@@ -390,11 +473,14 @@
 							<dcsat:value xmlns:d8p1="http://v8.1c.ru/8.1/data/core" xsi:type="d8p1:LocalStringType">
 								<d8p1:item>
 									<d8p1:lang>ru</d8p1:lang>
-									<d8p1:content>Ваш долг составляет:</d8p1:content>
+									<d8p1:content>Ваш долг составляет (USD):</d8p1:content>
 								</d8p1:item>
 							</dcsat:value>
 						</dcsat:item>
 						<dcsat:appIndex>1</dcsat:appIndex>
+					</dcsat:tableCell>
+					<dcsat:tableCell>
+						<dcsat:appIndex>2</dcsat:appIndex>
 					</dcsat:tableCell>
 					<dcsat:tableCell>
 						<dcsat:item xsi:type="dcsat:Field">
@@ -406,14 +492,14 @@
 								</item>
 							</dcsat:appearance>
 						</dcsat:item>
-						<dcsat:appIndex>2</dcsat:appIndex>
+						<dcsat:appIndex>3</dcsat:appIndex>
 					</dcsat:tableCell>
 					<dcsat:tableCell>
 						<dcsat:item xsi:type="dcsat:Field">
 							<dcsat:value xmlns:d8p1="http://v8.1c.ru/8.1/data/core" xsi:type="d8p1:LocalStringType">
 								<d8p1:item>
 									<d8p1:lang>ru</d8p1:lang>
-									<d8p1:content>Сумма просрочки:</d8p1:content>
+									<d8p1:content>Сумма просрочки (USD):</d8p1:content>
 								</d8p1:item>
 							</dcsat:value>
 							<dcsat:appearance>
@@ -423,10 +509,10 @@
 								</item>
 							</dcsat:appearance>
 						</dcsat:item>
-						<dcsat:appIndex>3</dcsat:appIndex>
+						<dcsat:appIndex>4</dcsat:appIndex>
 					</dcsat:tableCell>
 					<dcsat:tableCell>
-						<dcsat:appIndex>4</dcsat:appIndex>
+						<dcsat:appIndex>5</dcsat:appIndex>
 					</dcsat:tableCell>
 					<dcsat:tableCell>
 						<dcsat:item xsi:type="dcsat:Field">
@@ -438,17 +524,88 @@
 								</item>
 							</dcsat:appearance>
 						</dcsat:item>
+						<dcsat:appIndex>6</dcsat:appIndex>
+					</dcsat:tableCell>
+				</dcsat:item>
+				<dcsat:item xsi:type="dcsat:TableRow">
+					<dcsat:tableCell>
+						<dcsat:appIndex>7</dcsat:appIndex>
+					</dcsat:tableCell>
+					<dcsat:tableCell>
+						<dcsat:item xsi:type="dcsat:Field">
+							<dcsat:value xmlns:d8p1="http://v8.1c.ru/8.1/data/core" xsi:type="d8p1:LocalStringType">
+								<d8p1:item>
+									<d8p1:lang>ru</d8p1:lang>
+									<d8p1:content>Ваш долг составляет (ГРН):</d8p1:content>
+								</d8p1:item>
+							</dcsat:value>
+						</dcsat:item>
+						<dcsat:appIndex>8</dcsat:appIndex>
+					</dcsat:tableCell>
+					<dcsat:tableCell>
+						<dcsat:appIndex>9</dcsat:appIndex>
+					</dcsat:tableCell>
+					<dcsat:tableCell>
+						<dcsat:item xsi:type="dcsat:Field">
+							<dcsat:value xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xsi:type="dcscor:Parameter">СуммаОстатокГРН</dcsat:value>
+							<dcsat:appearance>
+								<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+									<parameter>Формат</parameter>
+									<value xsi:type="xs:string">ЧЦ=15; ЧДЦ=2</value>
+								</item>
+							</dcsat:appearance>
+						</dcsat:item>
+						<dcsat:appIndex>10</dcsat:appIndex>
+					</dcsat:tableCell>
+					<dcsat:tableCell>
+						<dcsat:item xsi:type="dcsat:Field">
+							<dcsat:value xmlns:d8p1="http://v8.1c.ru/8.1/data/core" xsi:type="d8p1:LocalStringType">
+								<d8p1:item>
+									<d8p1:lang>ru</d8p1:lang>
+									<d8p1:content>Сумма просрочки (ГРН):</d8p1:content>
+								</d8p1:item>
+							</dcsat:value>
+							<dcsat:appearance>
+								<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+									<parameter>Формат</parameter>
+									<value xsi:type="xs:string">ЧЦ=15; ЧДЦ=2</value>
+								</item>
+							</dcsat:appearance>
+						</dcsat:item>
+						<dcsat:appIndex>11</dcsat:appIndex>
+					</dcsat:tableCell>
+					<dcsat:tableCell>
 						<dcsat:appIndex>5</dcsat:appIndex>
+					</dcsat:tableCell>
+					<dcsat:tableCell>
+						<dcsat:item xsi:type="dcsat:Field">
+							<dcsat:value xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xsi:type="dcscor:Parameter">СуммаПросроченныхОплатГРН</dcsat:value>
+							<dcsat:appearance>
+								<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+									<parameter>Формат</parameter>
+									<value xsi:type="xs:string">ЧЦ=15; ЧДЦ=2</value>
+								</item>
+							</dcsat:appearance>
+						</dcsat:item>
+						<dcsat:appIndex>12</dcsat:appIndex>
 					</dcsat:tableCell>
 				</dcsat:item>
 			</template>
+			<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
+				<dcsat:name>Контрагент</dcsat:name>
+				<dcsat:expression>Представление(Контрагент)</dcsat:expression>
+			</parameter>
 			<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
 				<dcsat:name>СуммаОстаток</dcsat:name>
 				<dcsat:expression>СуммаОстаток</dcsat:expression>
 			</parameter>
 			<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
-				<dcsat:name>Контрагент</dcsat:name>
-				<dcsat:expression>Контрагент</dcsat:expression>
+				<dcsat:name>СуммаПросроченныхОплатГРН</dcsat:name>
+				<dcsat:expression>СуммаПросроченныхОплатГРН</dcsat:expression>
+			</parameter>
+			<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
+				<dcsat:name>СуммаОстатокГРН</dcsat:name>
+				<dcsat:expression>СуммаОстатокГРН</dcsat:expression>
 			</parameter>
 			<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
 				<dcsat:name>СуммаПросроченныхОплат</dcsat:name>
@@ -460,7 +617,7 @@
 			<template xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:AreaTemplate">
 				<dcsat:item xsi:type="dcsat:TableRow">
 					<dcsat:tableCell>
-						<dcsat:appIndex>6</dcsat:appIndex>
+						<dcsat:appIndex>13</dcsat:appIndex>
 					</dcsat:tableCell>
 					<dcsat:tableCell>
 						<dcsat:item xsi:type="dcsat:Field">
@@ -471,10 +628,10 @@
 								</d8p1:item>
 							</dcsat:value>
 						</dcsat:item>
-						<dcsat:appIndex>7</dcsat:appIndex>
+						<dcsat:appIndex>14</dcsat:appIndex>
 					</dcsat:tableCell>
 					<dcsat:tableCell>
-						<dcsat:appIndex>8</dcsat:appIndex>
+						<dcsat:appIndex>15</dcsat:appIndex>
 					</dcsat:tableCell>
 					<dcsat:tableCell>
 						<dcsat:item xsi:type="dcsat:Field">
@@ -482,11 +639,59 @@
 							<dcsat:appearance>
 								<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
 									<parameter>Формат</parameter>
-									<value xsi:type="xs:string">ЧЦ=15; ЧДЦ=2</value>
+									<value xsi:type="xs:string">ЧЦ=15; ЧДЦ=2; ЧН=—</value>
 								</item>
 							</dcsat:appearance>
 						</dcsat:item>
-						<dcsat:appIndex>9</dcsat:appIndex>
+						<dcsat:item xsi:type="dcsat:Field">
+							<dcsat:value xmlns:d8p1="http://v8.1c.ru/8.1/data/core" xsi:type="d8p1:LocalStringType">
+								<d8p1:item>
+									<d8p1:lang>ua</d8p1:lang>
+									<d8p1:content> у.о.</d8p1:content>
+								</d8p1:item>
+								<d8p1:item>
+									<d8p1:lang>ru</d8p1:lang>
+									<d8p1:content> у.о.</d8p1:content>
+								</d8p1:item>
+							</dcsat:value>
+							<dcsat:appearance>
+								<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+									<parameter>Формат</parameter>
+									<value xsi:type="xs:string">ЧЦ=15; ЧДЦ=2; ЧН=—</value>
+								</item>
+							</dcsat:appearance>
+						</dcsat:item>
+						<dcsat:appIndex>16</dcsat:appIndex>
+					</dcsat:tableCell>
+					<dcsat:tableCell>
+						<dcsat:item xsi:type="dcsat:Field">
+							<dcsat:value xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xsi:type="dcscor:Parameter">СуммаОстатокГРН</dcsat:value>
+							<dcsat:appearance>
+								<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+									<parameter>Формат</parameter>
+									<value xsi:type="xs:string">ЧЦ=15; ЧДЦ=2; ЧН=—</value>
+								</item>
+							</dcsat:appearance>
+						</dcsat:item>
+						<dcsat:item xsi:type="dcsat:Field">
+							<dcsat:value xmlns:d8p1="http://v8.1c.ru/8.1/data/core" xsi:type="d8p1:LocalStringType">
+								<d8p1:item>
+									<d8p1:lang>ua</d8p1:lang>
+									<d8p1:content> грн</d8p1:content>
+								</d8p1:item>
+								<d8p1:item>
+									<d8p1:lang>ru</d8p1:lang>
+									<d8p1:content> грн</d8p1:content>
+								</d8p1:item>
+							</dcsat:value>
+							<dcsat:appearance>
+								<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+									<parameter>Формат</parameter>
+									<value xsi:type="xs:string">ЧЦ=15; ЧДЦ=2; ЧН=—</value>
+								</item>
+							</dcsat:appearance>
+						</dcsat:item>
+						<dcsat:appIndex>17</dcsat:appIndex>
 					</dcsat:tableCell>
 					<dcsat:tableCell>
 						<dcsat:item xsi:type="dcsat:Field">
@@ -497,7 +702,7 @@
 								</d8p1:item>
 							</dcsat:value>
 						</dcsat:item>
-						<dcsat:appIndex>10</dcsat:appIndex>
+						<dcsat:appIndex>18</dcsat:appIndex>
 					</dcsat:tableCell>
 					<dcsat:tableCell>
 						<dcsat:item xsi:type="dcsat:Field">
@@ -509,17 +714,21 @@
 								</item>
 							</dcsat:appearance>
 						</dcsat:item>
-						<dcsat:appIndex>11</dcsat:appIndex>
+						<dcsat:appIndex>19</dcsat:appIndex>
 					</dcsat:tableCell>
 				</dcsat:item>
 			</template>
 			<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
-				<dcsat:name>СуммаОстаток</dcsat:name>
-				<dcsat:expression>СуммаОстаток</dcsat:expression>
-			</parameter>
-			<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
 				<dcsat:name>ДатаОплаты</dcsat:name>
 				<dcsat:expression>ДатаОплаты</dcsat:expression>
+			</parameter>
+			<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
+				<dcsat:name>СуммаОстатокГРН</dcsat:name>
+				<dcsat:expression>СуммаОстатокГРН</dcsat:expression>
+			</parameter>
+			<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
+				<dcsat:name>СуммаОстаток</dcsat:name>
+				<dcsat:expression>СуммаОстаток</dcsat:expression>
 			</parameter>
 		</template>
 		<template>
@@ -536,16 +745,16 @@
 								</item>
 							</dcsat:appearance>
 						</dcsat:item>
-						<dcsat:appIndex>12</dcsat:appIndex>
+						<dcsat:appIndex>20</dcsat:appIndex>
 					</dcsat:tableCell>
 					<dcsat:tableCell>
 						<dcsat:item xsi:type="dcsat:Field">
 							<dcsat:value xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xsi:type="dcscor:Parameter">ДокументПени</dcsat:value>
 						</dcsat:item>
-						<dcsat:appIndex>13</dcsat:appIndex>
+						<dcsat:appIndex>21</dcsat:appIndex>
 					</dcsat:tableCell>
 					<dcsat:tableCell>
-						<dcsat:appIndex>8</dcsat:appIndex>
+						<dcsat:appIndex>15</dcsat:appIndex>
 					</dcsat:tableCell>
 					<dcsat:tableCell>
 						<dcsat:item xsi:type="dcsat:Field">
@@ -553,17 +762,29 @@
 							<dcsat:appearance>
 								<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
 									<parameter>Формат</parameter>
-									<value xsi:type="xs:string">ЧЦ=15; ЧДЦ=2</value>
+									<value xsi:type="xs:string">ЧЦ=15; ЧДЦ=2; ЧН=—</value>
 								</item>
 							</dcsat:appearance>
 						</dcsat:item>
-						<dcsat:appIndex>14</dcsat:appIndex>
+						<dcsat:appIndex>22</dcsat:appIndex>
+					</dcsat:tableCell>
+					<dcsat:tableCell>
+						<dcsat:item xsi:type="dcsat:Field">
+							<dcsat:value xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xsi:type="dcscor:Parameter">СуммаОстатокГРН</dcsat:value>
+							<dcsat:appearance>
+								<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+									<parameter>Формат</parameter>
+									<value xsi:type="xs:string">ЧЦ=15; ЧДЦ=2; ЧН=—</value>
+								</item>
+							</dcsat:appearance>
+						</dcsat:item>
+						<dcsat:appIndex>23</dcsat:appIndex>
 					</dcsat:tableCell>
 					<dcsat:tableCell>
 						<dcsat:item xsi:type="dcsat:Field">
 							<dcsat:value xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xsi:type="dcscor:Parameter">КоличествоДнейОтстрочки</dcsat:value>
 						</dcsat:item>
-						<dcsat:appIndex>15</dcsat:appIndex>
+						<dcsat:appIndex>24</dcsat:appIndex>
 					</dcsat:tableCell>
 					<dcsat:tableCell>
 						<dcsat:item xsi:type="dcsat:Field">
@@ -575,7 +796,7 @@
 								</item>
 							</dcsat:appearance>
 						</dcsat:item>
-						<dcsat:appIndex>16</dcsat:appIndex>
+						<dcsat:appIndex>25</dcsat:appIndex>
 					</dcsat:tableCell>
 				</dcsat:item>
 			</template>
@@ -599,6 +820,10 @@
 				<dcsat:name>ДатаОплаты</dcsat:name>
 				<dcsat:expression>ДатаОплаты</dcsat:expression>
 			</parameter>
+			<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
+				<dcsat:name>СуммаОстатокГРН</dcsat:name>
+				<dcsat:expression>СуммаОстатокГРН</dcsat:expression>
+			</parameter>
 		</template>
 		<template>
 			<name>Макет4</name>
@@ -609,22 +834,87 @@
 							<dcsat:value xmlns:d8p1="http://v8.1c.ru/8.1/data/core" xsi:type="d8p1:LocalStringType">
 								<d8p1:item>
 									<d8p1:lang>ru</d8p1:lang>
-									<d8p1:content>Итоги</d8p1:content>
+									<d8p1:content>Итоги (ГРН)</d8p1:content>
 								</d8p1:item>
 							</dcsat:value>
 						</dcsat:item>
-						<dcsat:appIndex>17</dcsat:appIndex>
+						<dcsat:appIndex>26</dcsat:appIndex>
 					</dcsat:tableCell>
 					<dcsat:tableCell>
 						<dcsat:item xsi:type="dcsat:Field">
 							<dcsat:value xmlns:d8p1="http://v8.1c.ru/8.1/data/core" xsi:type="d8p1:LocalStringType">
 								<d8p1:item>
 									<d8p1:lang>ru</d8p1:lang>
-									<d8p1:content>Долг всех контрагентов:</d8p1:content>
+									<d8p1:content>Долг всех контрагентов (ГРН):</d8p1:content>
 								</d8p1:item>
 							</dcsat:value>
 						</dcsat:item>
-						<dcsat:appIndex>18</dcsat:appIndex>
+						<dcsat:appIndex>27</dcsat:appIndex>
+					</dcsat:tableCell>
+					<dcsat:tableCell>
+						<dcsat:item xsi:type="dcsat:Field">
+							<dcsat:value xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xsi:type="dcscor:Parameter">СуммаОстатокГРН</dcsat:value>
+							<dcsat:appearance>
+								<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+									<parameter>Формат</parameter>
+									<value xsi:type="xs:string">ЧЦ=15; ЧДЦ=2</value>
+								</item>
+							</dcsat:appearance>
+						</dcsat:item>
+						<dcsat:appIndex>28</dcsat:appIndex>
+					</dcsat:tableCell>
+					<dcsat:tableCell>
+						<dcsat:appIndex>29</dcsat:appIndex>
+					</dcsat:tableCell>
+					<dcsat:tableCell>
+						<dcsat:item xsi:type="dcsat:Field">
+							<dcsat:value xmlns:d8p1="http://v8.1c.ru/8.1/data/core" xsi:type="d8p1:LocalStringType">
+								<d8p1:item>
+									<d8p1:lang>ru</d8p1:lang>
+									<d8p1:content>Сумма просрочки(ГРН):	</d8p1:content>
+								</d8p1:item>
+							</dcsat:value>
+						</dcsat:item>
+						<dcsat:appIndex>30</dcsat:appIndex>
+					</dcsat:tableCell>
+					<dcsat:tableCell>
+						<dcsat:appIndex>31</dcsat:appIndex>
+					</dcsat:tableCell>
+					<dcsat:tableCell>
+						<dcsat:item xsi:type="dcsat:Field">
+							<dcsat:value xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xsi:type="dcscor:Parameter">СуммаПросроченныхОплатГРН</dcsat:value>
+							<dcsat:appearance>
+								<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+									<parameter>Формат</parameter>
+									<value xsi:type="xs:string">ЧЦ=15; ЧДЦ=2</value>
+								</item>
+							</dcsat:appearance>
+						</dcsat:item>
+						<dcsat:appIndex>32</dcsat:appIndex>
+					</dcsat:tableCell>
+				</dcsat:item>
+				<dcsat:item xsi:type="dcsat:TableRow">
+					<dcsat:tableCell>
+						<dcsat:item xsi:type="dcsat:Field">
+							<dcsat:value xmlns:d8p1="http://v8.1c.ru/8.1/data/core" xsi:type="d8p1:LocalStringType">
+								<d8p1:item>
+									<d8p1:lang>ru</d8p1:lang>
+									<d8p1:content>Итоги (USD)</d8p1:content>
+								</d8p1:item>
+							</dcsat:value>
+						</dcsat:item>
+						<dcsat:appIndex>26</dcsat:appIndex>
+					</dcsat:tableCell>
+					<dcsat:tableCell>
+						<dcsat:item xsi:type="dcsat:Field">
+							<dcsat:value xmlns:d8p1="http://v8.1c.ru/8.1/data/core" xsi:type="d8p1:LocalStringType">
+								<d8p1:item>
+									<d8p1:lang>ru</d8p1:lang>
+									<d8p1:content>Долг всех контрагентов (USD):</d8p1:content>
+								</d8p1:item>
+							</dcsat:value>
+						</dcsat:item>
+						<dcsat:appIndex>27</dcsat:appIndex>
 					</dcsat:tableCell>
 					<dcsat:tableCell>
 						<dcsat:item xsi:type="dcsat:Field">
@@ -636,21 +926,24 @@
 								</item>
 							</dcsat:appearance>
 						</dcsat:item>
-						<dcsat:appIndex>19</dcsat:appIndex>
+						<dcsat:appIndex>28</dcsat:appIndex>
+					</dcsat:tableCell>
+					<dcsat:tableCell>
+						<dcsat:appIndex>33</dcsat:appIndex>
 					</dcsat:tableCell>
 					<dcsat:tableCell>
 						<dcsat:item xsi:type="dcsat:Field">
 							<dcsat:value xmlns:d8p1="http://v8.1c.ru/8.1/data/core" xsi:type="d8p1:LocalStringType">
 								<d8p1:item>
 									<d8p1:lang>ru</d8p1:lang>
-									<d8p1:content>Сумма просрочки:</d8p1:content>
+									<d8p1:content>Сумма просрочки(USD):</d8p1:content>
 								</d8p1:item>
 							</dcsat:value>
 						</dcsat:item>
-						<dcsat:appIndex>20</dcsat:appIndex>
+						<dcsat:appIndex>34</dcsat:appIndex>
 					</dcsat:tableCell>
 					<dcsat:tableCell>
-						<dcsat:appIndex>4</dcsat:appIndex>
+						<dcsat:appIndex>31</dcsat:appIndex>
 					</dcsat:tableCell>
 					<dcsat:tableCell>
 						<dcsat:item xsi:type="dcsat:Field">
@@ -662,10 +955,18 @@
 								</item>
 							</dcsat:appearance>
 						</dcsat:item>
-						<dcsat:appIndex>21</dcsat:appIndex>
+						<dcsat:appIndex>32</dcsat:appIndex>
 					</dcsat:tableCell>
 				</dcsat:item>
 			</template>
+			<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
+				<dcsat:name>СуммаОстатокГРН</dcsat:name>
+				<dcsat:expression>СуммаОстатокГРН</dcsat:expression>
+			</parameter>
+			<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
+				<dcsat:name>СуммаПросроченныхОплатГРН</dcsat:name>
+				<dcsat:expression>СуммаПросроченныхОплатГРН</dcsat:expression>
+			</parameter>
 			<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
 				<dcsat:name>СуммаОстаток</dcsat:name>
 				<dcsat:expression>СуммаОстаток</dcsat:expression>
@@ -695,12 +996,12 @@
 						<dcsat:item xsi:type="dcsat:Field">
 							<dcsat:value xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xsi:type="dcscor:Parameter">ТекущаяДата</dcsat:value>
 						</dcsat:item>
-						<dcsat:appIndex>22</dcsat:appIndex>
+						<dcsat:appIndex>35</dcsat:appIndex>
 					</dcsat:tableCell>
 				</dcsat:item>
 				<dcsat:item xsi:type="dcsat:TableRow">
 					<dcsat:tableCell>
-						<dcsat:appIndex>23</dcsat:appIndex>
+						<dcsat:appIndex>36</dcsat:appIndex>
 					</dcsat:tableCell>
 				</dcsat:item>
 			</template>
@@ -738,7 +1039,7 @@
 	<appearance xmlns="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="TableCellAppearance">
 		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
 			<parameter>ЦветФона</parameter>
-			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d4p1:Color">#DEFFF0</value>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xmlns:d4p2="http://v8.1c.ru/8.1/data/ui/style" xsi:type="d4p1:Color">d4p2:ReportHeaderBackColor</value>
 		</item>
 		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
 			<parameter>ЦветГраницы</parameter>
@@ -757,6 +1058,320 @@
 			</item>
 			<item>
 				<parameter>СтильГраницы.Сверху</parameter>
+				<value xmlns:d5p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d5p1:Line" width="1" gap="false">
+					<d5p1:style xsi:type="d5p1:SpreadsheetDocumentCellLineType">Solid</d5p1:style>
+				</value>
+			</item>
+			<item>
+				<parameter>СтильГраницы.Справа</parameter>
+				<value xmlns:d5p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d5p1:Line" width="1" gap="false">
+					<d5p1:style xsi:type="d5p1:SpreadsheetDocumentCellLineType">Solid</d5p1:style>
+				</value>
+			</item>
+			<item>
+				<parameter>СтильГраницы.Снизу</parameter>
+				<value xmlns:d5p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d5p1:Line" width="1" gap="false">
+					<d5p1:style xsi:type="d5p1:SpreadsheetDocumentCellLineType">None</d5p1:style>
+				</value>
+			</item>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>Шрифт</parameter>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d4p1:Font" faceName="Arial" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="Absolute"/>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>АвтоОтступ</parameter>
+			<value xsi:type="xs:decimal">3</value>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>ГоризонтальноеПоложение</parameter>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d4p1:HorizontalAlign">Left</value>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>ВертикальноеПоложение</parameter>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d4p1:VerticalAlign">Bottom</value>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>Размещение</parameter>
+			<value xsi:type="DataCompositionTextPlacementType">Wrap</value>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>МинимальнаяШирина</parameter>
+			<value xsi:type="xs:decimal">13.75</value>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>МаксимальнаяШирина</parameter>
+			<value xsi:type="xs:decimal">13.75</value>
+		</item>
+	</appearance>
+	<appearance xmlns="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="TableCellAppearance">
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>ЦветФона</parameter>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xmlns:d4p2="http://v8.1c.ru/8.1/data/ui/style" xsi:type="d4p1:Color">d4p2:ReportHeaderBackColor</value>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>СтильГраницы</parameter>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d4p1:Line" width="0" gap="false">
+				<d4p1:style xsi:type="d4p1:SpreadsheetDocumentCellLineType">None</d4p1:style>
+			</value>
+			<item>
+				<parameter>СтильГраницы.Сверху</parameter>
+				<value xmlns:d5p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d5p1:Line" width="1" gap="false">
+					<d5p1:style xsi:type="d5p1:SpreadsheetDocumentCellLineType">Solid</d5p1:style>
+				</value>
+			</item>
+			<item>
+				<parameter>СтильГраницы.Снизу</parameter>
+				<value xmlns:d5p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d5p1:Line" width="1" gap="false">
+					<d5p1:style xsi:type="d5p1:SpreadsheetDocumentCellLineType">None</d5p1:style>
+				</value>
+			</item>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>Шрифт</parameter>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d4p1:Font" faceName="Arial" height="8" bold="true" italic="true" underline="false" strikeout="false" kind="Absolute"/>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>ГоризонтальноеПоложение</parameter>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d4p1:HorizontalAlign">Left</value>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>ВертикальноеПоложение</parameter>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d4p1:VerticalAlign">Bottom</value>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>МинимальнаяШирина</parameter>
+			<value xsi:type="xs:decimal">25.75</value>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>МаксимальнаяШирина</parameter>
+			<value xsi:type="xs:decimal">25.75</value>
+		</item>
+	</appearance>
+	<appearance xmlns="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="TableCellAppearance">
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>ЦветФона</parameter>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xmlns:d4p2="http://v8.1c.ru/8.1/data/ui/style" xsi:type="d4p1:Color">d4p2:ReportHeaderBackColor</value>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>СтильГраницы</parameter>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d4p1:Line" width="0" gap="false">
+				<d4p1:style xsi:type="d4p1:SpreadsheetDocumentCellLineType">None</d4p1:style>
+			</value>
+			<item>
+				<parameter>СтильГраницы.Сверху</parameter>
+				<value xmlns:d5p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d5p1:Line" width="1" gap="false">
+					<d5p1:style xsi:type="d5p1:SpreadsheetDocumentCellLineType">Solid</d5p1:style>
+				</value>
+			</item>
+			<item>
+				<parameter>СтильГраницы.Снизу</parameter>
+				<value xmlns:d5p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d5p1:Line" width="1" gap="false">
+					<d5p1:style xsi:type="d5p1:SpreadsheetDocumentCellLineType">None</d5p1:style>
+				</value>
+			</item>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>Шрифт</parameter>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d4p1:Font" faceName="Arial" height="8" bold="true" italic="true" underline="false" strikeout="false" kind="Absolute"/>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>ГоризонтальноеПоложение</parameter>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d4p1:HorizontalAlign">Center</value>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>ВертикальноеПоложение</parameter>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d4p1:VerticalAlign">Bottom</value>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>МинимальнаяШирина</parameter>
+			<value xsi:type="xs:decimal">25.875</value>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>МаксимальнаяШирина</parameter>
+			<value xsi:type="xs:decimal">25.875</value>
+		</item>
+	</appearance>
+	<appearance xmlns="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="TableCellAppearance">
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>ЦветФона</parameter>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xmlns:d4p2="http://v8.1c.ru/8.1/data/ui/style" xsi:type="d4p1:Color">d4p2:ReportHeaderBackColor</value>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>СтильГраницы</parameter>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d4p1:Line" width="0" gap="false">
+				<d4p1:style xsi:type="d4p1:SpreadsheetDocumentCellLineType">None</d4p1:style>
+			</value>
+			<item>
+				<parameter>СтильГраницы.Сверху</parameter>
+				<value xmlns:d5p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d5p1:Line" width="1" gap="false">
+					<d5p1:style xsi:type="d5p1:SpreadsheetDocumentCellLineType">Solid</d5p1:style>
+				</value>
+			</item>
+			<item>
+				<parameter>СтильГраницы.Снизу</parameter>
+				<value xmlns:d5p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d5p1:Line" width="1" gap="false">
+					<d5p1:style xsi:type="d5p1:SpreadsheetDocumentCellLineType">None</d5p1:style>
+				</value>
+			</item>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>Шрифт</parameter>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d4p1:Font" faceName="Arial" height="8" bold="true" italic="true" underline="false" strikeout="false" kind="Absolute"/>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>ГоризонтальноеПоложение</parameter>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d4p1:HorizontalAlign">Center</value>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>ВертикальноеПоложение</parameter>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d4p1:VerticalAlign">Bottom</value>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>МинимальнаяШирина</parameter>
+			<value xsi:type="xs:decimal">10.25</value>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>МаксимальнаяШирина</parameter>
+			<value xsi:type="xs:decimal">10.25</value>
+		</item>
+	</appearance>
+	<appearance xmlns="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="TableCellAppearance">
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>ЦветФона</parameter>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xmlns:d4p2="http://v8.1c.ru/8.1/data/ui/style" xsi:type="d4p1:Color">d4p2:ReportHeaderBackColor</value>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>ЦветГраницы</parameter>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xmlns:d4p2="http://v8.1c.ru/8.1/data/ui/style" xsi:type="d4p1:Color">d4p2:FieldTextColor</value>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>СтильГраницы</parameter>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d4p1:Line" width="0" gap="false">
+				<d4p1:style xsi:type="d4p1:SpreadsheetDocumentCellLineType">None</d4p1:style>
+			</value>
+			<item>
+				<parameter>СтильГраницы.Сверху</parameter>
+				<value xmlns:d5p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d5p1:Line" width="1" gap="false">
+					<d5p1:style xsi:type="d5p1:SpreadsheetDocumentCellLineType">Solid</d5p1:style>
+				</value>
+			</item>
+			<item>
+				<parameter>СтильГраницы.Снизу</parameter>
+				<value xmlns:d5p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d5p1:Line" width="1" gap="false">
+					<d5p1:style xsi:type="d5p1:SpreadsheetDocumentCellLineType">None</d5p1:style>
+				</value>
+			</item>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>Шрифт</parameter>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d4p1:Font" faceName="Arial" height="8" bold="true" italic="true" underline="false" strikeout="false" kind="Absolute"/>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>ГоризонтальноеПоложение</parameter>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d4p1:HorizontalAlign">Left</value>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>ВертикальноеПоложение</parameter>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d4p1:VerticalAlign">Bottom</value>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>МинимальнаяШирина</parameter>
+			<value xsi:type="xs:decimal">9.125</value>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>МаксимальнаяШирина</parameter>
+			<value xsi:type="xs:decimal">9.125</value>
+		</item>
+	</appearance>
+	<appearance xmlns="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="TableCellAppearance">
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>МинимальнаяШирина</parameter>
+			<value xsi:type="xs:decimal">11.375</value>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>МаксимальнаяШирина</parameter>
+			<value xsi:type="xs:decimal">11.375</value>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>ОбъединятьПоГоризонтали</parameter>
+			<value xsi:type="xs:boolean">true</value>
+		</item>
+	</appearance>
+	<appearance xmlns="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="TableCellAppearance">
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>ЦветФона</parameter>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xmlns:d4p2="http://v8.1c.ru/8.1/data/ui/style" xsi:type="d4p1:Color">d4p2:ReportHeaderBackColor</value>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>ЦветГраницы</parameter>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xmlns:d4p2="http://v8.1c.ru/8.1/data/ui/style" xsi:type="d4p1:Color">d4p2:FieldTextColor</value>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>СтильГраницы</parameter>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d4p1:Line" width="0" gap="false">
+				<d4p1:style xsi:type="d4p1:SpreadsheetDocumentCellLineType">None</d4p1:style>
+			</value>
+			<item>
+				<parameter>СтильГраницы.Сверху</parameter>
+				<value xmlns:d5p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d5p1:Line" width="1" gap="false">
+					<d5p1:style xsi:type="d5p1:SpreadsheetDocumentCellLineType">Solid</d5p1:style>
+				</value>
+			</item>
+			<item>
+				<parameter>СтильГраницы.Справа</parameter>
+				<value xmlns:d5p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d5p1:Line" width="1" gap="false">
+					<d5p1:style xsi:type="d5p1:SpreadsheetDocumentCellLineType">Solid</d5p1:style>
+				</value>
+			</item>
+			<item>
+				<parameter>СтильГраницы.Снизу</parameter>
+				<value xmlns:d5p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d5p1:Line" width="1" gap="false">
+					<d5p1:style xsi:type="d5p1:SpreadsheetDocumentCellLineType">None</d5p1:style>
+				</value>
+			</item>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>Шрифт</parameter>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d4p1:Font" faceName="Arial" height="8" bold="true" italic="true" underline="false" strikeout="false" kind="Absolute"/>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>ГоризонтальноеПоложение</parameter>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d4p1:HorizontalAlign">Center</value>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>ВертикальноеПоложение</parameter>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d4p1:VerticalAlign">Bottom</value>
+		</item>
+	</appearance>
+	<appearance xmlns="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="TableCellAppearance">
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>ЦветФона</parameter>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xmlns:d4p2="http://v8.1c.ru/8.1/data/ui/style" xsi:type="d4p1:Color">d4p2:ReportHeaderBackColor</value>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>ЦветГраницы</parameter>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xmlns:d4p2="http://v8.1c.ru/8.1/data/ui/style" xsi:type="d4p1:Color">d4p2:FieldTextColor</value>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>СтильГраницы</parameter>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d4p1:Line" width="0" gap="false">
+				<d4p1:style xsi:type="d4p1:SpreadsheetDocumentCellLineType">None</d4p1:style>
+			</value>
+			<item>
+				<parameter>СтильГраницы.Слева</parameter>
+				<value xmlns:d5p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d5p1:Line" width="1" gap="false">
+					<d5p1:style xsi:type="d5p1:SpreadsheetDocumentCellLineType">Solid</d5p1:style>
+				</value>
+			</item>
+			<item>
+				<parameter>СтильГраницы.Сверху</parameter>
+				<value xmlns:d5p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d5p1:Line" width="1" gap="false">
+					<d5p1:style xsi:type="d5p1:SpreadsheetDocumentCellLineType">None</d5p1:style>
+				</value>
+			</item>
+			<item>
+				<parameter>СтильГраницы.Справа</parameter>
 				<value xmlns:d5p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d5p1:Line" width="1" gap="false">
 					<d5p1:style xsi:type="d5p1:SpreadsheetDocumentCellLineType">Solid</d5p1:style>
 				</value>
@@ -804,7 +1419,7 @@
 	<appearance xmlns="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="TableCellAppearance">
 		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
 			<parameter>ЦветФона</parameter>
-			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d4p1:Color">#DEFFF0</value>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xmlns:d4p2="http://v8.1c.ru/8.1/data/ui/style" xsi:type="d4p1:Color">d4p2:ReportHeaderBackColor</value>
 		</item>
 		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
 			<parameter>СтильГраницы</parameter>
@@ -814,7 +1429,7 @@
 			<item>
 				<parameter>СтильГраницы.Сверху</parameter>
 				<value xmlns:d5p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d5p1:Line" width="1" gap="false">
-					<d5p1:style xsi:type="d5p1:SpreadsheetDocumentCellLineType">Solid</d5p1:style>
+					<d5p1:style xsi:type="d5p1:SpreadsheetDocumentCellLineType">None</d5p1:style>
 				</value>
 			</item>
 			<item>
@@ -848,7 +1463,7 @@
 	<appearance xmlns="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="TableCellAppearance">
 		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
 			<parameter>ЦветФона</parameter>
-			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d4p1:Color">#DEFFF0</value>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xmlns:d4p2="http://v8.1c.ru/8.1/data/ui/style" xsi:type="d4p1:Color">d4p2:ReportHeaderBackColor</value>
 		</item>
 		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
 			<parameter>СтильГраницы</parameter>
@@ -858,7 +1473,7 @@
 			<item>
 				<parameter>СтильГраницы.Сверху</parameter>
 				<value xmlns:d5p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d5p1:Line" width="1" gap="false">
-					<d5p1:style xsi:type="d5p1:SpreadsheetDocumentCellLineType">Solid</d5p1:style>
+					<d5p1:style xsi:type="d5p1:SpreadsheetDocumentCellLineType">None</d5p1:style>
 				</value>
 			</item>
 			<item>
@@ -892,7 +1507,51 @@
 	<appearance xmlns="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="TableCellAppearance">
 		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
 			<parameter>ЦветФона</parameter>
-			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d4p1:Color">#DEFFF0</value>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xmlns:d4p2="http://v8.1c.ru/8.1/data/ui/style" xsi:type="d4p1:Color">d4p2:ReportHeaderBackColor</value>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>СтильГраницы</parameter>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d4p1:Line" width="0" gap="false">
+				<d4p1:style xsi:type="d4p1:SpreadsheetDocumentCellLineType">None</d4p1:style>
+			</value>
+			<item>
+				<parameter>СтильГраницы.Сверху</parameter>
+				<value xmlns:d5p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d5p1:Line" width="1" gap="false">
+					<d5p1:style xsi:type="d5p1:SpreadsheetDocumentCellLineType">None</d5p1:style>
+				</value>
+			</item>
+			<item>
+				<parameter>СтильГраницы.Снизу</parameter>
+				<value xmlns:d5p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d5p1:Line" width="1" gap="false">
+					<d5p1:style xsi:type="d5p1:SpreadsheetDocumentCellLineType">Solid</d5p1:style>
+				</value>
+			</item>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>Шрифт</parameter>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d4p1:Font" faceName="Arial" height="8" bold="true" italic="true" underline="false" strikeout="false" kind="Absolute"/>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>ГоризонтальноеПоложение</parameter>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d4p1:HorizontalAlign">Center</value>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>ВертикальноеПоложение</parameter>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d4p1:VerticalAlign">Bottom</value>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>МинимальнаяШирина</parameter>
+			<value xsi:type="xs:decimal">10.25</value>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>МаксимальнаяШирина</parameter>
+			<value xsi:type="xs:decimal">10.25</value>
+		</item>
+	</appearance>
+	<appearance xmlns="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="TableCellAppearance">
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>ЦветФона</parameter>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xmlns:d4p2="http://v8.1c.ru/8.1/data/ui/style" xsi:type="d4p1:Color">d4p2:ReportHeaderBackColor</value>
 		</item>
 		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
 			<parameter>ЦветГраницы</parameter>
@@ -906,7 +1565,7 @@
 			<item>
 				<parameter>СтильГраницы.Сверху</parameter>
 				<value xmlns:d5p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d5p1:Line" width="1" gap="false">
-					<d5p1:style xsi:type="d5p1:SpreadsheetDocumentCellLineType">Solid</d5p1:style>
+					<d5p1:style xsi:type="d5p1:SpreadsheetDocumentCellLineType">None</d5p1:style>
 				</value>
 			</item>
 			<item>
@@ -930,31 +1589,17 @@
 		</item>
 		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
 			<parameter>МинимальнаяШирина</parameter>
-			<value xsi:type="xs:decimal">10.25</value>
-		</item>
-		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
-			<parameter>МаксимальнаяШирина</parameter>
-			<value xsi:type="xs:decimal">10.25</value>
-		</item>
-	</appearance>
-	<appearance xmlns="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="TableCellAppearance">
-		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
-			<parameter>МинимальнаяШирина</parameter>
 			<value xsi:type="xs:decimal">9.125</value>
 		</item>
 		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
 			<parameter>МаксимальнаяШирина</parameter>
 			<value xsi:type="xs:decimal">9.125</value>
-		</item>
-		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
-			<parameter>ОбъединятьПоГоризонтали</parameter>
-			<value xsi:type="xs:boolean">true</value>
 		</item>
 	</appearance>
 	<appearance xmlns="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="TableCellAppearance">
 		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
 			<parameter>ЦветФона</parameter>
-			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d4p1:Color">#DEFFF0</value>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xmlns:d4p2="http://v8.1c.ru/8.1/data/ui/style" xsi:type="d4p1:Color">d4p2:ReportHeaderBackColor</value>
 		</item>
 		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
 			<parameter>ЦветГраницы</parameter>
@@ -968,7 +1613,7 @@
 			<item>
 				<parameter>СтильГраницы.Сверху</parameter>
 				<value xmlns:d5p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d5p1:Line" width="1" gap="false">
-					<d5p1:style xsi:type="d5p1:SpreadsheetDocumentCellLineType">Solid</d5p1:style>
+					<d5p1:style xsi:type="d5p1:SpreadsheetDocumentCellLineType">None</d5p1:style>
 				</value>
 			</item>
 			<item>
@@ -996,19 +1641,11 @@
 			<parameter>ВертикальноеПоложение</parameter>
 			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d4p1:VerticalAlign">Bottom</value>
 		</item>
-		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
-			<parameter>МинимальнаяШирина</parameter>
-			<value xsi:type="xs:decimal">11.375</value>
-		</item>
-		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
-			<parameter>МаксимальнаяШирина</parameter>
-			<value xsi:type="xs:decimal">11.375</value>
-		</item>
 	</appearance>
 	<appearance xmlns="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="TableCellAppearance">
 		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
 			<parameter>ЦветФона</parameter>
-			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xmlns:d4p2="http://v8.1c.ru/8.1/data/ui/style" xsi:type="d4p1:Color">d4p2:ButtonBackColor</value>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xmlns:d4p2="http://v8.1c.ru/8.1/data/ui/style" xsi:type="d4p1:Color">d4p2:ReportGroup1BackColor</value>
 		</item>
 		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
 			<parameter>СтильГраницы</parameter>
@@ -1064,7 +1701,7 @@
 	<appearance xmlns="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="TableCellAppearance">
 		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
 			<parameter>ЦветФона</parameter>
-			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xmlns:d4p2="http://v8.1c.ru/8.1/data/ui/style" xsi:type="d4p1:Color">d4p2:ButtonBackColor</value>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xmlns:d4p2="http://v8.1c.ru/8.1/data/ui/style" xsi:type="d4p1:Color">d4p2:ReportGroup1BackColor</value>
 		</item>
 		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
 			<parameter>Шрифт</parameter>
@@ -1100,7 +1737,7 @@
 	<appearance xmlns="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="TableCellAppearance">
 		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
 			<parameter>ЦветФона</parameter>
-			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xmlns:d4p2="http://v8.1c.ru/8.1/data/ui/style" xsi:type="d4p1:Color">d4p2:ButtonBackColor</value>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xmlns:d4p2="http://v8.1c.ru/8.1/data/ui/style" xsi:type="d4p1:Color">d4p2:ReportGroup1BackColor</value>
 		</item>
 		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
 			<parameter>СтильГраницы</parameter>
@@ -1133,6 +1770,10 @@
 			</item>
 		</item>
 		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>ГоризонтальноеПоложение</parameter>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d4p1:HorizontalAlign">Right</value>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
 			<parameter>ВертикальноеПоложение</parameter>
 			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d4p1:VerticalAlign">Bottom</value>
 		</item>
@@ -1152,7 +1793,63 @@
 	<appearance xmlns="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="TableCellAppearance">
 		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
 			<parameter>ЦветФона</parameter>
-			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xmlns:d4p2="http://v8.1c.ru/8.1/data/ui/style" xsi:type="d4p1:Color">d4p2:ButtonBackColor</value>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xmlns:d4p2="http://v8.1c.ru/8.1/data/ui/style" xsi:type="d4p1:Color">d4p2:ReportGroup1BackColor</value>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>СтильГраницы</parameter>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d4p1:Line" width="0" gap="false">
+				<d4p1:style xsi:type="d4p1:SpreadsheetDocumentCellLineType">None</d4p1:style>
+			</value>
+			<item>
+				<parameter>СтильГраницы.Слева</parameter>
+				<value xmlns:d5p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d5p1:Line" width="1" gap="false">
+					<d5p1:style xsi:type="d5p1:SpreadsheetDocumentCellLineType">Solid</d5p1:style>
+				</value>
+			</item>
+			<item>
+				<parameter>СтильГраницы.Сверху</parameter>
+				<value xmlns:d5p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d5p1:Line" width="1" gap="false">
+					<d5p1:style xsi:type="d5p1:SpreadsheetDocumentCellLineType">Solid</d5p1:style>
+				</value>
+			</item>
+			<item>
+				<parameter>СтильГраницы.Справа</parameter>
+				<value xmlns:d5p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d5p1:Line" width="1" gap="false">
+					<d5p1:style xsi:type="d5p1:SpreadsheetDocumentCellLineType">Solid</d5p1:style>
+				</value>
+			</item>
+			<item>
+				<parameter>СтильГраницы.Снизу</parameter>
+				<value xmlns:d5p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d5p1:Line" width="1" gap="false">
+					<d5p1:style xsi:type="d5p1:SpreadsheetDocumentCellLineType">Solid</d5p1:style>
+				</value>
+			</item>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>ГоризонтальноеПоложение</parameter>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d4p1:HorizontalAlign">Right</value>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>ВертикальноеПоложение</parameter>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d4p1:VerticalAlign">Bottom</value>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>Размещение</parameter>
+			<value xsi:type="DataCompositionTextPlacementType">Wrap</value>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>МинимальнаяШирина</parameter>
+			<value xsi:type="xs:decimal">12.625</value>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>МаксимальнаяШирина</parameter>
+			<value xsi:type="xs:decimal">12.625</value>
+		</item>
+	</appearance>
+	<appearance xmlns="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="TableCellAppearance">
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>ЦветФона</parameter>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xmlns:d4p2="http://v8.1c.ru/8.1/data/ui/style" xsi:type="d4p1:Color">d4p2:ReportGroup1BackColor</value>
 		</item>
 		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
 			<parameter>СтильГраницы</parameter>
@@ -1202,17 +1899,17 @@
 		</item>
 		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
 			<parameter>МинимальнаяШирина</parameter>
-			<value xsi:type="xs:decimal">9.125</value>
+			<value xsi:type="xs:decimal">12</value>
 		</item>
 		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
 			<parameter>МаксимальнаяШирина</parameter>
-			<value xsi:type="xs:decimal">9.125</value>
+			<value xsi:type="xs:decimal">12</value>
 		</item>
 	</appearance>
 	<appearance xmlns="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="TableCellAppearance">
 		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
 			<parameter>ЦветФона</parameter>
-			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xmlns:d4p2="http://v8.1c.ru/8.1/data/ui/style" xsi:type="d4p1:Color">d4p2:ButtonBackColor</value>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xmlns:d4p2="http://v8.1c.ru/8.1/data/ui/style" xsi:type="d4p1:Color">d4p2:ReportGroup1BackColor</value>
 		</item>
 		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
 			<parameter>СтильГраницы</parameter>
@@ -1258,14 +1955,18 @@
 		</item>
 		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
 			<parameter>МинимальнаяШирина</parameter>
-			<value xsi:type="xs:decimal">11.375</value>
+			<value xsi:type="xs:decimal">20.75</value>
 		</item>
 		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
 			<parameter>МаксимальнаяШирина</parameter>
-			<value xsi:type="xs:decimal">11.375</value>
+			<value xsi:type="xs:decimal">20.75</value>
 		</item>
 	</appearance>
 	<appearance xmlns="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="TableCellAppearance">
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>ЦветФона</parameter>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xmlns:d4p2="http://v8.1c.ru/8.1/data/ui/style" xsi:type="d4p1:Color">d4p2:ReportGroup2BackColor</value>
+		</item>
 		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
 			<parameter>СтильГраницы</parameter>
 			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d4p1:Line" width="0" gap="false">
@@ -1318,6 +2019,10 @@
 		</item>
 	</appearance>
 	<appearance xmlns="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="TableCellAppearance">
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>ЦветФона</parameter>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xmlns:d4p2="http://v8.1c.ru/8.1/data/ui/style" xsi:type="d4p1:Color">d4p2:ReportGroup2BackColor</value>
+		</item>
 		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
 			<parameter>СтильГраницы</parameter>
 			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d4p1:Line" width="0" gap="false">
@@ -1359,6 +2064,10 @@
 	</appearance>
 	<appearance xmlns="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="TableCellAppearance">
 		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>ЦветФона</parameter>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xmlns:d4p2="http://v8.1c.ru/8.1/data/ui/style" xsi:type="d4p1:Color">d4p2:ReportGroup2BackColor</value>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
 			<parameter>СтильГраницы</parameter>
 			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d4p1:Line" width="0" gap="false">
 				<d4p1:style xsi:type="d4p1:SpreadsheetDocumentCellLineType">None</d4p1:style>
@@ -1407,6 +2116,10 @@
 	</appearance>
 	<appearance xmlns="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="TableCellAppearance">
 		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>ЦветФона</parameter>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xmlns:d4p2="http://v8.1c.ru/8.1/data/ui/style" xsi:type="d4p1:Color">d4p2:ReportGroup2BackColor</value>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
 			<parameter>СтильГраницы</parameter>
 			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d4p1:Line" width="0" gap="false">
 				<d4p1:style xsi:type="d4p1:SpreadsheetDocumentCellLineType">None</d4p1:style>
@@ -1437,10 +2150,6 @@
 			</item>
 		</item>
 		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
-			<parameter>ГоризонтальноеПоложение</parameter>
-			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d4p1:HorizontalAlign">Center</value>
-		</item>
-		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
 			<parameter>ВертикальноеПоложение</parameter>
 			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d4p1:VerticalAlign">Bottom</value>
 		</item>
@@ -1450,15 +2159,19 @@
 		</item>
 		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
 			<parameter>МинимальнаяШирина</parameter>
-			<value xsi:type="xs:decimal">9.125</value>
+			<value xsi:type="xs:decimal">12.625</value>
 		</item>
 		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
 			<parameter>МаксимальнаяШирина</parameter>
-			<value xsi:type="xs:decimal">9.125</value>
+			<value xsi:type="xs:decimal">12.625</value>
 		</item>
 	</appearance>
 	<appearance xmlns="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="TableCellAppearance">
 		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>ЦветФона</parameter>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xmlns:d4p2="http://v8.1c.ru/8.1/data/ui/style" xsi:type="d4p1:Color">d4p2:ReportGroup2BackColor</value>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
 			<parameter>СтильГраницы</parameter>
 			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d4p1:Line" width="0" gap="false">
 				<d4p1:style xsi:type="d4p1:SpreadsheetDocumentCellLineType">None</d4p1:style>
@@ -1502,11 +2215,67 @@
 		</item>
 		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
 			<parameter>МинимальнаяШирина</parameter>
-			<value xsi:type="xs:decimal">11.375</value>
+			<value xsi:type="xs:decimal">12</value>
 		</item>
 		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
 			<parameter>МаксимальнаяШирина</parameter>
-			<value xsi:type="xs:decimal">11.375</value>
+			<value xsi:type="xs:decimal">12</value>
+		</item>
+	</appearance>
+	<appearance xmlns="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="TableCellAppearance">
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>ЦветФона</parameter>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xmlns:d4p2="http://v8.1c.ru/8.1/data/ui/style" xsi:type="d4p1:Color">d4p2:ReportGroup2BackColor</value>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>СтильГраницы</parameter>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d4p1:Line" width="0" gap="false">
+				<d4p1:style xsi:type="d4p1:SpreadsheetDocumentCellLineType">None</d4p1:style>
+			</value>
+			<item>
+				<parameter>СтильГраницы.Слева</parameter>
+				<value xmlns:d5p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d5p1:Line" width="1" gap="false">
+					<d5p1:style xsi:type="d5p1:SpreadsheetDocumentCellLineType">Solid</d5p1:style>
+				</value>
+			</item>
+			<item>
+				<parameter>СтильГраницы.Сверху</parameter>
+				<value xmlns:d5p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d5p1:Line" width="1" gap="false">
+					<d5p1:style xsi:type="d5p1:SpreadsheetDocumentCellLineType">Solid</d5p1:style>
+				</value>
+			</item>
+			<item>
+				<parameter>СтильГраницы.Справа</parameter>
+				<value xmlns:d5p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d5p1:Line" width="1" gap="false">
+					<d5p1:style xsi:type="d5p1:SpreadsheetDocumentCellLineType">Solid</d5p1:style>
+				</value>
+			</item>
+			<item>
+				<parameter>СтильГраницы.Снизу</parameter>
+				<value xmlns:d5p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d5p1:Line" width="1" gap="false">
+					<d5p1:style xsi:type="d5p1:SpreadsheetDocumentCellLineType">Solid</d5p1:style>
+				</value>
+			</item>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>ГоризонтальноеПоложение</parameter>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d4p1:HorizontalAlign">Center</value>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>ВертикальноеПоложение</parameter>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d4p1:VerticalAlign">Bottom</value>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>Размещение</parameter>
+			<value xsi:type="DataCompositionTextPlacementType">Wrap</value>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>МинимальнаяШирина</parameter>
+			<value xsi:type="xs:decimal">20.75</value>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>МаксимальнаяШирина</parameter>
+			<value xsi:type="xs:decimal">20.75</value>
 		</item>
 	</appearance>
 	<appearance xmlns="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="TableCellAppearance">
@@ -1679,6 +2448,144 @@
 					<d5p1:style xsi:type="d5p1:SpreadsheetDocumentCellLineType">Solid</d5p1:style>
 				</value>
 			</item>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>Шрифт</parameter>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d4p1:Font" faceName="Arial" height="8" bold="true" italic="true" underline="false" strikeout="false" kind="Absolute"/>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>МинимальнаяШирина</parameter>
+			<value xsi:type="xs:decimal">10.25</value>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>МаксимальнаяШирина</parameter>
+			<value xsi:type="xs:decimal">10.25</value>
+		</item>
+	</appearance>
+	<appearance xmlns="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="TableCellAppearance">
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>ЦветФона</parameter>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d4p1:Color">#FFD53F</value>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>СтильГраницы</parameter>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d4p1:Line" width="0" gap="false">
+				<d4p1:style xsi:type="d4p1:SpreadsheetDocumentCellLineType">None</d4p1:style>
+			</value>
+			<item>
+				<parameter>СтильГраницы.Слева</parameter>
+				<value xmlns:d5p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d5p1:Line" width="1" gap="false">
+					<d5p1:style xsi:type="d5p1:SpreadsheetDocumentCellLineType">None</d5p1:style>
+				</value>
+			</item>
+			<item>
+				<parameter>СтильГраницы.Сверху</parameter>
+				<value xmlns:d5p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d5p1:Line" width="1" gap="false">
+					<d5p1:style xsi:type="d5p1:SpreadsheetDocumentCellLineType">Solid</d5p1:style>
+				</value>
+			</item>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>Шрифт</parameter>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d4p1:Font" faceName="Arial" height="8" bold="true" italic="true" underline="false" strikeout="false" kind="Absolute"/>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>МинимальнаяШирина</parameter>
+			<value xsi:type="xs:decimal">12.625</value>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>МаксимальнаяШирина</parameter>
+			<value xsi:type="xs:decimal">12.625</value>
+		</item>
+	</appearance>
+	<appearance xmlns="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="TableCellAppearance">
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>МинимальнаяШирина</parameter>
+			<value xsi:type="xs:decimal">12</value>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>МаксимальнаяШирина</parameter>
+			<value xsi:type="xs:decimal">12</value>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>ОбъединятьПоГоризонтали</parameter>
+			<value xsi:type="xs:boolean">true</value>
+		</item>
+	</appearance>
+	<appearance xmlns="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="TableCellAppearance">
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>ЦветФона</parameter>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d4p1:Color">#FFD53F</value>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>СтильГраницы</parameter>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d4p1:Line" width="0" gap="false">
+				<d4p1:style xsi:type="d4p1:SpreadsheetDocumentCellLineType">None</d4p1:style>
+			</value>
+			<item>
+				<parameter>СтильГраницы.Слева</parameter>
+				<value xmlns:d5p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d5p1:Line" width="1" gap="false">
+					<d5p1:style xsi:type="d5p1:SpreadsheetDocumentCellLineType">None</d5p1:style>
+				</value>
+			</item>
+			<item>
+				<parameter>СтильГраницы.Сверху</parameter>
+				<value xmlns:d5p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d5p1:Line" width="1" gap="false">
+					<d5p1:style xsi:type="d5p1:SpreadsheetDocumentCellLineType">Solid</d5p1:style>
+				</value>
+			</item>
+			<item>
+				<parameter>СтильГраницы.Справа</parameter>
+				<value xmlns:d5p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d5p1:Line" width="1" gap="false">
+					<d5p1:style xsi:type="d5p1:SpreadsheetDocumentCellLineType">Solid</d5p1:style>
+				</value>
+			</item>
+			<item>
+				<parameter>СтильГраницы.Снизу</parameter>
+				<value xmlns:d5p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d5p1:Line" width="1" gap="false">
+					<d5p1:style xsi:type="d5p1:SpreadsheetDocumentCellLineType">Solid</d5p1:style>
+				</value>
+			</item>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>Шрифт</parameter>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d4p1:Font" faceName="Arial" height="8" bold="true" italic="true" underline="false" strikeout="false" kind="Absolute"/>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>ГоризонтальноеПоложение</parameter>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d4p1:HorizontalAlign">Center</value>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>МинимальнаяШирина</parameter>
+			<value xsi:type="xs:decimal">20.75</value>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>МаксимальнаяШирина</parameter>
+			<value xsi:type="xs:decimal">20.75</value>
+		</item>
+	</appearance>
+	<appearance xmlns="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="TableCellAppearance">
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>ЦветФона</parameter>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d4p1:Color">#FFD53F</value>
+		</item>
+		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+			<parameter>СтильГраницы</parameter>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d4p1:Line" width="0" gap="false">
+				<d4p1:style xsi:type="d4p1:SpreadsheetDocumentCellLineType">None</d4p1:style>
+			</value>
+			<item>
+				<parameter>СтильГраницы.Слева</parameter>
+				<value xmlns:d5p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d5p1:Line" width="1" gap="false">
+					<d5p1:style xsi:type="d5p1:SpreadsheetDocumentCellLineType">None</d5p1:style>
+				</value>
+			</item>
+			<item>
+				<parameter>СтильГраницы.Сверху</parameter>
+				<value xmlns:d5p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d5p1:Line" width="1" gap="false">
+					<d5p1:style xsi:type="d5p1:SpreadsheetDocumentCellLineType">Solid</d5p1:style>
+				</value>
+			</item>
 			<item>
 				<parameter>СтильГраницы.Справа</parameter>
 				<value xmlns:d5p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d5p1:Line" width="1" gap="false">
@@ -1730,7 +2637,7 @@
 			<item>
 				<parameter>СтильГраницы.Справа</parameter>
 				<value xmlns:d5p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d5p1:Line" width="1" gap="false">
-					<d5p1:style xsi:type="d5p1:SpreadsheetDocumentCellLineType">Solid</d5p1:style>
+					<d5p1:style xsi:type="d5p1:SpreadsheetDocumentCellLineType">None</d5p1:style>
 				</value>
 			</item>
 			<item>
@@ -1745,16 +2652,12 @@
 			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d4p1:Font" faceName="Arial" height="8" bold="true" italic="true" underline="false" strikeout="false" kind="Absolute"/>
 		</item>
 		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
-			<parameter>ГоризонтальноеПоложение</parameter>
-			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d4p1:HorizontalAlign">Center</value>
-		</item>
-		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
 			<parameter>МинимальнаяШирина</parameter>
-			<value xsi:type="xs:decimal">11.375</value>
+			<value xsi:type="xs:decimal">12.625</value>
 		</item>
 		<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
 			<parameter>МаксимальнаяШирина</parameter>
-			<value xsi:type="xs:decimal">11.375</value>
+			<value xsi:type="xs:decimal">12.625</value>
 		</item>
 	</appearance>
 	<appearance xmlns="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="TableCellAppearance">
