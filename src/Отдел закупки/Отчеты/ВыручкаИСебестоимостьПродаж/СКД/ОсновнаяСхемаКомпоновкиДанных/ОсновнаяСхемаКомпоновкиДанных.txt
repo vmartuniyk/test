@@ -989,6 +989,8 @@
 		КОНЕЦ КАК ДопРасходы,
 		
 		ВЫБОР
+			КОГДА РАЗНОСТЬДАТ(СебестоимостьПоПартиям.ДатаПрихода, СебестоимостьПоПартиям.ДатаПлановойОплаты, ДЕНЬ) &gt; 60
+			ТОГДА 0
 			КОГДА Продажи.Период &lt; СебестоимостьПоПартиям.ДатаПлановойОплаты
 			ТОГДА 	ВЫРАЗИТЬ(
 						ВЫБОР
@@ -1752,35 +1754,30 @@
 			<use>false</use>
 			<left xsi:type="dcscor:Field">Организация</left>
 			<comparisonType>Equal</comparisonType>
-			<right xsi:type="dcscor:DesignTimeValue"/>
 			<userSettingID>e689d7b9-6b90-48c1-b052-fd30c34b9d31</userSettingID>
 		</item>
 		<item xsi:type="FilterItemComparison">
 			<use>false</use>
 			<left xsi:type="dcscor:Field">Номенклатура</left>
 			<comparisonType>Equal</comparisonType>
-			<right xsi:type="dcscor:DesignTimeValue"/>
 			<userSettingID>ce9b5b0c-97fe-4112-b9bc-b56f3445528a</userSettingID>
 		</item>
 		<item xsi:type="FilterItemComparison">
 			<use>false</use>
 			<left xsi:type="dcscor:Field">Номенклатура.ВидНоменклатуры</left>
 			<comparisonType>Equal</comparisonType>
-			<right xsi:type="dcscor:DesignTimeValue"/>
 			<userSettingID>9269ab7a-06bf-468c-b750-f52644f898a7</userSettingID>
 		</item>
 		<item xsi:type="FilterItemComparison">
 			<use>false</use>
 			<left xsi:type="dcscor:Field">СегментПартнеров</left>
 			<comparisonType>Equal</comparisonType>
-			<right xsi:type="dcscor:DesignTimeValue"/>
 			<userSettingID>e0af30e1-5838-4b6b-959a-bbaaa1408ab0</userSettingID>
 		</item>
 		<item xsi:type="FilterItemComparison">
 			<use>false</use>
 			<left xsi:type="dcscor:Field">СегментНоменклатуры</left>
 			<comparisonType>Equal</comparisonType>
-			<right xsi:type="dcscor:DesignTimeValue"/>
 		</item>
 		<userSettingID>d050d0a3-e88f-48de-8369-0309cf8337c3</userSettingID>
 	</filter>
@@ -1862,7 +1859,6 @@
 			<item xsi:type="SelectedItemAuto"/>
 			<userSettingID>05d7c6a0-d167-4fff-afc5-54f479d2685a</userSettingID>
 		</selection>
-		<conditionalAppearance/>
 		<item xsi:type="StructureItemGroup">
 			<order>
 				<item xsi:type="OrderItemAuto"/>
