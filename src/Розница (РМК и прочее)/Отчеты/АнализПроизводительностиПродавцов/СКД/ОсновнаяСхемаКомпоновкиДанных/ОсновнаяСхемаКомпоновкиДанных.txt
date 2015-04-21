@@ -230,11 +230,11 @@
 		</totalField>
 		<totalField>
 			<dataPath>ПроцентАКС</dataPath>
-			<expression>Сумма(ПроцентАКС)</expression>
+			<expression>100* Сумма(ВыручкаАКС)/Сумма(ВыручкаТО)</expression>
 		</totalField>
 		<totalField>
 			<dataPath>ПроцентКТСПомощь</dataPath>
-			<expression>Сумма(ПроцентКТСПомощь)</expression>
+			<expression>100* Сумма(ВыручкаКТСПомощь)/Сумма(ВыручкаТО)</expression>
 		</totalField>
 		<totalField>
 			<dataPath>РандПоАКС</dataPath>
@@ -250,7 +250,7 @@
 		</totalField>
 		<totalField>
 			<dataPath>Рейтинг</dataPath>
-			<expression>Сумма(Рейтинг)</expression>
+			<expression>Максимум(Рейтинг)</expression>
 		</totalField>
 		<totalField>
 			<dataPath>Сумма</dataPath>
@@ -276,7 +276,12 @@
 		</parameter>
 		<settingsVariant>
 			<name xmlns="http://v8.1c.ru/8.1/data-composition-system/settings">Основной</name>
-			<presentation xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="xs:string">Основной</presentation>
+			<presentation xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Анализ производительности продавцов</d4p1:content>
+				</d4p1:item>
+			</presentation>
 		</settingsVariant>
 	</dataCompositionSchema>
 </SchemaFile>﻿<?xml version="1.0" encoding="UTF-8"?>
@@ -306,7 +311,13 @@
 		<item xsi:type="SelectedItemField">
 			<field>ПроцентКТСПомощь</field>
 		</item>
+		<viewMode>Normal</viewMode>
+		<userSettingID>76270d5f-a193-4d12-a7d5-6c5831a24eb4</userSettingID>
 	</selection>
+	<filter>
+		<viewMode>Normal</viewMode>
+		<userSettingID>fdb2f8f4-aebe-402c-a1d9-5fe26c5bd44e</userSettingID>
+	</filter>
 	<dataParameters>
 		<dcscor:item xsi:type="SettingsParameterValue">
 			<dcscor:parameter>ПериодОтчета</dcscor:parameter>
@@ -316,6 +327,14 @@
 			<userSettingID>f40e633b-cf9f-4da5-821f-2acdc9ec354c</userSettingID>
 		</dcscor:item>
 	</dataParameters>
+	<order>
+		<viewMode>Normal</viewMode>
+		<userSettingID>152ffb74-5236-499f-9115-fcb3c38d44e0</userSettingID>
+	</order>
+	<conditionalAppearance>
+		<viewMode>Normal</viewMode>
+		<userSettingID>6b65f4a2-3419-4b41-9944-b5331e3127c8</userSettingID>
+	</conditionalAppearance>
 	<item xsi:type="StructureItemGroup">
 		<order>
 			<item xsi:type="OrderItemAuto"/>
@@ -324,6 +343,8 @@
 			<item xsi:type="SelectedItemAuto"/>
 		</selection>
 	</item>
+	<itemsViewMode>Normal</itemsViewMode>
+	<itemsUserSettingID>75040d55-b451-46b7-9546-30f35c8cde6c</itemsUserSettingID>
 </Settings>﻿<?xml version="1.0" encoding="UTF-8"?>
 <SchemaFile xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<dataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema"/>
