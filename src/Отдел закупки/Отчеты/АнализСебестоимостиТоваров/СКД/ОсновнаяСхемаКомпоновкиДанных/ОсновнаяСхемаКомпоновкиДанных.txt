@@ -434,8 +434,8 @@
 	ВЫБОР
 		КОГДА СебестоимостьПоПартиям.ЦенаПослеОплаты &lt;&gt; 0
 		ТОГДА СебестоимостьПоПартиям.ЦенаПослеОплаты * ОстаткиПоПартиям.КоличествоОстаток	
-		ИНАЧЕ СебестоимостьПоПартиям.ЦенаПрихода * ОстаткиПоПартиям.КоличествоОстаток + ВЫРАЗИТЬ((СебестоимостьПоПартиям.ЦенаПрихода 
-					  - СебестоимостьПоПартиям.ЦенаПрихода * КурсыВалютПриход.Курс / КурсыВалютОстрочка.Курс) 
+		ИНАЧЕ СебестоимостьПоПартиям.ЦенаПрихода * ОстаткиПоПартиям.КоличествоОстаток + ВЫРАЗИТЬ((СебестоимостьПоПартиям.ЦенаПрихода * КурсыВалютПриход.Курс / КурсыВалютОстрочка.Курс
+					  - СебестоимостьПоПартиям.ЦенаПрихода) 
 					  * ОстаткиПоПартиям.КоличествоОстаток КАК Число(15,2))
 	КОНЕЦ КАК ИтоговаяСебестоимость,
 	
@@ -443,8 +443,8 @@
 		КОГДА СебестоимостьПоПартиям.ЦенаПослеОплаты &lt;&gt; 0 
 		  ИЛИ СебестоимостьПоПартиям.ВалютаПрихода = КурсыВалютПриход.Валюта
 		ТОГДА 0
-		ИНАЧЕ ВЫРАЗИТЬ((СебестоимостьПоПартиям.ЦенаПрихода 
-					  - СебестоимостьПоПартиям.ЦенаПрихода * КурсыВалютПриход.Курс / КурсыВалютОстрочка.Курс) 
+		ИНАЧЕ ВЫРАЗИТЬ((СебестоимостьПоПартиям.ЦенаПрихода * КурсыВалютПриход.Курс / КурсыВалютОстрочка.Курс 
+					  - СебестоимостьПоПартиям.ЦенаПрихода) 
 					  * ОстаткиПоПартиям.КоличествоОстаток КАК Число(15,2))
 	КОНЕЦ КАК КурсоваяРазница,
 			
@@ -693,14 +693,14 @@
 			<use>false</use>
 			<left xsi:type="dcscor:Field">Склад</left>
 			<comparisonType>InListByHierarchy</comparisonType>
-			<right xsi:type="dcscor:DesignTimeValue"/>
+			<right xsi:nil="true"/>
 			<userSettingID>1c4175e7-6f79-4f93-9865-dbfe97a6778e</userSettingID>
 		</item>
 		<item xsi:type="FilterItemComparison">
 			<use>false</use>
 			<left xsi:type="dcscor:Field">Номенклатура</left>
 			<comparisonType>InListByHierarchy</comparisonType>
-			<right xsi:type="dcscor:DesignTimeValue"/>
+			<right xsi:nil="true"/>
 			<userSettingID>e49d3bed-6134-47c2-8017-952e1481c492</userSettingID>
 		</item>
 		<viewMode>Normal</viewMode>
@@ -713,13 +713,6 @@
 				<v8:variant xsi:type="v8:StandardBeginningDateVariant">BeginningOfNextDay</v8:variant>
 			</dcscor:value>
 			<userSettingID>20f95b53-de06-4866-a39e-d8c12bfa77ca</userSettingID>
-		</dcscor:item>
-		<dcscor:item xsi:type="SettingsParameterValue">
-			<dcscor:use>false</dcscor:use>
-			<dcscor:parameter>Период</dcscor:parameter>
-			<dcscor:value xsi:type="v8:StandardPeriod">
-				<v8:variant xsi:type="v8:StandardPeriodVariant">ThisMonth</v8:variant>
-			</dcscor:value>
 		</dcscor:item>
 		<dcscor:item xsi:type="SettingsParameterValue">
 			<dcscor:parameter>ИспользуетсяОтборПоСегментуНоменклатуры</dcscor:parameter>
