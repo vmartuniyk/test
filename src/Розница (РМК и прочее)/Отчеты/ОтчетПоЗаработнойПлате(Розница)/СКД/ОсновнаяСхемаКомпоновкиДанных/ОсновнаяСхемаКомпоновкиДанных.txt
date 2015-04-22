@@ -113,6 +113,36 @@
 					</d5p1:item>
 				</title>
 			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>КоэффициентСезонности</dataPath>
+				<field>КоэффициентСезонности</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Коэффициент сезонности</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>КоэффициентВыполненияПлана</dataPath>
+				<field>КоэффициентВыполненияПлана</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Коэффициент выполнения плана</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>КоэффициентЭффективности</dataPath>
+				<field>КоэффициентЭффективности</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Коэффициент эффективности</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
 			<dataSource>ИсточникДанных1</dataSource>
 			<query>ВЫБРАТЬ
 	ЗНАЧЕНИЕ(Документ.РеализацияТоваровУслуг.ПустаяСсылка) КАК Ссылка,
@@ -124,7 +154,10 @@
 	0 КАК Количество,
 	0 КАК Сумма,
 	0 КАК ЗаработокМенеджера,
-	0 КАК ВозможныйЗаработок</query>
+	0 КАК ВозможныйЗаработок, 
+	0 КАК КоэффициентВыполненияПлана, 
+	0 КАК КоэффициентЭффективности, 
+	0 КАК КоэффициентСезонности</query>
 		</dataSet>
 		<totalField>
 			<dataPath>ВозможныйЗаработок</dataPath>
