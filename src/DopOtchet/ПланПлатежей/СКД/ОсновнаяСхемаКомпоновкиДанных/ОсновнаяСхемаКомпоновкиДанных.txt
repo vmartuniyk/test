@@ -2314,7 +2314,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 ВЫБРАТЬ
-	БудущиеПроплаты.Период,
+	НАЧАЛОПЕРИОДА(БудущиеПроплаты.Период, ДЕНЬ) КАК Период,
 	БудущиеПроплаты.Регистратор,
 	БудущиеПроплаты.Партнер,
 	NULL КАК СчетПолучатель,
@@ -2333,7 +2333,7 @@
 ОБЪЕДИНИТЬ ВСЕ
 
 ВЫБРАТЬ
-	ПрошедшыеОплаты.Период,
+	НАЧАЛОПЕРИОДА(ПрошедшыеОплаты.Период, ДЕНЬ),
 	ПрошедшыеОплаты.Регистратор,
 	ПрошедшыеОплаты.Партнер,
 	NULL,
@@ -2351,7 +2351,7 @@
 ОБЪЕДИНИТЬ ВСЕ
 
 ВЫБРАТЬ
-	ПрошедшыеОплаты.Период,
+	НАЧАЛОПЕРИОДА(ПрошедшыеОплаты.Период, ДЕНЬ),
 	ПрошедшыеОплаты.Регистратор,
 	ПрошедшыеОплаты.Партнер,
 	NULL,
@@ -2371,7 +2371,7 @@
 ОБЪЕДИНИТЬ ВСЕ
 
 ВЫБРАТЬ
-	ПрошлыеЗаявки.Период,
+	НАЧАЛОПЕРИОДА(ПрошлыеЗаявки.Период, ДЕНЬ),
 	ПрошлыеЗаявки.Регистратор,
 	ПрошлыеЗаявки.Партнер,
 	ПрошлыеЗаявки.СчетПолучатель,
@@ -2389,7 +2389,7 @@
 ОБЪЕДИНИТЬ ВСЕ
 
 ВЫБРАТЬ
-	БудущиеЗаявки.Период,
+	НАЧАЛОПЕРИОДА(БудущиеЗаявки.Период, ДЕНЬ),
 	БудущиеЗаявки.Регистратор,
 	БудущиеЗаявки.Партнер,
 	БудущиеЗаявки.СчетПолучатель,
@@ -2407,7 +2407,7 @@
 ОБЪЕДИНИТЬ ВСЕ
 
 ВЫБРАТЬ
-	НеОплаченоКлиент.Период,
+	НАЧАЛОПЕРИОДА(НеОплаченоКлиент.Период, ДЕНЬ),
 	НеОплаченоКлиент.Регистратор,
 	НеОплаченоКлиент.Партнер,
 	NULL,
@@ -2425,7 +2425,7 @@
 
 ВЫБРАТЬ
 	ВЫБОР
-		КОГДА Календарь.ДатаГрафика = НАЧАЛОПЕРИОДА(&amp;ТекущаяДата)
+		КОГДА Календарь.ДатаГрафика = НАЧАЛОПЕРИОДА(&amp;ТекущаяДата, ДЕНЬ)
 			ТОГДА
 				ВЫБОР ЕСТЬNULL(КешПредварительный.РазделятьДень, ЛОЖЬ)
 					КОГДА ИСТИНА
@@ -4959,6 +4959,15 @@
 						<item>
 							<field>ДатаГрафика</field>
 						</item>
+						<item>
+							<field>ИтогОплат</field>
+						</item>
+						<item>
+							<field>Сумма</field>
+						</item>
+						<item>
+							<field>ИтогЗаявок</field>
+						</item>
 					</selection>
 					<filter>
 						<item xsi:type="FilterItemComparison">
@@ -4969,7 +4978,6 @@
 					</filter>
 					<appearance>
 						<dcscor:item xsi:type="SettingsParameterValue">
-							<dcscor:use>false</dcscor:use>
 							<dcscor:parameter>ЦветФона</dcscor:parameter>
 							<dcscor:value xsi:type="v8ui:Color">web:LightGoldenRod</dcscor:value>
 						</dcscor:item>
@@ -5065,6 +5073,10 @@
 							<dcscor:parameter>ЦветТекста</dcscor:parameter>
 							<dcscor:value xsi:type="v8ui:Color">web:MediumSeaGreen</dcscor:value>
 						</dcscor:item>
+						<dcscor:item xsi:type="SettingsParameterValue">
+							<dcscor:parameter>Шрифт</dcscor:parameter>
+							<dcscor:value xsi:type="v8ui:Font" ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+						</dcscor:item>
 					</appearance>
 				</item>
 				<item>
@@ -5087,6 +5099,10 @@
 						<dcscor:item xsi:type="SettingsParameterValue">
 							<dcscor:parameter>ЦветТекста</dcscor:parameter>
 							<dcscor:value xsi:type="v8ui:Color">web:Gray</dcscor:value>
+						</dcscor:item>
+						<dcscor:item xsi:type="SettingsParameterValue">
+							<dcscor:parameter>Шрифт</dcscor:parameter>
+							<dcscor:value xsi:type="v8ui:Font" ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
 						</dcscor:item>
 					</appearance>
 				</item>
