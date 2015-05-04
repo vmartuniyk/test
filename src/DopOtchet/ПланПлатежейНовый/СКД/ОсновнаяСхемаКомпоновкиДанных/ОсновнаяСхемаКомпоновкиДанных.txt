@@ -92,6 +92,11 @@
 						<d5p1:content>Сумма</d5p1:content>
 					</d5p1:item>
 				</title>
+				<useRestriction>
+					<condition>true</condition>
+					<group>true</group>
+					<order>true</order>
+				</useRestriction>
 				<valueType>
 					<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:decimal</Type>
 					<NumberQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
@@ -1725,7 +1730,7 @@
 	БудущиеПроплаты.Регистратор					КАК Регистратор,
 	ЕСТЬNULL(БудущиеПроплаты.Сумма, 0)			КАК Сумма,
 	ИСТИНА 										КАК ЗаявкаОплачена,
-	0											КАК ИтогПоЗаявкам 
+	0											КАК ИтогПоЗаявкам
 ИЗ
 	КалендарьПоПартнерам КАК КалендарьПоПартнерам
 		ЛЕВОЕ СОЕДИНЕНИЕ БудущиеПроплаты КАК БудущиеПроплаты
