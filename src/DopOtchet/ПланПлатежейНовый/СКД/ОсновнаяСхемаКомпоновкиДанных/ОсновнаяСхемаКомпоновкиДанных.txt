@@ -299,6 +299,26 @@
 					<dimension xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</dimension>
 				</role>
 			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ЗаявкаОплачена</dataPath>
+				<field>ЗаявкаОплачена</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Заявка оплачена</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ИтогПоЗаявкам</dataPath>
+				<field>ИтогПоЗаявкам</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Итог по заявкам</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
 			<dataSource>ИсточникДанных1</dataSource>
 			<query>// Партнеры и их дополнительные реквизиты
 
@@ -1549,7 +1569,13 @@
 			ТОГДА ЗаявкиКВыплате.СуммаРасход
 		ИНАЧЕ ЗаявкиКВыплате.СуммаРасход * (КурсЗаявок.Курс / КурсУпр.Курс)
 	КОНЕЦ КАК Сумма,
-	ЗаявкиКВыплате.ЗаявкаНаРасходованиеДенежныхСредств.БанковскийСчетКонтрагента КАК СчетПолучателя
+	ЗаявкиКВыплате.ЗаявкаНаРасходованиеДенежныхСредств.БанковскийСчетКонтрагента КАК СчетПолучателя,
+	ВЫБОР
+		КОГДА ЕСТЬNULL(ЗаявкиКВыплатеОстатки.СуммаОстаток, 0) &gt;= 0
+			ТОГДА ИСТИНА
+		ИНАЧЕ ЛОЖЬ
+	КОНЕЦ 																		КАК ЗаявкаОплачена
+
 ПОМЕСТИТЬ КешБудущиеЗаявки
 ИЗ
 	РегистрНакопления.ДенежныеСредстваКВыплате.Обороты(
@@ -1569,6 +1595,15 @@
 		ПО ЗаявкиКВыплате.ЗаявкаНаРасходованиеДенежныхСредств.Валюта = КурсЗаявок.Валюта
 		ЛЕВОЕ СОЕДИНЕНИЕ КурсыВалют КАК КурсУпр
 		ПО (КурсУпр.Валюта = &amp;ВалютаУпрУчета)
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрНакопления.ДенежныеСредстваКВыплате.Остатки(
+				,
+				ЗаявкаНаРасходованиеДенежныхСредств ССЫЛКА Документ.ЗаявкаНаРасходованиеДенежныхСредств
+					И АналитикаУчетаПоПартнерам.Партнер В
+						(ВЫБРАТЬ
+							Партнер
+						ИЗ
+							ТаблицаПартнеров)) КАК ЗаявкиКВыплатеОстатки
+		ПО ЗаявкиКВыплате.ЗаявкаНаРасходованиеДенежныхСредств = ЗаявкиКВыплатеОстатки.ЗаявкаНаРасходованиеДенежныхСредств
 ;
 
 
@@ -1688,7 +1723,9 @@
 	NULL										КАК СчетПолучатель,
 	"" 											КАК НазначениеПлатежа,	
 	БудущиеПроплаты.Регистратор					КАК Регистратор,
-	ЕСТЬNULL(БудущиеПроплаты.Сумма, 0)			КАК Сумма 
+	ЕСТЬNULL(БудущиеПроплаты.Сумма, 0)			КАК Сумма,
+	ИСТИНА 										КАК ЗаявкаОплачена,
+	0											КАК ИтогПоЗаявкам 
 ИЗ
 	КалендарьПоПартнерам КАК КалендарьПоПартнерам
 		ЛЕВОЕ СОЕДИНЕНИЕ БудущиеПроплаты КАК БудущиеПроплаты
@@ -1710,7 +1747,9 @@
 	NULL										КАК СчетПолучатель,
 	"" 											КАК НазначениеПлатежа,
 	КешПрошедшиеОплаты.Регистратор				КАК Регистратор,
-	ЕСТЬNULL(КешПрошедшиеОплаты.Сумма, 0)		КАК Сумма 
+	ЕСТЬNULL(КешПрошедшиеОплаты.Сумма, 0)		КАК Сумма,
+	ИСТИНА 										КАК ЗаявкаОплачена,
+	0											КАК ИтогПоЗаявкам 
 ИЗ
 	КалендарьПоПартнерам КАК КалендарьПоПартнерам
 		ЛЕВОЕ СОЕДИНЕНИЕ КешПрошедшиеОплаты КАК КешПрошедшиеОплаты
@@ -1732,7 +1771,9 @@
 	NULL 										КАК СчетПолучатель,
 	"" 											КАК НазначениеПлатежа,
 	КешПрошедшиеОплатыЗаДень.Регистратор		КАК Регистратор,
-	ЕСТЬNULL(КешПрошедшиеОплатыЗаДень.Сумма, 0)	КАК Сумма 
+	ЕСТЬNULL(КешПрошедшиеОплатыЗаДень.Сумма, 0)	КАК Сумма,
+	ИСТИНА 										КАК ЗаявкаОплачена,
+	0											КАК ИтогПоЗаявкам 
 ИЗ
 	КалендарьПоПартнерам КАК КалендарьПоПартнерам
 		ЛЕВОЕ СОЕДИНЕНИЕ КешПрошедшиеОплатыЗаДень КАК КешПрошедшиеОплатыЗаДень
@@ -1754,7 +1795,9 @@
 	ЕСТЬNULL(КешПрошлыеЗаявки.СчетПолучатель, NULL)					КАК СчетПолучатель,
 	ЕСТЬNULL(КешПрошлыеЗаявки.Регистратор.НазначениеПлатежа, "")   	КАК НазначениеПлатежа,
 	КешПрошлыеЗаявки.Регистратор									КАК Регистратор,
-	ЕСТЬNULL(КешПрошлыеЗаявки.Сумма, 0)								КАК Сумма 
+	ЕСТЬNULL(КешПрошлыеЗаявки.Сумма, 0)								КАК Сумма,
+	ЕСТЬNULL(КешПрошлыеЗаявки.ЗаявкаОплачена, ЛОЖЬ)					КАК ЗаявкаОплачена,
+	0																КАК ИтогПоЗаявкам 
 ИЗ
 	КалендарьПоПартнерам КАК КалендарьПоПартнерам
 		ЛЕВОЕ СОЕДИНЕНИЕ КешПрошлыеЗаявки КАК КешПрошлыеЗаявки
@@ -1776,7 +1819,9 @@
 	ЕСТЬNULL(КешБудущиеЗаявки.СчетПолучатель, NULL)					КАК СчетПолучатель,
 	ЕСТЬNULL(КешБудущиеЗаявки.Регистратор.НазначениеПлатежа, "")   	КАК НазначениеПлатежа,
 	КешБудущиеЗаявки.Регистратор									КАК Регистратор,
-	ЕСТЬNULL(КешБудущиеЗаявки.Сумма, 0)								КАК Сумма 
+	ЕСТЬNULL(КешБудущиеЗаявки.Сумма, 0)								КАК Сумма,
+	ЕСТЬNULL(КешБудущиеЗаявки.ЗаявкаОплачена, ЛОЖЬ)					КАК ЗаявкаОплачена,
+	0																КАК ИтогПоЗаявкам 
 ИЗ
 	КалендарьПоПартнерам КАК КалендарьПоПартнерам
 		ЛЕВОЕ СОЕДИНЕНИЕ КешБудущиеЗаявки КАК КешБудущиеЗаявки
@@ -1798,7 +1843,9 @@
 	NULL										КАК СчетПолучатель,
 	"" 											КАК НазначениеПлатежа,
 	ТаблицаНеОплаченоКлиент.Регистратор			КАК Регистратор,
-	ЕСТЬNULL(ТаблицаНеОплаченоКлиент.Сумма, 0)	КАК Сумма 
+	ЕСТЬNULL(ТаблицаНеОплаченоКлиент.Сумма, 0)	КАК Сумма,
+	ИСТИНА 										КАК ЗаявкаОплачена,
+	0											КАК ИтогПоЗаявкам 
 ИЗ
 	КалендарьПоПартнерам КАК КалендарьПоПартнерам
 		ЛЕВОЕ СОЕДИНЕНИЕ ТаблицаНеОплаченоКлиент КАК ТаблицаНеОплаченоКлиент
@@ -1819,7 +1866,7 @@
 		</dataSet>
 		<totalField>
 			<dataPath>Сумма</dataPath>
-			<expression>Сумма(Сумма)</expression>
+			<expression>Сумма(ВЫБОР КОГДА isnull(СчетПолучатель, 0)=0 ТОГДА Сумма Иначе 0 Конец)</expression>
 		</totalField>
 		<totalField>
 			<dataPath>ТекущийДень</dataPath>
@@ -1828,6 +1875,20 @@
 		<totalField>
 			<dataPath>ВыделятьВыходные</dataPath>
 			<expression>Максимум(ВыделятьВыходные)</expression>
+		</totalField>
+		<totalField>
+			<dataPath>ЗаявкаОплачена</dataPath>
+			<expression>Минимум(ЗаявкаОплачена)</expression>
+		</totalField>
+		<totalField>
+			<dataPath>Сумма</dataPath>
+			<expression>Сумма(Сумма)</expression>
+			<group>НазначениеПлатежа</group>
+			<group>СчетПолучатель</group>
+		</totalField>
+		<totalField>
+			<dataPath>ИтогПоЗаявкам</dataPath>
+			<expression>Сумма(Выбор когда isnull(СчетПолучатель, 0)&lt;&gt;0 Тогда Сумма Иначе 0 Конец)</expression>
 		</totalField>
 		<parameter>
 			<name>ПериодОтчета</name>
@@ -2128,8 +2189,14 @@
 </SchemaFile>﻿<?xml version="1.0" encoding="UTF-8"?>
 <Settings xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<selection>
-		<item xsi:type="SelectedItemField">
-			<field>Сумма</field>
+		<item xsi:type="SelectedItemFolder">
+			<item xsi:type="SelectedItemField">
+				<field>Сумма</field>
+			</item>
+			<item xsi:type="SelectedItemField">
+				<field>ИтогПоЗаявкам</field>
+			</item>
+			<placement>Vertically</placement>
 		</item>
 	</selection>
 	<dataParameters>
@@ -2352,6 +2419,33 @@
 				<selection>
 					<item xsi:type="SelectedItemAuto"/>
 				</selection>
+				<conditionalAppearance>
+					<item>
+						<selection>
+							<item>
+								<field>Сумма</field>
+							</item>
+						</selection>
+						<filter>
+							<item xsi:type="FilterItemComparison">
+								<left xsi:type="dcscor:Field">ЗаявкаОплачена</left>
+								<comparisonType>Equal</comparisonType>
+								<right xsi:type="xs:boolean">false</right>
+							</item>
+						</filter>
+						<appearance>
+							<dcscor:item xsi:type="SettingsParameterValue">
+								<dcscor:use>false</dcscor:use>
+								<dcscor:parameter>ЦветФона</dcscor:parameter>
+								<dcscor:value xsi:type="v8ui:Color">style:SpecialTextColor</dcscor:value>
+							</dcscor:item>
+							<dcscor:item xsi:type="SettingsParameterValue">
+								<dcscor:parameter>ЦветТекста</dcscor:parameter>
+								<dcscor:value xsi:type="v8ui:Color">style:SpecialTextColor</dcscor:value>
+							</dcscor:item>
+						</appearance>
+					</item>
+				</conditionalAppearance>
 			</item>
 		</row>
 	</item>
