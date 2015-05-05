@@ -979,7 +979,6 @@
 						<useRestriction>
 							<condition>true</condition>
 							<group>true</group>
-							<order>true</order>
 						</useRestriction>
 						<valueType>
 							<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:decimal</Type>
@@ -5593,6 +5592,17 @@
 					<userSettingID>0b22362d-a298-40cc-87a2-a5eca9ff0601</userSettingID>
 				</dcscor:item>
 			</dataParameters>
+			<order>
+				<item xsi:type="OrderItemField">
+					<field>ДатаГрафика</field>
+					<orderType>Asc</orderType>
+				</item>
+				<item xsi:type="OrderItemField">
+					<field>Сумма</field>
+					<orderType>Asc</orderType>
+				</item>
+				<userSettingID>46450bb9-360c-49b0-8e80-7a4825502d32</userSettingID>
+			</order>
 			<conditionalAppearance>
 				<item>
 					<selection>
