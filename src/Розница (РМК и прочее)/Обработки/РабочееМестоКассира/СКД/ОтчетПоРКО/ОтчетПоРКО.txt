@@ -8,19 +8,8 @@
 		<dataSet xsi:type="DataSetQuery">
 			<name>НаборДанных1</name>
 			<field xsi:type="DataSetFieldField">
-				<dataPath>АналитикаУчетаПоПартнерам</dataPath>
-				<field>АналитикаУчетаПоПартнерам</field>
-			</field>
-			<field xsi:type="DataSetFieldField">
 				<dataPath>Валюта</dataPath>
 				<field>Валюта</field>
-				<role>
-					<dimension xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</dimension>
-				</role>
-			</field>
-			<field xsi:type="DataSetFieldField">
-				<dataPath>ЗаказКлиента</dataPath>
-				<field>ЗаказКлиента</field>
 			</field>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>Сумма</dataPath>
@@ -29,14 +18,26 @@
 			<field xsi:type="DataSetFieldField">
 				<dataPath>Дата</dataPath>
 				<field>Дата</field>
+				<role>
+					<periodNumber xmlns="http://v8.1c.ru/8.1/data-composition-system/common">2</periodNumber>
+					<periodType xmlns="http://v8.1c.ru/8.1/data-composition-system/common">Main</periodType>
+				</role>
 			</field>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>Номер</dataPath>
 				<field>Номер</field>
+				<role>
+					<periodNumber xmlns="http://v8.1c.ru/8.1/data-composition-system/common">1</periodNumber>
+					<periodType xmlns="http://v8.1c.ru/8.1/data-composition-system/common">Main</periodType>
+				</role>
 			</field>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>Кассир</dataPath>
 				<field>Кассир</field>
+				<role>
+					<periodNumber xmlns="http://v8.1c.ru/8.1/data-composition-system/common">4</periodNumber>
+					<periodType xmlns="http://v8.1c.ru/8.1/data-composition-system/common">Main</periodType>
+				</role>
 			</field>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>Контрагент</dataPath>
@@ -45,35 +46,51 @@
 			<field xsi:type="DataSetFieldField">
 				<dataPath>Организация</dataPath>
 				<field>Организация</field>
+				<role>
+					<dimension xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</dimension>
+				</role>
 			</field>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>РасходныйКассовыйОрдер</dataPath>
 				<field>РасходныйКассовыйОрдер</field>
 				<role>
-					<periodNumber xmlns="http://v8.1c.ru/8.1/data-composition-system/common">1</periodNumber>
+					<periodNumber xmlns="http://v8.1c.ru/8.1/data-composition-system/common">3</periodNumber>
 					<periodType xmlns="http://v8.1c.ru/8.1/data-composition-system/common">Main</periodType>
 				</role>
 			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Касса</dataPath>
+				<field>Касса</field>
+			</field>
 			<dataSource>ИсточникДанных1</dataSource>
 			<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
-	РасчетыСКлиентамиОстаткиИОбороты.Регистратор.Номер КАК Номер,
-	РасчетыСКлиентамиОстаткиИОбороты.Регистратор.Дата КАК Дата,
-	РасчетыСКлиентамиОстаткиИОбороты.Регистратор КАК РасходныйКассовыйОрдер,
-	РасчетыСКлиентамиОстаткиИОбороты.СуммаРасход КАК Сумма,
-	РасчетыСКлиентамиОстаткиИОбороты.Валюта КАК Валюта,
-	РасчетыСКлиентамиОстаткиИОбороты.Регистратор.Контрагент КАК Контрагент,
-	РасчетыСКлиентамиОстаткиИОбороты.Регистратор.Организация КАК Организация,
-	РасчетыСКлиентамиОстаткиИОбороты.Регистратор.Кассир КАК Кассир
+	ВЫРАЗИТЬ(ДенежныеСредства.Регистратор КАК Документ.РасходныйКассовыйОрдер).Номер КАК Номер,
+	ВЫРАЗИТЬ(ДенежныеСредства.Регистратор КАК Документ.РасходныйКассовыйОрдер).Дата КАК Дата,
+	ВЫБОР
+		КОГДА ВЫРАЗИТЬ(ДенежныеСредства.Регистратор КАК Документ.РасходныйКассовыйОрдер).Контрагент = ЗНАЧЕНИЕ(Справочник.Контрагенты.ПустаяСсылка)
+			ТОГДА ДенежныеСредства.Касса
+		ИНАЧЕ ВЫРАЗИТЬ(ДенежныеСредства.Регистратор КАК Документ.РасходныйКассовыйОрдер).Контрагент
+	КОНЕЦ КАК Контрагент,
+	ДенежныеСредства.Организация КАК Организация,
+	ВЫРАЗИТЬ(ДенежныеСредства.Регистратор КАК Документ.РасходныйКассовыйОрдер) КАК РасходныйКассовыйОрдер,
+	ДенежныеСредства.СуммаРасход КАК Сумма,
+	ДенежныеСредства.Касса.ВалютаДенежныхСредств КАК Валюта,
+	ВЫРАЗИТЬ(ДенежныеСредства.Регистратор КАК Документ.РасходныйКассовыйОрдер).Кассир КАК Кассир
 ИЗ
-	РегистрНакопления.РасчетыСКлиентами.ОстаткиИОбороты(, , Регистратор, , ) КАК РасчетыСКлиентамиОстаткиИОбороты
+	РегистрНакопления.ДенежныеСредстваНаличные.ОстаткиИОбороты(
+			&amp;Дата,
+			,
+			Авто,
+			,
+			ВЫБОР
+				КОГДА &amp;Касса = ЗНАЧЕНИЕ(Справочник.Кассы.ПустаяСсылка)
+						ИЛИ ЕСТЬNULL(&amp;Касса, 0) = 0
+					ТОГДА ИСТИНА
+				ИНАЧЕ Касса = &amp;Касса
+			КОНЕЦ) КАК ДенежныеСредства
 ГДЕ
-	ТИПЗНАЧЕНИЯ(РасчетыСКлиентамиОстаткиИОбороты.Регистратор) = ТИП(Документ.РасходныйКассовыйОрдер)
-	И ВЫБОР
-			КОГДА &amp;Касса = ЗНАЧЕНИЕ(Справочник.Кассы.ПустаяСсылка)
-					ИЛИ ЕСТЬNULL(&amp;Касса, 0) = 0
-				ТОГДА ИСТИНА
-			ИНАЧЕ РасчетыСКлиентамиОстаткиИОбороты.Регистратор.Касса = &amp;Касса
-		КОНЕЦ
+	ТИПЗНАЧЕНИЯ(ДенежныеСредства.Регистратор) = ТИП(Документ.РасходныйКассовыйОрдер)
+	И ДенежныеСредства.СуммаРасход &gt; 0
 
 УПОРЯДОЧИТЬ ПО
 	Дата</query>
@@ -125,6 +142,23 @@
 			</valueType>
 			<value xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xsi:type="dcscor:DesignTimeValue">Справочник.Кассы.ПустаяСсылка</value>
 			<useRestriction>false</useRestriction>
+		</parameter>
+		<parameter>
+			<name>Дата</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Дата</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:dateTime</Type>
+				<DateQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
+					<DateFractions>DateTime</DateFractions>
+				</DateQualifiers>
+			</valueType>
+			<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+			<useRestriction>true</useRestriction>
 		</parameter>
 		<settingsVariant>
 			<name xmlns="http://v8.1c.ru/8.1/data-composition-system/settings">Основной</name>
