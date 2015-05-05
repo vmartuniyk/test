@@ -979,7 +979,6 @@
 						<useRestriction>
 							<condition>true</condition>
 							<group>true</group>
-							<order>true</order>
 						</useRestriction>
 						<valueType>
 							<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:decimal</Type>
@@ -2434,11 +2433,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 ВЫБРАТЬ
-	ВЫБОР
-		КОГДА НАЧАЛОПЕРИОДА(ПериодыПрошлыхЗаявок.Период, ДЕНЬ) = &amp;ТекущаяДата
-			ТОГДА КОНЕЦПЕРИОДА(ПериодыПрошлыхЗаявок.Период, ДЕНЬ)
-		ИНАЧЕ НАЧАЛОПЕРИОДА(ПериодыПрошлыхЗаявок.Период, ДЕНЬ)
-	КОНЕЦ																		КАК Период,
+	НАЧАЛОПЕРИОДА(ПериодыПрошлыхЗаявок.Период, ДЕНЬ)							КАК Период,
 	ПериодыПрошлыхЗаявок.Регистратор											КАК Регистратор,
 	ПериодыПрошлыхЗаявок.Партнер												КАК Партнер,
 	ПериодыПрошлыхЗаявок.СчетПолучатель											КАК СчетПолучатель,
@@ -2466,11 +2461,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 ВЫБРАТЬ
-	ВЫБОР
-		КОГДА НАЧАЛОПЕРИОДА(ЗаявкиКВыплате.Период, ДЕНЬ) = &amp;ТекущаяДата
-			ТОГДА КОНЕЦПЕРИОДА(ЗаявкиКВыплате.Период, ДЕНЬ)
-		ИНАЧЕ НАЧАЛОПЕРИОДА(ЗаявкиКВыплате.Период, ДЕНЬ)
-	КОНЕЦ КАК Период,
+	НАЧАЛОПЕРИОДА(ЗаявкиКВыплате.Период, ДЕНЬ) КАК Период,
 	ЗаявкиКВыплате.ЗаявкаНаРасходованиеДенежныхСредств КАК Регистратор,
 	АналитикаПартнеры.Партнер КАК Партнер,
 	ЗаявкиКВыплате.ЗаявкаНаРасходованиеДенежныхСредств.БанковскийСчетКонтрагента КАК СчетПолучатель,
@@ -2638,7 +2629,7 @@
 ИЗ
 	КешПрошлыеЗаявки
 ГДЕ
-	НАЧАЛОПЕРИОДА(Период, ДЕНЬ)	= НАЧАЛОПЕРИОДА(&amp;ТекущиеДень, ДЕНЬ)
+	НАЧАЛОПЕРИОДА(Период, ДЕНЬ)	= НАЧАЛОПЕРИОДА(&amp;ТекущаяДата, ДЕНЬ)
 	И Период &gt;= &amp;ДатаНачало И Период &lt;= &amp;ДатаОкончания
 	
 ОБЪЕДИНИТЬ
@@ -2650,7 +2641,7 @@
 ИЗ
 	КешБудущиеЗаявки
 ГДЕ
-	НАЧАЛОПЕРИОДА(Период, ДЕНЬ)	= НАЧАЛОПЕРИОДА(&amp;ТекущиеДень, ДЕНЬ)
+	НАЧАЛОПЕРИОДА(Период, ДЕНЬ)	= НАЧАЛОПЕРИОДА(&amp;ТекущаяДата, ДЕНЬ)
 	И Период &gt;= &amp;ДатаНачало И Период &lt;= &amp;ДатаОкончания
 
 ;
@@ -2937,6 +2928,13 @@
 				<totalField>
 					<dataPath>ИтогПоЗаявкам</dataPath>
 					<expression>Сумма(Выбор когда isnull(СчетПолучатель, 0)&lt;&gt;0 Тогда Сумма Иначе 0 Конец)</expression>
+				</totalField>
+				<totalField>
+					<dataPath>ВыделятьВыходные</dataPath>
+					<expression>Ложь</expression>
+					<group>НазначениеПлатежа</group>
+					<group>СтатусыЗаявок</group>
+					<group>СчетПолучатель</group>
 				</totalField>
 				<parameter>
 					<name>ПериодОтчета</name>
@@ -3239,23 +3237,6 @@
 					<useRestriction>false</useRestriction>
 				</parameter>
 				<parameter>
-					<name>ТекущиеДень</name>
-					<title xmlns:d6p1="http://v8.1c.ru/8.1/data/core" xsi:type="d6p1:LocalStringType">
-						<d6p1:item>
-							<d6p1:lang>ru</d6p1:lang>
-							<d6p1:content>Текущие день</d6p1:content>
-						</d6p1:item>
-					</title>
-					<valueType>
-						<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:dateTime</Type>
-						<DateQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
-							<DateFractions>DateTime</DateFractions>
-						</DateQualifiers>
-					</valueType>
-					<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
-					<useRestriction>true</useRestriction>
-				</parameter>
-				<parameter>
 					<name>ОтборПоЗаявкам</name>
 					<title xmlns:d6p1="http://v8.1c.ru/8.1/data/core" xsi:type="d6p1:LocalStringType">
 						<d6p1:item>
@@ -3308,6 +3289,8 @@
 							</d7p1:item>
 						</presentation>
 					</availableValue>
+					<denyIncompleteValues>true</denyIncompleteValues>
+					<use>Always</use>
 				</parameter>
 				<template>
 					<name>Макет1</name>
@@ -5609,6 +5592,17 @@
 					<userSettingID>0b22362d-a298-40cc-87a2-a5eca9ff0601</userSettingID>
 				</dcscor:item>
 			</dataParameters>
+			<order>
+				<item xsi:type="OrderItemField">
+					<field>ДатаГрафика</field>
+					<orderType>Asc</orderType>
+				</item>
+				<item xsi:type="OrderItemField">
+					<field>Сумма</field>
+					<orderType>Asc</orderType>
+				</item>
+				<userSettingID>46450bb9-360c-49b0-8e80-7a4825502d32</userSettingID>
+			</order>
 			<conditionalAppearance>
 				<item>
 					<selection>
@@ -5837,6 +5831,22 @@
 									</dcscor:item>
 								</appearance>
 							</item>
+							<item>
+								<selection>
+									<item>
+										<field>Сумма</field>
+									</item>
+								</selection>
+								<filter/>
+								<appearance>
+									<dcscor:item xsi:type="SettingsParameterValue">
+										<dcscor:parameter>ЦветФона</dcscor:parameter>
+										<dcscor:value xsi:type="v8ui:Color">web:White</dcscor:value>
+									</dcscor:item>
+								</appearance>
+								<useInOverall>DontUse</useInOverall>
+								<useInHeader>DontUse</useInHeader>
+							</item>
 						</conditionalAppearance>
 						<item>
 							<name>СтатусыЗаявок</name>
@@ -5875,6 +5885,22 @@
 											<dcscor:value xsi:type="v8ui:Color">style:SpecialTextColor</dcscor:value>
 										</dcscor:item>
 									</appearance>
+								</item>
+								<item>
+									<selection>
+										<item>
+											<field>Сумма</field>
+										</item>
+									</selection>
+									<filter/>
+									<appearance>
+										<dcscor:item xsi:type="SettingsParameterValue">
+											<dcscor:parameter>ЦветФона</dcscor:parameter>
+											<dcscor:value xsi:type="v8ui:Color">web:White</dcscor:value>
+										</dcscor:item>
+									</appearance>
+									<useInOverall>DontUse</useInOverall>
+									<useInHeader>DontUse</useInHeader>
 								</item>
 							</conditionalAppearance>
 						</item>
