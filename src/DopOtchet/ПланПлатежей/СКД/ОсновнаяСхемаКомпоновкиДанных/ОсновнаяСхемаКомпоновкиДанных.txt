@@ -1223,6 +1223,7 @@
 							<order>true</order>
 						</attributeUseRestriction>
 						<role>
+							<dimension xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</dimension>
 							<ignoreNullValues xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</ignoreNullValues>
 						</role>
 					</field>
@@ -2409,7 +2410,7 @@
 ИЗ
 	РегистрНакопления.ДенежныеСредстваКВыплате.Обороты(
 			&amp;ДатаНачало,
-			&amp;ЗавтрашняяДата,
+			&amp;ТекущаяДата,
 			День,
 			ЗаявкаНаРасходованиеДенежныхСредств ССЫЛКА Документ.ЗаявкаНаРасходованиеДенежныхСредств
 				И ЗаявкаНаРасходованиеДенежныхСредств.Заметки НЕ ПОДОБНО "Автосписание ДС%"
