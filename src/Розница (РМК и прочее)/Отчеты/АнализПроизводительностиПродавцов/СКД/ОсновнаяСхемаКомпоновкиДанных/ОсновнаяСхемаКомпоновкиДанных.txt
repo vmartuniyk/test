@@ -290,11 +290,11 @@
 		</totalField>
 		<totalField>
 			<dataPath>ПроцентАКС</dataPath>
-			<expression>100* Сумма(ВыручкаАКС)/Сумма(ВыручкаТО)</expression>
+			<expression>Выбор когда Сумма(ВыручкаТО) &lt;&gt; 0 Тогда  100* Сумма(ВыручкаАКС)/Сумма(ВыручкаТО) Иначе 0 Конец</expression>
 		</totalField>
 		<totalField>
 			<dataPath>ПроцентКТСПомощь</dataPath>
-			<expression>100* Сумма(ВыручкаКТСПомощь)/Сумма(ВыручкаТО)</expression>
+			<expression>Выбор когда Сумма(ВыручкаТО) &lt;&gt; 0 Тогда  100* Сумма(ВыручкаКТСПомощь)/Сумма(ВыручкаТО)  Иначе 0 Конец</expression>
 		</totalField>
 		<totalField>
 			<dataPath>РандПоАКС</dataPath>
