@@ -587,7 +587,7 @@
 				<field>СтатьяРасходов</field>
 			</field>
 			<dataSource>ИсточникДанных1</dataSource>
-			<query>ВЫБРАТЬ РАЗЛИЧНЫЕ РАЗРЕШЕННЫЕ
+			<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ РАЗЛИЧНЫЕ
 	Сегменты.Номенклатура,
 	Сегменты.Характеристика,
 	ИСТИНА КАК ИспользуетсяОтборПоСегментуНоменклатуры
@@ -597,51 +597,46 @@
 {ГДЕ
 	Сегменты.Сегмент.* КАК СегментНоменклатуры,
 	Сегменты.Номенклатура.* КАК Номенклатура,
-	Сегменты.Характеристика.* КАК Характеристика
-}
+	Сегменты.Характеристика.* КАК Характеристика}
+
 ИНДЕКСИРОВАТЬ ПО
-	Номенклатура,
-	Характеристика
+	Сегменты.Номенклатура,
+	Сегменты.Характеристика
 ;
+
 ////////////////////////////////////////////////////////////////////////////////
-ВЫБРАТЬ РАЗЛИЧНЫЕ РАЗРЕШЕННЫЕ
+ВЫБРАТЬ РАЗРЕШЕННЫЕ РАЗЛИЧНЫЕ
 	Сегменты.Партнер КАК Партнер,
 	ИСТИНА КАК ИспользуетсяОтборПоСегментуПартнеров
-	
 ПОМЕСТИТЬ ОтборПоСегментуПартнеров
 {ВЫБРАТЬ
-	Партнер.*
-}
+	Партнер.*}
 ИЗ
 	РегистрСведений.ПартнерыСегмента КАК Сегменты
 {ГДЕ
 	Сегменты.Сегмент.* КАК СегментПартнеров,
-	Сегменты.Партнер.* КАК Партнер
-}
+	Сегменты.Партнер.* КАК Партнер}
 
 ИНДЕКСИРОВАТЬ ПО
 	Сегменты.Партнер
 ;
-///////////////////////////////////////////////////////////////////////////////
 
+////////////////////////////////////////////////////////////////////////////////
 ВЫБРАТЬ РАЗРЕШЕННЫЕ
-	НАЧАЛОПЕРИОДА(ДанныеДокумента.Ссылка.Дата, Месяц) КАК ПериодМесяц,
-	ДанныеДокумента.Организация                       КАК Организация,
-	ДанныеДокумента.Ссылка.ПредварительныйРасчет      КАК ПредварительныйРасчет
-	
+	НАЧАЛОПЕРИОДА(ДанныеДокумента.Ссылка.Дата, МЕСЯЦ) КАК ПериодМесяц,
+	ДанныеДокумента.Организация КАК Организация,
+	ДанныеДокумента.Ссылка.ПредварительныйРасчет КАК ПредварительныйРасчет
 ПОМЕСТИТЬ РасчетыСебестоимости
 ИЗ
 	Документ.РасчетСебестоимостиТоваров.Организации КАК ДанныеДокумента
 ГДЕ
 	ДанныеДокумента.Ссылка.Проведен
 	И (ДанныеДокумента.Ссылка.Дата МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода
-		ИЛИ &amp;КонецПериода = ДАТАВРЕМЯ(1,1,1))
+			ИЛИ &amp;КонецПериода = ДАТАВРЕМЯ(1, 1, 1))
 ;
-///////////////////////////////////////////////////////////////////////////////
 
-
+////////////////////////////////////////////////////////////////////////////////
 ВЫБРАТЬ РАЗРЕШЕННЫЕ
-
 	НАЧАЛОПЕРИОДА(СебестоимостьТоваров.Период, ДЕНЬ) КАК ПериодДень,
 	НАЧАЛОПЕРИОДА(СебестоимостьТоваров.Период, НЕДЕЛЯ) КАК ПериодНеделя,
 	НАЧАЛОПЕРИОДА(СебестоимостьТоваров.Период, ДЕКАДА) КАК ПериодДекада,
@@ -650,158 +645,116 @@
 	НАЧАЛОПЕРИОДА(СебестоимостьТоваров.Период, ПОЛУГОДИЕ) КАК ПериодПолугодие,
 	НАЧАЛОПЕРИОДА(СебестоимостьТоваров.Период, ГОД) КАК ПериодГод,
 	СебестоимостьТоваров.Период КАК ПериодСекунда,
-	
 	СебестоимостьТоваров.Регистратор КАК Регистратор,
-
 	СебестоимостьТоваров.Организация КАК Организация,
 	АналитикаНоменклатуры.Номенклатура КАК Номенклатура,
 	АналитикаНоменклатуры.Характеристика КАК Характеристика,
 	АналитикаНоменклатуры.Склад КАК Склад,
 	СебестоимостьТоваров.РазделУчета КАК РазделУчета,
-	Константы.ВалютаУправленческогоУчета КАК Валюта,
-	
+	&amp;Валюта КАК Валюта,
 	СебестоимостьТоваров.ВидЗапасов КАК ВидЗапасов,
 	СебестоимостьТоваров.ВидЗапасов.Менеджер КАК Менеджер,
 	СебестоимостьТоваров.ВидЗапасов.Подразделение КАК Подразделение,
 	СебестоимостьТоваров.ВидЗапасов.Сделка КАК Сделка,
-	
 	ЕСТЬNULL(АналитикаПартнеров.Партнер, СебестоимостьТоваров.ВидЗапасов.Поставщик) КАК Поставщик,
-	
-	ВЫБОР КОГДА СебестоимостьТоваров.ВидДвижения = ЗНАЧЕНИЕ(ВидДвиженияНакопления.Приход)
-		И АналитикаНоменклатуры.Склад ССЫЛКА Справочник.Склады
-	ТОГДА
-		СебестоимостьТоваров.ХозяйственнаяОперация
-	ИНАЧЕ
-		NULL
+	ВЫБОР
+		КОГДА СебестоимостьТоваров.ВидДвижения = ЗНАЧЕНИЕ(ВидДвиженияНакопления.Приход)
+				И АналитикаНоменклатуры.Склад ССЫЛКА Справочник.Склады
+			ТОГДА СебестоимостьТоваров.ХозяйственнаяОперация
+		ИНАЧЕ NULL
 	КОНЕЦ КАК ХозяйственнаяОперацияПоступление,
-	
-	ВЫБОР КОГДА СебестоимостьТоваров.ВидДвижения = ЗНАЧЕНИЕ(ВидДвиженияНакопления.Расход) ТОГДА
-		СебестоимостьТоваров.ХозяйственнаяОперация
-	ИНАЧЕ
-		NULL
+	ВЫБОР
+		КОГДА СебестоимостьТоваров.ВидДвижения = ЗНАЧЕНИЕ(ВидДвиженияНакопления.Расход)
+			ТОГДА СебестоимостьТоваров.ХозяйственнаяОперация
+		ИНАЧЕ NULL
 	КОНЕЦ КАК ХозяйственнаяОперацияРасход,
 	СебестоимостьТоваров.СтатьяРасходовСписания КАК СтатьяРасходов,
 	СебестоимостьТоваров.АналитикаРасходов КАК АналитикаРасходов,
-	
 	СебестоимостьТоваров.ВидДвижения КАК ВидДвижения,
-	ЕСТЬNULL(РасчетыСебестоимости.ПредварительныйРасчет, Неопределено) КАК ВидСебестоимости,
-		
+	ЕСТЬNULL(РасчетыСебестоимости.ПредварительныйРасчет, НЕОПРЕДЕЛЕНО) КАК ВидСебестоимости,
 	СебестоимостьТоваров.Количество КАК Количество,
-	
-	ВЫБОР КОГДА &amp;ВыводитьСуммы = 1 Тогда
-
-		ВЫБОР КОГДА СебестоимостьТоваров.ВидДвижения = ЗНАЧЕНИЕ(ВидДвиженияНакопления.Расход)
-			И ЕСТЬNULL(РасчетыСебестоимости.ПредварительныйРасчет, Ложь)
-		ТОГДА
-			ЕСТЬNULL(СтоимостьНоменклатуры.Стоимость, 0)
-			* СебестоимостьТоваров.Количество
-		ИНАЧЕ
-			СебестоимостьТоваров.Стоимость
-		КОНЕЦ
-
-	ИНАЧЕ
-
-		ВЫБОР КОГДА СебестоимостьТоваров.ВидДвижения = ЗНАЧЕНИЕ(ВидДвиженияНакопления.Расход)
-			И ЕСТЬNULL(РасчетыСебестоимости.ПредварительныйРасчет, Ложь)
-		ТОГДА
-			ЕСТЬNULL(СтоимостьНоменклатуры.СтоимостьБезНДС, 0)
-			* СебестоимостьТоваров.Количество
-		ИНАЧЕ
-			СебестоимостьТоваров.СтоимостьБезНДС
-		КОНЕЦ
-
+	ВЫБОР
+		КОГДА &amp;ВыводитьСуммы = 1
+			ТОГДА ВЫБОР
+					КОГДА СебестоимостьТоваров.ВидДвижения = ЗНАЧЕНИЕ(ВидДвиженияНакопления.Расход)
+							И ЕСТЬNULL(РасчетыСебестоимости.ПредварительныйРасчет, ЛОЖЬ)
+						ТОГДА ЕСТЬNULL(СтоимостьНоменклатуры.Стоимость, 0) * СебестоимостьТоваров.Количество
+					ИНАЧЕ СебестоимостьТоваров.Стоимость
+				КОНЕЦ
+		КОГДА &amp;ВыводитьСуммы = 2
+			ТОГДА ВЫБОР
+					КОГДА СебестоимостьТоваров.ВидДвижения = ЗНАЧЕНИЕ(ВидДвиженияНакопления.Расход)
+							И ЕСТЬNULL(РасчетыСебестоимости.ПредварительныйРасчет, ЛОЖЬ)
+						ТОГДА ЕСТЬNULL(СтоимостьНоменклатуры.СтоимостьБезНДС, 0) * СебестоимостьТоваров.Количество
+					ИНАЧЕ СебестоимостьТоваров.СтоимостьБезНДС
+				КОНЕЦ
+		КОГДА &amp;ВыводитьСуммы = 3
+				ИЛИ &amp;ВыводитьСуммы = 4
+			ТОГДА ВЫБОР
+					КОГДА СебестоимостьТоваров.ВидДвижения = ЗНАЧЕНИЕ(ВидДвиженияНакопления.Расход)
+							И ЕСТЬNULL(РасчетыСебестоимости.ПредварительныйРасчет, ЛОЖЬ)
+						ТОГДА ЕСТЬNULL(СтоимостьНоменклатуры.СтоимостьРегл, 0) * СебестоимостьТоваров.Количество
+					ИНАЧЕ СебестоимостьТоваров.СтоимостьРегл
+				КОНЕЦ
 	КОНЕЦ КАК СтоимостьПоступления,
-	
-	ВЫБОР КОГДА &amp;ВыводитьСуммы = 1 Тогда
-
-		ВЫБОР КОГДА СебестоимостьТоваров.ВидДвижения = ЗНАЧЕНИЕ(ВидДвиженияНакопления.Расход)
-			И ЕСТЬNULL(РасчетыСебестоимости.ПредварительныйРасчет, Ложь)
-		ТОГДА
-			ЕСТЬNULL(СтоимостьНоменклатуры.СтоимостьДопРасходы, 0)
-			* СебестоимостьТоваров.Количество
-		ИНАЧЕ
-			СебестоимостьТоваров.СуммаДопРасходов
-		КОНЕЦ
-
-	ИНАЧЕ
-
-		ВЫБОР КОГДА СебестоимостьТоваров.ВидДвижения = ЗНАЧЕНИЕ(ВидДвиженияНакопления.Расход)
-			И ЕСТЬNULL(РасчетыСебестоимости.ПредварительныйРасчет, Ложь)
-		ТОГДА
-			ЕСТЬNULL(СтоимостьНоменклатуры.СтоимостьДопРасходыБезНДС, 0)
-			* СебестоимостьТоваров.Количество
-		ИНАЧЕ
-			СебестоимостьТоваров.СуммаДопРасходовБезНДС
-		КОНЕЦ
-
+	ВЫБОР
+		КОГДА &amp;ВыводитьСуммы = 1
+			ТОГДА ВЫБОР
+					КОГДА СебестоимостьТоваров.ВидДвижения = ЗНАЧЕНИЕ(ВидДвиженияНакопления.Расход)
+							И ЕСТЬNULL(РасчетыСебестоимости.ПредварительныйРасчет, ЛОЖЬ)
+						ТОГДА ЕСТЬNULL(СтоимостьНоменклатуры.СтоимостьДопРасходы, 0) * СебестоимостьТоваров.Количество
+					ИНАЧЕ СебестоимостьТоваров.СуммаДопРасходов
+				КОНЕЦ
+		КОГДА &amp;ВыводитьСуммы = 2
+			ТОГДА ВЫБОР
+					КОГДА СебестоимостьТоваров.ВидДвижения = ЗНАЧЕНИЕ(ВидДвиженияНакопления.Расход)
+							И ЕСТЬNULL(РасчетыСебестоимости.ПредварительныйРасчет, ЛОЖЬ)
+						ТОГДА ЕСТЬNULL(СтоимостьНоменклатуры.СтоимостьДопРасходыБезНДС, 0) * СебестоимостьТоваров.Количество
+					ИНАЧЕ СебестоимостьТоваров.СуммаДопРасходовБезНДС
+				КОНЕЦ
+		ИНАЧЕ 0
 	КОНЕЦ КАК ДопРасходы
-	
 ИЗ
 	РегистрНакопления.СебестоимостьТоваров КАК СебестоимостьТоваров
-	
-	{
-	ЛЕВОЕ СОЕДИНЕНИЕ
-		РегистрСведений.АналитикаУчетаНоменклатуры КАК АналитикаНоменклатуры
-	ПО
-		СебестоимостьТоваров.АналитикаУчетаНоменклатуры = АналитикаНоменклатуры.КлючАналитики
-	}
-	
-	{
-	ЛЕВОЕ СОЕДИНЕНИЕ
-		РегистрСведений.АналитикаУчетаПоПартнерам КАК АналитикаПартнеров
-	ПО
-		СебестоимостьТоваров.АналитикаУчетаПоПартнерам = АналитикаПартнеров.КлючАналитики
-	}
-	
-	{
-	ЛЕВОЕ СОЕДИНЕНИЕ
-		РасчетыСебестоимости КАК РасчетыСебестоимости
-	ПО
-		СебестоимостьТоваров.Организация = РасчетыСебестоимости.Организация
-		И НАЧАЛОПЕРИОДА(СебестоимостьТоваров.Период, Месяц) = РасчетыСебестоимости.ПериодМесяц
-	}
-		
-	{
-	ЛЕВОЕ СОЕДИНЕНИЕ
-		РегистрСведений.СтоимостьТоваров КАК СтоимостьНоменклатуры
-	ПО
-		СебестоимостьТоваров.АналитикаУчетаНоменклатуры = СтоимостьНоменклатуры.АналитикаУчетаНоменклатуры
-		И СебестоимостьТоваров.Организация = СтоимостьНоменклатуры.Организация
-		И СебестоимостьТоваров.ВидЗапасов = СтоимостьНоменклатуры.ВидЗапасов
-		И НАЧАЛОПЕРИОДА(СебестоимостьТоваров.Период, Месяц) = СтоимостьНоменклатуры.Период
-		И ЕСТЬNULL(РасчетыСебестоимости.ПредварительныйРасчет, Ложь)
-	}
-	
-	{
-	ЛЕВОЕ СОЕДИНЕНИЕ
-		Константы КАК Константы
-	ПО
-		Истина
-	}
-	
+		{ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.АналитикаУчетаНоменклатуры КАК АналитикаНоменклатуры
+		ПО СебестоимостьТоваров.АналитикаУчетаНоменклатуры = АналитикаНоменклатуры.КлючАналитики}
+		{ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.АналитикаУчетаПоПартнерам КАК АналитикаПартнеров
+		ПО СебестоимостьТоваров.АналитикаУчетаПоПартнерам = АналитикаПартнеров.КлючАналитики}
+		{ЛЕВОЕ СОЕДИНЕНИЕ РасчетыСебестоимости КАК РасчетыСебестоимости
+		ПО СебестоимостьТоваров.Организация = РасчетыСебестоимости.Организация
+			И (НАЧАЛОПЕРИОДА(СебестоимостьТоваров.Период, МЕСЯЦ) = РасчетыСебестоимости.ПериодМесяц)}
+		{ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СтоимостьТоваров КАК СтоимостьНоменклатуры
+		ПО СебестоимостьТоваров.АналитикаУчетаНоменклатуры = СтоимостьНоменклатуры.АналитикаУчетаНоменклатуры
+			И СебестоимостьТоваров.Организация = СтоимостьНоменклатуры.Организация
+			И СебестоимостьТоваров.ВидЗапасов = СтоимостьНоменклатуры.ВидЗапасов
+			И (НАЧАЛОПЕРИОДА(СебестоимостьТоваров.Период, МЕСЯЦ) = СтоимостьНоменклатуры.Период)
+			И (ЕСТЬNULL(РасчетыСебестоимости.ПредварительныйРасчет, ЛОЖЬ))}
+		{ЛЕВОЕ СОЕДИНЕНИЕ Константы КАК Константы
+		ПО (ИСТИНА)}
 ГДЕ
 	(СебестоимостьТоваров.Период МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода
-		ИЛИ &amp;КонецПериода = ДАТАВРЕМЯ(1,1,1))
-{
-ГДЕ
-	(АналитикаНоменклатуры.Номенклатура, АналитикаНоменклатуры.Характеристика) В (
-		ВЫБРАТЬ
-			ОтборПоСегментуНоменклатуры.Номенклатура,
-			ОтборПоСегментуНоменклатуры.Характеристика
-		ИЗ
-			ОтборПоСегментуНоменклатуры
-		ГДЕ
-			ОтборПоСегментуНоменклатуры.ИспользуетсяОтборПоСегментуНоменклатуры = &amp;ИспользуетсяОтборПоСегментуНоменклатуры
-	),
-	(АналитикаПартнеров.Партнер) В (
-		ВЫБРАТЬ
+			ИЛИ &amp;КонецПериода = ДАТАВРЕМЯ(1, 1, 1))
+	И ВЫБОР
+			КОГДА &amp;ВыводитьСуммы = 3
+				ТОГДА ВЫРАЗИТЬ(СебестоимостьТоваров.Регистратор КАК Документ.ПоступлениеТоваровУслуг).Валюта = &amp;Валюта
+			ИНАЧЕ ИСТИНА
+		КОНЕЦ
+{ГДЕ
+	((АналитикаНоменклатуры.Номенклатура, АналитикаНоменклатуры.Характеристика) В
+			(ВЫБРАТЬ
+				ОтборПоСегментуНоменклатуры.Номенклатура,
+				ОтборПоСегментуНоменклатуры.Характеристика
+			ИЗ
+				ОтборПоСегментуНоменклатуры
+			ГДЕ
+				ОтборПоСегментуНоменклатуры.ИспользуетсяОтборПоСегментуНоменклатуры = &amp;ИспользуетсяОтборПоСегментуНоменклатуры)),
+	(АналитикаПартнеров.Партнер В
+			(ВЫБРАТЬ
 				ОтборПоСегментуПартнеров.Партнер
 			ИЗ
 				ОтборПоСегментуПартнеров
 			ГДЕ
-				ОтборПоСегментуПартнеров.ИспользуетсяОтборПоСегментуПартнеров = &amp;ИспользуетсяОтборПоСегментуПартнеров
-	)
-}</query>
+				ОтборПоСегментуПартнеров.ИспользуетсяОтборПоСегментуПартнеров = &amp;ИспользуетсяОтборПоСегментуПартнеров))}</query>
 		</dataSet>
 		<calculatedField>
 			<dataPath>СредняяЦена</dataPath>
@@ -1050,6 +1003,24 @@
 					</d5p1:item>
 				</presentation>
 			</availableValue>
+			<availableValue>
+				<value xsi:type="xs:decimal">3</value>
+				<presentation xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Только в валюте регл. учета с НДС </d5p1:content>
+					</d5p1:item>
+				</presentation>
+			</availableValue>
+			<availableValue>
+				<value xsi:type="xs:decimal">4</value>
+				<presentation xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>В валюте регл. учета с НДС</d5p1:content>
+					</d5p1:item>
+				</presentation>
+			</availableValue>
 			<availableAsField>false</availableAsField>
 			<denyIncompleteValues>true</denyIncompleteValues>
 			<use>Always</use>
@@ -1278,6 +1249,15 @@
 				</d4p1:item>
 			</presentation>
 		</settingsVariant>
+		<settingsVariant>
+			<name xmlns="http://v8.1c.ru/8.1/data-composition-system/settings">ПоступленияОтПоставщиков</name>
+			<presentation xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Поступления от поставщиков</d4p1:content>
+				</d4p1:item>
+			</presentation>
+		</settingsVariant>
 	</dataCompositionSchema>
 </SchemaFile>﻿<?xml version="1.0" encoding="UTF-8"?>
 <Settings xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
@@ -1342,21 +1322,21 @@
 			<use>false</use>
 			<left xsi:type="dcscor:Field">Организация</left>
 			<comparisonType>InList</comparisonType>
-			<right xsi:nil="true"/>
+			<right xsi:type="dcscor:DesignTimeValue"/>
 			<userSettingID>76cc61c9-0eaf-4627-a963-9aed91158179</userSettingID>
 		</item>
 		<item xsi:type="FilterItemComparison">
 			<use>false</use>
 			<left xsi:type="dcscor:Field">Поставщик</left>
 			<comparisonType>InListByHierarchy</comparisonType>
-			<right xsi:nil="true"/>
+			<right xsi:type="dcscor:DesignTimeValue"/>
 			<userSettingID>410b51e8-3abc-4725-a193-91df995af3b1</userSettingID>
 		</item>
 		<item xsi:type="FilterItemComparison">
 			<use>false</use>
 			<left xsi:type="dcscor:Field">Номенклатура</left>
 			<comparisonType>InListByHierarchy</comparisonType>
-			<right xsi:nil="true"/>
+			<right xsi:type="dcscor:DesignTimeValue"/>
 			<userSettingID>58199917-be44-42e5-936a-eb2ad04927e2</userSettingID>
 		</item>
 		<viewMode>Normal</viewMode>
@@ -1836,21 +1816,21 @@
 			<use>false</use>
 			<left xsi:type="dcscor:Field">Организация</left>
 			<comparisonType>InList</comparisonType>
-			<right xsi:nil="true"/>
+			<right xsi:type="dcscor:DesignTimeValue"/>
 			<userSettingID>76cc61c9-0eaf-4627-a963-9aed91158179</userSettingID>
 		</item>
 		<item xsi:type="FilterItemComparison">
 			<use>false</use>
 			<left xsi:type="dcscor:Field">Поставщик</left>
 			<comparisonType>InListByHierarchy</comparisonType>
-			<right xsi:nil="true"/>
+			<right xsi:type="dcscor:DesignTimeValue"/>
 			<userSettingID>410b51e8-3abc-4725-a193-91df995af3b1</userSettingID>
 		</item>
 		<item xsi:type="FilterItemComparison">
 			<use>false</use>
 			<left xsi:type="dcscor:Field">Номенклатура</left>
 			<comparisonType>InListByHierarchy</comparisonType>
-			<right xsi:nil="true"/>
+			<right xsi:type="dcscor:DesignTimeValue"/>
 			<userSettingID>58199917-be44-42e5-936a-eb2ad04927e2</userSettingID>
 		</item>
 		<viewMode>Normal</viewMode>
@@ -1892,7 +1872,6 @@
 		</dcscor:item>
 		<dcscor:item xsi:type="SettingsParameterValue">
 			<dcscor:parameter>ОтслеживаемыеАналитики</dcscor:parameter>
-			<dcscor:value xsi:nil="true"/>
 			<viewMode>Normal</viewMode>
 			<userSettingID>c2d72beb-88be-48c1-9372-f66bf0b031e7</userSettingID>
 		</dcscor:item>
@@ -2260,6 +2239,224 @@
 				<v8:content>Стоимость поступления</v8:content>
 			</v8:item>
 		</userSettingPresentation>
+	</item>
+	<itemsViewMode>Normal</itemsViewMode>
+</Settings>﻿<?xml version="1.0" encoding="UTF-8"?>
+<Settings xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<userFields>
+		<item xsi:type="UserFieldExpression">
+			<dataPath>ПользовательскиеПоля.Поле1</dataPath>
+			<title>Количество</title>
+			<detailExpression>Количество</detailExpression>
+			<detailExpressionPresentation>Количество</detailExpressionPresentation>
+			<totalExpression>Сумма(Количество)</totalExpression>
+			<totalExpressionPresentation>Сумма(Количество)</totalExpressionPresentation>
+		</item>
+	</userFields>
+	<selection>
+		<item xsi:type="SelectedItemField">
+			<field>ПользовательскиеПоля.Поле1</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>ЦенаПоступления</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>СтоимостьПоступления</field>
+			<title>Сумма закупки</title>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>ДопРасходы</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>СредняяЦена</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>Себестоимость</field>
+		</item>
+		<viewMode>Normal</viewMode>
+		<userSettingID>021e5a78-1cd5-49e6-9373-5b36516f8cee</userSettingID>
+	</selection>
+	<filter>
+		<item xsi:type="FilterItemComparison">
+			<left xsi:type="dcscor:Field">ХозяйственнаяОперацияПоступление</left>
+			<comparisonType>InList</comparisonType>
+			<right xsi:type="dcscor:DesignTimeValue">Перечисление.ХозяйственныеОперации.ЗакупкаУПоставщика</right>
+			<right xsi:type="dcscor:DesignTimeValue">Перечисление.ХозяйственныеОперации.ЗакупкаЧерезПодотчетноеЛицо</right>
+			<right xsi:type="dcscor:DesignTimeValue">Перечисление.ХозяйственныеОперации.ЗакупкаПоИмпорту</right>
+			<right xsi:type="dcscor:DesignTimeValue">Перечисление.ХозяйственныеОперации.ОформлениеГТДБрокером</right>
+			<right xsi:type="dcscor:DesignTimeValue">Перечисление.ХозяйственныеОперации.ОформлениеГТДСамостоятельно</right>
+			<presentation xsi:type="xs:string">Только поступления от поставщиков</presentation>
+			<viewMode>Inaccessible</viewMode>
+		</item>
+		<item xsi:type="FilterItemComparison">
+			<use>false</use>
+			<left xsi:type="dcscor:Field">СегментПартнеров</left>
+			<comparisonType>Equal</comparisonType>
+			<userSettingID>7b40f55e-c92a-4cc7-a98b-e7600a8891d6</userSettingID>
+		</item>
+		<item xsi:type="FilterItemComparison">
+			<use>false</use>
+			<left xsi:type="dcscor:Field">СегментНоменклатуры</left>
+			<comparisonType>Equal</comparisonType>
+			<userSettingID>824801cc-0859-4b07-b443-74a6cc072191</userSettingID>
+		</item>
+		<item xsi:type="FilterItemComparison">
+			<use>false</use>
+			<left xsi:type="dcscor:Field">Организация</left>
+			<comparisonType>InList</comparisonType>
+			<right xsi:nil="true"/>
+			<userSettingID>76cc61c9-0eaf-4627-a963-9aed91158179</userSettingID>
+		</item>
+		<item xsi:type="FilterItemComparison">
+			<use>false</use>
+			<left xsi:type="dcscor:Field">Поставщик</left>
+			<comparisonType>InListByHierarchy</comparisonType>
+			<right xsi:nil="true"/>
+			<userSettingID>410b51e8-3abc-4725-a193-91df995af3b1</userSettingID>
+		</item>
+		<item xsi:type="FilterItemComparison">
+			<use>false</use>
+			<left xsi:type="dcscor:Field">Номенклатура</left>
+			<comparisonType>InListByHierarchy</comparisonType>
+			<right xsi:nil="true"/>
+			<userSettingID>58199917-be44-42e5-936a-eb2ad04927e2</userSettingID>
+		</item>
+		<viewMode>Normal</viewMode>
+		<userSettingID>e477da0c-8916-4194-a4f5-472308d6ba86</userSettingID>
+	</filter>
+	<dataParameters>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>Период</dcscor:parameter>
+			<dcscor:value xsi:type="v8:StandardPeriod">
+				<v8:variant xsi:type="v8:StandardPeriodVariant">ThisMonth</v8:variant>
+			</dcscor:value>
+			<userSettingID>c37afe7e-099c-411d-94fb-8f9034f5b7fe</userSettingID>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>ВыводитьСуммы</dcscor:parameter>
+			<dcscor:value xsi:type="xs:decimal">4</dcscor:value>
+			<userSettingID>e882c0ae-226d-4e4b-badd-42d7b5f91e68</userSettingID>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>Валюта</dcscor:parameter>
+			<dcscor:value xsi:type="dcscor:Field">ПараметрыДанных.Валюта</dcscor:value>
+		</dcscor:item>
+	</dataParameters>
+	<order>
+		<item xsi:type="OrderItemField">
+			<field>Поставщик</field>
+			<orderType>Asc</orderType>
+		</item>
+		<item xsi:type="OrderItemField">
+			<field>Организация</field>
+			<orderType>Asc</orderType>
+		</item>
+		<item xsi:type="OrderItemField">
+			<field>Номенклатура</field>
+			<orderType>Asc</orderType>
+		</item>
+		<viewMode>Normal</viewMode>
+		<userSettingID>636ac983-b494-4af1-aeb1-3b383f261b72</userSettingID>
+	</order>
+	<conditionalAppearance>
+		<viewMode>Normal</viewMode>
+		<userSettingID>852a952e-3b02-4796-bb57-6588b762060f</userSettingID>
+	</conditionalAppearance>
+	<outputParameters>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>ВыводитьЗаголовок</dcscor:parameter>
+			<dcscor:value xsi:type="DataCompositionTextOutputType">Output</dcscor:value>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>Заголовок</dcscor:parameter>
+			<dcscor:value xsi:type="xs:string">Поступления от поставщиков</dcscor:value>
+		</dcscor:item>
+	</outputParameters>
+	<item xsi:type="StructureItemTable">
+		<row>
+			<groupItems>
+				<item xsi:type="GroupItemField">
+					<field>Поставщик</field>
+					<groupType>Items</groupType>
+					<periodAdditionType>None</periodAdditionType>
+					<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+					<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+				</item>
+				<item xsi:type="GroupItemField">
+					<field>Организация</field>
+					<groupType>Items</groupType>
+					<periodAdditionType>None</periodAdditionType>
+					<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+					<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+				</item>
+			</groupItems>
+			<filter>
+				<item xsi:type="FilterItemComparison">
+					<left xsi:type="dcscor:Field">Поставщик</left>
+					<comparisonType>Filled</comparisonType>
+				</item>
+			</filter>
+			<order>
+				<item xsi:type="OrderItemAuto"/>
+			</order>
+			<selection>
+				<item xsi:type="SelectedItemAuto"/>
+			</selection>
+			<outputParameters>
+				<dcscor:item xsi:type="SettingsParameterValue">
+					<dcscor:parameter>ВыводитьОтбор</dcscor:parameter>
+					<dcscor:value xsi:type="DataCompositionTextOutputType">DontOutput</dcscor:value>
+				</dcscor:item>
+			</outputParameters>
+			<item>
+				<groupItems>
+					<item xsi:type="GroupItemField">
+						<field>Регистратор</field>
+						<groupType>Items</groupType>
+						<periodAdditionType>None</periodAdditionType>
+						<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+						<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+					</item>
+				</groupItems>
+				<order>
+					<item xsi:type="OrderItemAuto"/>
+				</order>
+				<selection>
+					<item xsi:type="SelectedItemAuto"/>
+				</selection>
+				<item>
+					<groupItems>
+						<item xsi:type="GroupItemField">
+							<field>Номенклатура</field>
+							<groupType>Items</groupType>
+							<periodAdditionType>None</periodAdditionType>
+							<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+							<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+						</item>
+					</groupItems>
+					<order>
+						<item xsi:type="OrderItemAuto"/>
+					</order>
+					<selection>
+						<item xsi:type="SelectedItemFolder">
+							<item xsi:type="SelectedItemField">
+								<field>Номенклатура</field>
+							</item>
+							<item xsi:type="SelectedItemField">
+								<field>Номенклатура.ЕдиницаИзмерения</field>
+								<title>Ед.изм.</title>
+							</item>
+							<placement>Together</placement>
+						</item>
+						<item xsi:type="SelectedItemAuto"/>
+					</selection>
+					<userSettingID>68bd9946-ff77-4733-bb0b-0d40a7bdd085</userSettingID>
+					<userSettingPresentation xsi:type="xs:string">По номенклатуре и характеристике</userSettingPresentation>
+				</item>
+			</item>
+		</row>
+		<columnsUserSettingID>2c7957b5-e6c1-4853-9c4d-644ce029b0b5</columnsUserSettingID>
+		<rowsUserSettingID>f7784bdb-106f-4e4f-a6da-6a6d94f2111e</rowsUserSettingID>
 	</item>
 	<itemsViewMode>Normal</itemsViewMode>
 </Settings>﻿<?xml version="1.0" encoding="UTF-8"?>
