@@ -1,0 +1,675 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<SchemaFile xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema">
+		<dataSource>
+			<name>ИсточникДанных1</name>
+			<dataSourceType>Local</dataSourceType>
+		</dataSource>
+		<dataSet xsi:type="DataSetQuery">
+			<name>Данные</name>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПричинаОтмены</dataPath>
+				<field>ПричинаОтмены</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ОтмененныеЗаказы</dataPath>
+				<field>ОтмененныеЗаказы</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Отмененные заказы</d5p1:content>
+					</d5p1:item>
+				</title>
+				<appearance>
+					<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+						<use>false</use>
+						<parameter>Формат</parameter>
+						<value xsi:nil="true"/>
+					</item>
+				</appearance>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Менеджер</dataPath>
+				<field>Менеджер</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Менеджер</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Номенклатура</dataPath>
+				<field>Номенклатура</field>
+				<role>
+					<dimension xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</dimension>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Партнер</dataPath>
+				<field>Партнер</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Партнер</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Характеристика</dataPath>
+				<field>Характеристика</field>
+				<useRestriction>
+					<field>true</field>
+					<condition>true</condition>
+					<group>true</group>
+					<order>true</order>
+				</useRestriction>
+				<attributeUseRestriction>
+					<field>true</field>
+					<condition>true</condition>
+					<group>true</group>
+					<order>true</order>
+				</attributeUseRestriction>
+				<role>
+					<dimension xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</dimension>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ЦеноваяГруппа</dataPath>
+				<field>ЦеноваяГруппа</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Ценовая группа</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>СегментНоменклатуры</dataPath>
+				<field>СегментНоменклатуры</field>
+				<inputParameters>
+					<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+						<parameter>ПараметрыВыбора</parameter>
+						<value xsi:type="ChoiceParameters">
+							<item>
+								<choiceParameter>Отбор.СпособФормирования</choiceParameter>
+								<value xsi:type="DesignTimeValue">Перечисление.СпособыФормированияСегментов.ПериодическиОбновлять</value>
+								<value xsi:type="DesignTimeValue">Перечисление.СпособыФормированияСегментов.ФормироватьВручную</value>
+							</item>
+						</value>
+					</item>
+				</inputParameters>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>СегментПартнеров</dataPath>
+				<field>СегментПартнеров</field>
+				<inputParameters>
+					<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+						<parameter>ПараметрыВыбора</parameter>
+						<value xsi:type="ChoiceParameters">
+							<item>
+								<choiceParameter>Отбор.СпособФормирования</choiceParameter>
+								<value xsi:type="DesignTimeValue">Перечисление.СпособыФормированияСегментов.ПериодическиОбновлять</value>
+								<value xsi:type="DesignTimeValue">Перечисление.СпособыФормированияСегментов.ФормироватьВручную</value>
+							</item>
+						</value>
+					</item>
+				</inputParameters>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Регистратор</dataPath>
+				<field>Регистратор</field>
+				<role>
+					<periodNumber xmlns="http://v8.1c.ru/8.1/data-composition-system/common">1</periodNumber>
+					<periodType xmlns="http://v8.1c.ru/8.1/data-composition-system/common">Main</periodType>
+				</role>
+			</field>
+			<dataSource>ИсточникДанных1</dataSource>
+			<query>ВЫБРАТЬ РАЗЛИЧНЫЕ
+	Сегменты.Номенклатура,
+	Сегменты.Характеристика,
+	ИСТИНА КАК ИспользуетсяОтборПоСегментуНоменклатуры
+ПОМЕСТИТЬ ОтборПоСегментуНоменклатуры
+ИЗ
+	РегистрСведений.НоменклатураСегмента КАК Сегменты
+{ГДЕ
+	Сегменты.Сегмент.* КАК СегментНоменклатуры,
+	Сегменты.Номенклатура.* КАК Номенклатура,
+	Сегменты.Характеристика.* КАК Характеристика}
+
+ИНДЕКСИРОВАТЬ ПО
+	Сегменты.Номенклатура,
+	Сегменты.Характеристика,
+	ИспользуетсяОтборПоСегментуНоменклатуры
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗРЕШЕННЫЕ РАЗЛИЧНЫЕ
+	Сегменты.Партнер КАК Партнер,
+	ИСТИНА КАК ИспользуетсяОтборПоСегментуПартнеров
+ПОМЕСТИТЬ ОтборПоСегментуПартнеров
+{ВЫБРАТЬ
+	Партнер.*}
+ИЗ
+	РегистрСведений.ПартнерыСегмента КАК Сегменты
+{ГДЕ
+	Сегменты.Сегмент.* КАК СегментПартнеров,
+	Сегменты.Партнер.* КАК Партнер}
+
+ИНДЕКСИРОВАТЬ ПО
+	Сегменты.Партнер
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	КОЛИЧЕСТВО(1) КАК ОтмененныеЗаказы,
+	ЗаказыКлиентов.ПричинаОтмены,
+	ЗаказыКлиентов.Номенклатура.ЦеноваяГруппа КАК ЦеноваяГруппа,
+	ЗаказыКлиентов.Номенклатура,
+	ЗаказыКлиентов.ЗаказКлиента.Менеджер КАК Менеджер,
+	ЗаказыКлиентов.ЗаказКлиента.Партнер КАК Партнер,
+	ЗаказыКлиентов.Характеристика,
+	ЗаказыКлиентов.Регистратор
+ИЗ
+	РегистрНакопления.ЗаказыКлиентов КАК ЗаказыКлиентов
+ГДЕ
+	ЗаказыКлиентов.ВидДвижения = ЗНАЧЕНИЕ(ВидДвиженияНакопления.Приход)
+	И ЗаказыКлиентов.Заказано &lt; 0
+	И ЗаказыКлиентов.Активность
+{ГДЕ
+	((ЗаказыКлиентов.Номенклатура, ЗаказыКлиентов.Характеристика) В
+			(ВЫБРАТЬ
+				ОтборПоСегментуНоменклатуры.Номенклатура,
+				ОтборПоСегментуНоменклатуры.Характеристика
+			ИЗ
+				ОтборПоСегментуНоменклатуры
+			ГДЕ
+				ОтборПоСегментуНоменклатуры.ИспользуетсяОтборПоСегментуНоменклатуры = &amp;ИспользуетсяОтборПоСегментуНоменклатуры)),
+	(ЗаказыКлиентов.ЗаказКлиента.Партнер В
+			(ВЫБРАТЬ
+				ОтборПоСегментуПартнеров.Партнер
+			ИЗ
+				ОтборПоСегментуПартнеров
+			ГДЕ
+				ОтборПоСегментуПартнеров.ИспользуетсяОтборПоСегментуПартнеров = &amp;ИспользуетсяОтборПоСегментуПартнеров)),
+	(ЗаказыКлиентов.Период &gt;= &amp;ПериодНачало),
+	(ЗаказыКлиентов.Период &lt; &amp;ПериодКонец),
+	ЗаказыКлиентов.ПричинаОтмены.*,
+	ЗаказыКлиентов.Номенклатура.ЦеноваяГруппа.* КАК ЦеноваяГруппа,
+	ЗаказыКлиентов.Номенклатура.*,
+	ЗаказыКлиентов.ЗаказКлиента.Менеджер.* КАК Менеджер,
+	ЗаказыКлиентов.ЗаказКлиента.Партнер.* КАК Партнер}
+
+СГРУППИРОВАТЬ ПО
+	ЗаказыКлиентов.ПричинаОтмены,
+	ЗаказыКлиентов.Номенклатура.ЦеноваяГруппа,
+	ЗаказыКлиентов.Номенклатура,
+	ЗаказыКлиентов.ЗаказКлиента.Менеджер,
+	ЗаказыКлиентов.ЗаказКлиента.Партнер,
+	ЗаказыКлиентов.Характеристика,
+	ЗаказыКлиентов.Регистратор</query>
+		</dataSet>
+		<totalField>
+			<dataPath>ОтмененныеЗаказы</dataPath>
+			<expression>Сумма(ОтмененныеЗаказы)</expression>
+		</totalField>
+		<parameter>
+			<name>ПериодНачало</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Начало периода</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:dateTime</Type>
+				<DateQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
+					<DateFractions>DateTime</DateFractions>
+				</DateQualifiers>
+			</valueType>
+			<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+			<useRestriction>false</useRestriction>
+		</parameter>
+		<parameter>
+			<name>ПериодКонец</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Конец периода</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:dateTime</Type>
+				<DateQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
+					<DateFractions>DateTime</DateFractions>
+				</DateQualifiers>
+			</valueType>
+			<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+			<useRestriction>false</useRestriction>
+		</parameter>
+		<parameter>
+			<name>ИспользуетсяОтборПоСегментуНоменклатуры</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Используется отбор по сегменту номенклатуры</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:boolean</Type>
+			</valueType>
+			<value xsi:type="xs:boolean">false</value>
+			<useRestriction>true</useRestriction>
+			<availableAsField>false</availableAsField>
+		</parameter>
+		<parameter>
+			<name>ИспользуетсяОтборПоСегментуПартнеров</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Используется отбор по сегменту партнеров</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:boolean</Type>
+			</valueType>
+			<value xsi:type="xs:boolean">false</value>
+			<useRestriction>true</useRestriction>
+			<availableAsField>false</availableAsField>
+		</parameter>
+		<settingsVariant>
+			<name xmlns="http://v8.1c.ru/8.1/data-composition-system/settings">Основной</name>
+			<presentation xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Причины отмены заказов</d4p1:content>
+				</d4p1:item>
+			</presentation>
+		</settingsVariant>
+		<settingsVariant>
+			<name xmlns="http://v8.1c.ru/8.1/data-composition-system/settings">ПоМенеджерам</name>
+			<presentation xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Причины отмены заказов по менеджерам</d4p1:content>
+				</d4p1:item>
+			</presentation>
+		</settingsVariant>
+		<settingsVariant>
+			<name xmlns="http://v8.1c.ru/8.1/data-composition-system/settings">ПоГруппамЦенНоменклатуры</name>
+			<presentation xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Причины отмены заказов по ценовым группам</d4p1:content>
+				</d4p1:item>
+			</presentation>
+		</settingsVariant>
+	</dataCompositionSchema>
+</SchemaFile>﻿<?xml version="1.0" encoding="UTF-8"?>
+<Settings xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<selection>
+		<item xsi:type="SelectedItemField">
+			<field>ОтмененныеЗаказы</field>
+		</item>
+	</selection>
+	<filter>
+		<item xsi:type="FilterItemComparison">
+			<use>false</use>
+			<left xsi:type="dcscor:Field">СегментПартнеров</left>
+			<comparisonType>Equal</comparisonType>
+			<userSettingID>59ded7cf-3344-4e87-9db3-9431030773a4</userSettingID>
+		</item>
+		<item xsi:type="FilterItemComparison">
+			<use>false</use>
+			<left xsi:type="dcscor:Field">СегментНоменклатуры</left>
+			<comparisonType>Equal</comparisonType>
+			<userSettingID>22f685b7-ebbd-457f-a410-f529acc2c923</userSettingID>
+		</item>
+		<item xsi:type="FilterItemComparison">
+			<use>false</use>
+			<left xsi:type="dcscor:Field">Партнер</left>
+			<comparisonType>InListByHierarchy</comparisonType>
+			<right xsi:nil="true"/>
+			<userSettingID>a1045c70-ca5e-4f4b-8dbc-a5a7ce35c86c</userSettingID>
+		</item>
+		<item xsi:type="FilterItemComparison">
+			<use>false</use>
+			<left xsi:type="dcscor:Field">Менеджер</left>
+			<comparisonType>InList</comparisonType>
+			<right xsi:nil="true"/>
+			<userSettingID>57f62c94-f71d-4b8f-a77a-bf258f194f45</userSettingID>
+		</item>
+		<item xsi:type="FilterItemComparison">
+			<use>false</use>
+			<left xsi:type="dcscor:Field">ЦеноваяГруппа</left>
+			<comparisonType>InList</comparisonType>
+			<right xsi:nil="true"/>
+			<userSettingID>4a6575ce-edc2-44ae-ae7d-406773770b0e</userSettingID>
+		</item>
+		<item xsi:type="FilterItemComparison">
+			<use>false</use>
+			<left xsi:type="dcscor:Field">Номенклатура</left>
+			<comparisonType>InListByHierarchy</comparisonType>
+			<right xsi:nil="true"/>
+			<userSettingID>42a1bc01-d07b-4d8e-bfe7-ccd35956ce24</userSettingID>
+		</item>
+	</filter>
+	<outputParameters>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>ТипДиаграммы</dcscor:parameter>
+			<dcscor:value xsi:type="v8ui:ChartType">NormalizedColumn</dcscor:value>
+			<dcscor:item xsi:type="SettingsParameterValue">
+				<dcscor:parameter>ТипДиаграммы.ВидПодписей</dcscor:parameter>
+				<dcscor:value xsi:type="v8ui:ChartLabelType">Percent</dcscor:value>
+			</dcscor:item>
+			<dcscor:item xsi:type="SettingsParameterValue">
+				<dcscor:parameter>ТипДиаграммы.ОтображатьТаблицуДанных</dcscor:parameter>
+				<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+			</dcscor:item>
+			<dcscor:item xsi:type="SettingsParameterValue">
+				<dcscor:parameter>ТипДиаграммы.РасположениеЛегенды</dcscor:parameter>
+				<dcscor:value xsi:type="DataCompositionChartLegendPlacement">None</dcscor:value>
+			</dcscor:item>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>ВыводитьЗаголовок</dcscor:parameter>
+			<dcscor:value xsi:type="DataCompositionTextOutputType">Output</dcscor:value>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>Заголовок</dcscor:parameter>
+			<dcscor:value xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Причины отмены заказов</v8:content>
+				</v8:item>
+			</dcscor:value>
+		</dcscor:item>
+	</outputParameters>
+	<item xsi:type="StructureItemChart">
+		<series>
+			<groupItems>
+				<item xsi:type="GroupItemField">
+					<field>ПричинаОтмены</field>
+					<groupType>Items</groupType>
+					<periodAdditionType>None</periodAdditionType>
+					<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+					<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+				</item>
+			</groupItems>
+			<order>
+				<item xsi:type="OrderItemAuto"/>
+			</order>
+			<selection>
+				<item xsi:type="SelectedItemAuto"/>
+			</selection>
+		</series>
+		<selection>
+			<item xsi:type="SelectedItemAuto"/>
+		</selection>
+	</item>
+</Settings>﻿<?xml version="1.0" encoding="UTF-8"?>
+<Settings xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<selection>
+		<item xsi:type="SelectedItemField">
+			<field>ОтмененныеЗаказы</field>
+		</item>
+	</selection>
+	<filter>
+		<item xsi:type="FilterItemComparison">
+			<use>false</use>
+			<left xsi:type="dcscor:Field">СегментПартнеров</left>
+			<comparisonType>Equal</comparisonType>
+			<userSettingID>49a53c33-91d1-43f5-a795-ae1591886a63</userSettingID>
+		</item>
+		<item xsi:type="FilterItemComparison">
+			<use>false</use>
+			<left xsi:type="dcscor:Field">СегментНоменклатуры</left>
+			<comparisonType>Equal</comparisonType>
+			<userSettingID>d6683f3e-1715-4223-b146-1e146ee46e65</userSettingID>
+		</item>
+		<item xsi:type="FilterItemComparison">
+			<use>false</use>
+			<left xsi:type="dcscor:Field">Партнер</left>
+			<comparisonType>InListByHierarchy</comparisonType>
+			<right xsi:nil="true"/>
+			<userSettingID>a1045c70-ca5e-4f4b-8dbc-a5a7ce35c86c</userSettingID>
+		</item>
+		<item xsi:type="FilterItemComparison">
+			<use>false</use>
+			<left xsi:type="dcscor:Field">Менеджер</left>
+			<comparisonType>InList</comparisonType>
+			<right xsi:nil="true"/>
+			<userSettingID>57f62c94-f71d-4b8f-a77a-bf258f194f45</userSettingID>
+		</item>
+		<item xsi:type="FilterItemComparison">
+			<use>false</use>
+			<left xsi:type="dcscor:Field">ЦеноваяГруппа</left>
+			<comparisonType>InList</comparisonType>
+			<right xsi:nil="true"/>
+			<userSettingID>209c80c1-b83b-4999-aca8-528ee66725f2</userSettingID>
+		</item>
+		<item xsi:type="FilterItemComparison">
+			<use>false</use>
+			<left xsi:type="dcscor:Field">Номенклатура</left>
+			<comparisonType>InListByHierarchy</comparisonType>
+			<right xsi:nil="true"/>
+			<userSettingID>42a1bc01-d07b-4d8e-bfe7-ccd35956ce24</userSettingID>
+		</item>
+	</filter>
+	<conditionalAppearance>
+		<item>
+			<selection>
+				<item>
+					<field>ОтмененныеЗаказы</field>
+				</item>
+			</selection>
+			<filter/>
+			<appearance>
+				<dcscor:item xsi:type="SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧДЦ=1</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</item>
+	</conditionalAppearance>
+	<outputParameters>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>ТипДиаграммы</dcscor:parameter>
+			<dcscor:value xsi:type="v8ui:ChartType">NormalizedColumn</dcscor:value>
+			<dcscor:item xsi:type="SettingsParameterValue">
+				<dcscor:parameter>ТипДиаграммы.ВидПодписей</dcscor:parameter>
+				<dcscor:value xsi:type="v8ui:ChartLabelType">Percent</dcscor:value>
+			</dcscor:item>
+			<dcscor:item xsi:type="SettingsParameterValue">
+				<dcscor:parameter>ТипДиаграммы.ОтображатьТаблицуДанных</dcscor:parameter>
+				<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+			</dcscor:item>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>ВыводитьЗаголовок</dcscor:parameter>
+			<dcscor:value xsi:type="DataCompositionTextOutputType">Output</dcscor:value>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>Заголовок</dcscor:parameter>
+			<dcscor:value xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Причины отмены заказов по менеджерам</v8:content>
+				</v8:item>
+			</dcscor:value>
+		</dcscor:item>
+	</outputParameters>
+	<item xsi:type="StructureItemChart">
+		<point>
+			<groupItems>
+				<item xsi:type="GroupItemField">
+					<field>Менеджер</field>
+					<groupType>Items</groupType>
+					<periodAdditionType>None</periodAdditionType>
+					<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+					<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+				</item>
+			</groupItems>
+			<order>
+				<item xsi:type="OrderItemAuto"/>
+			</order>
+			<selection>
+				<item xsi:type="SelectedItemAuto"/>
+			</selection>
+		</point>
+		<series>
+			<groupItems>
+				<item xsi:type="GroupItemField">
+					<field>ПричинаОтмены</field>
+					<groupType>Items</groupType>
+					<periodAdditionType>None</periodAdditionType>
+					<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+					<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+				</item>
+			</groupItems>
+			<order>
+				<item xsi:type="OrderItemAuto"/>
+			</order>
+			<selection>
+				<item xsi:type="SelectedItemAuto"/>
+			</selection>
+		</series>
+		<selection>
+			<item xsi:type="SelectedItemAuto"/>
+		</selection>
+	</item>
+</Settings>﻿<?xml version="1.0" encoding="UTF-8"?>
+<Settings xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<selection>
+		<item xsi:type="SelectedItemField">
+			<field>ОтмененныеЗаказы</field>
+		</item>
+	</selection>
+	<filter>
+		<item xsi:type="FilterItemComparison">
+			<use>false</use>
+			<left xsi:type="dcscor:Field">СегментПартнеров</left>
+			<comparisonType>Equal</comparisonType>
+			<userSettingID>496e16d4-3733-43b3-8276-429f15845f54</userSettingID>
+		</item>
+		<item xsi:type="FilterItemComparison">
+			<use>false</use>
+			<left xsi:type="dcscor:Field">СегментНоменклатуры</left>
+			<comparisonType>Equal</comparisonType>
+			<userSettingID>9710ec0d-f005-4578-97e3-c56de6a45ad9</userSettingID>
+		</item>
+		<item xsi:type="FilterItemComparison">
+			<use>false</use>
+			<left xsi:type="dcscor:Field">Партнер</left>
+			<comparisonType>InListByHierarchy</comparisonType>
+			<right xsi:nil="true"/>
+			<userSettingID>a1045c70-ca5e-4f4b-8dbc-a5a7ce35c86c</userSettingID>
+		</item>
+		<item xsi:type="FilterItemComparison">
+			<use>false</use>
+			<left xsi:type="dcscor:Field">Менеджер</left>
+			<comparisonType>InList</comparisonType>
+			<right xsi:nil="true"/>
+			<userSettingID>57f62c94-f71d-4b8f-a77a-bf258f194f45</userSettingID>
+		</item>
+		<item xsi:type="FilterItemComparison">
+			<use>false</use>
+			<left xsi:type="dcscor:Field">ЦеноваяГруппа</left>
+			<comparisonType>InList</comparisonType>
+			<right xsi:nil="true"/>
+			<userSettingID>132547b1-4b7d-400c-a52b-62947ed5db0f</userSettingID>
+		</item>
+		<item xsi:type="FilterItemComparison">
+			<use>false</use>
+			<left xsi:type="dcscor:Field">Номенклатура</left>
+			<comparisonType>InListByHierarchy</comparisonType>
+			<right xsi:nil="true"/>
+			<userSettingID>42a1bc01-d07b-4d8e-bfe7-ccd35956ce24</userSettingID>
+		</item>
+	</filter>
+	<conditionalAppearance>
+		<item>
+			<selection>
+				<item>
+					<field>ОтмененныеЗаказы</field>
+				</item>
+			</selection>
+			<filter/>
+			<appearance>
+				<dcscor:item xsi:type="SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧДЦ=1</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</item>
+	</conditionalAppearance>
+	<outputParameters>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>ТипДиаграммы</dcscor:parameter>
+			<dcscor:value xsi:type="v8ui:ChartType">NormalizedColumn</dcscor:value>
+			<dcscor:item xsi:type="SettingsParameterValue">
+				<dcscor:parameter>ТипДиаграммы.ВидПодписей</dcscor:parameter>
+				<dcscor:value xsi:type="v8ui:ChartLabelType">Percent</dcscor:value>
+			</dcscor:item>
+			<dcscor:item xsi:type="SettingsParameterValue">
+				<dcscor:parameter>ТипДиаграммы.ОтображатьТаблицуДанных</dcscor:parameter>
+				<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+			</dcscor:item>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>ВыводитьЗаголовок</dcscor:parameter>
+			<dcscor:value xsi:type="DataCompositionTextOutputType">Output</dcscor:value>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>Заголовок</dcscor:parameter>
+			<dcscor:value xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Причины отмены заказов по ценовым группам</v8:content>
+				</v8:item>
+			</dcscor:value>
+		</dcscor:item>
+	</outputParameters>
+	<item xsi:type="StructureItemChart">
+		<point>
+			<groupItems>
+				<item xsi:type="GroupItemField">
+					<field>ЦеноваяГруппа</field>
+					<groupType>Items</groupType>
+					<periodAdditionType>None</periodAdditionType>
+					<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+					<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+				</item>
+			</groupItems>
+			<order>
+				<item xsi:type="OrderItemAuto"/>
+			</order>
+			<selection>
+				<item xsi:type="SelectedItemAuto"/>
+			</selection>
+		</point>
+		<series>
+			<groupItems>
+				<item xsi:type="GroupItemField">
+					<field>ПричинаОтмены</field>
+					<groupType>Items</groupType>
+					<periodAdditionType>None</periodAdditionType>
+					<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+					<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+				</item>
+			</groupItems>
+			<order>
+				<item xsi:type="OrderItemAuto"/>
+			</order>
+			<selection>
+				<item xsi:type="SelectedItemAuto"/>
+			</selection>
+		</series>
+		<selection>
+			<item xsi:type="SelectedItemAuto"/>
+		</selection>
+	</item>
+</Settings>﻿<?xml version="1.0" encoding="UTF-8"?>
+<SchemaFile xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema"/>
+</SchemaFile>
