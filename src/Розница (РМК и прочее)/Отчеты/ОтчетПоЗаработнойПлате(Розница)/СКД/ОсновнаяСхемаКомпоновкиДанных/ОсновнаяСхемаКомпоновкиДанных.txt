@@ -113,6 +113,36 @@
 					</d5p1:item>
 				</title>
 			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>КоэффициентСезонности</dataPath>
+				<field>КоэффициентСезонности</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Коэффициент сезонности</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>КоэффициентВыполненияПлана</dataPath>
+				<field>КоэффициентВыполненияПлана</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Коэффициент выполнения плана</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>КоэффициентЭффективности</dataPath>
+				<field>КоэффициентЭффективности</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Коэффициент эффективности</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
 			<dataSource>ИсточникДанных1</dataSource>
 			<query>ВЫБРАТЬ
 	ЗНАЧЕНИЕ(Документ.РеализацияТоваровУслуг.ПустаяСсылка) КАК Ссылка,
@@ -124,7 +154,10 @@
 	0 КАК Количество,
 	0 КАК Сумма,
 	0 КАК ЗаработокМенеджера,
-	0 КАК ВозможныйЗаработок</query>
+	0 КАК ВозможныйЗаработок, 
+	0 КАК КоэффициентВыполненияПлана, 
+	0 КАК КоэффициентЭффективности, 
+	0 КАК КоэффициентСезонности</query>
 		</dataSet>
 		<totalField>
 			<dataPath>ВозможныйЗаработок</dataPath>
@@ -309,22 +342,6 @@
 			<denyIncompleteValues>true</denyIncompleteValues>
 			<use>Always</use>
 		</parameter>
-		<parameter>
-			<name>ПодразделениеКЦ</name>
-			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
-				<d4p1:item>
-					<d4p1:lang>ru</d4p1:lang>
-					<d4p1:content>Подразделение КЦ</d4p1:content>
-				</d4p1:item>
-			</title>
-			<valueType>
-				<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.СтруктураПредприятия</Type>
-			</valueType>
-			<value xsi:nil="true"/>
-			<useRestriction>false</useRestriction>
-			<denyIncompleteValues>true</denyIncompleteValues>
-			<use>Always</use>
-		</parameter>
 		<settingsVariant>
 			<name xmlns="http://v8.1c.ru/8.1/data-composition-system/settings">Основной</name>
 			<presentation xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
@@ -373,10 +390,6 @@
 			<dcscor:parameter>ПериодОтчета</dcscor:parameter>
 			<dcscor:value xsi:type="xs:dateTime">0001-01-01T00:00:00</dcscor:value>
 			<userSettingID>439c126a-ec84-4fcc-9337-737311124b1e</userSettingID>
-		</dcscor:item>
-		<dcscor:item xsi:type="SettingsParameterValue">
-			<dcscor:parameter>ПодразделениеКЦ</dcscor:parameter>
-			<dcscor:value xsi:nil="true"/>
 		</dcscor:item>
 	</dataParameters>
 	<order>
