@@ -1,0 +1,680 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<SchemaFile xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema">
+		<dataSource>
+			<name>ИсточникДанных1</name>
+			<dataSourceType>Local</dataSourceType>
+		</dataSource>
+		<dataSet xsi:type="DataSetQuery">
+			<name>НаборДанных1</name>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>РасшифровкаФормулы</dataPath>
+				<field>РасшифровкаФормулы</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>НаименованиеРасчета</dataPath>
+				<field>НаименованиеРасчета</field>
+				<role>
+					<ignoreNullValues xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</ignoreNullValues>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>РасчетУстановленВручную</dataPath>
+				<field>РасчетУстановленВручную</field>
+				<role>
+					<ignoreNullValues xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</ignoreNullValues>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Организация</dataPath>
+				<field>Организация</field>
+				<role>
+					<dimension xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</dimension>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Аналитика</dataPath>
+				<field>Аналитика</field>
+				<role>
+					<dimension xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</dimension>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Партнер</dataPath>
+				<field>Партнер</field>
+				<role>
+					<dimension xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</dimension>
+					<ignoreNullValues xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</ignoreNullValues>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ДокументНачисления</dataPath>
+				<field>ДокументНачисления</field>
+				<role>
+					<dimension xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</dimension>
+					<ignoreNullValues xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</ignoreNullValues>
+				</role>
+				<valueType>
+					<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:DocumentRef.РеализацияУслугПрочихАктивов</Type>
+					<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:DocumentRef.ПоступлениеУслугПрочихАктивов</Type>
+				</valueType>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПереноситьВСледующийПериод</dataPath>
+				<field>ПереноситьВСледующийПериод</field>
+				<role>
+					<ignoreNullValues xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</ignoreNullValues>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Статья</dataPath>
+				<field>Статья</field>
+				<role>
+					<ignoreNullValues xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</ignoreNullValues>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ВидРасчета</dataPath>
+				<field>ВидРасчета</field>
+				<role>
+					<dimension xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</dimension>
+					<ignoreNullValues xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</ignoreNullValues>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>СуммаНасчитано</dataPath>
+				<field>СуммаНасчитано</field>
+				<role>
+					<ignoreNullValues xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</ignoreNullValues>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>СуммаРасчитано</dataPath>
+				<field>СуммаРасчитано</field>
+				<role>
+					<ignoreNullValues xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</ignoreNullValues>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Формула</dataPath>
+				<field>Формула</field>
+				<role>
+					<ignoreNullValues xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</ignoreNullValues>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>НеНачислять</dataPath>
+				<field>НеНачислять</field>
+				<role>
+					<ignoreNullValues xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</ignoreNullValues>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Период</dataPath>
+				<field>Период</field>
+				<role>
+					<ignoreNullValues xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</ignoreNullValues>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Долг</dataPath>
+				<field>Долг</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Долг</d5p1:content>
+					</d5p1:item>
+				</title>
+				<role>
+					<ignoreNullValues xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</ignoreNullValues>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>СуммаДолг</dataPath>
+				<field>СуммаДолг</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Сумма долг</d5p1:content>
+					</d5p1:item>
+				</title>
+				<role>
+					<ignoreNullValues xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</ignoreNullValues>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Валюта</dataPath>
+				<field>Валюта</field>
+				<role>
+					<ignoreNullValues xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</ignoreNullValues>
+				</role>
+			</field>
+			<dataSource>ИсточникДанных1</dataSource>
+			<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	ЗП_ВыполненныеНачисления.Период КАК Период,
+	ЗП_ВыполненныеНачисления.Партнер КАК Партнер,
+	ЗП_ВыполненныеНачисления.ВидРасчета КАК ВидРасчета,
+	ЗП_ВыполненныеНачисления.ДокументНачисления КАК ДокументНачисления,
+	ЗП_ВыполненныеНачисления.НеНачислять КАК НеНачислять,
+	СУММА(ЗП_ВыполненныеНачисления.СуммаНасчитано) КАК СуммаНасчитано,
+	СУММА(ЗП_ВыполненныеНачисления.СуммаРасчитано) КАК СуммаРасчитано,
+	ЗП_ВыполненныеНачисления.Статья КАК Статья,
+	ЗП_ВыполненныеНачисления.Аналитика КАК Аналитика,
+	ЗП_ВыполненныеНачисления.НаименованиеРасчета КАК НаименованиеРасчета,
+	ЗП_ВыполненныеНачисления.Организация КАК Организация,
+	ЗП_ВыполненныеНачисления.ПереноситьВСледующийПериод КАК ПереноситьВСледующийПериод,
+	ЗП_ВыполненныеНачисления.Формула КАК Формула,
+	ЗП_ВыполненныеНачисления.РасчетУстановленВручную КАК РасчетУстановленВручную
+ПОМЕСТИТЬ ВТНачисления
+{ВЫБРАТЬ
+	Период,
+	Партнер.*,
+	ВидРасчета.*,
+	ДокументНачисления.*,
+	НеНачислять,
+	СуммаНасчитано,
+	СуммаРасчитано,
+	Статья.*,
+	Аналитика.*,
+	НаименованиеРасчета,
+	Организация.*,
+	ПереноситьВСледующийПериод,
+	Формула,
+	РасчетУстановленВручную}
+ИЗ
+	РегистрСведений.ЗП_ВыполненныеНачисления КАК ЗП_ВыполненныеНачисления
+ГДЕ
+	ЗП_ВыполненныеНачисления.Период &gt;= &amp;НачалоПериода
+	И ЗП_ВыполненныеНачисления.Период &lt;= &amp;ОкончаниеПериода
+{ГДЕ
+	ЗП_ВыполненныеНачисления.Период,
+	ЗП_ВыполненныеНачисления.Партнер.*,
+	ЗП_ВыполненныеНачисления.ВидРасчета.*,
+	ЗП_ВыполненныеНачисления.ДокументНачисления.*,
+	ЗП_ВыполненныеНачисления.НеНачислять,
+	ЗП_ВыполненныеНачисления.СуммаНасчитано,
+	ЗП_ВыполненныеНачисления.СуммаРасчитано,
+	ЗП_ВыполненныеНачисления.Статья.*,
+	ЗП_ВыполненныеНачисления.Аналитика.*,
+	ЗП_ВыполненныеНачисления.НаименованиеРасчета,
+	ЗП_ВыполненныеНачисления.Организация.*,
+	ЗП_ВыполненныеНачисления.ПереноситьВСледующийПериод,
+	ЗП_ВыполненныеНачисления.Формула,
+	ЗП_ВыполненныеНачисления.РасшифровкаФормулы,
+	ЗП_ВыполненныеНачисления.РасчетУстановленВручную}
+
+СГРУППИРОВАТЬ ПО
+	ЗП_ВыполненныеНачисления.Партнер,
+	ЗП_ВыполненныеНачисления.Период,
+	ЗП_ВыполненныеНачисления.ВидРасчета,
+	ЗП_ВыполненныеНачисления.ДокументНачисления,
+	ЗП_ВыполненныеНачисления.НеНачислять,
+	ЗП_ВыполненныеНачисления.Статья,
+	ЗП_ВыполненныеНачисления.Аналитика,
+	ЗП_ВыполненныеНачисления.НаименованиеРасчета,
+	ЗП_ВыполненныеНачисления.Организация,
+	ЗП_ВыполненныеНачисления.ПереноситьВСледующийПериод,
+	ЗП_ВыполненныеНачисления.Формула,
+	ЗП_ВыполненныеНачисления.РасчетУстановленВручную
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗЛИЧНЫЕ
+	ВТНачисления.Партнер,
+	ВТНачисления.Аналитика,
+	ВТНачисления.Организация
+ПОМЕСТИТЬ ВТПартнеры
+ИЗ
+	ВТНачисления КАК ВТНачисления
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	РасчетыСКлиентамиОстатки.Валюта КАК Валюта,
+	-РасчетыСКлиентамиОстатки.СуммаОстаток КАК Сумма,
+	ВТПартнеры.Партнер КАК Партнер,
+	ВТПартнеры.Организация КАК Организация,
+	ВТПартнеры.Аналитика КАК Аналитика
+ПОМЕСТИТЬ ТаблицаРасчеты
+{ВЫБРАТЬ
+	Валюта.*,
+	Сумма,
+	Партнер.*,
+	Организация.*,
+	Аналитика.*}
+ИЗ
+	РегистрНакопления.РасчетыСКлиентами.Остатки(, {(Валюта).* КАК Валюта}) КАК РасчетыСКлиентамиОстатки
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ РегистрСведений.АналитикаУчетаПоПартнерам КАК АналитикаУчета
+			ВНУТРЕННЕЕ СОЕДИНЕНИЕ ВТПартнеры КАК ВТПартнеры
+			ПО (ВТПартнеры.Партнер = АналитикаУчета.Партнер)
+		ПО РасчетыСКлиентамиОстатки.АналитикаУчетаПоПартнерам = АналитикаУчета.КлючАналитики
+{ГДЕ
+	РасчетыСКлиентамиОстатки.Валюта.*,
+	ВТПартнеры.Партнер.*,
+	ВТПартнеры.Организация.*,
+	ВТПартнеры.Аналитика.*}
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	РасчетыСПоставщикамиОстатки.Валюта,
+	-РасчетыСПоставщикамиОстатки.СуммаОстаток,
+	ВТПартнеры.Партнер,
+	ВТПартнеры.Организация,
+	ВТПартнеры.Аналитика
+ИЗ
+	РегистрНакопления.РасчетыСПоставщиками.Остатки(, {(Валюта).* КАК Валюта}) КАК РасчетыСПоставщикамиОстатки
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ РегистрСведений.АналитикаУчетаПоПартнерам КАК АналитикаУчета
+			ВНУТРЕННЕЕ СОЕДИНЕНИЕ ВТПартнеры КАК ВТПартнеры
+			ПО (ВТПартнеры.Партнер = АналитикаУчета.Партнер)
+		ПО РасчетыСПоставщикамиОстатки.АналитикаУчетаПоПартнерам = АналитикаУчета.КлючАналитики
+{ГДЕ
+	РасчетыСПоставщикамиОстатки.Валюта.*,
+	ВТПартнеры.Партнер.*,
+	ВТПартнеры.Организация.*,
+	ВТПартнеры.Аналитика.*}
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ВТПартнеры.Партнер КАК Партнер,
+	ВТПартнеры.Аналитика КАК Аналитика,
+	ВТПартнеры.Организация КАК Организация,
+	ВЫРАЗИТЬ(ТаблицаРасчеты.Валюта КАК Справочник.Валюты) КАК Валюта,
+	СУММА(ТаблицаРасчеты.Сумма) КАК Сумма
+ПОМЕСТИТЬ ВТДолгиПоВзаиморасчетам
+{ВЫБРАТЬ
+	Партнер.*,
+	Аналитика.*,
+	Организация.*,
+	Валюта.*,
+	Сумма}
+ИЗ
+	ВТПартнеры КАК ВТПартнеры
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ ТаблицаРасчеты КАК ТаблицаРасчеты
+		ПО ВТПартнеры.Партнер = ТаблицаРасчеты.Партнер
+			И ВТПартнеры.Аналитика = ТаблицаРасчеты.Аналитика
+			И ВТПартнеры.Организация = ТаблицаРасчеты.Организация
+{ГДЕ
+	ВТПартнеры.Партнер.*,
+	ВТПартнеры.Аналитика.*,
+	ВТПартнеры.Организация.*,
+	(ВЫРАЗИТЬ(ТаблицаРасчеты.Валюта КАК Справочник.Валюты)).* КАК Валюта}
+
+СГРУППИРОВАТЬ ПО
+	ВТПартнеры.Партнер,
+	ВТПартнеры.Аналитика,
+	ВТПартнеры.Организация,
+	ВЫРАЗИТЬ(ТаблицаРасчеты.Валюта КАК Справочник.Валюты)
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ВТНачисления.Период КАК Период,
+	ВТНачисления.Партнер КАК Партнер,
+	ВТНачисления.ВидРасчета КАК ВидРасчета,
+	ВТНачисления.ДокументНачисления КАК ДокументНачисления,
+	ВТНачисления.НеНачислять КАК НеНачислять,
+	ВТНачисления.СуммаНасчитано КАК СуммаНасчитано,
+	ВТНачисления.СуммаРасчитано КАК СуммаРасчитано,
+	ВТНачисления.Статья КАК Статья,
+	ВТНачисления.Аналитика КАК Аналитика,
+	ВТНачисления.НаименованиеРасчета КАК НаименованиеРасчета,
+	ВТНачисления.Организация КАК Организация,
+	ВТНачисления.ПереноситьВСледующийПериод КАК ПереноситьВСледующийПериод,
+	ВТНачисления.Формула КАК Формула,
+	ВТНачисления.РасчетУстановленВручную КАК РасчетУстановленВручную,
+	0 КАК СуммаДолг,
+	ЛОЖЬ КАК Долг,
+	NULL КАК Валюта
+ПОМЕСТИТЬ ВТИтоговыеДанные
+{ВЫБРАТЬ
+	Период,
+	Партнер.*,
+	ВидРасчета.*,
+	ДокументНачисления.*,
+	НеНачислять,
+	СуммаНасчитано,
+	СуммаРасчитано,
+	Статья.*,
+	Аналитика.*,
+	НаименованиеРасчета,
+	Организация.*,
+	ПереноситьВСледующийПериод,
+	Формула,
+	РасчетУстановленВручную,
+	СуммаДолг,
+	Долг,
+	Валюта}
+ИЗ
+	ВТНачисления КАК ВТНачисления
+{ГДЕ
+	ВТНачисления.Период,
+	ВТНачисления.Партнер.*,
+	ВТНачисления.ВидРасчета.*,
+	ВТНачисления.ДокументНачисления.*,
+	ВТНачисления.НеНачислять,
+	ВТНачисления.СуммаНасчитано,
+	ВТНачисления.СуммаРасчитано,
+	ВТНачисления.Статья.*,
+	ВТНачисления.Аналитика.*,
+	ВТНачисления.НаименованиеРасчета,
+	ВТНачисления.Организация.*,
+	ВТНачисления.ПереноситьВСледующийПериод,
+	ВТНачисления.Формула,
+	ВТНачисления.РасчетУстановленВручную,
+	(0) КАК СуммаДолг}
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	NULL,
+	ВТДолгиПоВзаиморасчетам.Партнер,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	ВТДолгиПоВзаиморасчетам.Аналитика,
+	NULL,
+	ВТДолгиПоВзаиморасчетам.Организация,
+	NULL,
+	NULL,
+	NULL,
+	ВТДолгиПоВзаиморасчетам.Сумма,
+	ИСТИНА,
+	ВТДолгиПоВзаиморасчетам.Валюта
+ИЗ
+	ВТДолгиПоВзаиморасчетам КАК ВТДолгиПоВзаиморасчетам
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ВТИтоговыеДанные.Период КАК Период,
+	ВТИтоговыеДанные.Партнер КАК Партнер,
+	ВТИтоговыеДанные.ВидРасчета КАК ВидРасчета,
+	ВТИтоговыеДанные.ДокументНачисления КАК ДокументНачисления,
+	ВТИтоговыеДанные.НеНачислять КАК НеНачислять,
+	ВТИтоговыеДанные.СуммаНасчитано КАК СуммаНасчитано,
+	ВТИтоговыеДанные.СуммаРасчитано КАК СуммаРасчитано,
+	ВТИтоговыеДанные.Статья КАК Статья,
+	ВТИтоговыеДанные.Аналитика КАК Аналитика,
+	ВТИтоговыеДанные.НаименованиеРасчета КАК НаименованиеРасчета,
+	ВТИтоговыеДанные.Организация КАК Организация,
+	ВТИтоговыеДанные.ПереноситьВСледующийПериод КАК ПереноситьВСледующийПериод,
+	ВТИтоговыеДанные.Формула КАК Формула,
+	ВТИтоговыеДанные.РасчетУстановленВручную КАК РасчетУстановленВручную,
+	ВТИтоговыеДанные.СуммаДолг КАК СуммаДолг,
+	ВТИтоговыеДанные.Долг КАК Долг,
+	ВТИтоговыеДанные.Валюта КАК Валюта
+{ВЫБРАТЬ
+	Период,
+	Партнер.*,
+	ВидРасчета.*,
+	ДокументНачисления.*,
+	НеНачислять,
+	СуммаНасчитано,
+	СуммаРасчитано,
+	Статья.*,
+	Аналитика.*,
+	НаименованиеРасчета,
+	Организация.*,
+	ПереноситьВСледующийПериод,
+	Формула,
+	РасчетУстановленВручную,
+	СуммаДолг,
+	Долг,
+	Валюта.*}
+ИЗ
+	ВТИтоговыеДанные КАК ВТИтоговыеДанные
+{ГДЕ
+	ВТИтоговыеДанные.Период,
+	ВТИтоговыеДанные.Партнер.*,
+	ВТИтоговыеДанные.ВидРасчета.*,
+	ВТИтоговыеДанные.ДокументНачисления.*,
+	ВТИтоговыеДанные.НеНачислять,
+	ВТИтоговыеДанные.СуммаНасчитано,
+	ВТИтоговыеДанные.СуммаРасчитано,
+	ВТИтоговыеДанные.Статья.*,
+	ВТИтоговыеДанные.Аналитика.*,
+	ВТИтоговыеДанные.НаименованиеРасчета,
+	ВТИтоговыеДанные.Организация.*,
+	ВТИтоговыеДанные.ПереноситьВСледующийПериод,
+	ВТИтоговыеДанные.Формула,
+	ВТИтоговыеДанные.РасчетУстановленВручную,
+	ВТИтоговыеДанные.СуммаДолг,
+	ВТИтоговыеДанные.Долг,
+	ВТИтоговыеДанные.Валюта.*}</query>
+			<autoFillFields>false</autoFillFields>
+		</dataSet>
+		<totalField>
+			<dataPath>СуммаДолг</dataPath>
+			<expression>Сумма(СуммаДолг)</expression>
+		</totalField>
+		<totalField>
+			<dataPath>СуммаНасчитано</dataPath>
+			<expression>Сумма(СуммаНасчитано)</expression>
+		</totalField>
+		<totalField>
+			<dataPath>СуммаРасчитано</dataPath>
+			<expression>Сумма(СуммаРасчитано)</expression>
+		</totalField>
+		<parameter>
+			<name>ПериодОтчета</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Период отчета</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core">StandardPeriod</Type>
+			</valueType>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:StandardPeriod">
+				<d4p1:variant xsi:type="d4p1:StandardPeriodVariant">Custom</d4p1:variant>
+				<d4p1:startDate>0001-01-01T00:00:00</d4p1:startDate>
+				<d4p1:endDate>0001-01-01T00:00:00</d4p1:endDate>
+			</value>
+			<useRestriction>false</useRestriction>
+			<denyIncompleteValues>true</denyIncompleteValues>
+		</parameter>
+		<parameter>
+			<name>НачалоПериода</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Начало периода</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:dateTime</Type>
+				<DateQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
+					<DateFractions>Date</DateFractions>
+				</DateQualifiers>
+			</valueType>
+			<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+			<useRestriction>true</useRestriction>
+			<expression>&amp;ПериодОтчета.ДатаНачала</expression>
+		</parameter>
+		<parameter>
+			<name>ОкончаниеПериода</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Окончание периода</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:dateTime</Type>
+				<DateQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
+					<DateFractions>Date</DateFractions>
+				</DateQualifiers>
+			</valueType>
+			<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+			<useRestriction>true</useRestriction>
+			<expression>&amp;ПериодОтчета.ДатаОкончания</expression>
+		</parameter>
+		<settingsVariant>
+			<name xmlns="http://v8.1c.ru/8.1/data-composition-system/settings">Основной</name>
+			<presentation xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="xs:string">Основной</presentation>
+		</settingsVariant>
+		<settingsVariant>
+			<name xmlns="http://v8.1c.ru/8.1/data-composition-system/settings">ВариантБезДолгов</name>
+			<presentation xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Без долгов</d4p1:content>
+				</d4p1:item>
+			</presentation>
+		</settingsVariant>
+	</dataCompositionSchema>
+</SchemaFile>﻿<?xml version="1.0" encoding="UTF-8"?>
+<Settings xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<selection>
+		<item xsi:type="SelectedItemField">
+			<field>ВидРасчета</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>СуммаРасчитано</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>СуммаНасчитано</field>
+		</item>
+	</selection>
+	<filter>
+		<userSettingID>ae421506-177d-41a6-a430-b0a6e004b52a</userSettingID>
+	</filter>
+	<dataParameters>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>ПериодОтчета</dcscor:parameter>
+			<dcscor:value xsi:type="v8:StandardPeriod">
+				<v8:variant xsi:type="v8:StandardPeriodVariant">ThisMonth</v8:variant>
+			</dcscor:value>
+			<userSettingID>cf55ce5a-a8ac-4399-986a-ce726c8491e4</userSettingID>
+		</dcscor:item>
+	</dataParameters>
+	<conditionalAppearance>
+		<userSettingID>7d0757c1-d391-4a99-90d1-5f162c5c8fb0</userSettingID>
+	</conditionalAppearance>
+	<outputParameters>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:use>false</dcscor:use>
+			<dcscor:parameter>РасположениеИтогов</dcscor:parameter>
+			<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">None</dcscor:value>
+		</dcscor:item>
+	</outputParameters>
+	<item xsi:type="StructureItemTable">
+		<column>
+			<groupItems>
+				<item xsi:type="GroupItemField">
+					<field>Валюта</field>
+					<groupType>Items</groupType>
+					<periodAdditionType>None</periodAdditionType>
+					<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+					<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+				</item>
+			</groupItems>
+			<order>
+				<item xsi:type="OrderItemAuto"/>
+			</order>
+			<selection>
+				<item xsi:type="SelectedItemField">
+					<field>Валюта</field>
+				</item>
+				<item xsi:type="SelectedItemField">
+					<use>false</use>
+					<field>СуммаНасчитано</field>
+				</item>
+				<item xsi:type="SelectedItemField">
+					<use>false</use>
+					<field>СуммаРасчитано</field>
+				</item>
+				<item xsi:type="SelectedItemField">
+					<field>СуммаДолг</field>
+				</item>
+			</selection>
+			<outputParameters>
+				<dcscor:item xsi:type="SettingsParameterValue">
+					<dcscor:parameter>РасположениеОбщихИтогов</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">None</dcscor:value>
+				</dcscor:item>
+			</outputParameters>
+		</column>
+		<column>
+			<groupItems>
+				<item xsi:type="GroupItemField">
+					<field>Период</field>
+					<groupType>Items</groupType>
+					<periodAdditionType>Month</periodAdditionType>
+					<periodAdditionBegin xsi:type="dcscor:Field">ПараметрыДанных.НачалоПериода</periodAdditionBegin>
+					<periodAdditionEnd xsi:type="dcscor:Field">ПараметрыДанных.ОкончаниеПериода</periodAdditionEnd>
+				</item>
+			</groupItems>
+			<order>
+				<item xsi:type="OrderItemField">
+					<field>Период</field>
+					<orderType>Desc</orderType>
+				</item>
+			</order>
+			<selection>
+				<item xsi:type="SelectedItemAuto"/>
+			</selection>
+		</column>
+		<row>
+			<groupItems>
+				<item xsi:type="GroupItemField">
+					<field>Аналитика</field>
+					<groupType>Items</groupType>
+					<periodAdditionType>None</periodAdditionType>
+					<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+					<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+				</item>
+			</groupItems>
+			<order>
+				<item xsi:type="OrderItemAuto"/>
+			</order>
+			<selection>
+				<item xsi:type="SelectedItemAuto"/>
+			</selection>
+			<item>
+				<groupItems>
+					<item xsi:type="GroupItemField">
+						<field>Партнер</field>
+						<groupType>Items</groupType>
+						<periodAdditionType>None</periodAdditionType>
+						<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+						<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+					</item>
+				</groupItems>
+				<order>
+					<item xsi:type="OrderItemAuto"/>
+				</order>
+				<selection>
+					<item xsi:type="SelectedItemAuto"/>
+				</selection>
+				<item>
+					<groupItems>
+						<item xsi:type="GroupItemField">
+							<field>ВидРасчета</field>
+							<groupType>Items</groupType>
+							<periodAdditionType>None</periodAdditionType>
+							<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+							<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+						</item>
+					</groupItems>
+					<order>
+						<item xsi:type="OrderItemAuto"/>
+					</order>
+					<selection>
+						<item xsi:type="SelectedItemAuto"/>
+					</selection>
+				</item>
+			</item>
+		</row>
+	</item>
+</Settings>﻿<?xml version="1.0" encoding="UTF-8"?>
+<Settings xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>﻿<?xml version="1.0" encoding="UTF-8"?>
+<SchemaFile xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema"/>
+</SchemaFile>
