@@ -1,0 +1,4835 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<SchemaFile xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema">
+		<dataSource>
+			<name>ИсточникДанных1</name>
+			<dataSourceType>Local</dataSourceType>
+		</dataSource>
+		<dataSet xsi:type="DataSetQuery">
+			<name>ВыручкаИСебестоимостьПродаж</name>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>АналитикаУчетаНоменклатуры</dataPath>
+				<field>АналитикаУчетаНоменклатуры</field>
+				<useRestriction>
+					<condition>true</condition>
+				</useRestriction>
+				<attributeUseRestriction>
+					<condition>true</condition>
+				</attributeUseRestriction>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>АналитикаУчетаПоПартнерам</dataPath>
+				<field>АналитикаУчетаПоПартнерам</field>
+				<useRestriction>
+					<condition>true</condition>
+				</useRestriction>
+				<attributeUseRestriction>
+					<condition>true</condition>
+				</attributeUseRestriction>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ВаловаяПрибыль</dataPath>
+				<field>ВаловаяПрибыль</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Валовая прибыль</d5p1:content>
+					</d5p1:item>
+				</title>
+				<appearance>
+					<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+						<parameter>Формат</parameter>
+						<value xsi:type="xs:string">Л=ru; ЧЦ=15; ЧДЦ=2</value>
+					</item>
+					<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+						<parameter>ВыделятьОтрицательные</parameter>
+						<value xsi:type="xs:boolean">true</value>
+					</item>
+					<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+						<parameter>МинимальнаяШирина</parameter>
+						<value xsi:type="xs:decimal">16</value>
+					</item>
+				</appearance>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Выручка</dataPath>
+				<field>Выручка</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Выручка</d5p1:content>
+					</d5p1:item>
+				</title>
+				<appearance>
+					<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+						<use>false</use>
+						<parameter>ГоризонтальноеПоложение</parameter>
+						<value xmlns:d7p1="http://v8.1c.ru/8.1/data/ui" xsi:type="d7p1:HorizontalAlign">Center</value>
+					</item>
+					<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+						<parameter>Формат</parameter>
+						<value xsi:type="xs:string">ЧЦ=15; ЧДЦ=2</value>
+					</item>
+					<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+						<parameter>ВыделятьОтрицательные</parameter>
+						<value xsi:type="xs:boolean">true</value>
+					</item>
+					<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+						<parameter>МинимальнаяШирина</parameter>
+						<value xsi:type="xs:decimal">16</value>
+					</item>
+				</appearance>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПериодГод</dataPath>
+				<field>ПериодГод</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Период, год</d5p1:content>
+					</d5p1:item>
+				</title>
+				<role>
+					<periodNumber xmlns="http://v8.1c.ru/8.1/data-composition-system/common">11</periodNumber>
+					<periodType xmlns="http://v8.1c.ru/8.1/data-composition-system/common">Additional</periodType>
+				</role>
+				<appearance>
+					<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+						<parameter>Формат</parameter>
+						<value xsi:type="xs:string">Л=ru; ДФ='yyyy "г."'</value>
+					</item>
+				</appearance>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПериодДекада</dataPath>
+				<field>ПериодДекада</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Период, декада</d5p1:content>
+					</d5p1:item>
+				</title>
+				<role>
+					<periodNumber xmlns="http://v8.1c.ru/8.1/data-composition-system/common">7</periodNumber>
+					<periodType xmlns="http://v8.1c.ru/8.1/data-composition-system/common">Additional</periodType>
+				</role>
+				<appearance>
+					<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+						<parameter>Формат</parameter>
+						<value xsi:type="xs:string">Л=ru; ДФ='dd.MM.yyyy "г."'</value>
+					</item>
+				</appearance>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПериодДень</dataPath>
+				<field>ПериодДень</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Период, день</d5p1:content>
+					</d5p1:item>
+				</title>
+				<role>
+					<periodNumber xmlns="http://v8.1c.ru/8.1/data-composition-system/common">5</periodNumber>
+					<periodType xmlns="http://v8.1c.ru/8.1/data-composition-system/common">Additional</periodType>
+				</role>
+				<appearance>
+					<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+						<parameter>Формат</parameter>
+						<value xsi:type="xs:string">Л=ru; ДФ='dd.MM.yyyy "г."'</value>
+					</item>
+				</appearance>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ЗаказКлиента</dataPath>
+				<field>ЗаказКлиента</field>
+				<valueType>
+					<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:DocumentRef.ЗаявкаНаВозвратТоваровОтКлиента</Type>
+					<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:DocumentRef.ЗаказКлиента</Type>
+				</valueType>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПериодКвартал</dataPath>
+				<field>ПериодКвартал</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Период, квартал</d5p1:content>
+					</d5p1:item>
+				</title>
+				<role>
+					<periodNumber xmlns="http://v8.1c.ru/8.1/data-composition-system/common">9</periodNumber>
+					<periodType xmlns="http://v8.1c.ru/8.1/data-composition-system/common">Additional</periodType>
+				</role>
+				<appearance>
+					<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+						<parameter>Формат</parameter>
+						<value xsi:type="xs:string">Л=ru; ДФ='к "квартал" гггг "г."'</value>
+					</item>
+				</appearance>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Количество</dataPath>
+				<field>Количество</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Количество</d5p1:content>
+					</d5p1:item>
+				</title>
+				<appearance>
+					<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+						<parameter>ВыделятьОтрицательные</parameter>
+						<value xsi:type="xs:boolean">true</value>
+					</item>
+					<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+						<parameter>МинимальнаяШирина</parameter>
+						<value xsi:type="xs:decimal">16</value>
+					</item>
+				</appearance>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Контрагент</dataPath>
+				<field>Контрагент</field>
+				<role>
+					<dimension xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</dimension>
+				</role>
+				<valueType>
+					<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:CatalogRef.Контрагенты</Type>
+				</valueType>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПериодМесяц</dataPath>
+				<field>ПериодМесяц</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Период, месяц</d5p1:content>
+					</d5p1:item>
+				</title>
+				<role>
+					<periodNumber xmlns="http://v8.1c.ru/8.1/data-composition-system/common">8</periodNumber>
+					<periodType xmlns="http://v8.1c.ru/8.1/data-composition-system/common">Additional</periodType>
+				</role>
+				<appearance>
+					<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+						<parameter>Формат</parameter>
+						<value xsi:type="xs:string">Л=ru; ДФ='MMMM гггг "г."'</value>
+					</item>
+				</appearance>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПериодНеделя</dataPath>
+				<field>ПериодНеделя</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Период, неделя</d5p1:content>
+					</d5p1:item>
+				</title>
+				<role>
+					<periodNumber xmlns="http://v8.1c.ru/8.1/data-composition-system/common">6</periodNumber>
+					<periodType xmlns="http://v8.1c.ru/8.1/data-composition-system/common">Additional</periodType>
+				</role>
+				<appearance>
+					<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+						<parameter>Формат</parameter>
+						<value xsi:type="xs:string">Л=ru; ДФ='dd.MM.yyyy "г."'</value>
+					</item>
+				</appearance>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Номенклатура</dataPath>
+				<field>Номенклатура</field>
+				<role>
+					<dimension xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</dimension>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Организация</dataPath>
+				<field>Организация</field>
+				<role>
+					<dimension xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</dimension>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Партнер</dataPath>
+				<field>Партнер</field>
+				<role>
+					<dimension xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</dimension>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПериодПолугодие</dataPath>
+				<field>ПериодПолугодие</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Период, полугодие</d5p1:content>
+					</d5p1:item>
+				</title>
+				<role>
+					<periodNumber xmlns="http://v8.1c.ru/8.1/data-composition-system/common">10</periodNumber>
+					<periodType xmlns="http://v8.1c.ru/8.1/data-composition-system/common">Additional</periodType>
+				</role>
+				<appearance>
+					<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+						<parameter>Формат</parameter>
+						<value xsi:type="xs:string">Л=ru; ДФ='ММ.гггг "г."'</value>
+					</item>
+				</appearance>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Регистратор</dataPath>
+				<field>Регистратор</field>
+				<role>
+					<periodNumber xmlns="http://v8.1c.ru/8.1/data-composition-system/common">1</periodNumber>
+					<periodType xmlns="http://v8.1c.ru/8.1/data-composition-system/common">Additional</periodType>
+					<ignoreNullValues xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</ignoreNullValues>
+				</role>
+				<orderExpression>
+					<expression xmlns="http://v8.1c.ru/8.1/data-composition-system/common">ПериодСекунда</expression>
+					<orderType xmlns="http://v8.1c.ru/8.1/data-composition-system/common">Asc</orderType>
+					<autoOrder xmlns="http://v8.1c.ru/8.1/data-composition-system/common">false</autoOrder>
+				</orderExpression>
+				<orderExpression>
+					<expression xmlns="http://v8.1c.ru/8.1/data-composition-system/common">Регистратор</expression>
+					<orderType xmlns="http://v8.1c.ru/8.1/data-composition-system/common">Asc</orderType>
+					<autoOrder xmlns="http://v8.1c.ru/8.1/data-composition-system/common">false</autoOrder>
+				</orderExpression>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Себестоимость</dataPath>
+				<field>Себестоимость</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Стоимость закупки</d5p1:content>
+					</d5p1:item>
+				</title>
+				<appearance>
+					<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+						<parameter>Формат</parameter>
+						<value xsi:type="xs:string">Л=ru; ЧЦ=15; ЧДЦ=2</value>
+					</item>
+					<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+						<parameter>МинимальнаяШирина</parameter>
+						<value xsi:type="xs:decimal">16</value>
+					</item>
+				</appearance>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Склад</dataPath>
+				<field>Склад</field>
+				<role>
+					<dimension xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</dimension>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Характеристика</dataPath>
+				<field>Характеристика</field>
+				<role>
+					<dimension xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</dimension>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Подразделение</dataPath>
+				<field>Подразделение</field>
+				<role>
+					<dimension xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</dimension>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Сделка</dataPath>
+				<field>Сделка</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Сделка</d5p1:content>
+					</d5p1:item>
+				</title>
+				<role>
+					<dimension xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</dimension>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Рентабельность</dataPath>
+				<field>Рентабельность</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Рентабельность, %</d5p1:content>
+					</d5p1:item>
+				</title>
+				<appearance>
+					<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+						<parameter>Формат</parameter>
+						<value xsi:type="xs:string">Л=ru; ЧЦ=15; ЧДЦ=2</value>
+					</item>
+					<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+						<parameter>ВыделятьОтрицательные</parameter>
+						<value xsi:type="xs:boolean">true</value>
+					</item>
+					<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+						<parameter>МинимальнаяШирина</parameter>
+						<value xsi:type="xs:decimal">16</value>
+					</item>
+				</appearance>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ТипЗапасов</dataPath>
+				<field>ТипЗапасов</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ДопРасходы</dataPath>
+				<field>ДопРасходы</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Доп. расходы</d5p1:content>
+					</d5p1:item>
+				</title>
+				<presentationExpression>Выбор Когда &amp;ДанныеОтчета = 3 Тогда "1" Иначе ДопРасходы Конец</presentationExpression>
+				<appearance>
+					<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+						<parameter>Формат</parameter>
+						<value xsi:type="xs:string">ЧЦ=15; ЧДЦ=2</value>
+					</item>
+					<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+						<parameter>МинимальнаяШирина</parameter>
+						<value xsi:type="xs:decimal">16</value>
+					</item>
+				</appearance>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПродажиМеждуОрганизациями</dataPath>
+				<field>ПродажиМеждуОрганизациями</field>
+				<useRestriction>
+					<field>true</field>
+					<group>true</group>
+					<order>true</order>
+				</useRestriction>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Покупатель</dataPath>
+				<field>Покупатель</field>
+				<role>
+					<dimension xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</dimension>
+					<ignoreNullValues xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</ignoreNullValues>
+				</role>
+				<valueType>
+					<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:CatalogRef.Организации</Type>
+				</valueType>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Продавец</dataPath>
+				<field>Продавец</field>
+				<role>
+					<dimension xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</dimension>
+				</role>
+				<valueType>
+					<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:CatalogRef.Организации</Type>
+				</valueType>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ВидЗапасов</dataPath>
+				<field>ВидЗапасов</field>
+				<role>
+					<dimension xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</dimension>
+				</role>
+				<valueType>
+					<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:CatalogRef.ВидыЗапасов</Type>
+				</valueType>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Менеджер</dataPath>
+				<field>Менеджер</field>
+				<valueType>
+					<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:CatalogRef.Пользователи</Type>
+				</valueType>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Поставщик</dataPath>
+				<field>Поставщик</field>
+				<valueType>
+					<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:CatalogRef.Партнеры</Type>
+				</valueType>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>МенеджерСделки</dataPath>
+				<field>МенеджерСделки</field>
+				<valueType>
+					<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:CatalogRef.Пользователи</Type>
+				</valueType>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ГруппаФинансовогоУчета</dataPath>
+				<field>ГруппаФинансовогоУчета</field>
+				<role>
+					<dimension xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</dimension>
+					<parentDimension xmlns="http://v8.1c.ru/8.1/data-composition-system/common">ВидЗапасов</parentDimension>
+				</role>
+				<valueType>
+					<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:CatalogRef.ГруппыФинансовогоУчетаНоменклатуры</Type>
+				</valueType>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ВыручкаНДС</dataPath>
+				<field>ВыручкаНДС</field>
+				<appearance>
+					<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+						<parameter>МинимальнаяШирина</parameter>
+						<value xsi:type="xs:decimal">16</value>
+					</item>
+				</appearance>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПериодСекунда</dataPath>
+				<field>ПериодСекунда</field>
+				<useRestriction>
+					<field>true</field>
+					<condition>true</condition>
+					<group>true</group>
+					<order>true</order>
+				</useRestriction>
+				<role>
+					<periodNumber xmlns="http://v8.1c.ru/8.1/data-composition-system/common">2</periodNumber>
+					<periodType xmlns="http://v8.1c.ru/8.1/data-composition-system/common">Additional</periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>СегментНоменклатуры</dataPath>
+				<field>СегментНоменклатуры</field>
+				<valueType>
+					<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:CatalogRef.СегментыНоменклатуры</Type>
+				</valueType>
+				<inputParameters>
+					<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+						<parameter>ПараметрыВыбора</parameter>
+						<value xsi:type="ChoiceParameters">
+							<item>
+								<choiceParameter>Отбор.СпособФормирования</choiceParameter>
+								<value xsi:type="DesignTimeValue">Перечисление.СпособыФормированияСегментов.ПериодическиОбновлять</value>
+								<value xsi:type="DesignTimeValue">Перечисление.СпособыФормированияСегментов.ФормироватьВручную</value>
+							</item>
+						</value>
+					</item>
+				</inputParameters>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>СегментПартнеров</dataPath>
+				<field>СегментПартнеров</field>
+				<valueType>
+					<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:CatalogRef.СегментыПартнеров</Type>
+				</valueType>
+				<inputParameters>
+					<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+						<parameter>ПараметрыВыбора</parameter>
+						<value xsi:type="ChoiceParameters">
+							<item>
+								<choiceParameter>Отбор.СпособФормирования</choiceParameter>
+								<value xsi:type="DesignTimeValue">Перечисление.СпособыФормированияСегментов.ПериодическиОбновлять</value>
+								<value xsi:type="DesignTimeValue">Перечисление.СпособыФормированияСегментов.ФормироватьВручную</value>
+							</item>
+						</value>
+					</item>
+				</inputParameters>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ВидСделки</dataPath>
+				<field>ВидСделки</field>
+				<valueType>
+					<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:string</Type>
+					<StringQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
+						<Length>0</Length>
+						<AllowedLength>Variable</AllowedLength>
+					</StringQualifiers>
+				</valueType>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>СерийныеНомера</dataPath>
+				<field>СерийныеНомера</field>
+				<valueType>
+					<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:CatalogRef.СерийныеНомераНоменклатуры</Type>
+				</valueType>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>СерийныйНомерНоменклатуры</dataPath>
+				<field>СерийныйНомерНоменклатуры</field>
+				<role>
+					<dimension xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</dimension>
+				</role>
+				<valueType>
+					<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:CatalogRef.СерийныеНомераНоменклатуры</Type>
+				</valueType>
+			</field>
+			<dataSource>ИсточникДанных1</dataSource>
+			<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ РАЗЛИЧНЫЕ
+	Сегменты.Номенклатура,
+	Сегменты.Характеристика,
+	ИСТИНА КАК ИспользуетсяОтборПоСегментуНоменклатуры
+ПОМЕСТИТЬ ОтборПоСегментуНоменклатуры
+ИЗ
+	РегистрСведений.НоменклатураСегмента КАК Сегменты
+{ГДЕ
+	Сегменты.Сегмент.* КАК СегментНоменклатуры,
+	Сегменты.Номенклатура.* КАК Номенклатура,
+	Сегменты.Характеристика.* КАК Характеристика}
+
+ИНДЕКСИРОВАТЬ ПО
+	Сегменты.Номенклатура,
+	Сегменты.Характеристика
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗРЕШЕННЫЕ РАЗЛИЧНЫЕ
+	Сегменты.Партнер КАК Партнер,
+	ИСТИНА КАК ИспользуетсяОтборПоСегментуПартнеров
+ПОМЕСТИТЬ ОтборПоСегментуПартнеров
+{ВЫБРАТЬ
+	Партнер.*}
+ИЗ
+	РегистрСведений.ПартнерыСегмента КАК Сегменты
+{ГДЕ
+	Сегменты.Сегмент.* КАК СегментПартнеров,
+	Сегменты.Партнер.* КАК Партнер}
+
+ИНДЕКСИРОВАТЬ ПО
+	Сегменты.Партнер
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	СУММА(Таблица.Количество) КАК Количество,
+	ВЫБОР
+		КОГДА &amp;ДанныеОтчета = 1
+			ТОГДА СУММА(Таблица.Выручка)
+		КОГДА &amp;ДанныеОтчета = 3
+			ТОГДА СУММА(Таблица.ВыручкаРегл)
+		ИНАЧЕ СУММА(Таблица.ВыручкаБезНДС)
+	КОНЕЦ КАК Выручка,
+	СУММА(Таблица.Выручка) - СУММА(Таблица.ВыручкаБезНДС) КАК ВыручкаНДС,
+	ВЫБОР
+		КОГДА &amp;ДанныеОтчета = 1
+			ТОГДА СУММА(Таблица.Себестоимость)
+		КОГДА &amp;ДанныеОтчета = 3
+			ТОГДА СУММА(Таблица.СебестоимостьРегл)
+		ИНАЧЕ СУММА(Таблица.СебестоимостьБезНДС)
+	КОНЕЦ КАК Себестоимость,
+	ВЫБОР
+		КОГДА &amp;ДанныеОтчета = 1
+			ТОГДА СУММА(Таблица.ДопРасходы)
+		КОГДА &amp;ДанныеОтчета = 3
+			ТОГДА 0
+		ИНАЧЕ СУММА(Таблица.ДопРасходыБезНДС)
+	КОНЕЦ КАК ДопРасходы,
+	ВЫБОР
+		КОГДА &amp;ДанныеОтчета = 1
+			ТОГДА СУММА(Таблица.Выручка) - СУММА(Таблица.Себестоимость) - СУММА(Таблица.ДопРасходы)
+		КОГДА &amp;ДанныеОтчета = 3
+			ТОГДА СУММА(Таблица.ВыручкаРегл) - СУММА(Таблица.СебестоимостьРегл)
+		ИНАЧЕ СУММА(Таблица.ВыручкаБезНДС) - СУММА(Таблица.СебестоимостьБезНДС) - СУММА(Таблица.ДопРасходыБезНДС)
+	КОНЕЦ КАК ВаловаяПрибыль,
+	ВЫБОР
+		КОГДА &amp;ДанныеОтчета = 1
+			ТОГДА ВЫРАЗИТЬ(ВЫБОР
+						КОГДА СУММА(Таблица.Выручка) &lt;&gt; 0
+							ТОГДА (СУММА(Таблица.Выручка) - СУММА(Таблица.Себестоимость) - СУММА(Таблица.ДопРасходы)) / СУММА(Таблица.Выручка)
+						ИНАЧЕ 0
+					КОНЕЦ * 100 КАК ЧИСЛО(15, 2))
+		КОГДА &amp;ДанныеОтчета = 3
+			ТОГДА ВЫРАЗИТЬ(ВЫБОР
+						КОГДА СУММА(Таблица.ВыручкаРегл) &lt;&gt; 0
+							ТОГДА (СУММА(Таблица.ВыручкаРегл) - СУММА(Таблица.СебестоимостьРегл)) / СУММА(Таблица.ВыручкаРегл)
+						ИНАЧЕ 0
+					КОНЕЦ * 100 КАК ЧИСЛО(15, 2))
+		ИНАЧЕ ВЫРАЗИТЬ(ВЫБОР
+					КОГДА СУММА(Таблица.ВыручкаБезНДС) &lt;&gt; 0
+						ТОГДА (СУММА(Таблица.ВыручкаБезНДС) - СУММА(Таблица.СебестоимостьБезНДС) - СУММА(Таблица.ДопРасходыБезНДС)) / СУММА(Таблица.ВыручкаБезНДС)
+					ИНАЧЕ 0
+				КОНЕЦ * 100 КАК ЧИСЛО(15, 2))
+	КОНЕЦ КАК Рентабельность,
+	ВЫБОР
+		КОГДА Таблица.Партнер = ЗНАЧЕНИЕ(Справочник.Партнеры.НашеПредприятие)
+			ТОГДА ИСТИНА
+		ИНАЧЕ ЛОЖЬ
+	КОНЕЦ КАК ПродажиМеждуОрганизациями,
+	Таблица.Номенклатура КАК Номенклатура,
+	Таблица.Характеристика КАК Характеристика,
+	Таблица.Организация КАК Организация,
+	Таблица.Продавец КАК Продавец,
+	Таблица.Партнер КАК Партнер,
+	Таблица.ЗаказКлиента КАК ЗаказКлиента,
+	Таблица.Подразделение КАК Подразделение,
+	Таблица.Склад КАК Склад,
+	Таблица.Контрагент КАК Контрагент,
+	Таблица.Покупатель КАК Покупатель,
+	Таблица.Поставщик КАК Поставщик,
+	Таблица.Менеджер КАК Менеджер,
+	Таблица.Сделка КАК Сделка,
+	Таблица.МенеджерСделки КАК МенеджерСделки,
+	Таблица.ВидЗапасов КАК ВидЗапасов,
+	Таблица.ГруппаФинансовогоУчета КАК ГруппаФинансовогоУчета,
+	Таблица.ВидСделки,
+	Таблица.Регистратор,
+	Таблица.ПериодСекунда,
+	Таблица.ПериодДень,
+	Таблица.ПериодНеделя,
+	Таблица.ПериодДекада,
+	Таблица.ПериодМесяц,
+	Таблица.ПериодКвартал,
+	Таблица.ПериодПолугодие,
+	Таблица.ПериодГод,
+	Таблица.СерийныйНомерНоменклатуры
+ИЗ
+	(ВЫБРАТЬ
+		ЕСТЬNULL(Продажи.ЗаказКлиента.Сделка, ЗНАЧЕНИЕ(Справочник.СделкиСКлиентами.ПустаяСсылка)) КАК Сделка,
+		ЕСТЬNULL(Продажи.ЗаказКлиента.Сделка.Ответственный, ЗНАЧЕНИЕ(Справочник.Пользователи.ПустаяСсылка)) КАК МенеджерСделки,
+		ВЫБОР
+			КОГДА Продажи.Менеджер = ЗНАЧЕНИЕ(Справочник.Пользователи.ПустаяСсылка)
+				ТОГДА ЕСТЬNULL(Продажи.ЗаказКлиента.Менеджер, ЗНАЧЕНИЕ(Справочник.Пользователи.ПустаяСсылка))
+			ИНАЧЕ Продажи.Менеджер
+		КОНЕЦ КАК Менеджер,
+		АналитикаНоменклатуры.Номенклатура КАК Номенклатура,
+		АналитикаНоменклатуры.Характеристика КАК Характеристика,
+		АналитикаПоПартнерам.Организация КАК Организация,
+		АналитикаПоПартнерам.Организация КАК Продавец,
+		АналитикаПоПартнерам.Партнер КАК Партнер,
+		Продажи.ВидЗапасов КАК ВидЗапасов,
+		Продажи.ВидЗапасов.ГруппаФинансовогоУчета КАК ГруппаФинансовогоУчета,
+		Продажи.Подразделение КАК Подразделение,
+		АналитикаНоменклатуры.Склад КАК Склад,
+		ВЫБОР
+			КОГДА Продажи.ВидЗапасов.РеализацияЗапасовДругойОрганизации
+				ТОГДА ВЫБОР
+						КОГДА Продажи.ВидЗапасов.ВидЗапасовВладельца.ТипЗапасов = ЗНАЧЕНИЕ(Перечисление.ТипыЗапасов.КомиссионныйТовар)
+							ТОГДА Продажи.ВидЗапасов.ВидЗапасовВладельца.Комитент
+						ИНАЧЕ Продажи.ВидЗапасов.ВидЗапасовВладельца.Поставщик
+					КОНЕЦ
+			ИНАЧЕ ВЫБОР
+					КОГДА Продажи.ВидЗапасов.ТипЗапасов = ЗНАЧЕНИЕ(Перечисление.ТипыЗапасов.КомиссионныйТовар)
+						ТОГДА Продажи.ВидЗапасов.Комитент
+					ИНАЧЕ Продажи.ВидЗапасов.Поставщик
+				КОНЕЦ
+		КОНЕЦ КАК Поставщик,
+		ВЫБОР
+			КОГДА Продажи.Регистратор = НЕОПРЕДЕЛЕНО
+				ТОГДА NULL
+			ИНАЧЕ Продажи.Регистратор
+		КОНЕЦ КАК Регистратор,
+		ВЫБОР
+			КОГДА Продажи.ЗаказКлиента ССЫЛКА Документ.ЗаказКлиента
+					ИЛИ Продажи.ЗаказКлиента ССЫЛКА Документ.ЗаявкаНаВозвратТоваровОтКлиента
+				ТОГДА Продажи.ЗаказКлиента
+			ИНАЧЕ НЕОПРЕДЕЛЕНО
+		КОНЕЦ КАК ЗаказКлиента,
+		ВЫБОР
+			КОГДА АналитикаПоПартнерам.Контрагент ССЫЛКА Справочник.Контрагенты
+				ТОГДА АналитикаПоПартнерам.Контрагент
+			ИНАЧЕ NULL
+		КОНЕЦ КАК Контрагент,
+		ВЫБОР
+			КОГДА АналитикаПоПартнерам.Контрагент ССЫЛКА Справочник.Организации
+				ТОГДА АналитикаПоПартнерам.Контрагент
+			ИНАЧЕ NULL
+		КОНЕЦ КАК Покупатель,
+		ВЫБОР
+			КОГДА НЕ Продажи.ЗаказКлиента.Сделка.ВидСделки ЕСТЬ NULL 
+				ТОГДА Продажи.ЗаказКлиента.Сделка.ВидСделки.Наименование
+			КОГДА Продажи.ЗаказКлиента ССЫЛКА Документ.ЗаказКлиента
+					ИЛИ Продажи.ЗаказКлиента ССЫЛКА Документ.ЗаявкаНаВозвратТоваровОтКлиента
+				ТОГДА &amp;СтрокаПродажиПоЗаказам
+			ИНАЧЕ &amp;СтрокаПродажиБезЗаказов
+		КОНЕЦ КАК ВидСделки,
+		Продажи.КоличествоОборот КАК Количество,
+		Продажи.СуммаВыручкиОборот КАК Выручка,
+		Продажи.СуммаВыручкиРеглОборот КАК ВыручкаРегл,
+		Продажи.СуммаВыручкиБезНДСОборот КАК ВыручкаБезНДС,
+		ВЫБОР
+			КОГДА Продажи.ТипЗапасов = ЗНАЧЕНИЕ(Перечисление.ТипыЗапасов.КомиссионныйТовар)
+				ТОГДА Продажи.СуммаВыручкиОборот
+			КОГДА ЕСТЬNULL(РасчетСебестоимости.Ссылка.ПредварительныйРасчет, ЛОЖЬ)
+				ТОГДА ВЫРАЗИТЬ(Продажи.КоличествоОборот * ЕСТЬNULL(СтоимостьНоменклатуры.Стоимость, 0) КАК ЧИСЛО(15, 2))
+			ИНАЧЕ Продажи.СебестоимостьОборот
+		КОНЕЦ КАК Себестоимость,
+		ВЫБОР
+			КОГДА Продажи.ТипЗапасов = ЗНАЧЕНИЕ(Перечисление.ТипыЗапасов.КомиссионныйТовар)
+				ТОГДА Продажи.СуммаВыручкиБезНДСОборот
+			КОГДА ЕСТЬNULL(РасчетСебестоимости.Ссылка.ПредварительныйРасчет, ЛОЖЬ)
+				ТОГДА ВЫРАЗИТЬ(Продажи.КоличествоОборот * ЕСТЬNULL(СтоимостьНоменклатуры.СтоимостьБезНДС, 0) КАК ЧИСЛО(15, 2))
+			ИНАЧЕ Продажи.СебестоимостьБезНДСОборот
+		КОНЕЦ КАК СебестоимостьБезНДС,
+		ВЫБОР
+			КОГДА Продажи.ТипЗапасов = ЗНАЧЕНИЕ(Перечисление.ТипыЗапасов.КомиссионныйТовар)
+				ТОГДА Продажи.СуммаВыручкиРеглОборот
+			КОГДА ЕСТЬNULL(РасчетСебестоимости.Ссылка.ПредварительныйРасчет, ЛОЖЬ)
+				ТОГДА ВЫРАЗИТЬ(Продажи.КоличествоОборот * ЕСТЬNULL(СтоимостьНоменклатуры.СтоимостьРегл, 0) КАК ЧИСЛО(15, 2))
+			ИНАЧЕ Продажи.СебестоимостьРеглОборот
+		КОНЕЦ КАК СебестоимостьРегл,
+		ВЫБОР
+			КОГДА Продажи.ТипЗапасов = ЗНАЧЕНИЕ(Перечисление.ТипыЗапасов.КомиссионныйТовар)
+				ТОГДА 0
+			КОГДА ЕСТЬNULL(РасчетСебестоимости.Ссылка.ПредварительныйРасчет, ЛОЖЬ)
+				ТОГДА ВЫРАЗИТЬ(Продажи.КоличествоОборот * ЕСТЬNULL(СтоимостьНоменклатуры.СтоимостьДопРасходы, 0) КАК ЧИСЛО(15, 2))
+			ИНАЧЕ Продажи.СуммаДополнительныхРасходовОборот
+		КОНЕЦ КАК ДопРасходы,
+		ВЫБОР
+			КОГДА Продажи.ТипЗапасов = ЗНАЧЕНИЕ(Перечисление.ТипыЗапасов.КомиссионныйТовар)
+				ТОГДА 0
+			КОГДА ЕСТЬNULL(РасчетСебестоимости.Ссылка.ПредварительныйРасчет, ЛОЖЬ)
+				ТОГДА ВЫРАЗИТЬ(Продажи.КоличествоОборот * ЕСТЬNULL(СтоимостьНоменклатуры.СтоимостьДопРасходыБезНДС, 0) КАК ЧИСЛО(15, 2))
+			ИНАЧЕ Продажи.СуммаДополнительныхРасходовБезНДСОборот
+		КОНЕЦ КАК ДопРасходыБезНДС,
+		Продажи.ПериодСекунда КАК ПериодСекунда,
+		Продажи.ПериодДень КАК ПериодДень,
+		Продажи.ПериодНеделя КАК ПериодНеделя,
+		Продажи.ПериодДекада КАК ПериодДекада,
+		Продажи.ПериодМесяц КАК ПериодМесяц,
+		Продажи.ПериодКвартал КАК ПериодКвартал,
+		Продажи.ПериодПолугодие КАК ПериодПолугодие,
+		Продажи.ПериодГод КАК ПериодГод,
+		ЕСТЬNULL(СерийныеНомераНоменклатуры.СерийныеНомера, ЗНАЧЕНИЕ(Справочник.СерийныеНомераНоменклатуры.ПустаяСсылка)) КАК СерийныйНомерНоменклатуры
+	{ВЫБРАТЬ
+		ЗаказКлиента.*,
+		Сделка.*,
+		МенеджерСделки,
+		Подразделение.*,
+		Номенклатура.*,
+		Характеристика.*,
+		Склад.*,
+		Организация.*,
+		Продавец.*,
+		Партнер.*,
+		Контрагент.*,
+		Покупатель.*,
+		Поставщик.*,
+		Менеджер.*,
+		ВидЗапасов.*,
+		ГруппаФинансовогоУчета.*,
+		Регистратор,
+		ПериодСекунда,
+		ПериодДень,
+		ПериодНеделя,
+		ПериодДекада,
+		ПериодМесяц,
+		ПериодКвартал,
+		ПериодПолугодие,
+		ПериодГод,
+		ВидСделки}
+	ИЗ
+		РегистрНакопления.ВыручкаИСебестоимостьПродаж.Обороты({(&amp;НачалоПериода)}, {(&amp;ОкончаниеПериода)}, Авто, {(ЕСТЬNULL(ЗаказКлиента.Сделка, ЗНАЧЕНИЕ(Справочник.СделкиСКлиентами.ПустаяСсылка))).* КАК Сделка, (ЕСТЬNULL(ЗаказКлиента.Сделка.Ответственный, ЗНАЧЕНИЕ(Справочник.Пользователи.ПустаяСсылка))).* КАК МенеджерСделки, (ВЫБОР
+				    КОГДА Менеджер = ЗНАЧЕНИЕ(Справочник.Пользователи.ПустаяСсылка)
+				        ТОГДА ЕСТЬNULL(ЗаказКлиента.Менеджер, ЗНАЧЕНИЕ(Справочник.Пользователи.ПустаяСсылка))
+				    ИНАЧЕ Менеджер
+				КОНЕЦ).* КАК Менеджер, (ВЫБОР
+				    КОГДА ВидЗапасов.РеализацияЗапасовДругойОрганизации
+				        ТОГДА ВЫБОР
+				                КОГДА ВидЗапасов.ВидЗапасовВладельца.ТипЗапасов = ЗНАЧЕНИЕ(Перечисление.ТипыЗапасов.КомиссионныйТовар)
+				                    ТОГДА ВидЗапасов.ВидЗапасовВладельца.Комитент
+				                ИНАЧЕ ВидЗапасов.ВидЗапасовВладельца.Поставщик
+				            КОНЕЦ
+				    ИНАЧЕ ВЫБОР
+				            КОГДА ВидЗапасов.ТипЗапасов = ЗНАЧЕНИЕ(Перечисление.ТипыЗапасов.КомиссионныйТовар)
+				                ТОГДА ВидЗапасов.Комитент
+				            ИНАЧЕ ВидЗапасов.Поставщик
+				        КОНЕЦ
+				КОНЕЦ).* КАК Поставщик, (ВидЗапасов.ГруппаФинансовогоУчета).* КАК ГруппаФинансовогоУчета, (ВЫБОР
+				    КОГДА НЕ ЗаказКлиента.Сделка.ВидСделки ЕСТЬ NULL 
+				        ТОГДА ЗаказКлиента.Сделка.ВидСделки.Наименование
+				    КОГДА ЗаказКлиента ССЫЛКА Документ.ЗаказКлиента
+				            ИЛИ ЗаказКлиента ССЫЛКА Документ.ЗаявкаНаВозвратТоваровОтКлиента
+				        ТОГДА &amp;СтрокаПродажиПоЗаказам
+				    ИНАЧЕ &amp;СтрокаПродажиБезЗаказов
+				КОНЕЦ) КАК ВидСделки}) КАК Продажи
+			{ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.АналитикаУчетаНоменклатуры КАК АналитикаНоменклатуры
+			ПО Продажи.АналитикаУчетаНоменклатуры = АналитикаНоменклатуры.КлючАналитики}
+			{ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.АналитикаУчетаПоПартнерам КАК АналитикаПоПартнерам
+			ПО Продажи.АналитикаУчетаПоПартнерам = АналитикаПоПартнерам.КлючАналитики}
+			{ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СтоимостьТоваров КАК СтоимостьНоменклатуры
+			ПО Продажи.АналитикаУчетаНоменклатуры = СтоимостьНоменклатуры.АналитикаУчетаНоменклатуры
+				И (АналитикаПоПартнерам.Организация = СтоимостьНоменклатуры.Организация)
+				И Продажи.ВидЗапасов = СтоимостьНоменклатуры.ВидЗапасов
+				И (СтоимостьНоменклатуры.Период = НАЧАЛОПЕРИОДА(Продажи.ПериодМесяц, МЕСЯЦ))}
+			{ЛЕВОЕ СОЕДИНЕНИЕ Документ.РасчетСебестоимостиТоваров.Организации КАК РасчетСебестоимости
+			ПО (НАЧАЛОПЕРИОДА(Продажи.ПериодМесяц, МЕСЯЦ) = НАЧАЛОПЕРИОДА(РасчетСебестоимости.Ссылка.Дата, МЕСЯЦ))
+				И (АналитикаПоПартнерам.Организация = РасчетСебестоимости.Организация)
+				И (РасчетСебестоимости.Ссылка.Проведен)}
+			ЛЕВОЕ СОЕДИНЕНИЕ РегистрНакопления.СерийныеНомераНоменклатуры.Обороты(, , Авто, ) КАК СерийныеНомераНоменклатуры
+			ПО Продажи.АналитикаУчетаНоменклатуры.Номенклатура = СерийныеНомераНоменклатуры.Номенклатура
+				И (ВЫБОР
+					КОГДА Продажи.Регистратор ССЫЛКА Документ.РеализацияТоваровУслуг
+						ТОГДА ВЫБОР
+								КОГДА СерийныеНомераНоменклатуры.Регистратор ССЫЛКА Документ.РеализацияТоваровУслуг
+									ТОГДА (ВЫРАЗИТЬ(Продажи.Регистратор КАК Документ.РеализацияТоваровУслуг)) = (ВЫРАЗИТЬ(СерийныеНомераНоменклатуры.Регистратор КАК Документ.РеализацияТоваровУслуг))
+								КОГДА СерийныеНомераНоменклатуры.Регистратор ССЫЛКА Документ.РасходныйОрдерНаТовары
+									ТОГДА (ВЫРАЗИТЬ(Продажи.Регистратор КАК Документ.РеализацияТоваровУслуг)) = ВЫРАЗИТЬ(СерийныеНомераНоменклатуры.Регистратор КАК Документ.РасходныйОрдерНаТовары).Распоряжение
+								ИНАЧЕ ЛОЖЬ
+							КОНЕЦ
+					КОГДА Продажи.Регистратор ССЫЛКА Документ.ВозвратТоваровОтКлиента
+						ТОГДА ВЫБОР
+								КОГДА СерийныеНомераНоменклатуры.Регистратор ССЫЛКА Документ.ВозвратТоваровОтКлиента
+									ТОГДА (ВЫРАЗИТЬ(Продажи.Регистратор КАК Документ.ВозвратТоваровОтКлиента)) = (ВЫРАЗИТЬ(СерийныеНомераНоменклатуры.Регистратор КАК Документ.ВозвратТоваровОтКлиента))
+								КОГДА СерийныеНомераНоменклатуры.Регистратор ССЫЛКА Документ.ПриходныйОрдерНаТовары
+									ТОГДА (ВЫРАЗИТЬ(Продажи.Регистратор КАК Документ.ВозвратТоваровОтКлиента)) = ВЫРАЗИТЬ(СерийныеНомераНоменклатуры.Регистратор КАК Документ.ПриходныйОрдерНаТовары).Распоряжение
+								ИНАЧЕ ЛОЖЬ
+							КОНЕЦ
+					ИНАЧЕ ЛОЖЬ
+				КОНЕЦ)
+	ГДЕ
+		(&amp;ПоказыватьПродажи = 1
+					И АналитикаПоПартнерам.Партнер &lt;&gt; ЗНАЧЕНИЕ(Справочник.Партнеры.НашеПредприятие)
+				ИЛИ &amp;ПоказыватьПродажи = 2
+					И АналитикаПоПартнерам.Партнер = ЗНАЧЕНИЕ(Справочник.Партнеры.НашеПредприятие)
+				ИЛИ &amp;ПоказыватьПродажи = 0)
+	{ГДЕ
+		АналитикаНоменклатуры.Номенклатура.* КАК Номенклатура,
+		АналитикаНоменклатуры.Характеристика.* КАК Характеристика,
+		АналитикаПоПартнерам.Организация.* КАК Организация,
+		АналитикаПоПартнерам.Партнер.* КАК Партнер,
+		АналитикаНоменклатуры.Склад.* КАК Склад,
+		((АналитикаНоменклатуры.Номенклатура, АналитикаНоменклатуры.Характеристика) В
+				(ВЫБРАТЬ
+					ОтборПоСегментуНоменклатуры.Номенклатура,
+					ОтборПоСегментуНоменклатуры.Характеристика
+				ИЗ
+					ОтборПоСегментуНоменклатуры
+				ГДЕ
+					ОтборПоСегментуНоменклатуры.ИспользуетсяОтборПоСегментуНоменклатуры = &amp;ИспользуетсяОтборПоСегментуНоменклатуры)),
+		(АналитикаПоПартнерам.Партнер В
+				(ВЫБРАТЬ
+					ОтборПоСегментуПартнеров.Партнер
+				ИЗ
+					ОтборПоСегментуПартнеров
+				ГДЕ
+					ОтборПоСегментуПартнеров.ИспользуетсяОтборПоСегментуПартнеров = &amp;ИспользуетсяОтборПоСегментуПартнеров)),
+		(ЕСТЬNULL(Продажи.ЗаказКлиента.Сделка, ЗНАЧЕНИЕ(Справочник.СделкиСКлиентами.ПустаяСсылка))).* КАК Сделка,
+		(ВЫБОР
+				КОГДА АналитикаПоПартнерам.Контрагент ССЫЛКА Справочник.Контрагенты
+					ТОГДА АналитикаПоПартнерам.Контрагент
+				ИНАЧЕ NULL
+			КОНЕЦ).* КАК Контрагент,
+		(ВЫБОР
+				КОГДА АналитикаПоПартнерам.Контрагент ССЫЛКА Справочник.Организации
+					ТОГДА АналитикаПоПартнерам.Контрагент
+				ИНАЧЕ NULL
+			КОНЕЦ).* КАК Покупатель}) КАК Таблица
+
+СГРУППИРОВАТЬ ПО
+	Таблица.Сделка,
+	Таблица.МенеджерСделки,
+	Таблица.Номенклатура,
+	Таблица.Характеристика,
+	Таблица.Организация,
+	Таблица.Продавец,
+	Таблица.Партнер,
+	Таблица.Регистратор,
+	Таблица.ПериодСекунда,
+	Таблица.ПериодДень,
+	Таблица.ПериодНеделя,
+	Таблица.ПериодДекада,
+	Таблица.ПериодМесяц,
+	Таблица.ПериодКвартал,
+	Таблица.ПериодПолугодие,
+	Таблица.ПериодГод,
+	Таблица.ЗаказКлиента,
+	Таблица.Подразделение,
+	Таблица.Склад,
+	Таблица.Контрагент,
+	Таблица.Покупатель,
+	Таблица.Поставщик,
+	Таблица.Менеджер,
+	Таблица.ВидЗапасов,
+	Таблица.ГруппаФинансовогоУчета,
+	Таблица.ВидСделки,
+	Таблица.СерийныйНомерНоменклатуры
+
+ИМЕЮЩИЕ
+	(СУММА(Таблица.Количество) &lt;&gt; 0
+		ИЛИ ВЫБОР
+			КОГДА &amp;ДанныеОтчета = 1
+				ТОГДА СУММА(Таблица.Выручка)
+			КОГДА &amp;ДанныеОтчета = 3
+				ТОГДА СУММА(Таблица.ВыручкаРегл)
+			ИНАЧЕ СУММА(Таблица.ВыручкаБезНДС)
+		КОНЕЦ &lt;&gt; 0
+		ИЛИ ВЫБОР
+			КОГДА &amp;ДанныеОтчета = 1
+				ТОГДА СУММА(Таблица.Себестоимость)
+			КОГДА &amp;ДанныеОтчета = 3
+				ТОГДА СУММА(Таблица.СебестоимостьРегл)
+			ИНАЧЕ СУММА(Таблица.СебестоимостьБезНДС)
+		КОНЕЦ &lt;&gt; 0
+		ИЛИ ВЫБОР
+			КОГДА &amp;ДанныеОтчета = 1
+				ТОГДА СУММА(Таблица.ДопРасходы)
+			КОГДА &amp;ДанныеОтчета = 3
+				ТОГДА 0
+			ИНАЧЕ СУММА(Таблица.ДопРасходыБезНДС)
+		КОНЕЦ &lt;&gt; 0
+		ИЛИ ВЫБОР
+			КОГДА &amp;ДанныеОтчета = 1
+				ТОГДА СУММА(Таблица.Выручка) - СУММА(Таблица.Себестоимость) - СУММА(Таблица.ДопРасходы)
+			КОГДА &amp;ДанныеОтчета = 3
+				ТОГДА СУММА(Таблица.ВыручкаРегл) - СУММА(Таблица.СебестоимостьРегл)
+			ИНАЧЕ СУММА(Таблица.ВыручкаБезНДС) - СУММА(Таблица.СебестоимостьБезНДС) - СУММА(Таблица.ДопРасходыБезНДС)
+		КОНЕЦ &lt;&gt; 0)</query>
+		</dataSet>
+		<calculatedField>
+			<dataPath>СебестоимостьИтого</dataPath>
+			<expression>Себестоимость + ДопРасходы</expression>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Всего</d4p1:content>
+				</d4p1:item>
+			</title>
+			<appearance>
+				<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+					<parameter>Формат</parameter>
+					<value xsi:type="xs:string">ЧЦ=15; ЧДЦ=2</value>
+				</item>
+				<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+					<parameter>МинимальнаяШирина</parameter>
+					<value xsi:type="xs:decimal">16</value>
+				</item>
+			</appearance>
+		</calculatedField>
+		<calculatedField>
+			<dataPath>ДинамическийПериод</dataPath>
+			<expression>ДАТАВРЕМЯ(1,1,1)</expression>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Динамический период</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:dateTime</Type>
+				<DateQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
+					<DateFractions>DateTime</DateFractions>
+				</DateQualifiers>
+			</valueType>
+		</calculatedField>
+		<calculatedField>
+			<dataPath>НомерПоПорядку</dataPath>
+			<expression>0</expression>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Номер по порядку</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:decimal</Type>
+				<NumberQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
+					<Digits>0</Digits>
+					<FractionDigits>0</FractionDigits>
+					<AllowedSign>Any</AllowedSign>
+				</NumberQualifiers>
+			</valueType>
+		</calculatedField>
+		<totalField>
+			<dataPath>ВаловаяПрибыль</dataPath>
+			<expression>Сумма(ВаловаяПрибыль)</expression>
+		</totalField>
+		<totalField>
+			<dataPath>Выручка</dataPath>
+			<expression>Сумма(Выручка)</expression>
+		</totalField>
+		<totalField>
+			<dataPath>ДопРасходы</dataPath>
+			<expression>Сумма(ДопРасходы)</expression>
+		</totalField>
+		<totalField>
+			<dataPath>Количество</dataPath>
+			<expression>Сумма(Количество)</expression>
+		</totalField>
+		<totalField>
+			<dataPath>Рентабельность</dataPath>
+			<expression>ВЫРАЗИТЬ(
+	ВЫБОР КОГДА СУММА(Выручка) &lt;&gt; 0 ТОГДА
+            (СУММА(Выручка)- СУММА(Себестоимость) - СУММА(ДопРасходы))
+            / СУММА(Выручка)
+	ИНАЧЕ
+		0
+	КОНЕЦ * 100, "ЧИСЛО(15,2)")</expression>
+		</totalField>
+		<totalField>
+			<dataPath>Себестоимость</dataPath>
+			<expression>Сумма(Себестоимость)</expression>
+		</totalField>
+		<totalField>
+			<dataPath>ВыручкаНДС</dataPath>
+			<expression>Сумма(ВыручкаНДС)</expression>
+		</totalField>
+		<totalField>
+			<dataPath>СебестоимостьИтого</dataPath>
+			<expression>Сумма(СебестоимостьИтого)</expression>
+		</totalField>
+		<totalField>
+			<dataPath>НомерПоПорядку</dataPath>
+			<expression>ВычислитьВыражение("НомерПоПорядкуВГруппировке()", , , , , "Сумма(Выручка) Убыв")</expression>
+		</totalField>
+		<parameter>
+			<name>Период</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Период</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core">StandardPeriod</Type>
+			</valueType>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:StandardPeriod">
+				<d4p1:variant xsi:type="d4p1:StandardPeriodVariant">Custom</d4p1:variant>
+				<d4p1:startDate>0001-01-01T00:00:00</d4p1:startDate>
+				<d4p1:endDate>0001-01-01T00:00:00</d4p1:endDate>
+			</value>
+			<useRestriction>false</useRestriction>
+		</parameter>
+		<parameter>
+			<name>НачалоПериода</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Начало периода</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:dateTime</Type>
+				<DateQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
+					<DateFractions>Date</DateFractions>
+				</DateQualifiers>
+			</valueType>
+			<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+			<useRestriction>true</useRestriction>
+			<expression>&amp;Период.ДатаНачала</expression>
+			<availableAsField>false</availableAsField>
+			<inputParameters>
+				<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+					<use>false</use>
+					<parameter>БыстрыйВыбор</parameter>
+					<value xsi:type="xs:boolean">true</value>
+				</item>
+			</inputParameters>
+		</parameter>
+		<parameter>
+			<name>ОкончаниеПериода</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Окончание периода</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:dateTime</Type>
+				<DateQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
+					<DateFractions>DateTime</DateFractions>
+				</DateQualifiers>
+			</valueType>
+			<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+			<useRestriction>true</useRestriction>
+			<expression>&amp;Период.ДатаОкончания</expression>
+			<availableAsField>false</availableAsField>
+			<inputParameters>
+				<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+					<use>false</use>
+					<parameter>БыстрыйВыбор</parameter>
+					<value xsi:type="xs:boolean">true</value>
+				</item>
+			</inputParameters>
+		</parameter>
+		<parameter>
+			<name>Периодичность</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Периодичность</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:EnumRef.Периодичность</Type>
+			</valueType>
+			<value xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xsi:type="dcscor:DesignTimeValue">Перечисление.Периодичность.Квартал</value>
+			<useRestriction>false</useRestriction>
+			<inputParameters>
+				<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core">
+					<parameter>БыстрыйВыбор</parameter>
+					<value xsi:type="xs:boolean">true</value>
+				</item>
+			</inputParameters>
+			<use>Always</use>
+		</parameter>
+		<parameter>
+			<name>ПоказыватьПродажи</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Показывать продажи</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:decimal</Type>
+				<NumberQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
+					<Digits>1</Digits>
+					<FractionDigits>0</FractionDigits>
+					<AllowedSign>Nonnegative</AllowedSign>
+				</NumberQualifiers>
+			</valueType>
+			<value xsi:nil="true"/>
+			<useRestriction>false</useRestriction>
+			<availableValue>
+				<value xsi:nil="true"/>
+				<presentation xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Все</d5p1:content>
+					</d5p1:item>
+				</presentation>
+			</availableValue>
+			<availableValue>
+				<value xsi:type="xs:decimal">1</value>
+				<presentation xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Кроме продаж между собственными юр. лицами</d5p1:content>
+					</d5p1:item>
+				</presentation>
+			</availableValue>
+			<availableValue>
+				<value xsi:type="xs:decimal">2</value>
+				<presentation xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Только продажи между собственными юр. лицами</d5p1:content>
+					</d5p1:item>
+				</presentation>
+			</availableValue>
+			<availableAsField>false</availableAsField>
+			<denyIncompleteValues>true</denyIncompleteValues>
+			<use>Always</use>
+		</parameter>
+		<parameter>
+			<name>ИспользуетсяОтборПоСегментуНоменклатуры</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Используется отбор по сегменту номенклатуры</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:boolean</Type>
+			</valueType>
+			<value xsi:type="xs:boolean">false</value>
+			<useRestriction>true</useRestriction>
+			<availableAsField>false</availableAsField>
+		</parameter>
+		<parameter>
+			<name>ИспользуетсяОтборПоСегментуПартнеров</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Используется отбор по сегменту партнеров</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:boolean</Type>
+			</valueType>
+			<value xsi:type="xs:boolean">false</value>
+			<useRestriction>true</useRestriction>
+			<availableAsField>false</availableAsField>
+		</parameter>
+		<parameter>
+			<name>ДанныеОтчета</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Данные продаж</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:decimal</Type>
+				<NumberQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
+					<Digits>0</Digits>
+					<FractionDigits>0</FractionDigits>
+					<AllowedSign>Any</AllowedSign>
+				</NumberQualifiers>
+			</valueType>
+			<value xsi:type="xs:decimal">1</value>
+			<useRestriction>false</useRestriction>
+			<availableValue>
+				<value xsi:type="xs:decimal">1</value>
+				<presentation xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>В валюте упр. учета с НДС</d5p1:content>
+					</d5p1:item>
+				</presentation>
+			</availableValue>
+			<availableValue>
+				<value xsi:type="xs:decimal">2</value>
+				<presentation xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>В валюте упр. учета без НДС</d5p1:content>
+					</d5p1:item>
+				</presentation>
+			</availableValue>
+			<availableValue>
+				<value xsi:type="xs:decimal">3</value>
+				<presentation xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>В валюте регл. учета без НДС</d5p1:content>
+					</d5p1:item>
+				</presentation>
+			</availableValue>
+			<use>Always</use>
+		</parameter>
+		<parameter>
+			<name>Валюта</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Валюта</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.Валюты</Type>
+			</valueType>
+			<value xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xsi:type="dcscor:DesignTimeValue">Справочник.Валюты.ПустаяСсылка</value>
+			<useRestriction>false</useRestriction>
+			<use>Always</use>
+		</parameter>
+		<parameter>
+			<name>ТипДиаграммы</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Характер анализа</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:string</Type>
+				<StringQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
+					<Length>0</Length>
+					<AllowedLength>Variable</AllowedLength>
+				</StringQualifiers>
+			</valueType>
+			<value xsi:type="xs:string">График</value>
+			<useRestriction>false</useRestriction>
+			<availableValue>
+				<value xsi:type="xs:string">График</value>
+				<presentation xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Динамика изменений</d5p1:content>
+					</d5p1:item>
+				</presentation>
+			</availableValue>
+			<availableValue>
+				<value xsi:type="xs:string">ГистограммаСНакоплением</value>
+				<presentation xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Динамика и структура изменений</d5p1:content>
+					</d5p1:item>
+				</presentation>
+			</availableValue>
+			<denyIncompleteValues>true</denyIncompleteValues>
+			<use>Always</use>
+		</parameter>
+		<parameter>
+			<name>МаксимумСерийКоличество</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Количество серий в диаграммах</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:decimal</Type>
+				<NumberQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
+					<Digits>3</Digits>
+					<FractionDigits>0</FractionDigits>
+					<AllowedSign>Nonnegative</AllowedSign>
+				</NumberQualifiers>
+			</valueType>
+			<value xsi:type="xs:decimal">999</value>
+			<useRestriction>false</useRestriction>
+			<availableValue>
+				<value xsi:type="xs:decimal">999</value>
+				<presentation xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Все</d5p1:content>
+					</d5p1:item>
+				</presentation>
+			</availableValue>
+			<availableValue>
+				<value xsi:type="xs:decimal">3</value>
+				<presentation xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>3 серии данных</d5p1:content>
+					</d5p1:item>
+				</presentation>
+			</availableValue>
+			<availableValue>
+				<value xsi:type="xs:decimal">5</value>
+				<presentation xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>5 серий данных</d5p1:content>
+					</d5p1:item>
+				</presentation>
+			</availableValue>
+			<availableValue>
+				<value xsi:type="xs:decimal">10</value>
+				<presentation xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>10 серий данных</d5p1:content>
+					</d5p1:item>
+				</presentation>
+			</availableValue>
+			<denyIncompleteValues>true</denyIncompleteValues>
+			<use>Always</use>
+		</parameter>
+		<parameter>
+			<name>ВыделениеСерийДиаграмм</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Выделение серий диаграмм</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:decimal</Type>
+				<NumberQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
+					<Digits>1</Digits>
+					<FractionDigits>0</FractionDigits>
+					<AllowedSign>Nonnegative</AllowedSign>
+				</NumberQualifiers>
+			</valueType>
+			<value xsi:type="xs:decimal">1</value>
+			<useRestriction>false</useRestriction>
+			<availableValue>
+				<value xsi:nil="true"/>
+				<presentation xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Не выделять</d5p1:content>
+					</d5p1:item>
+				</presentation>
+			</availableValue>
+			<availableValue>
+				<value xsi:type="xs:decimal">1</value>
+				<presentation xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Выделять первую серию</d5p1:content>
+					</d5p1:item>
+				</presentation>
+			</availableValue>
+			<availableValue>
+				<value xsi:type="xs:decimal">2</value>
+				<presentation xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Выделять отслеживаемые аналитики</d5p1:content>
+					</d5p1:item>
+				</presentation>
+			</availableValue>
+			<use>Always</use>
+		</parameter>
+		<parameter>
+			<name>ОтслеживаемыеАналитики</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Отслеживаемые аналитики</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<TypeSet xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef</TypeSet>
+			</valueType>
+			<useRestriction>false</useRestriction>
+			<valueListAllowed>true</valueListAllowed>
+			<use>Always</use>
+		</parameter>
+		<parameter>
+			<name>ГрадиентСерийДиаграмм</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Градиент серий диаграмм</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:boolean</Type>
+			</valueType>
+			<value xsi:type="xs:boolean">true</value>
+			<useRestriction>false</useRestriction>
+			<availableValue>
+				<value xsi:nil="true"/>
+				<presentation xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Не применять</d5p1:content>
+					</d5p1:item>
+				</presentation>
+			</availableValue>
+			<availableValue>
+				<value xsi:type="xs:boolean">true</value>
+				<presentation xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Применять ко всем сериям диаграмм</d5p1:content>
+					</d5p1:item>
+				</presentation>
+			</availableValue>
+			<use>Always</use>
+		</parameter>
+		<parameter>
+			<name>СтрокаПродажиПоЗаказам</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Строка продажи по заказам</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:string</Type>
+				<StringQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
+					<Length>0</Length>
+					<AllowedLength>Variable</AllowedLength>
+				</StringQualifiers>
+			</valueType>
+			<value xsi:type="xs:string"/>
+			<useRestriction>false</useRestriction>
+			<expression>НСтр("ru='Продажи по заказам'")</expression>
+		</parameter>
+		<parameter>
+			<name>СтрокаПродажиБезЗаказов</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Строка продажи без заказов</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:string</Type>
+				<StringQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
+					<Length>0</Length>
+					<AllowedLength>Variable</AllowedLength>
+				</StringQualifiers>
+			</valueType>
+			<value xsi:type="xs:string"/>
+			<useRestriction>false</useRestriction>
+			<expression>НСтр("ru='Продажи без заказов'")</expression>
+		</parameter>
+		<parameter>
+			<name>КонецПериода</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Конец периода</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:dateTime</Type>
+				<DateQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
+					<DateFractions>DateTime</DateFractions>
+				</DateQualifiers>
+			</valueType>
+			<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+			<useRestriction>false</useRestriction>
+		</parameter>
+		<settingsVariant>
+			<name xmlns="http://v8.1c.ru/8.1/data-composition-system/settings">ПродажиСводно</name>
+			<presentation xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Валовая прибыль предприятия</d4p1:content>
+				</d4p1:item>
+			</presentation>
+		</settingsVariant>
+		<settingsVariant>
+			<name xmlns="http://v8.1c.ru/8.1/data-composition-system/settings">ПродажиПоПартнерам</name>
+			<presentation xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Валовая прибыль по партнерам</d4p1:content>
+				</d4p1:item>
+			</presentation>
+		</settingsVariant>
+		<settingsVariant>
+			<name xmlns="http://v8.1c.ru/8.1/data-composition-system/settings">ПродажиПоПоставщикам</name>
+			<presentation xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Валовая прибыль по поставщикам</d4p1:content>
+				</d4p1:item>
+			</presentation>
+		</settingsVariant>
+		<settingsVariant>
+			<name xmlns="http://v8.1c.ru/8.1/data-composition-system/settings">ПродажиПоСделкам</name>
+			<presentation xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Валовая прибыль по сделкам</d4p1:content>
+				</d4p1:item>
+			</presentation>
+		</settingsVariant>
+		<settingsVariant>
+			<name xmlns="http://v8.1c.ru/8.1/data-composition-system/settings">ДинамикаПродажБизнесРегионы</name>
+			<presentation xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Динамика продаж</d4p1:content>
+				</d4p1:item>
+			</presentation>
+		</settingsVariant>
+		<settingsVariant>
+			<name xmlns="http://v8.1c.ru/8.1/data-composition-system/settings">ДинамикаПродаж</name>
+			<presentation xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Динамика продаж</d4p1:content>
+				</d4p1:item>
+			</presentation>
+		</settingsVariant>
+		<settingsVariant>
+			<name xmlns="http://v8.1c.ru/8.1/data-composition-system/settings">ПродажиПоЗаказуКонтекст</name>
+			<presentation xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Продажи по заказу (контекст)</d4p1:content>
+				</d4p1:item>
+			</presentation>
+		</settingsVariant>
+		<settingsVariant>
+			<name xmlns="http://v8.1c.ru/8.1/data-composition-system/settings">ПоНоменклатуреКонтекст</name>
+			<presentation xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Продажи по номенклатуре (контекст)</d4p1:content>
+				</d4p1:item>
+			</presentation>
+		</settingsVariant>
+		<settingsVariant>
+			<name xmlns="http://v8.1c.ru/8.1/data-composition-system/settings">ДинамикаПродажКонтекст</name>
+			<presentation xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Динамика продаж (контекст)</d4p1:content>
+				</d4p1:item>
+			</presentation>
+		</settingsVariant>
+	</dataCompositionSchema>
+</SchemaFile>﻿<?xml version="1.0" encoding="UTF-8"?>
+<Settings xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<selection>
+		<item xsi:type="SelectedItemAuto"/>
+		<item xsi:type="SelectedItemField">
+			<field>Количество</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>Выручка</field>
+		</item>
+		<item xsi:type="SelectedItemFolder">
+			<lwsTitle>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Себестоимость товаров</v8:content>
+				</v8:item>
+			</lwsTitle>
+			<item xsi:type="SelectedItemField">
+				<field>СебестоимостьИтого</field>
+				<lwsTitle>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Всего</v8:content>
+					</v8:item>
+				</lwsTitle>
+			</item>
+			<item xsi:type="SelectedItemField">
+				<field>Себестоимость</field>
+				<lwsTitle>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Стоимость закупки</v8:content>
+					</v8:item>
+				</lwsTitle>
+			</item>
+			<item xsi:type="SelectedItemField">
+				<field>ДопРасходы</field>
+			</item>
+			<placement>Horizontally</placement>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>ВаловаяПрибыль</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>Рентабельность</field>
+		</item>
+		<viewMode>Normal</viewMode>
+		<userSettingID>7cc7fcfb-8b84-4870-a98e-3017f3e0648b</userSettingID>
+	</selection>
+	<filter>
+		<item xsi:type="FilterItemComparison">
+			<use>false</use>
+			<left xsi:type="dcscor:Field">Организация</left>
+			<comparisonType>InList</comparisonType>
+			<userSettingID>8c58cb98-1c30-4b68-a82b-2145392ee35e</userSettingID>
+		</item>
+		<item xsi:type="FilterItemComparison">
+			<use>false</use>
+			<left xsi:type="dcscor:Field">Подразделение</left>
+			<comparisonType>InList</comparisonType>
+			<userSettingID>fcf4fcd2-4270-4709-bf2f-a26afed64171</userSettingID>
+		</item>
+		<item xsi:type="FilterItemComparison">
+			<use>false</use>
+			<left xsi:type="dcscor:Field">Менеджер</left>
+			<comparisonType>InList</comparisonType>
+			<userSettingID>a59054dc-d784-49b7-a1d5-f1bce8c95dcb</userSettingID>
+		</item>
+		<item xsi:type="FilterItemComparison">
+			<use>false</use>
+			<left xsi:type="dcscor:Field">СегментНоменклатуры</left>
+			<comparisonType>Equal</comparisonType>
+			<viewMode>Normal</viewMode>
+			<userSettingID>c4b6309a-4b32-476b-bd55-f865e6ba08fc</userSettingID>
+		</item>
+		<item xsi:type="FilterItemComparison">
+			<use>false</use>
+			<left xsi:type="dcscor:Field">Номенклатура</left>
+			<comparisonType>InListByHierarchy</comparisonType>
+			<viewMode>Normal</viewMode>
+			<userSettingID>ac1baf1f-452b-4935-a4b7-fedbd793a416</userSettingID>
+		</item>
+		<viewMode>Normal</viewMode>
+		<userSettingID>b771e5df-9eb6-43b6-9758-25a6da3eca4e</userSettingID>
+	</filter>
+	<dataParameters>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>Период</dcscor:parameter>
+			<dcscor:value xsi:type="v8:StandardPeriod">
+				<v8:variant xsi:type="v8:StandardPeriodVariant">ThisMonth</v8:variant>
+			</dcscor:value>
+			<userSettingID>3fddba72-7a69-4252-9fa0-7877c02a0813</userSettingID>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>ПоказыватьПродажи</dcscor:parameter>
+			<dcscor:value xsi:type="xs:decimal">1</dcscor:value>
+			<viewMode>Inaccessible</viewMode>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>ДанныеОтчета</dcscor:parameter>
+			<dcscor:value xsi:type="xs:decimal">1</dcscor:value>
+			<userSettingID>be556b03-46b2-4a14-a4e9-c8d6ea8a4845</userSettingID>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>Валюта</dcscor:parameter>
+			<dcscor:value xsi:type="dcscor:DesignTimeValue">Справочник.Валюты.ПустаяСсылка</dcscor:value>
+			<viewMode>Inaccessible</viewMode>
+		</dcscor:item>
+	</dataParameters>
+	<order>
+		<item xsi:type="OrderItemField">
+			<field>ВаловаяПрибыль</field>
+			<orderType>Desc</orderType>
+		</item>
+		<viewMode>Normal</viewMode>
+		<userSettingID>ab2a0df7-becd-498c-a3d2-31a5c7bbdca7</userSettingID>
+	</order>
+	<conditionalAppearance>
+		<item>
+			<selection>
+				<item>
+					<field>Организация</field>
+				</item>
+				<item>
+					<field>Подразделение</field>
+				</item>
+				<item>
+					<field>Менеджер</field>
+				</item>
+			</selection>
+			<filter/>
+			<appearance>
+				<dcscor:item xsi:type="SettingsParameterValue">
+					<dcscor:parameter>МинимальнаяШирина</dcscor:parameter>
+					<dcscor:value xsi:type="xs:decimal">40</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="SettingsParameterValue">
+					<dcscor:parameter>МаксимальнаяШирина</dcscor:parameter>
+					<dcscor:value xsi:type="xs:decimal">40</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</item>
+		<viewMode>Normal</viewMode>
+		<userSettingID>33ca28e4-87eb-4f5b-847a-a8c96b12439f</userSettingID>
+	</conditionalAppearance>
+	<outputParameters>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>ГоризонтальноеРасположениеОбщихИтогов</dcscor:parameter>
+			<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">None</dcscor:value>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>Заголовок</dcscor:parameter>
+			<dcscor:value xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Валовая прибыль предприятия</v8:content>
+				</v8:item>
+			</dcscor:value>
+		</dcscor:item>
+	</outputParameters>
+	<item xsi:type="StructureItemGroup">
+		<groupItems>
+			<item xsi:type="GroupItemField">
+				<field>Организация</field>
+				<groupType>Items</groupType>
+				<periodAdditionType>None</periodAdditionType>
+				<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+				<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+			</item>
+		</groupItems>
+		<order>
+			<item xsi:type="OrderItemAuto"/>
+		</order>
+		<selection>
+			<item xsi:type="SelectedItemAuto"/>
+		</selection>
+		<outputParameters>
+			<dcscor:item xsi:type="SettingsParameterValue">
+				<dcscor:parameter>Заголовок</dcscor:parameter>
+				<dcscor:value xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>По организациям</v8:content>
+					</v8:item>
+				</dcscor:value>
+			</dcscor:item>
+		</outputParameters>
+		<userSettingID>d71aa89b-6605-4cd1-b6c3-95d073160772</userSettingID>
+		<userSettingPresentation xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>По организациям</v8:content>
+			</v8:item>
+		</userSettingPresentation>
+	</item>
+	<item xsi:type="StructureItemGroup">
+		<groupItems>
+			<item xsi:type="GroupItemField">
+				<field>Подразделение</field>
+				<groupType>Hierarchy</groupType>
+				<periodAdditionType>None</periodAdditionType>
+				<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+				<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+			</item>
+		</groupItems>
+		<order>
+			<item xsi:type="OrderItemAuto"/>
+		</order>
+		<selection>
+			<item xsi:type="SelectedItemAuto"/>
+		</selection>
+		<conditionalAppearance>
+			<item>
+				<selection/>
+				<filter>
+					<item xsi:type="FilterItemComparison">
+						<left xsi:type="dcscor:Field">СистемныеПоля.Уровень</left>
+						<comparisonType>Equal</comparisonType>
+						<right xsi:type="xs:decimal">1</right>
+					</item>
+				</filter>
+				<appearance>
+					<dcscor:item xsi:type="SettingsParameterValue">
+						<dcscor:parameter>ЦветФона</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:ReportGroup1BackColor</dcscor:value>
+					</dcscor:item>
+				</appearance>
+			</item>
+		</conditionalAppearance>
+		<outputParameters>
+			<dcscor:item xsi:type="SettingsParameterValue">
+				<dcscor:parameter>Заголовок</dcscor:parameter>
+				<dcscor:value xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>По поздразделениям</v8:content>
+					</v8:item>
+				</dcscor:value>
+			</dcscor:item>
+		</outputParameters>
+		<item xsi:type="StructureItemGroup">
+			<groupItems>
+				<item xsi:type="GroupItemField">
+					<field>Номенклатура</field>
+					<groupType>Items</groupType>
+					<periodAdditionType>None</periodAdditionType>
+					<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+					<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+				</item>
+				<item xsi:type="GroupItemField">
+					<field>Характеристика</field>
+					<groupType>Items</groupType>
+					<periodAdditionType>None</periodAdditionType>
+					<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+					<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+				</item>
+			</groupItems>
+			<order>
+				<item xsi:type="OrderItemAuto"/>
+			</order>
+			<selection>
+				<item xsi:type="SelectedItemAuto"/>
+			</selection>
+			<item xsi:type="StructureItemGroup">
+				<groupItems>
+					<item xsi:type="GroupItemField">
+						<field>СерийныйНомерНоменклатуры</field>
+						<groupType>Items</groupType>
+						<periodAdditionType>None</periodAdditionType>
+						<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+						<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+					</item>
+				</groupItems>
+				<order>
+					<item xsi:type="OrderItemAuto"/>
+				</order>
+				<selection>
+					<item xsi:type="SelectedItemAuto"/>
+				</selection>
+			</item>
+			<userSettingID>3741c9af-e36b-496e-9415-55970ef2a3f6</userSettingID>
+			<userSettingPresentation xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подразделения - детализация по номенклатуре</v8:content>
+				</v8:item>
+			</userSettingPresentation>
+		</item>
+		<userSettingID>57a4003d-c80d-4cc4-ad44-d4eaf4ba2acb</userSettingID>
+		<userSettingPresentation xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>По подразделениям</v8:content>
+			</v8:item>
+		</userSettingPresentation>
+	</item>
+	<item xsi:type="StructureItemGroup">
+		<groupItems>
+			<item xsi:type="GroupItemField">
+				<field>Менеджер</field>
+				<groupType>Items</groupType>
+				<periodAdditionType>None</periodAdditionType>
+				<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+				<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+			</item>
+		</groupItems>
+		<order>
+			<item xsi:type="OrderItemAuto"/>
+		</order>
+		<selection>
+			<item xsi:type="SelectedItemAuto"/>
+		</selection>
+		<outputParameters>
+			<dcscor:item xsi:type="SettingsParameterValue">
+				<dcscor:parameter>Заголовок</dcscor:parameter>
+				<dcscor:value xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>По менеджерам</v8:content>
+					</v8:item>
+				</dcscor:value>
+			</dcscor:item>
+		</outputParameters>
+		<item xsi:type="StructureItemGroup">
+			<groupItems>
+				<item xsi:type="GroupItemField">
+					<field>ЗаказКлиента</field>
+					<groupType>Items</groupType>
+					<periodAdditionType>None</periodAdditionType>
+					<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+					<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+				</item>
+			</groupItems>
+			<order>
+				<item xsi:type="OrderItemAuto"/>
+			</order>
+			<selection>
+				<item xsi:type="SelectedItemAuto"/>
+			</selection>
+			<userSettingID>4881ff57-a420-43ea-bad4-67d49bff884f</userSettingID>
+			<userSettingPresentation xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Менеджеры - детализация по заказам клиентов</v8:content>
+				</v8:item>
+			</userSettingPresentation>
+		</item>
+		<userSettingID>7b0417d0-2d8d-4881-b91c-5291a62a679b</userSettingID>
+		<userSettingPresentation xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>По менеджерам</v8:content>
+			</v8:item>
+		</userSettingPresentation>
+	</item>
+	<itemsViewMode>Normal</itemsViewMode>
+	<itemsUserSettingID>669b670d-3029-4c50-bfe2-8ac65d245878</itemsUserSettingID>
+</Settings>﻿<?xml version="1.0" encoding="UTF-8"?>
+<Settings xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<userFields>
+		<item xsi:type="UserFieldCase">
+			<dataPath>ПользовательскиеПоля.Поле1</dataPath>
+			<title>Вид продаж</title>
+			<cases>
+				<item>
+					<filter/>
+					<value xsi:type="xs:decimal">1</value>
+					<presentationValue>Оптовые и розничные продажи</presentationValue>
+				</item>
+				<item>
+					<filter>
+						<item xsi:type="FilterItemComparison">
+							<left xsi:type="dcscor:Field">Партнер</left>
+							<comparisonType>Filled</comparisonType>
+						</item>
+					</filter>
+					<value xsi:type="xs:decimal">2</value>
+					<presentationValue>Только оптовые продажи</presentationValue>
+				</item>
+				<item>
+					<filter>
+						<item xsi:type="FilterItemComparison">
+							<left xsi:type="dcscor:Field">Партнер</left>
+							<comparisonType>NotFilled</comparisonType>
+						</item>
+					</filter>
+					<value xsi:type="xs:decimal">3</value>
+					<presentationValue>Только розничные продажи</presentationValue>
+				</item>
+			</cases>
+		</item>
+	</userFields>
+	<selection>
+		<item xsi:type="SelectedItemAuto"/>
+		<item xsi:type="SelectedItemField">
+			<use>false</use>
+			<field>Количество</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>Выручка</field>
+		</item>
+		<item xsi:type="SelectedItemFolder">
+			<lwsTitle>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Себестоимость товаров</v8:content>
+				</v8:item>
+			</lwsTitle>
+			<item xsi:type="SelectedItemField">
+				<field>СебестоимостьИтого</field>
+				<lwsTitle>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Всего</v8:content>
+					</v8:item>
+				</lwsTitle>
+			</item>
+			<item xsi:type="SelectedItemField">
+				<field>Себестоимость</field>
+				<lwsTitle>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Стоимость закупки</v8:content>
+					</v8:item>
+				</lwsTitle>
+			</item>
+			<item xsi:type="SelectedItemField">
+				<field>ДопРасходы</field>
+			</item>
+			<placement>Horizontally</placement>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>ВаловаяПрибыль</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>Рентабельность</field>
+		</item>
+		<viewMode>Normal</viewMode>
+		<userSettingID>7cc7fcfb-8b84-4870-a98e-3017f3e0648b</userSettingID>
+	</selection>
+	<filter>
+		<item xsi:type="FilterItemComparison">
+			<use>false</use>
+			<left xsi:type="dcscor:Field">СегментПартнеров</left>
+			<comparisonType>Equal</comparisonType>
+			<userSettingID>3840cb1e-b413-499f-b930-dcac83e53288</userSettingID>
+		</item>
+		<item xsi:type="FilterItemComparison">
+			<use>false</use>
+			<left xsi:type="dcscor:Field">СегментНоменклатуры</left>
+			<comparisonType>Equal</comparisonType>
+			<userSettingID>7cf03e64-485f-45b0-8eed-ed07d1bfbb97</userSettingID>
+		</item>
+		<item xsi:type="FilterItemComparison">
+			<use>false</use>
+			<left xsi:type="dcscor:Field">Организация</left>
+			<comparisonType>InList</comparisonType>
+			<right xsi:nil="true"/>
+			<userSettingID>d9b6a636-7168-44ba-9580-502c4f536137</userSettingID>
+		</item>
+		<item xsi:type="FilterItemComparison">
+			<use>false</use>
+			<left xsi:type="dcscor:Field">Партнер</left>
+			<comparisonType>InListByHierarchy</comparisonType>
+			<right xsi:nil="true"/>
+			<userSettingID>a85761ca-ed98-4ce3-9243-7f11c5dcb8bd</userSettingID>
+		</item>
+		<item xsi:type="FilterItemComparison">
+			<use>false</use>
+			<left xsi:type="dcscor:Field">Номенклатура</left>
+			<comparisonType>InListByHierarchy</comparisonType>
+			<right xsi:nil="true"/>
+			<userSettingID>cb8bf6fb-fd7b-4099-8488-2a2fea211367</userSettingID>
+		</item>
+		<viewMode>Normal</viewMode>
+		<userSettingID>b771e5df-9eb6-43b6-9758-25a6da3eca4e</userSettingID>
+	</filter>
+	<dataParameters>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>Период</dcscor:parameter>
+			<dcscor:value xsi:type="v8:StandardPeriod">
+				<v8:variant xsi:type="v8:StandardPeriodVariant">ThisMonth</v8:variant>
+			</dcscor:value>
+			<userSettingID>2b62cfad-adf2-4be8-b52b-1617e24de451</userSettingID>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>ПоказыватьПродажи</dcscor:parameter>
+			<dcscor:value xsi:type="xs:decimal">1</dcscor:value>
+			<viewMode>Inaccessible</viewMode>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>ДанныеОтчета</dcscor:parameter>
+			<dcscor:value xsi:type="xs:decimal">1</dcscor:value>
+			<userSettingID>36a2163a-7f43-4f7b-b86a-7250560b8330</userSettingID>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>Валюта</dcscor:parameter>
+			<dcscor:value xsi:type="dcscor:DesignTimeValue">Справочник.Валюты.ПустаяСсылка</dcscor:value>
+			<viewMode>Inaccessible</viewMode>
+		</dcscor:item>
+	</dataParameters>
+	<order>
+		<item xsi:type="OrderItemField">
+			<field>ВаловаяПрибыль</field>
+			<orderType>Desc</orderType>
+		</item>
+		<viewMode>Normal</viewMode>
+		<userSettingID>ab2a0df7-becd-498c-a3d2-31a5c7bbdca7</userSettingID>
+	</order>
+	<conditionalAppearance>
+		<item>
+			<selection>
+				<item>
+					<field>Партнер</field>
+				</item>
+			</selection>
+			<filter>
+				<item xsi:type="FilterItemComparison">
+					<left xsi:type="dcscor:Field">Партнер</left>
+					<comparisonType>NotFilled</comparisonType>
+				</item>
+			</filter>
+			<appearance>
+				<dcscor:item xsi:type="SettingsParameterValue">
+					<dcscor:parameter>ЦветТекста</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:Color">0:a52cf71c-aa1d-4eaa-9366-ae74f995f6d6</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="SettingsParameterValue">
+					<dcscor:parameter>Текст</dcscor:parameter>
+					<dcscor:value xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>&lt;Партнер не указан&gt;</v8:content>
+						</v8:item>
+					</dcscor:value>
+				</dcscor:item>
+			</appearance>
+			<presentation xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Оформление незаполненных партнеров</v8:content>
+				</v8:item>
+			</presentation>
+		</item>
+		<viewMode>Normal</viewMode>
+		<userSettingID>33ca28e4-87eb-4f5b-847a-a8c96b12439f</userSettingID>
+	</conditionalAppearance>
+	<outputParameters>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>Заголовок</dcscor:parameter>
+			<dcscor:value xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Валовая прибыль по партнерам</v8:content>
+				</v8:item>
+			</dcscor:value>
+		</dcscor:item>
+	</outputParameters>
+	<item xsi:type="StructureItemGroup">
+		<groupItems>
+			<item xsi:type="GroupItemField">
+				<field>Партнер</field>
+				<groupType>Hierarchy</groupType>
+				<periodAdditionType>None</periodAdditionType>
+				<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+				<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+			</item>
+		</groupItems>
+		<order>
+			<item xsi:type="OrderItemAuto"/>
+		</order>
+		<selection>
+			<item xsi:type="SelectedItemAuto"/>
+		</selection>
+		<conditionalAppearance>
+			<item>
+				<selection/>
+				<filter>
+					<item xsi:type="FilterItemComparison">
+						<left xsi:type="dcscor:Field">СистемныеПоля.Уровень</left>
+						<comparisonType>Equal</comparisonType>
+						<right xsi:type="xs:decimal">1</right>
+					</item>
+				</filter>
+				<appearance>
+					<dcscor:item xsi:type="SettingsParameterValue">
+						<dcscor:parameter>ЦветФона</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:ReportGroup1BackColor</dcscor:value>
+					</dcscor:item>
+				</appearance>
+			</item>
+		</conditionalAppearance>
+		<item xsi:type="StructureItemGroup">
+			<use>false</use>
+			<groupItems>
+				<item xsi:type="GroupItemField">
+					<field>ЗаказКлиента</field>
+					<groupType>Items</groupType>
+					<periodAdditionType>None</periodAdditionType>
+					<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+					<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+				</item>
+			</groupItems>
+			<order>
+				<item xsi:type="OrderItemAuto"/>
+			</order>
+			<selection>
+				<item xsi:type="SelectedItemAuto"/>
+			</selection>
+			<outputParameters>
+				<dcscor:item xsi:type="SettingsParameterValue">
+					<dcscor:parameter>ВыводитьОтбор</dcscor:parameter>
+					<dcscor:value xsi:type="DataCompositionTextOutputType">DontOutput</dcscor:value>
+				</dcscor:item>
+			</outputParameters>
+			<userSettingID>270b123c-7a3a-4ce9-816e-41b13ae4878f</userSettingID>
+			<userSettingPresentation xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>По заказам клиентов</v8:content>
+				</v8:item>
+			</userSettingPresentation>
+		</item>
+	</item>
+	<itemsViewMode>Normal</itemsViewMode>
+	<itemsUserSettingID>e33363f9-2f96-4537-81f5-2560503d4269</itemsUserSettingID>
+</Settings>﻿<?xml version="1.0" encoding="UTF-8"?>
+<Settings xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<selection>
+		<item xsi:type="SelectedItemAuto"/>
+		<item xsi:type="SelectedItemField">
+			<use>false</use>
+			<field>Количество</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>Выручка</field>
+		</item>
+		<item xsi:type="SelectedItemFolder">
+			<lwsTitle>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Себестоимость товаров</v8:content>
+				</v8:item>
+			</lwsTitle>
+			<item xsi:type="SelectedItemField">
+				<field>СебестоимостьИтого</field>
+				<lwsTitle>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Всего</v8:content>
+					</v8:item>
+				</lwsTitle>
+			</item>
+			<item xsi:type="SelectedItemField">
+				<field>Себестоимость</field>
+				<lwsTitle>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Стоимость закупки</v8:content>
+					</v8:item>
+				</lwsTitle>
+			</item>
+			<item xsi:type="SelectedItemField">
+				<field>ДопРасходы</field>
+			</item>
+			<placement>Horizontally</placement>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>ВаловаяПрибыль</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>Рентабельность</field>
+		</item>
+		<viewMode>Normal</viewMode>
+		<userSettingID>7cc7fcfb-8b84-4870-a98e-3017f3e0648b</userSettingID>
+	</selection>
+	<filter>
+		<item xsi:type="FilterItemComparison">
+			<left xsi:type="dcscor:Field">ТипЗапасов</left>
+			<comparisonType>NotEqual</comparisonType>
+			<right xsi:type="dcscor:DesignTimeValue">Перечисление.ТипыЗапасов.Услуга</right>
+			<presentation xsi:type="xs:string">Кроме услуг</presentation>
+			<viewMode>Inaccessible</viewMode>
+		</item>
+		<item xsi:type="FilterItemComparison">
+			<use>false</use>
+			<left xsi:type="dcscor:Field">СегментПартнеров</left>
+			<comparisonType>Equal</comparisonType>
+			<userSettingID>81f12418-f2b1-45e8-b599-6ffeb45bbeb3</userSettingID>
+		</item>
+		<item xsi:type="FilterItemComparison">
+			<use>false</use>
+			<left xsi:type="dcscor:Field">СегментНоменклатуры</left>
+			<comparisonType>Equal</comparisonType>
+			<userSettingID>ba9a5415-df07-4159-b3fc-085ae335836e</userSettingID>
+		</item>
+		<item xsi:type="FilterItemComparison">
+			<use>false</use>
+			<left xsi:type="dcscor:Field">Организация</left>
+			<comparisonType>InList</comparisonType>
+			<right xsi:nil="true"/>
+			<userSettingID>8c58cb98-1c30-4b68-a82b-2145392ee35e</userSettingID>
+		</item>
+		<item xsi:type="FilterItemComparison">
+			<use>false</use>
+			<left xsi:type="dcscor:Field">Поставщик</left>
+			<comparisonType>InListByHierarchy</comparisonType>
+			<right xsi:nil="true"/>
+			<userSettingID>72b4212b-f9b1-40bb-bee7-7071d8678abc</userSettingID>
+		</item>
+		<item xsi:type="FilterItemComparison">
+			<use>false</use>
+			<left xsi:type="dcscor:Field">Номенклатура</left>
+			<comparisonType>InListByHierarchy</comparisonType>
+			<right xsi:nil="true"/>
+			<userSettingID>0f1226d1-c3a1-480d-925f-fd96695b2d65</userSettingID>
+		</item>
+		<viewMode>Normal</viewMode>
+		<userSettingID>b771e5df-9eb6-43b6-9758-25a6da3eca4e</userSettingID>
+	</filter>
+	<dataParameters>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>Период</dcscor:parameter>
+			<dcscor:value xsi:type="v8:StandardPeriod">
+				<v8:variant xsi:type="v8:StandardPeriodVariant">ThisMonth</v8:variant>
+			</dcscor:value>
+			<userSettingID>5d991af8-eacb-42c0-ba7b-80ab73c9d8e2</userSettingID>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>ПоказыватьПродажи</dcscor:parameter>
+			<dcscor:value xsi:type="xs:decimal">1</dcscor:value>
+			<viewMode>Inaccessible</viewMode>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>ДанныеОтчета</dcscor:parameter>
+			<dcscor:value xsi:type="xs:decimal">1</dcscor:value>
+			<userSettingID>754a6404-8619-4e10-b31c-d7d6a4c1f969</userSettingID>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>Валюта</dcscor:parameter>
+			<dcscor:value xsi:type="dcscor:DesignTimeValue">Справочник.Валюты.ПустаяСсылка</dcscor:value>
+			<viewMode>Inaccessible</viewMode>
+		</dcscor:item>
+	</dataParameters>
+	<order>
+		<item xsi:type="OrderItemField">
+			<field>ВаловаяПрибыль</field>
+			<orderType>Desc</orderType>
+		</item>
+		<viewMode>Normal</viewMode>
+		<userSettingID>ab2a0df7-becd-498c-a3d2-31a5c7bbdca7</userSettingID>
+	</order>
+	<conditionalAppearance>
+		<item>
+			<selection>
+				<item>
+					<field>Поставщик</field>
+				</item>
+			</selection>
+			<filter>
+				<item xsi:type="FilterItemComparison">
+					<left xsi:type="dcscor:Field">Поставщик</left>
+					<comparisonType>NotFilled</comparisonType>
+				</item>
+			</filter>
+			<appearance>
+				<dcscor:item xsi:type="SettingsParameterValue">
+					<dcscor:parameter>ЦветТекста</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:Color">0:a52cf71c-aa1d-4eaa-9366-ae74f995f6d6</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="SettingsParameterValue">
+					<dcscor:parameter>Текст</dcscor:parameter>
+					<dcscor:value xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>&lt;Поставщик не указан&gt;</v8:content>
+						</v8:item>
+					</dcscor:value>
+				</dcscor:item>
+			</appearance>
+			<presentation xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Оформление незаполненных поставщиков</v8:content>
+				</v8:item>
+			</presentation>
+		</item>
+		<viewMode>Normal</viewMode>
+		<userSettingID>33ca28e4-87eb-4f5b-847a-a8c96b12439f</userSettingID>
+	</conditionalAppearance>
+	<outputParameters>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>ГоризонтальноеРасположениеОбщихИтогов</dcscor:parameter>
+			<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">None</dcscor:value>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>Заголовок</dcscor:parameter>
+			<dcscor:value xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Валовая прибыль по поставщикам</v8:content>
+				</v8:item>
+			</dcscor:value>
+		</dcscor:item>
+	</outputParameters>
+	<item xsi:type="StructureItemGroup">
+		<groupItems>
+			<item xsi:type="GroupItemField">
+				<field>Поставщик</field>
+				<groupType>Hierarchy</groupType>
+				<periodAdditionType>None</periodAdditionType>
+				<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+				<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+			</item>
+		</groupItems>
+		<order>
+			<item xsi:type="OrderItemAuto"/>
+		</order>
+		<selection>
+			<item xsi:type="SelectedItemAuto"/>
+		</selection>
+		<conditionalAppearance>
+			<item>
+				<selection/>
+				<filter>
+					<item xsi:type="FilterItemComparison">
+						<left xsi:type="dcscor:Field">СистемныеПоля.Уровень</left>
+						<comparisonType>Equal</comparisonType>
+						<right xsi:type="xs:decimal">1</right>
+					</item>
+				</filter>
+				<appearance>
+					<dcscor:item xsi:type="SettingsParameterValue">
+						<dcscor:parameter>ЦветФона</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:ReportGroup1BackColor</dcscor:value>
+					</dcscor:item>
+				</appearance>
+			</item>
+		</conditionalAppearance>
+		<outputParameters>
+			<dcscor:item xsi:type="SettingsParameterValue">
+				<dcscor:parameter>ВыводитьОтбор</dcscor:parameter>
+				<dcscor:value xsi:type="DataCompositionTextOutputType">DontOutput</dcscor:value>
+			</dcscor:item>
+		</outputParameters>
+		<item xsi:type="StructureItemGroup">
+			<use>false</use>
+			<groupItems>
+				<item xsi:type="GroupItemField">
+					<field>Номенклатура</field>
+					<groupType>Items</groupType>
+					<periodAdditionType>None</periodAdditionType>
+					<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+					<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+				</item>
+				<item xsi:type="GroupItemField">
+					<field>Характеристика</field>
+					<groupType>Items</groupType>
+					<periodAdditionType>None</periodAdditionType>
+					<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+					<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+				</item>
+			</groupItems>
+			<order>
+				<item xsi:type="OrderItemAuto"/>
+			</order>
+			<selection>
+				<item xsi:type="SelectedItemAuto"/>
+			</selection>
+			<userSettingID>741dfa98-9aa7-4427-8467-58ec46f5d143</userSettingID>
+			<userSettingPresentation xsi:type="xs:string">По номенклатуре и характеристикам</userSettingPresentation>
+		</item>
+	</item>
+	<itemsViewMode>Normal</itemsViewMode>
+	<itemsUserSettingID>411d5ef7-bda3-4294-aa31-7fba5184d8f6</itemsUserSettingID>
+</Settings>﻿<?xml version="1.0" encoding="UTF-8"?>
+<Settings xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<selection>
+		<item xsi:type="SelectedItemAuto"/>
+		<item xsi:type="SelectedItemField">
+			<use>false</use>
+			<field>Количество</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>Выручка</field>
+		</item>
+		<item xsi:type="SelectedItemFolder">
+			<lwsTitle>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Себестоимость товаров</v8:content>
+				</v8:item>
+			</lwsTitle>
+			<item xsi:type="SelectedItemField">
+				<field>СебестоимостьИтого</field>
+				<lwsTitle>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Всего</v8:content>
+					</v8:item>
+				</lwsTitle>
+			</item>
+			<item xsi:type="SelectedItemField">
+				<field>Себестоимость</field>
+				<lwsTitle>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Стоимость закупки</v8:content>
+					</v8:item>
+				</lwsTitle>
+			</item>
+			<item xsi:type="SelectedItemField">
+				<field>ДопРасходы</field>
+			</item>
+			<placement>Horizontally</placement>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>ВаловаяПрибыль</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>Рентабельность</field>
+		</item>
+		<viewMode>Normal</viewMode>
+		<userSettingID>7cc7fcfb-8b84-4870-a98e-3017f3e0648b</userSettingID>
+	</selection>
+	<filter>
+		<item xsi:type="FilterItemComparison">
+			<use>false</use>
+			<left xsi:type="dcscor:Field">СегментПартнеров</left>
+			<comparisonType>Equal</comparisonType>
+			<userSettingID>047a7076-a115-445f-b9f3-7a67d6b6f1ae</userSettingID>
+		</item>
+		<item xsi:type="FilterItemComparison">
+			<use>false</use>
+			<left xsi:type="dcscor:Field">Организация</left>
+			<comparisonType>InList</comparisonType>
+			<right xsi:nil="true"/>
+			<userSettingID>14802f15-b239-439d-93a8-fa850d6f4992</userSettingID>
+		</item>
+		<item xsi:type="FilterItemComparison">
+			<use>false</use>
+			<left xsi:type="dcscor:Field">Партнер</left>
+			<comparisonType>InListByHierarchy</comparisonType>
+			<right xsi:nil="true"/>
+			<userSettingID>13ffa80f-3413-4dc2-8c3d-df51f1f03392</userSettingID>
+			<userSettingPresentation xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Клиент</v8:content>
+				</v8:item>
+			</userSettingPresentation>
+		</item>
+		<item xsi:type="FilterItemComparison">
+			<use>false</use>
+			<left xsi:type="dcscor:Field">Сделка</left>
+			<comparisonType>InList</comparisonType>
+			<right xsi:nil="true"/>
+			<userSettingID>e619a951-7aa6-4151-9128-00aa89bc6287</userSettingID>
+		</item>
+		<viewMode>Normal</viewMode>
+		<userSettingID>b771e5df-9eb6-43b6-9758-25a6da3eca4e</userSettingID>
+	</filter>
+	<dataParameters>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>Период</dcscor:parameter>
+			<dcscor:value xsi:type="v8:StandardPeriod">
+				<v8:variant xsi:type="v8:StandardPeriodVariant">ThisMonth</v8:variant>
+			</dcscor:value>
+			<userSettingID>f1def035-a3af-4447-9ab4-b8f2dba876f3</userSettingID>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>ПоказыватьПродажи</dcscor:parameter>
+			<dcscor:value xsi:type="xs:decimal">1</dcscor:value>
+			<viewMode>Inaccessible</viewMode>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>ДанныеОтчета</dcscor:parameter>
+			<dcscor:value xsi:type="xs:decimal">1</dcscor:value>
+			<userSettingID>efaea674-351c-418d-b9ff-9a02cb530e94</userSettingID>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>Валюта</dcscor:parameter>
+			<dcscor:value xsi:type="dcscor:DesignTimeValue">Справочник.Валюты.ПустаяСсылка</dcscor:value>
+			<viewMode>Inaccessible</viewMode>
+		</dcscor:item>
+	</dataParameters>
+	<order>
+		<item xsi:type="OrderItemField">
+			<field>ВаловаяПрибыль</field>
+			<orderType>Desc</orderType>
+		</item>
+		<viewMode>Normal</viewMode>
+		<userSettingID>ab2a0df7-becd-498c-a3d2-31a5c7bbdca7</userSettingID>
+	</order>
+	<conditionalAppearance>
+		<item>
+			<selection>
+				<item>
+					<field>Партнер</field>
+				</item>
+			</selection>
+			<filter>
+				<item xsi:type="FilterItemComparison">
+					<left xsi:type="dcscor:Field">Партнер</left>
+					<comparisonType>NotFilled</comparisonType>
+				</item>
+			</filter>
+			<appearance>
+				<dcscor:item xsi:type="SettingsParameterValue">
+					<dcscor:parameter>ЦветТекста</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:Color">0:a52cf71c-aa1d-4eaa-9366-ae74f995f6d6</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="SettingsParameterValue">
+					<dcscor:parameter>Текст</dcscor:parameter>
+					<dcscor:value xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>&lt;Партнер не указан&gt;</v8:content>
+						</v8:item>
+					</dcscor:value>
+				</dcscor:item>
+			</appearance>
+			<presentation xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Оформление незаполненных партнеров</v8:content>
+				</v8:item>
+			</presentation>
+		</item>
+		<viewMode>Normal</viewMode>
+		<userSettingID>33ca28e4-87eb-4f5b-847a-a8c96b12439f</userSettingID>
+	</conditionalAppearance>
+	<outputParameters>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>Заголовок</dcscor:parameter>
+			<dcscor:value xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Валовая прибыль по сделкам</v8:content>
+				</v8:item>
+			</dcscor:value>
+		</dcscor:item>
+	</outputParameters>
+	<item xsi:type="StructureItemGroup">
+		<groupItems>
+			<item xsi:type="GroupItemField">
+				<field>ВидСделки</field>
+				<groupType>Items</groupType>
+				<periodAdditionType>None</periodAdditionType>
+				<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+				<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+			</item>
+		</groupItems>
+		<order>
+			<item xsi:type="OrderItemAuto"/>
+		</order>
+		<selection>
+			<item xsi:type="SelectedItemAuto"/>
+		</selection>
+		<item xsi:type="StructureItemGroup">
+			<groupItems>
+				<item xsi:type="GroupItemField">
+					<field>Партнер</field>
+					<groupType>Hierarchy</groupType>
+					<periodAdditionType>None</periodAdditionType>
+					<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+					<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+				</item>
+			</groupItems>
+			<filter>
+				<item xsi:type="FilterItemComparison">
+					<left xsi:type="dcscor:Field">Сделка</left>
+					<comparisonType>NotFilled</comparisonType>
+				</item>
+			</filter>
+			<order>
+				<item xsi:type="OrderItemAuto"/>
+			</order>
+			<selection>
+				<item xsi:type="SelectedItemAuto"/>
+			</selection>
+			<conditionalAppearance>
+				<item>
+					<selection/>
+					<filter>
+						<item xsi:type="FilterItemComparison">
+							<left xsi:type="dcscor:Field">СистемныеПоля.Уровень</left>
+							<comparisonType>Equal</comparisonType>
+							<right xsi:type="xs:decimal">2</right>
+						</item>
+					</filter>
+					<appearance>
+						<dcscor:item xsi:type="SettingsParameterValue">
+							<dcscor:parameter>ЦветФона</dcscor:parameter>
+							<dcscor:value xsi:type="v8ui:Color">style:ReportGroup2BackColor</dcscor:value>
+						</dcscor:item>
+					</appearance>
+				</item>
+			</conditionalAppearance>
+			<outputParameters>
+				<dcscor:item xsi:type="SettingsParameterValue">
+					<dcscor:parameter>ВыводитьОтбор</dcscor:parameter>
+					<dcscor:value xsi:type="DataCompositionTextOutputType">DontOutput</dcscor:value>
+				</dcscor:item>
+			</outputParameters>
+		</item>
+		<item xsi:type="StructureItemGroup">
+			<groupItems>
+				<item xsi:type="GroupItemField">
+					<field>Партнер</field>
+					<groupType>Items</groupType>
+					<periodAdditionType>None</periodAdditionType>
+					<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+					<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+				</item>
+				<item xsi:type="GroupItemField">
+					<field>Сделка</field>
+					<groupType>Items</groupType>
+					<periodAdditionType>None</periodAdditionType>
+					<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+					<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+				</item>
+				<item xsi:type="GroupItemField">
+					<field>МенеджерСделки</field>
+					<groupType>Items</groupType>
+					<periodAdditionType>None</periodAdditionType>
+					<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+					<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+				</item>
+			</groupItems>
+			<filter>
+				<item xsi:type="FilterItemComparison">
+					<left xsi:type="dcscor:Field">Сделка</left>
+					<comparisonType>Filled</comparisonType>
+				</item>
+			</filter>
+			<order>
+				<item xsi:type="OrderItemAuto"/>
+			</order>
+			<selection>
+				<item xsi:type="SelectedItemAuto"/>
+			</selection>
+			<outputParameters>
+				<dcscor:item xsi:type="SettingsParameterValue">
+					<dcscor:parameter>ВыводитьОтбор</dcscor:parameter>
+					<dcscor:value xsi:type="DataCompositionTextOutputType">DontOutput</dcscor:value>
+				</dcscor:item>
+			</outputParameters>
+		</item>
+	</item>
+	<itemsViewMode>Normal</itemsViewMode>
+	<itemsUserSettingID>83730624-c607-49b5-8d26-e206ac665a6d</itemsUserSettingID>
+</Settings>﻿<?xml version="1.0" encoding="UTF-8"?>
+<Settings xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<userFields>
+		<item xsi:type="UserFieldExpression">
+			<dataPath>ПользовательскиеПоля.Поле1</dataPath>
+			<lwsTitle>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Бизнес-регион отслеживается</v8:content>
+				</v8:item>
+			</lwsTitle>
+			<detailExpression/>
+			<detailExpressionPresentation/>
+			<totalExpression>Партнер.БизнесРегион В (&amp;ОтслеживаемыеАналитики)</totalExpression>
+			<totalExpressionPresentation>[Партнер.Бизнес-регион] В (&amp;[Отслеживаемые аналитики])</totalExpressionPresentation>
+		</item>
+		<item xsi:type="UserFieldExpression">
+			<dataPath>ПользовательскиеПоля.Поле2</dataPath>
+			<lwsTitle>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вид номенклатуры отслеживается</v8:content>
+				</v8:item>
+			</lwsTitle>
+			<detailExpression/>
+			<detailExpressionPresentation/>
+			<totalExpression>Номенклатура.ВидНоменклатуры В (&amp;ОтслеживаемыеАналитики)</totalExpression>
+			<totalExpressionPresentation>[Номенклатура.Вид номенклатуры] В (&amp;[Отслеживаемые аналитики])</totalExpressionPresentation>
+		</item>
+	</userFields>
+	<selection>
+		<item xsi:type="SelectedItemAuto"/>
+		<item xsi:type="SelectedItemField">
+			<use>false</use>
+			<field>Количество</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>Выручка</field>
+		</item>
+		<viewMode>Normal</viewMode>
+		<userSettingID>a38e0c62-6927-43a8-bf38-7b155efee056</userSettingID>
+	</selection>
+	<filter>
+		<item xsi:type="FilterItemComparison">
+			<use>false</use>
+			<left xsi:type="dcscor:Field">СегментПартнеров</left>
+			<comparisonType>Equal</comparisonType>
+			<userSettingID>25e35080-43d5-4d72-afa2-341d3000d62c</userSettingID>
+		</item>
+		<item xsi:type="FilterItemComparison">
+			<use>false</use>
+			<left xsi:type="dcscor:Field">СегментНоменклатуры</left>
+			<comparisonType>Equal</comparisonType>
+			<userSettingID>fe00e70a-941a-4b83-ac39-ed3867861289</userSettingID>
+		</item>
+		<item xsi:type="FilterItemComparison">
+			<use>false</use>
+			<left xsi:type="dcscor:Field">Организация</left>
+			<comparisonType>InList</comparisonType>
+			<viewMode>Normal</viewMode>
+			<userSettingID>ce6a1782-c8ea-4b75-819b-4c5063e2ace9</userSettingID>
+		</item>
+		<item xsi:type="FilterItemComparison">
+			<use>false</use>
+			<left xsi:type="dcscor:Field">Подразделение</left>
+			<comparisonType>InListByHierarchy</comparisonType>
+			<viewMode>Normal</viewMode>
+			<userSettingID>76a3646b-bde9-484c-8b8e-bf7f579c438f</userSettingID>
+		</item>
+		<item xsi:type="FilterItemComparison">
+			<use>false</use>
+			<left xsi:type="dcscor:Field">Менеджер</left>
+			<comparisonType>InListByHierarchy</comparisonType>
+			<viewMode>Normal</viewMode>
+			<userSettingID>9e62770e-46e6-49d3-a076-65e309edec10</userSettingID>
+		</item>
+		<item xsi:type="FilterItemComparison">
+			<use>false</use>
+			<left xsi:type="dcscor:Field">Партнер.БизнесРегион</left>
+			<comparisonType>InListByHierarchy</comparisonType>
+			<userSettingID>1e721ff6-47d0-45f8-a3d9-4e549f233dbd</userSettingID>
+			<userSettingPresentation xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Бизнес-регион</v8:content>
+				</v8:item>
+			</userSettingPresentation>
+		</item>
+		<item xsi:type="FilterItemComparison">
+			<use>false</use>
+			<left xsi:type="dcscor:Field">Номенклатура.ВидНоменклатуры</left>
+			<comparisonType>InListByHierarchy</comparisonType>
+			<userSettingID>986ba865-3c6e-403a-89a1-dce6f2c84ebb</userSettingID>
+			<userSettingPresentation xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вид номенклатуры</v8:content>
+				</v8:item>
+			</userSettingPresentation>
+		</item>
+		<viewMode>Normal</viewMode>
+		<userSettingID>609b15b9-7cd1-4a63-8fa6-d29d66bfdf49</userSettingID>
+	</filter>
+	<dataParameters>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>Период</dcscor:parameter>
+			<dcscor:value xsi:type="v8:StandardPeriod">
+				<v8:variant xsi:type="v8:StandardPeriodVariant">FromBeginningOfThisYear</v8:variant>
+			</dcscor:value>
+			<userSettingID>39c70523-27b2-43b0-be09-a2e12a20cd6d</userSettingID>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>Периодичность</dcscor:parameter>
+			<dcscor:value xsi:type="dcscor:DesignTimeValue">Перечисление.Периодичность.Месяц</dcscor:value>
+			<userSettingID>4ed070cb-f7d0-460c-a85e-4055bcfc5373</userSettingID>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>ПоказыватьПродажи</dcscor:parameter>
+			<dcscor:value xsi:type="xs:decimal">1</dcscor:value>
+			<viewMode>Inaccessible</viewMode>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>ДанныеОтчета</dcscor:parameter>
+			<dcscor:value xsi:type="xs:decimal">1</dcscor:value>
+			<userSettingID>d46b902f-13b0-446b-91cc-ac0dc8cdef76</userSettingID>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>Валюта</dcscor:parameter>
+			<dcscor:value xsi:type="dcscor:DesignTimeValue">Справочник.Валюты.ПустаяСсылка</dcscor:value>
+			<viewMode>Inaccessible</viewMode>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>ТипДиаграммы</dcscor:parameter>
+			<dcscor:value xsi:type="xs:string">График</dcscor:value>
+			<viewMode>Normal</viewMode>
+			<userSettingID>c6b1a027-cd7b-4809-8066-81a2b2e7b335</userSettingID>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>МаксимумСерийКоличество</dcscor:parameter>
+			<dcscor:value xsi:type="xs:decimal">999</dcscor:value>
+			<viewMode>Normal</viewMode>
+			<userSettingID>ba3d5afc-b9f9-469a-b9ea-5c7832a8a3f0</userSettingID>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>ВыделениеСерийДиаграмм</dcscor:parameter>
+			<dcscor:value xsi:type="xs:decimal">0</dcscor:value>
+			<viewMode>Normal</viewMode>
+			<userSettingID>d0ee55c3-4ca7-494e-afd6-e5ca22380581</userSettingID>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>ОтслеживаемыеАналитики</dcscor:parameter>
+			<viewMode>Normal</viewMode>
+			<userSettingID>e68d0189-e6da-4ca6-a33e-18aae6951803</userSettingID>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>ГрадиентСерийДиаграмм</dcscor:parameter>
+			<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+			<viewMode>Normal</viewMode>
+			<userSettingID>f14c7df1-9e93-4c84-8d70-e7812f593779</userSettingID>
+		</dcscor:item>
+	</dataParameters>
+	<order>
+		<viewMode>Normal</viewMode>
+		<userSettingID>5935eb4b-2479-4845-aba4-96afac45cd56</userSettingID>
+	</order>
+	<conditionalAppearance>
+		<item>
+			<selection>
+				<item>
+					<field>Партнер.БизнесРегион</field>
+				</item>
+			</selection>
+			<filter>
+				<item xsi:type="FilterItemComparison">
+					<left xsi:type="dcscor:Field">Партнер.БизнесРегион</left>
+					<comparisonType>NotFilled</comparisonType>
+				</item>
+			</filter>
+			<appearance>
+				<dcscor:item xsi:type="SettingsParameterValue">
+					<dcscor:parameter>ЦветТекста</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:Color">0:a52cf71c-aa1d-4eaa-9366-ae74f995f6d6</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="SettingsParameterValue">
+					<dcscor:parameter>Текст</dcscor:parameter>
+					<dcscor:value xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>&lt;Бизнес-регион не указан&gt;</v8:content>
+						</v8:item>
+					</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</item>
+		<item>
+			<selection>
+				<item>
+					<field>Партнер</field>
+				</item>
+			</selection>
+			<filter>
+				<item xsi:type="FilterItemComparison">
+					<left xsi:type="dcscor:Field">Партнер</left>
+					<comparisonType>NotFilled</comparisonType>
+				</item>
+			</filter>
+			<appearance>
+				<dcscor:item xsi:type="SettingsParameterValue">
+					<dcscor:parameter>ЦветТекста</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:Color">0:a52cf71c-aa1d-4eaa-9366-ae74f995f6d6</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="SettingsParameterValue">
+					<dcscor:parameter>Текст</dcscor:parameter>
+					<dcscor:value xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>&lt;Партнер не указан&gt;</v8:content>
+						</v8:item>
+					</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</item>
+		<item>
+			<selection>
+				<item>
+					<field>Номенклатура.ВидНоменклатуры</field>
+				</item>
+			</selection>
+			<filter>
+				<item xsi:type="FilterItemComparison">
+					<left xsi:type="dcscor:Field">Номенклатура.ВидНоменклатуры</left>
+					<comparisonType>NotFilled</comparisonType>
+				</item>
+			</filter>
+			<appearance>
+				<dcscor:item xsi:type="SettingsParameterValue">
+					<dcscor:parameter>ЦветТекста</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:Color">0:a52cf71c-aa1d-4eaa-9366-ae74f995f6d6</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="SettingsParameterValue">
+					<dcscor:parameter>Текст</dcscor:parameter>
+					<dcscor:value xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>&lt;Вид номенклатуры не указан&gt;</v8:content>
+						</v8:item>
+					</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</item>
+		<viewMode>Normal</viewMode>
+		<userSettingID>f77777eb-0743-400e-bbfd-f3dc270fe8c1</userSettingID>
+	</conditionalAppearance>
+	<outputParameters>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>ГоризонтальноеРасположениеОбщихИтогов</dcscor:parameter>
+			<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">None</dcscor:value>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:use>false</dcscor:use>
+			<dcscor:parameter>ВертикальноеРасположениеОбщихИтогов</dcscor:parameter>
+			<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">None</dcscor:value>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>Заголовок</dcscor:parameter>
+			<dcscor:value xsi:type="xs:string">Динамика продаж</dcscor:value>
+		</dcscor:item>
+	</outputParameters>
+	<item xsi:type="StructureItemGroup">
+		<name>По бизнес-регионам</name>
+		<order>
+			<item xsi:type="OrderItemAuto"/>
+		</order>
+		<outputParameters>
+			<dcscor:item xsi:type="SettingsParameterValue">
+				<dcscor:parameter>Заголовок</dcscor:parameter>
+				<dcscor:value xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>По бизнес-регионам</v8:content>
+					</v8:item>
+				</dcscor:value>
+			</dcscor:item>
+		</outputParameters>
+		<item xsi:type="StructureItemChart">
+			<point>
+				<groupItems>
+					<item xsi:type="GroupItemField">
+						<field>ДинамическийПериод</field>
+						<groupType>Items</groupType>
+						<periodAdditionType>None</periodAdditionType>
+						<periodAdditionBegin xsi:type="dcscor:DataCompositionPeriodAdditionType">Year</periodAdditionBegin>
+						<periodAdditionEnd xsi:type="dcscor:DataCompositionPeriodAdditionType">Year</periodAdditionEnd>
+					</item>
+				</groupItems>
+				<order>
+					<item xsi:type="OrderItemAuto"/>
+				</order>
+				<selection>
+					<item xsi:type="SelectedItemAuto"/>
+				</selection>
+			</point>
+			<series>
+				<name>Бизнес-регион</name>
+				<groupItems>
+					<item xsi:type="GroupItemField">
+						<field>Партнер.БизнесРегион</field>
+						<groupType>Items</groupType>
+						<periodAdditionType>None</periodAdditionType>
+						<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+						<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+					</item>
+				</groupItems>
+				<order>
+					<item xsi:type="OrderItemField">
+						<field>Выручка</field>
+						<orderType>Desc</orderType>
+					</item>
+					<item xsi:type="OrderItemField">
+						<field>Партнер.БизнесРегион</field>
+						<orderType>Asc</orderType>
+					</item>
+				</order>
+				<selection>
+					<item xsi:type="SelectedItemAuto"/>
+				</selection>
+				<conditionalAppearance>
+					<item>
+						<selection>
+							<item>
+								<field>Партнер.БизнесРегион</field>
+							</item>
+						</selection>
+						<filter/>
+						<appearance>
+							<dcscor:item xsi:type="SettingsParameterValue">
+								<dcscor:parameter>МинимальнаяШирина</dcscor:parameter>
+								<dcscor:value xsi:type="xs:decimal">40</dcscor:value>
+							</dcscor:item>
+							<dcscor:item xsi:type="SettingsParameterValue">
+								<dcscor:parameter>МаксимальнаяШирина</dcscor:parameter>
+								<dcscor:value xsi:type="xs:decimal">40</dcscor:value>
+							</dcscor:item>
+						</appearance>
+					</item>
+				</conditionalAppearance>
+			</series>
+			<selection>
+				<item xsi:type="SelectedItemAuto"/>
+			</selection>
+			<conditionalAppearance>
+				<item>
+					<selection>
+						<item>
+							<field>Партнер.БизнесРегион</field>
+						</item>
+					</selection>
+					<filter>
+						<item xsi:type="FilterItemComparison">
+							<left xsi:type="dcscor:Field">ПараметрыДанных.ВыделениеСерийДиаграмм</left>
+							<comparisonType>Equal</comparisonType>
+							<right xsi:type="xs:decimal">1</right>
+						</item>
+						<item xsi:type="FilterItemComparison">
+							<left xsi:type="dcscor:Field">НомерПоПорядку</left>
+							<comparisonType>Equal</comparisonType>
+							<right xsi:type="xs:decimal">1</right>
+						</item>
+					</filter>
+					<appearance>
+						<dcscor:item xsi:type="SettingsParameterValue">
+							<dcscor:parameter>ЦветВДиаграмме</dcscor:parameter>
+							<dcscor:value xsi:type="v8ui:Color">web:SteelBlue</dcscor:value>
+						</dcscor:item>
+					</appearance>
+				</item>
+				<item>
+					<selection>
+						<item>
+							<field>Партнер.БизнесРегион</field>
+						</item>
+					</selection>
+					<filter>
+						<item xsi:type="FilterItemComparison">
+							<left xsi:type="dcscor:Field">ПараметрыДанных.ВыделениеСерийДиаграмм</left>
+							<comparisonType>Equal</comparisonType>
+							<right xsi:type="xs:decimal">1</right>
+						</item>
+						<item xsi:type="FilterItemComparison">
+							<left xsi:type="dcscor:Field">НомерПоПорядку</left>
+							<comparisonType>NotEqual</comparisonType>
+							<right xsi:type="xs:decimal">1</right>
+						</item>
+					</filter>
+					<appearance>
+						<dcscor:item xsi:type="SettingsParameterValue">
+							<dcscor:parameter>ЦветВДиаграмме</dcscor:parameter>
+							<dcscor:value xsi:type="v8ui:Color">web:LightGray</dcscor:value>
+						</dcscor:item>
+					</appearance>
+				</item>
+				<item>
+					<selection>
+						<item>
+							<field>Партнер.БизнесРегион</field>
+						</item>
+					</selection>
+					<filter>
+						<item xsi:type="FilterItemComparison">
+							<left xsi:type="dcscor:Field">ПараметрыДанных.ВыделениеСерийДиаграмм</left>
+							<comparisonType>Equal</comparisonType>
+							<right xsi:type="xs:decimal">2</right>
+						</item>
+						<item xsi:type="FilterItemComparison">
+							<left xsi:type="dcscor:Field">ПользовательскиеПоля.Поле1</left>
+							<comparisonType>Equal</comparisonType>
+							<right xsi:type="xs:boolean">true</right>
+						</item>
+					</filter>
+					<appearance>
+						<dcscor:item xsi:type="SettingsParameterValue">
+							<dcscor:parameter>ЦветВДиаграмме</dcscor:parameter>
+							<dcscor:value xsi:type="v8ui:Color">web:SteelBlue</dcscor:value>
+						</dcscor:item>
+					</appearance>
+				</item>
+				<item>
+					<selection>
+						<item>
+							<field>Партнер.БизнесРегион</field>
+						</item>
+					</selection>
+					<filter>
+						<item xsi:type="FilterItemComparison">
+							<left xsi:type="dcscor:Field">ПараметрыДанных.ВыделениеСерийДиаграмм</left>
+							<comparisonType>Equal</comparisonType>
+							<right xsi:type="xs:decimal">2</right>
+						</item>
+						<item xsi:type="FilterItemComparison">
+							<left xsi:type="dcscor:Field">ПользовательскиеПоля.Поле1</left>
+							<comparisonType>NotEqual</comparisonType>
+							<right xsi:type="xs:boolean">true</right>
+						</item>
+					</filter>
+					<appearance>
+						<dcscor:item xsi:type="SettingsParameterValue">
+							<dcscor:parameter>ЦветВДиаграмме</dcscor:parameter>
+							<dcscor:value xsi:type="v8ui:Color">web:LightGray</dcscor:value>
+						</dcscor:item>
+					</appearance>
+				</item>
+			</conditionalAppearance>
+			<viewMode>Normal</viewMode>
+			<userSettingID>c547a652-7705-43cf-b4eb-b0dd0bc63275</userSettingID>
+			<userSettingPresentation xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Диаграмма по бизнес-регионам</v8:content>
+				</v8:item>
+			</userSettingPresentation>
+		</item>
+		<item xsi:type="StructureItemTable">
+			<column>
+				<groupItems>
+					<item xsi:type="GroupItemField">
+						<field>ПериодГод</field>
+						<groupType>Items</groupType>
+						<periodAdditionType>None</periodAdditionType>
+						<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+						<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+					</item>
+				</groupItems>
+				<order>
+					<item xsi:type="OrderItemAuto"/>
+				</order>
+				<selection>
+					<item xsi:type="SelectedItemAuto"/>
+				</selection>
+				<conditionalAppearance>
+					<item>
+						<selection>
+							<item>
+								<field>ПериодГод</field>
+							</item>
+						</selection>
+						<filter/>
+						<appearance>
+							<dcscor:item xsi:type="SettingsParameterValue">
+								<dcscor:parameter>Шрифт</dcscor:parameter>
+								<dcscor:value xsi:type="v8ui:Font" ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+							</dcscor:item>
+						</appearance>
+					</item>
+				</conditionalAppearance>
+				<item>
+					<groupItems>
+						<item xsi:type="GroupItemField">
+							<field>ДинамическийПериод</field>
+							<groupType>Items</groupType>
+							<periodAdditionType>None</periodAdditionType>
+							<periodAdditionBegin xsi:type="dcscor:DataCompositionPeriodAdditionType">Year</periodAdditionBegin>
+							<periodAdditionEnd xsi:type="dcscor:DataCompositionPeriodAdditionType">Year</periodAdditionEnd>
+						</item>
+					</groupItems>
+					<order>
+						<item xsi:type="OrderItemAuto"/>
+					</order>
+					<selection>
+						<item xsi:type="SelectedItemAuto"/>
+					</selection>
+				</item>
+			</column>
+			<row>
+				<name>Бизнес-регион</name>
+				<groupItems>
+					<item xsi:type="GroupItemField">
+						<field>Партнер.БизнесРегион</field>
+						<groupType>Items</groupType>
+						<periodAdditionType>None</periodAdditionType>
+						<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+						<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+					</item>
+				</groupItems>
+				<order>
+					<item xsi:type="OrderItemField">
+						<field>Выручка</field>
+						<orderType>Desc</orderType>
+					</item>
+					<item xsi:type="OrderItemField">
+						<field>Партнер.БизнесРегион</field>
+						<orderType>Asc</orderType>
+					</item>
+				</order>
+				<selection>
+					<item xsi:type="SelectedItemField">
+						<field>Партнер.БизнесРегион</field>
+						<lwsTitle>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Бизнес-регион</v8:content>
+							</v8:item>
+						</lwsTitle>
+					</item>
+					<item xsi:type="SelectedItemField">
+						<field>Выручка</field>
+					</item>
+				</selection>
+				<conditionalAppearance>
+					<item>
+						<selection>
+							<item>
+								<field>Партнер.БизнесРегион</field>
+							</item>
+						</selection>
+						<filter/>
+						<appearance>
+							<dcscor:item xsi:type="SettingsParameterValue">
+								<dcscor:parameter>МинимальнаяШирина</dcscor:parameter>
+								<dcscor:value xsi:type="xs:decimal">40</dcscor:value>
+							</dcscor:item>
+							<dcscor:item xsi:type="SettingsParameterValue">
+								<dcscor:parameter>МаксимальнаяШирина</dcscor:parameter>
+								<dcscor:value xsi:type="xs:decimal">40</dcscor:value>
+							</dcscor:item>
+						</appearance>
+					</item>
+				</conditionalAppearance>
+				<item>
+					<use>false</use>
+					<groupItems>
+						<item xsi:type="GroupItemField">
+							<field>Партнер</field>
+							<groupType>Items</groupType>
+							<periodAdditionType>None</periodAdditionType>
+							<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+							<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+						</item>
+					</groupItems>
+					<order>
+						<item xsi:type="OrderItemField">
+							<field>Выручка</field>
+							<orderType>Desc</orderType>
+						</item>
+						<item xsi:type="OrderItemField">
+							<field>Партнер</field>
+							<orderType>Asc</orderType>
+						</item>
+					</order>
+					<selection>
+						<item xsi:type="SelectedItemAuto"/>
+					</selection>
+					<conditionalAppearance>
+						<item>
+							<selection>
+								<item>
+									<field>Партнер</field>
+								</item>
+							</selection>
+							<filter/>
+							<appearance>
+								<dcscor:item xsi:type="SettingsParameterValue">
+									<dcscor:parameter>МинимальнаяШирина</dcscor:parameter>
+									<dcscor:value xsi:type="xs:decimal">40</dcscor:value>
+								</dcscor:item>
+								<dcscor:item xsi:type="SettingsParameterValue">
+									<dcscor:parameter>МаксимальнаяШирина</dcscor:parameter>
+									<dcscor:value xsi:type="xs:decimal">40</dcscor:value>
+								</dcscor:item>
+							</appearance>
+						</item>
+					</conditionalAppearance>
+					<userSettingID>a9aad16a-38c6-413d-a0f5-75dd49337b9d</userSettingID>
+					<userSettingPresentation xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Бизнес-регионы - детализация партнеры</v8:content>
+						</v8:item>
+					</userSettingPresentation>
+				</item>
+			</row>
+			<outputParameters>
+				<dcscor:item xsi:type="SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>ГоризонтальноеРасположениеОбщихИтогов</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">None</dcscor:value>
+					<viewMode>Normal</viewMode>
+				</dcscor:item>
+				<dcscor:item xsi:type="SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>ВертикальноеРасположениеОбщихИтогов</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">End</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>Заголовок</dcscor:parameter>
+					<dcscor:value xsi:type="v8:LocalStringType"/>
+				</dcscor:item>
+			</outputParameters>
+		</item>
+		<userSettingID>a97731db-5a9c-4b7c-8b08-e57e2aa055de</userSettingID>
+		<userSettingPresentation xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>По бизнес-регионам</v8:content>
+			</v8:item>
+		</userSettingPresentation>
+	</item>
+	<item xsi:type="StructureItemGroup">
+		<name>По видам номенклатуры</name>
+		<order>
+			<item xsi:type="OrderItemAuto"/>
+		</order>
+		<outputParameters>
+			<dcscor:item xsi:type="SettingsParameterValue">
+				<dcscor:parameter>Заголовок</dcscor:parameter>
+				<dcscor:value xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>По видам номенклатуры</v8:content>
+					</v8:item>
+				</dcscor:value>
+			</dcscor:item>
+		</outputParameters>
+		<item xsi:type="StructureItemChart">
+			<point>
+				<groupItems>
+					<item xsi:type="GroupItemField">
+						<field>ДинамическийПериод</field>
+						<groupType>Items</groupType>
+						<periodAdditionType>None</periodAdditionType>
+						<periodAdditionBegin xsi:type="dcscor:DataCompositionPeriodAdditionType">Year</periodAdditionBegin>
+						<periodAdditionEnd xsi:type="dcscor:DataCompositionPeriodAdditionType">Year</periodAdditionEnd>
+					</item>
+				</groupItems>
+				<order>
+					<item xsi:type="OrderItemAuto"/>
+				</order>
+				<selection>
+					<item xsi:type="SelectedItemAuto"/>
+				</selection>
+			</point>
+			<series>
+				<name>Вид номенклатуры</name>
+				<groupItems>
+					<item xsi:type="GroupItemField">
+						<field>Номенклатура.ВидНоменклатуры</field>
+						<groupType>Items</groupType>
+						<periodAdditionType>None</periodAdditionType>
+						<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+						<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+					</item>
+				</groupItems>
+				<order>
+					<item xsi:type="OrderItemField">
+						<field>Выручка</field>
+						<orderType>Desc</orderType>
+					</item>
+					<item xsi:type="OrderItemField">
+						<field>Номенклатура.ВидНоменклатуры</field>
+						<orderType>Asc</orderType>
+					</item>
+				</order>
+				<selection>
+					<item xsi:type="SelectedItemAuto"/>
+				</selection>
+				<conditionalAppearance>
+					<item>
+						<selection>
+							<item>
+								<field>Номенклатура.ВидНоменклатуры</field>
+							</item>
+						</selection>
+						<filter/>
+						<appearance>
+							<dcscor:item xsi:type="SettingsParameterValue">
+								<dcscor:parameter>МинимальнаяШирина</dcscor:parameter>
+								<dcscor:value xsi:type="xs:decimal">40</dcscor:value>
+							</dcscor:item>
+							<dcscor:item xsi:type="SettingsParameterValue">
+								<dcscor:parameter>МаксимальнаяШирина</dcscor:parameter>
+								<dcscor:value xsi:type="xs:decimal">40</dcscor:value>
+							</dcscor:item>
+						</appearance>
+					</item>
+				</conditionalAppearance>
+			</series>
+			<selection>
+				<item xsi:type="SelectedItemAuto"/>
+			</selection>
+			<conditionalAppearance>
+				<item>
+					<selection>
+						<item>
+							<field>Номенклатура.ВидНоменклатуры</field>
+						</item>
+					</selection>
+					<filter>
+						<item xsi:type="FilterItemComparison">
+							<left xsi:type="dcscor:Field">ПараметрыДанных.ВыделениеСерийДиаграмм</left>
+							<comparisonType>Equal</comparisonType>
+							<right xsi:type="xs:decimal">1</right>
+						</item>
+						<item xsi:type="FilterItemComparison">
+							<left xsi:type="dcscor:Field">НомерПоПорядку</left>
+							<comparisonType>Equal</comparisonType>
+							<right xsi:type="xs:decimal">1</right>
+						</item>
+					</filter>
+					<appearance>
+						<dcscor:item xsi:type="SettingsParameterValue">
+							<dcscor:parameter>ЦветВДиаграмме</dcscor:parameter>
+							<dcscor:value xsi:type="v8ui:Color">web:SteelBlue</dcscor:value>
+						</dcscor:item>
+					</appearance>
+				</item>
+				<item>
+					<selection>
+						<item>
+							<field>Номенклатура.ВидНоменклатуры</field>
+						</item>
+					</selection>
+					<filter>
+						<item xsi:type="FilterItemComparison">
+							<left xsi:type="dcscor:Field">ПараметрыДанных.ВыделениеСерийДиаграмм</left>
+							<comparisonType>Equal</comparisonType>
+							<right xsi:type="xs:decimal">1</right>
+						</item>
+						<item xsi:type="FilterItemComparison">
+							<left xsi:type="dcscor:Field">НомерПоПорядку</left>
+							<comparisonType>NotEqual</comparisonType>
+							<right xsi:type="xs:decimal">1</right>
+						</item>
+					</filter>
+					<appearance>
+						<dcscor:item xsi:type="SettingsParameterValue">
+							<dcscor:parameter>ЦветВДиаграмме</dcscor:parameter>
+							<dcscor:value xsi:type="v8ui:Color">web:LightGray</dcscor:value>
+						</dcscor:item>
+					</appearance>
+				</item>
+				<item>
+					<selection>
+						<item>
+							<field>Номенклатура.ВидНоменклатуры</field>
+						</item>
+					</selection>
+					<filter>
+						<item xsi:type="FilterItemComparison">
+							<left xsi:type="dcscor:Field">ПараметрыДанных.ВыделениеСерийДиаграмм</left>
+							<comparisonType>Equal</comparisonType>
+							<right xsi:type="xs:decimal">2</right>
+						</item>
+						<item xsi:type="FilterItemComparison">
+							<left xsi:type="dcscor:Field">ПользовательскиеПоля.Поле2</left>
+							<comparisonType>Equal</comparisonType>
+							<right xsi:type="xs:boolean">true</right>
+						</item>
+					</filter>
+					<appearance>
+						<dcscor:item xsi:type="SettingsParameterValue">
+							<dcscor:parameter>ЦветВДиаграмме</dcscor:parameter>
+							<dcscor:value xsi:type="v8ui:Color">web:SteelBlue</dcscor:value>
+						</dcscor:item>
+					</appearance>
+				</item>
+				<item>
+					<selection>
+						<item>
+							<field>Номенклатура.ВидНоменклатуры</field>
+						</item>
+					</selection>
+					<filter>
+						<item xsi:type="FilterItemComparison">
+							<left xsi:type="dcscor:Field">ПараметрыДанных.ВыделениеСерийДиаграмм</left>
+							<comparisonType>Equal</comparisonType>
+							<right xsi:type="xs:decimal">2</right>
+						</item>
+						<item xsi:type="FilterItemComparison">
+							<left xsi:type="dcscor:Field">ПользовательскиеПоля.Поле2</left>
+							<comparisonType>NotEqual</comparisonType>
+							<right xsi:type="xs:boolean">true</right>
+						</item>
+					</filter>
+					<appearance>
+						<dcscor:item xsi:type="SettingsParameterValue">
+							<dcscor:parameter>ЦветВДиаграмме</dcscor:parameter>
+							<dcscor:value xsi:type="v8ui:Color">web:LightGray</dcscor:value>
+						</dcscor:item>
+					</appearance>
+				</item>
+			</conditionalAppearance>
+			<viewMode>Normal</viewMode>
+			<userSettingID>5970961c-7fcd-4491-9dc2-4574bca8856b</userSettingID>
+			<userSettingPresentation xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Диаграмма по видам номенклатуры</v8:content>
+				</v8:item>
+			</userSettingPresentation>
+		</item>
+		<item xsi:type="StructureItemTable">
+			<column>
+				<groupItems>
+					<item xsi:type="GroupItemField">
+						<field>ПериодГод</field>
+						<groupType>Items</groupType>
+						<periodAdditionType>None</periodAdditionType>
+						<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+						<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+					</item>
+				</groupItems>
+				<order>
+					<item xsi:type="OrderItemAuto"/>
+				</order>
+				<selection>
+					<item xsi:type="SelectedItemAuto"/>
+				</selection>
+				<conditionalAppearance>
+					<item>
+						<selection>
+							<item>
+								<field>ПериодГод</field>
+							</item>
+						</selection>
+						<filter/>
+						<appearance>
+							<dcscor:item xsi:type="SettingsParameterValue">
+								<dcscor:parameter>Шрифт</dcscor:parameter>
+								<dcscor:value xsi:type="v8ui:Font" ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+							</dcscor:item>
+						</appearance>
+					</item>
+				</conditionalAppearance>
+				<item>
+					<groupItems>
+						<item xsi:type="GroupItemField">
+							<field>ДинамическийПериод</field>
+							<groupType>Items</groupType>
+							<periodAdditionType>None</periodAdditionType>
+							<periodAdditionBegin xsi:type="dcscor:DataCompositionPeriodAdditionType">Year</periodAdditionBegin>
+							<periodAdditionEnd xsi:type="dcscor:DataCompositionPeriodAdditionType">Year</periodAdditionEnd>
+						</item>
+					</groupItems>
+					<order>
+						<item xsi:type="OrderItemAuto"/>
+					</order>
+					<selection>
+						<item xsi:type="SelectedItemAuto"/>
+					</selection>
+				</item>
+			</column>
+			<row>
+				<name>Вид номенклатуры</name>
+				<groupItems>
+					<item xsi:type="GroupItemField">
+						<field>Номенклатура.ВидНоменклатуры</field>
+						<groupType>Items</groupType>
+						<periodAdditionType>None</periodAdditionType>
+						<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+						<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+					</item>
+				</groupItems>
+				<order>
+					<item xsi:type="OrderItemField">
+						<field>Выручка</field>
+						<orderType>Desc</orderType>
+					</item>
+					<item xsi:type="OrderItemField">
+						<field>Номенклатура.ВидНоменклатуры</field>
+						<orderType>Asc</orderType>
+					</item>
+				</order>
+				<selection>
+					<item xsi:type="SelectedItemField">
+						<field>Номенклатура.ВидНоменклатуры</field>
+						<lwsTitle>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Вид номенклатуры</v8:content>
+							</v8:item>
+						</lwsTitle>
+					</item>
+					<item xsi:type="SelectedItemField">
+						<field>Выручка</field>
+					</item>
+				</selection>
+				<conditionalAppearance>
+					<item>
+						<selection>
+							<item>
+								<field>Номенклатура.ВидНоменклатуры</field>
+							</item>
+						</selection>
+						<filter/>
+						<appearance>
+							<dcscor:item xsi:type="SettingsParameterValue">
+								<dcscor:parameter>МинимальнаяШирина</dcscor:parameter>
+								<dcscor:value xsi:type="xs:decimal">40</dcscor:value>
+							</dcscor:item>
+							<dcscor:item xsi:type="SettingsParameterValue">
+								<dcscor:parameter>МаксимальнаяШирина</dcscor:parameter>
+								<dcscor:value xsi:type="xs:decimal">40</dcscor:value>
+							</dcscor:item>
+						</appearance>
+					</item>
+				</conditionalAppearance>
+				<item>
+					<use>false</use>
+					<groupItems>
+						<item xsi:type="GroupItemField">
+							<field>Номенклатура</field>
+							<groupType>HierarchyOnly</groupType>
+							<periodAdditionType>None</periodAdditionType>
+							<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+							<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+						</item>
+					</groupItems>
+					<order>
+						<item xsi:type="OrderItemField">
+							<field>Выручка</field>
+							<orderType>Desc</orderType>
+						</item>
+						<item xsi:type="OrderItemField">
+							<field>Номенклатура</field>
+							<orderType>Asc</orderType>
+						</item>
+					</order>
+					<selection>
+						<item xsi:type="SelectedItemAuto"/>
+					</selection>
+					<item>
+						<groupItems>
+							<item xsi:type="GroupItemField">
+								<field>Номенклатура</field>
+								<groupType>Items</groupType>
+								<periodAdditionType>None</periodAdditionType>
+								<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+								<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+							</item>
+						</groupItems>
+						<order>
+							<item xsi:type="OrderItemAuto"/>
+						</order>
+						<selection>
+							<item xsi:type="SelectedItemAuto"/>
+						</selection>
+					</item>
+					<userSettingID>2a87a668-886a-493a-93f2-98ed92fd7d76</userSettingID>
+					<userSettingPresentation xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Виды номенклатуры - детализация номенклатура</v8:content>
+						</v8:item>
+					</userSettingPresentation>
+				</item>
+			</row>
+			<outputParameters>
+				<dcscor:item xsi:type="SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>ГоризонтальноеРасположениеОбщихИтогов</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">None</dcscor:value>
+					<viewMode>Normal</viewMode>
+				</dcscor:item>
+				<dcscor:item xsi:type="SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>Заголовок</dcscor:parameter>
+					<dcscor:value xsi:type="v8:LocalStringType"/>
+				</dcscor:item>
+			</outputParameters>
+		</item>
+		<userSettingID>2e73d75b-ec8b-475b-8f7d-f0cbc6fe36d7</userSettingID>
+		<userSettingPresentation xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>По видам номенклатуры</v8:content>
+			</v8:item>
+		</userSettingPresentation>
+	</item>
+	<itemsViewMode>Normal</itemsViewMode>
+	<itemsUserSettingID>40ab49f5-9ab1-4e85-8758-d3ae20d047ed</itemsUserSettingID>
+</Settings>﻿<?xml version="1.0" encoding="UTF-8"?>
+<Settings xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<userFields>
+		<item xsi:type="UserFieldExpression">
+			<dataPath>ПользовательскиеПоля.Поле1</dataPath>
+			<lwsTitle>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Бизнес-регион отслеживается</v8:content>
+				</v8:item>
+			</lwsTitle>
+			<detailExpression/>
+			<detailExpressionPresentation/>
+			<totalExpression>Партнер.БизнесРегион В (&amp;ОтслеживаемыеАналитики)</totalExpression>
+			<totalExpressionPresentation>[Партнер.Бизнес-регион] В (&amp;[Отслеживаемые аналитики])</totalExpressionPresentation>
+		</item>
+		<item xsi:type="UserFieldExpression">
+			<dataPath>ПользовательскиеПоля.Поле2</dataPath>
+			<lwsTitle>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вид номенклатуры отслеживается</v8:content>
+				</v8:item>
+			</lwsTitle>
+			<detailExpression/>
+			<detailExpressionPresentation/>
+			<totalExpression>Номенклатура.ВидНоменклатуры В (&amp;ОтслеживаемыеАналитики)</totalExpression>
+			<totalExpressionPresentation>[Номенклатура.Вид номенклатуры] В (&amp;[Отслеживаемые аналитики])</totalExpressionPresentation>
+		</item>
+	</userFields>
+	<selection>
+		<item xsi:type="SelectedItemAuto"/>
+		<item xsi:type="SelectedItemField">
+			<use>false</use>
+			<field>Количество</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>Выручка</field>
+		</item>
+		<viewMode>Normal</viewMode>
+		<userSettingID>a38e0c62-6927-43a8-bf38-7b155efee056</userSettingID>
+	</selection>
+	<filter>
+		<item xsi:type="FilterItemComparison">
+			<use>false</use>
+			<left xsi:type="dcscor:Field">СегментПартнеров</left>
+			<comparisonType>Equal</comparisonType>
+			<userSettingID>25e35080-43d5-4d72-afa2-341d3000d62c</userSettingID>
+		</item>
+		<item xsi:type="FilterItemComparison">
+			<use>false</use>
+			<left xsi:type="dcscor:Field">СегментНоменклатуры</left>
+			<comparisonType>Equal</comparisonType>
+			<userSettingID>fe00e70a-941a-4b83-ac39-ed3867861289</userSettingID>
+		</item>
+		<item xsi:type="FilterItemComparison">
+			<use>false</use>
+			<left xsi:type="dcscor:Field">Организация</left>
+			<comparisonType>InList</comparisonType>
+			<viewMode>Normal</viewMode>
+			<userSettingID>ce6a1782-c8ea-4b75-819b-4c5063e2ace9</userSettingID>
+		</item>
+		<item xsi:type="FilterItemComparison">
+			<use>false</use>
+			<left xsi:type="dcscor:Field">Подразделение</left>
+			<comparisonType>InListByHierarchy</comparisonType>
+			<viewMode>Normal</viewMode>
+			<userSettingID>76a3646b-bde9-484c-8b8e-bf7f579c438f</userSettingID>
+		</item>
+		<item xsi:type="FilterItemComparison">
+			<use>false</use>
+			<left xsi:type="dcscor:Field">Менеджер</left>
+			<comparisonType>InListByHierarchy</comparisonType>
+			<viewMode>Normal</viewMode>
+			<userSettingID>9e62770e-46e6-49d3-a076-65e309edec10</userSettingID>
+		</item>
+		<item xsi:type="FilterItemComparison">
+			<use>false</use>
+			<left xsi:type="dcscor:Field">Номенклатура.ВидНоменклатуры</left>
+			<comparisonType>InListByHierarchy</comparisonType>
+			<userSettingID>986ba865-3c6e-403a-89a1-dce6f2c84ebb</userSettingID>
+			<userSettingPresentation xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вид номенклатуры</v8:content>
+				</v8:item>
+			</userSettingPresentation>
+		</item>
+		<viewMode>Normal</viewMode>
+		<userSettingID>609b15b9-7cd1-4a63-8fa6-d29d66bfdf49</userSettingID>
+	</filter>
+	<dataParameters>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>Период</dcscor:parameter>
+			<dcscor:value xsi:type="v8:StandardPeriod">
+				<v8:variant xsi:type="v8:StandardPeriodVariant">FromBeginningOfThisYear</v8:variant>
+			</dcscor:value>
+			<userSettingID>39c70523-27b2-43b0-be09-a2e12a20cd6d</userSettingID>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>Периодичность</dcscor:parameter>
+			<dcscor:value xsi:type="dcscor:DesignTimeValue">Перечисление.Периодичность.Месяц</dcscor:value>
+			<userSettingID>4ed070cb-f7d0-460c-a85e-4055bcfc5373</userSettingID>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>ПоказыватьПродажи</dcscor:parameter>
+			<dcscor:value xsi:type="xs:decimal">1</dcscor:value>
+			<viewMode>Inaccessible</viewMode>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>ДанныеОтчета</dcscor:parameter>
+			<dcscor:value xsi:type="xs:decimal">1</dcscor:value>
+			<userSettingID>d46b902f-13b0-446b-91cc-ac0dc8cdef76</userSettingID>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>Валюта</dcscor:parameter>
+			<dcscor:value xsi:type="dcscor:DesignTimeValue">Справочник.Валюты.ПустаяСсылка</dcscor:value>
+			<viewMode>Inaccessible</viewMode>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>ТипДиаграммы</dcscor:parameter>
+			<dcscor:value xsi:type="xs:string">График</dcscor:value>
+			<viewMode>Normal</viewMode>
+			<userSettingID>c6b1a027-cd7b-4809-8066-81a2b2e7b335</userSettingID>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>МаксимумСерийКоличество</dcscor:parameter>
+			<dcscor:value xsi:type="xs:decimal">999</dcscor:value>
+			<viewMode>Normal</viewMode>
+			<userSettingID>ba3d5afc-b9f9-469a-b9ea-5c7832a8a3f0</userSettingID>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>ВыделениеСерийДиаграмм</dcscor:parameter>
+			<dcscor:value xsi:type="xs:decimal">0</dcscor:value>
+			<viewMode>Normal</viewMode>
+			<userSettingID>d0ee55c3-4ca7-494e-afd6-e5ca22380581</userSettingID>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>ОтслеживаемыеАналитики</dcscor:parameter>
+			<viewMode>Normal</viewMode>
+			<userSettingID>e68d0189-e6da-4ca6-a33e-18aae6951803</userSettingID>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>ГрадиентСерийДиаграмм</dcscor:parameter>
+			<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+			<viewMode>Normal</viewMode>
+			<userSettingID>f14c7df1-9e93-4c84-8d70-e7812f593779</userSettingID>
+		</dcscor:item>
+	</dataParameters>
+	<order>
+		<viewMode>Normal</viewMode>
+		<userSettingID>5935eb4b-2479-4845-aba4-96afac45cd56</userSettingID>
+	</order>
+	<conditionalAppearance>
+		<item>
+			<selection>
+				<item>
+					<field>Партнер.БизнесРегион</field>
+				</item>
+			</selection>
+			<filter>
+				<item xsi:type="FilterItemComparison">
+					<left xsi:type="dcscor:Field">Партнер.БизнесРегион</left>
+					<comparisonType>NotFilled</comparisonType>
+				</item>
+			</filter>
+			<appearance>
+				<dcscor:item xsi:type="SettingsParameterValue">
+					<dcscor:parameter>ЦветТекста</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:Color">0:a52cf71c-aa1d-4eaa-9366-ae74f995f6d6</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="SettingsParameterValue">
+					<dcscor:parameter>Текст</dcscor:parameter>
+					<dcscor:value xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>&lt;Бизнес-регион не указан&gt;</v8:content>
+						</v8:item>
+					</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</item>
+		<item>
+			<selection>
+				<item>
+					<field>Партнер</field>
+				</item>
+			</selection>
+			<filter>
+				<item xsi:type="FilterItemComparison">
+					<left xsi:type="dcscor:Field">Партнер</left>
+					<comparisonType>NotFilled</comparisonType>
+				</item>
+			</filter>
+			<appearance>
+				<dcscor:item xsi:type="SettingsParameterValue">
+					<dcscor:parameter>ЦветТекста</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:Color">0:a52cf71c-aa1d-4eaa-9366-ae74f995f6d6</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="SettingsParameterValue">
+					<dcscor:parameter>Текст</dcscor:parameter>
+					<dcscor:value xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>&lt;Партнер не указан&gt;</v8:content>
+						</v8:item>
+					</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</item>
+		<item>
+			<selection>
+				<item>
+					<field>Номенклатура.ВидНоменклатуры</field>
+				</item>
+			</selection>
+			<filter>
+				<item xsi:type="FilterItemComparison">
+					<left xsi:type="dcscor:Field">Номенклатура.ВидНоменклатуры</left>
+					<comparisonType>NotFilled</comparisonType>
+				</item>
+			</filter>
+			<appearance>
+				<dcscor:item xsi:type="SettingsParameterValue">
+					<dcscor:parameter>ЦветТекста</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:Color">0:a52cf71c-aa1d-4eaa-9366-ae74f995f6d6</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="SettingsParameterValue">
+					<dcscor:parameter>Текст</dcscor:parameter>
+					<dcscor:value xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>&lt;Вид номенклатуры не указан&gt;</v8:content>
+						</v8:item>
+					</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</item>
+		<viewMode>Normal</viewMode>
+		<userSettingID>f77777eb-0743-400e-bbfd-f3dc270fe8c1</userSettingID>
+	</conditionalAppearance>
+	<outputParameters>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>ГоризонтальноеРасположениеОбщихИтогов</dcscor:parameter>
+			<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">None</dcscor:value>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:use>false</dcscor:use>
+			<dcscor:parameter>ВертикальноеРасположениеОбщихИтогов</dcscor:parameter>
+			<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">None</dcscor:value>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>Заголовок</dcscor:parameter>
+			<dcscor:value xsi:type="xs:string">Динамика продаж</dcscor:value>
+		</dcscor:item>
+	</outputParameters>
+	<item xsi:type="StructureItemGroup">
+		<name>По видам номенклатуры</name>
+		<order>
+			<item xsi:type="OrderItemAuto"/>
+		</order>
+		<outputParameters>
+			<dcscor:item xsi:type="SettingsParameterValue">
+				<dcscor:parameter>Заголовок</dcscor:parameter>
+				<dcscor:value xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>По видам номенклатуры</v8:content>
+					</v8:item>
+				</dcscor:value>
+			</dcscor:item>
+		</outputParameters>
+		<item xsi:type="StructureItemChart">
+			<point>
+				<groupItems>
+					<item xsi:type="GroupItemField">
+						<field>ДинамическийПериод</field>
+						<groupType>Items</groupType>
+						<periodAdditionType>None</periodAdditionType>
+						<periodAdditionBegin xsi:type="dcscor:DataCompositionPeriodAdditionType">Year</periodAdditionBegin>
+						<periodAdditionEnd xsi:type="dcscor:DataCompositionPeriodAdditionType">Year</periodAdditionEnd>
+					</item>
+				</groupItems>
+				<order>
+					<item xsi:type="OrderItemAuto"/>
+				</order>
+				<selection>
+					<item xsi:type="SelectedItemAuto"/>
+				</selection>
+			</point>
+			<series>
+				<name>Вид номенклатуры</name>
+				<groupItems>
+					<item xsi:type="GroupItemField">
+						<field>Номенклатура.ВидНоменклатуры</field>
+						<groupType>Items</groupType>
+						<periodAdditionType>None</periodAdditionType>
+						<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+						<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+					</item>
+				</groupItems>
+				<order>
+					<item xsi:type="OrderItemField">
+						<field>Выручка</field>
+						<orderType>Desc</orderType>
+					</item>
+					<item xsi:type="OrderItemField">
+						<field>Номенклатура.ВидНоменклатуры</field>
+						<orderType>Asc</orderType>
+					</item>
+				</order>
+				<selection>
+					<item xsi:type="SelectedItemAuto"/>
+				</selection>
+				<conditionalAppearance>
+					<item>
+						<selection>
+							<item>
+								<field>Номенклатура.ВидНоменклатуры</field>
+							</item>
+						</selection>
+						<filter/>
+						<appearance>
+							<dcscor:item xsi:type="SettingsParameterValue">
+								<dcscor:parameter>МинимальнаяШирина</dcscor:parameter>
+								<dcscor:value xsi:type="xs:decimal">40</dcscor:value>
+							</dcscor:item>
+							<dcscor:item xsi:type="SettingsParameterValue">
+								<dcscor:parameter>МаксимальнаяШирина</dcscor:parameter>
+								<dcscor:value xsi:type="xs:decimal">40</dcscor:value>
+							</dcscor:item>
+						</appearance>
+					</item>
+				</conditionalAppearance>
+			</series>
+			<selection>
+				<item xsi:type="SelectedItemAuto"/>
+			</selection>
+			<conditionalAppearance>
+				<item>
+					<selection>
+						<item>
+							<field>Номенклатура.ВидНоменклатуры</field>
+						</item>
+					</selection>
+					<filter>
+						<item xsi:type="FilterItemComparison">
+							<left xsi:type="dcscor:Field">ПараметрыДанных.ВыделениеСерийДиаграмм</left>
+							<comparisonType>Equal</comparisonType>
+							<right xsi:type="xs:decimal">1</right>
+						</item>
+						<item xsi:type="FilterItemComparison">
+							<left xsi:type="dcscor:Field">НомерПоПорядку</left>
+							<comparisonType>Equal</comparisonType>
+							<right xsi:type="xs:decimal">1</right>
+						</item>
+					</filter>
+					<appearance>
+						<dcscor:item xsi:type="SettingsParameterValue">
+							<dcscor:parameter>ЦветВДиаграмме</dcscor:parameter>
+							<dcscor:value xsi:type="v8ui:Color">web:SteelBlue</dcscor:value>
+						</dcscor:item>
+					</appearance>
+				</item>
+				<item>
+					<selection>
+						<item>
+							<field>Номенклатура.ВидНоменклатуры</field>
+						</item>
+					</selection>
+					<filter>
+						<item xsi:type="FilterItemComparison">
+							<left xsi:type="dcscor:Field">ПараметрыДанных.ВыделениеСерийДиаграмм</left>
+							<comparisonType>Equal</comparisonType>
+							<right xsi:type="xs:decimal">1</right>
+						</item>
+						<item xsi:type="FilterItemComparison">
+							<left xsi:type="dcscor:Field">НомерПоПорядку</left>
+							<comparisonType>NotEqual</comparisonType>
+							<right xsi:type="xs:decimal">1</right>
+						</item>
+					</filter>
+					<appearance>
+						<dcscor:item xsi:type="SettingsParameterValue">
+							<dcscor:parameter>ЦветВДиаграмме</dcscor:parameter>
+							<dcscor:value xsi:type="v8ui:Color">web:LightGray</dcscor:value>
+						</dcscor:item>
+					</appearance>
+				</item>
+				<item>
+					<selection>
+						<item>
+							<field>Номенклатура.ВидНоменклатуры</field>
+						</item>
+					</selection>
+					<filter>
+						<item xsi:type="FilterItemComparison">
+							<left xsi:type="dcscor:Field">ПараметрыДанных.ВыделениеСерийДиаграмм</left>
+							<comparisonType>Equal</comparisonType>
+							<right xsi:type="xs:decimal">2</right>
+						</item>
+						<item xsi:type="FilterItemComparison">
+							<left xsi:type="dcscor:Field">ПользовательскиеПоля.Поле2</left>
+							<comparisonType>Equal</comparisonType>
+							<right xsi:type="xs:boolean">true</right>
+						</item>
+					</filter>
+					<appearance>
+						<dcscor:item xsi:type="SettingsParameterValue">
+							<dcscor:parameter>ЦветВДиаграмме</dcscor:parameter>
+							<dcscor:value xsi:type="v8ui:Color">web:SteelBlue</dcscor:value>
+						</dcscor:item>
+					</appearance>
+				</item>
+				<item>
+					<selection>
+						<item>
+							<field>Номенклатура.ВидНоменклатуры</field>
+						</item>
+					</selection>
+					<filter>
+						<item xsi:type="FilterItemComparison">
+							<left xsi:type="dcscor:Field">ПараметрыДанных.ВыделениеСерийДиаграмм</left>
+							<comparisonType>Equal</comparisonType>
+							<right xsi:type="xs:decimal">2</right>
+						</item>
+						<item xsi:type="FilterItemComparison">
+							<left xsi:type="dcscor:Field">ПользовательскиеПоля.Поле2</left>
+							<comparisonType>NotEqual</comparisonType>
+							<right xsi:type="xs:boolean">true</right>
+						</item>
+					</filter>
+					<appearance>
+						<dcscor:item xsi:type="SettingsParameterValue">
+							<dcscor:parameter>ЦветВДиаграмме</dcscor:parameter>
+							<dcscor:value xsi:type="v8ui:Color">web:LightGray</dcscor:value>
+						</dcscor:item>
+					</appearance>
+				</item>
+			</conditionalAppearance>
+			<viewMode>Normal</viewMode>
+			<userSettingID>5970961c-7fcd-4491-9dc2-4574bca8856b</userSettingID>
+			<userSettingPresentation xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Диаграмма по видам номенклатуры</v8:content>
+				</v8:item>
+			</userSettingPresentation>
+		</item>
+		<item xsi:type="StructureItemTable">
+			<column>
+				<groupItems>
+					<item xsi:type="GroupItemField">
+						<field>ПериодГод</field>
+						<groupType>Items</groupType>
+						<periodAdditionType>None</periodAdditionType>
+						<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+						<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+					</item>
+				</groupItems>
+				<order>
+					<item xsi:type="OrderItemAuto"/>
+				</order>
+				<selection>
+					<item xsi:type="SelectedItemAuto"/>
+				</selection>
+				<conditionalAppearance>
+					<item>
+						<selection>
+							<item>
+								<field>ПериодГод</field>
+							</item>
+						</selection>
+						<filter/>
+						<appearance>
+							<dcscor:item xsi:type="SettingsParameterValue">
+								<dcscor:parameter>Шрифт</dcscor:parameter>
+								<dcscor:value xsi:type="v8ui:Font" ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+							</dcscor:item>
+						</appearance>
+					</item>
+				</conditionalAppearance>
+				<item>
+					<groupItems>
+						<item xsi:type="GroupItemField">
+							<field>ДинамическийПериод</field>
+							<groupType>Items</groupType>
+							<periodAdditionType>None</periodAdditionType>
+							<periodAdditionBegin xsi:type="dcscor:DataCompositionPeriodAdditionType">Year</periodAdditionBegin>
+							<periodAdditionEnd xsi:type="dcscor:DataCompositionPeriodAdditionType">Year</periodAdditionEnd>
+						</item>
+					</groupItems>
+					<order>
+						<item xsi:type="OrderItemAuto"/>
+					</order>
+					<selection>
+						<item xsi:type="SelectedItemAuto"/>
+					</selection>
+				</item>
+			</column>
+			<row>
+				<name>Вид номенклатуры</name>
+				<groupItems>
+					<item xsi:type="GroupItemField">
+						<field>Номенклатура.ВидНоменклатуры</field>
+						<groupType>Items</groupType>
+						<periodAdditionType>None</periodAdditionType>
+						<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+						<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+					</item>
+				</groupItems>
+				<order>
+					<item xsi:type="OrderItemField">
+						<field>Выручка</field>
+						<orderType>Desc</orderType>
+					</item>
+					<item xsi:type="OrderItemField">
+						<field>Номенклатура.ВидНоменклатуры</field>
+						<orderType>Asc</orderType>
+					</item>
+				</order>
+				<selection>
+					<item xsi:type="SelectedItemField">
+						<field>Номенклатура.ВидНоменклатуры</field>
+						<lwsTitle>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Вид номенклатуры</v8:content>
+							</v8:item>
+						</lwsTitle>
+					</item>
+					<item xsi:type="SelectedItemField">
+						<field>Выручка</field>
+					</item>
+				</selection>
+				<conditionalAppearance>
+					<item>
+						<selection>
+							<item>
+								<field>Номенклатура.ВидНоменклатуры</field>
+							</item>
+						</selection>
+						<filter/>
+						<appearance>
+							<dcscor:item xsi:type="SettingsParameterValue">
+								<dcscor:parameter>МинимальнаяШирина</dcscor:parameter>
+								<dcscor:value xsi:type="xs:decimal">40</dcscor:value>
+							</dcscor:item>
+							<dcscor:item xsi:type="SettingsParameterValue">
+								<dcscor:parameter>МаксимальнаяШирина</dcscor:parameter>
+								<dcscor:value xsi:type="xs:decimal">40</dcscor:value>
+							</dcscor:item>
+						</appearance>
+					</item>
+				</conditionalAppearance>
+				<item>
+					<use>false</use>
+					<groupItems>
+						<item xsi:type="GroupItemField">
+							<field>Номенклатура</field>
+							<groupType>HierarchyOnly</groupType>
+							<periodAdditionType>None</periodAdditionType>
+							<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+							<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+						</item>
+					</groupItems>
+					<order>
+						<item xsi:type="OrderItemField">
+							<field>Выручка</field>
+							<orderType>Desc</orderType>
+						</item>
+						<item xsi:type="OrderItemField">
+							<field>Номенклатура</field>
+							<orderType>Asc</orderType>
+						</item>
+					</order>
+					<selection>
+						<item xsi:type="SelectedItemAuto"/>
+					</selection>
+					<item>
+						<groupItems>
+							<item xsi:type="GroupItemField">
+								<field>Номенклатура</field>
+								<groupType>Items</groupType>
+								<periodAdditionType>None</periodAdditionType>
+								<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+								<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+							</item>
+						</groupItems>
+						<order>
+							<item xsi:type="OrderItemAuto"/>
+						</order>
+						<selection>
+							<item xsi:type="SelectedItemAuto"/>
+						</selection>
+					</item>
+					<userSettingID>2a87a668-886a-493a-93f2-98ed92fd7d76</userSettingID>
+					<userSettingPresentation xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Виды номенклатуры - детализация номенклатура</v8:content>
+						</v8:item>
+					</userSettingPresentation>
+				</item>
+			</row>
+			<outputParameters>
+				<dcscor:item xsi:type="SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>ГоризонтальноеРасположениеОбщихИтогов</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">None</dcscor:value>
+					<viewMode>Normal</viewMode>
+				</dcscor:item>
+				<dcscor:item xsi:type="SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>Заголовок</dcscor:parameter>
+					<dcscor:value xsi:type="v8:LocalStringType"/>
+				</dcscor:item>
+			</outputParameters>
+		</item>
+		<userSettingID>2e73d75b-ec8b-475b-8f7d-f0cbc6fe36d7</userSettingID>
+		<userSettingPresentation xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>По видам номенклатуры</v8:content>
+			</v8:item>
+		</userSettingPresentation>
+	</item>
+	<itemsViewMode>Normal</itemsViewMode>
+	<itemsUserSettingID>40ab49f5-9ab1-4e85-8758-d3ae20d047ed</itemsUserSettingID>
+</Settings>﻿<?xml version="1.0" encoding="UTF-8"?>
+<Settings xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<selection>
+		<item xsi:type="SelectedItemAuto"/>
+		<item xsi:type="SelectedItemField">
+			<field>Количество</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>Выручка</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>Себестоимость</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>ДопРасходы</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>ВаловаяПрибыль</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>Рентабельность</field>
+		</item>
+		<viewMode>Normal</viewMode>
+		<userSettingID>7cc7fcfb-8b84-4870-a98e-3017f3e0648b</userSettingID>
+	</selection>
+	<filter>
+		<viewMode>Normal</viewMode>
+		<userSettingID>b771e5df-9eb6-43b6-9758-25a6da3eca4e</userSettingID>
+	</filter>
+	<dataParameters>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>ПоказыватьПродажи</dcscor:parameter>
+			<dcscor:value xsi:type="xs:decimal">1</dcscor:value>
+			<viewMode>Inaccessible</viewMode>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>ДанныеОтчета</dcscor:parameter>
+			<dcscor:value xsi:type="xs:decimal">1</dcscor:value>
+			<viewMode>Normal</viewMode>
+			<userSettingID>916d1dad-61ce-4721-becd-76a203a8a463</userSettingID>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>Валюта</dcscor:parameter>
+			<dcscor:value xsi:type="dcscor:DesignTimeValue">Справочник.Валюты.ПустаяСсылка</dcscor:value>
+			<viewMode>Inaccessible</viewMode>
+		</dcscor:item>
+	</dataParameters>
+	<order>
+		<item xsi:type="OrderItemAuto"/>
+		<viewMode>Normal</viewMode>
+		<userSettingID>ab2a0df7-becd-498c-a3d2-31a5c7bbdca7</userSettingID>
+	</order>
+	<conditionalAppearance>
+		<viewMode>Normal</viewMode>
+		<userSettingID>33ca28e4-87eb-4f5b-847a-a8c96b12439f</userSettingID>
+	</conditionalAppearance>
+	<outputParameters>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>Заголовок</dcscor:parameter>
+			<dcscor:value xsi:type="xs:string">Продажи по заказу</dcscor:value>
+		</dcscor:item>
+	</outputParameters>
+	<item xsi:type="StructureItemGroup">
+		<groupItems>
+			<item xsi:type="GroupItemField">
+				<field>Номенклатура</field>
+				<groupType>Items</groupType>
+				<periodAdditionType>None</periodAdditionType>
+				<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+				<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+			</item>
+			<item xsi:type="GroupItemField">
+				<field>Характеристика</field>
+				<groupType>Items</groupType>
+				<periodAdditionType>None</periodAdditionType>
+				<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+				<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+			</item>
+		</groupItems>
+		<order>
+			<item xsi:type="OrderItemAuto"/>
+		</order>
+		<selection>
+			<item xsi:type="SelectedItemAuto"/>
+		</selection>
+	</item>
+	<itemsViewMode>Normal</itemsViewMode>
+	<itemsUserSettingID>500e8b77-9727-4fed-8a22-05cb82d23f3c</itemsUserSettingID>
+</Settings>﻿<?xml version="1.0" encoding="UTF-8"?>
+<Settings xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<selection>
+		<item xsi:type="SelectedItemField">
+			<field>Количество</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>Выручка</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>Себестоимость</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>ВаловаяПрибыль</field>
+		</item>
+	</selection>
+	<filter>
+		<viewMode>Normal</viewMode>
+	</filter>
+	<dataParameters>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>Период</dcscor:parameter>
+			<dcscor:value xsi:type="v8:StandardPeriod">
+				<v8:variant xsi:type="v8:StandardPeriodVariant">ThisMonth</v8:variant>
+			</dcscor:value>
+			<viewMode>Normal</viewMode>
+			<userSettingID>3c214302-94c2-4f4f-bc0b-37d7acd3dbff</userSettingID>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>ПоказыватьПродажи</dcscor:parameter>
+			<dcscor:value xsi:type="xs:decimal">1</dcscor:value>
+			<viewMode>Inaccessible</viewMode>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>ДанныеОтчета</dcscor:parameter>
+			<dcscor:value xsi:type="xs:decimal">1</dcscor:value>
+			<viewMode>Normal</viewMode>
+			<userSettingID>7c9c901d-e1bd-43ca-b82a-abb427807991</userSettingID>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>Валюта</dcscor:parameter>
+			<dcscor:value xsi:type="dcscor:DesignTimeValue">Справочник.Валюты.ПустаяСсылка</dcscor:value>
+			<viewMode>Inaccessible</viewMode>
+		</dcscor:item>
+	</dataParameters>
+	<order>
+		<viewMode>Normal</viewMode>
+	</order>
+	<outputParameters>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:use>false</dcscor:use>
+			<dcscor:parameter>Заголовок</dcscor:parameter>
+			<dcscor:value xsi:type="v8:LocalStringType"/>
+		</dcscor:item>
+	</outputParameters>
+	<item xsi:type="StructureItemGroup">
+		<groupItems>
+			<item xsi:type="GroupItemField">
+				<field>ПериодГод</field>
+				<groupType>Items</groupType>
+				<periodAdditionType>None</periodAdditionType>
+				<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+				<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+			</item>
+		</groupItems>
+		<order>
+			<item xsi:type="OrderItemField">
+				<field>ПериодГод</field>
+				<orderType>Asc</orderType>
+			</item>
+		</order>
+		<selection>
+			<item xsi:type="SelectedItemAuto"/>
+			<item xsi:type="SelectedItemField">
+				<field>ПериодГод</field>
+				<lwsTitle>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>ПериодГод</v8:content>
+					</v8:item>
+				</lwsTitle>
+			</item>
+		</selection>
+		<item xsi:type="StructureItemGroup">
+			<groupItems>
+				<item xsi:type="GroupItemField">
+					<field>ПериодМесяц</field>
+					<groupType>Items</groupType>
+					<periodAdditionType>None</periodAdditionType>
+					<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+					<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+				</item>
+			</groupItems>
+			<order>
+				<item xsi:type="OrderItemField">
+					<field>ПериодМесяц</field>
+					<orderType>Asc</orderType>
+				</item>
+			</order>
+			<selection>
+				<item xsi:type="SelectedItemAuto"/>
+				<item xsi:type="SelectedItemField">
+					<field>ПериодМесяц</field>
+					<lwsTitle>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ПериодМесяц</v8:content>
+						</v8:item>
+					</lwsTitle>
+				</item>
+			</selection>
+			<item xsi:type="StructureItemGroup">
+				<groupItems>
+					<item xsi:type="GroupItemField">
+						<field>ПериодДень</field>
+						<groupType>Items</groupType>
+						<periodAdditionType>None</periodAdditionType>
+						<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+						<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+					</item>
+				</groupItems>
+				<order>
+					<item xsi:type="OrderItemField">
+						<field>ПериодДень</field>
+						<orderType>Asc</orderType>
+					</item>
+				</order>
+				<selection>
+					<item xsi:type="SelectedItemField">
+						<field>ПериодДень</field>
+						<lwsTitle>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>ПериодДень</v8:content>
+							</v8:item>
+						</lwsTitle>
+					</item>
+					<item xsi:type="SelectedItemField">
+						<field>Количество</field>
+					</item>
+					<item xsi:type="SelectedItemField">
+						<field>Выручка</field>
+					</item>
+					<item xsi:type="SelectedItemField">
+						<field>Себестоимость</field>
+					</item>
+					<item xsi:type="SelectedItemField">
+						<field>ВаловаяПрибыль</field>
+					</item>
+				</selection>
+			</item>
+		</item>
+	</item>
+	<itemsViewMode>Normal</itemsViewMode>
+</Settings>﻿<?xml version="1.0" encoding="UTF-8"?>
+<Settings xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<selection>
+		<item xsi:type="SelectedItemField">
+			<field>Выручка</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>Себестоимость</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>ДопРасходы</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>ВаловаяПрибыль</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>Рентабельность</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>СерийныйНомерНоменклатуры</field>
+		</item>
+		<viewMode>Normal</viewMode>
+		<userSettingID>a38e0c62-6927-43a8-bf38-7b155efee056</userSettingID>
+	</selection>
+	<filter>
+		<viewMode>Normal</viewMode>
+		<userSettingID>609b15b9-7cd1-4a63-8fa6-d29d66bfdf49</userSettingID>
+	</filter>
+	<dataParameters>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>Период</dcscor:parameter>
+			<dcscor:value xsi:type="v8:StandardPeriod">
+				<v8:variant xsi:type="v8:StandardPeriodVariant">ThisMonth</v8:variant>
+			</dcscor:value>
+			<viewMode>Normal</viewMode>
+			<userSettingID>39c70523-27b2-43b0-be09-a2e12a20cd6d</userSettingID>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>ПоказыватьПродажи</dcscor:parameter>
+			<dcscor:value xsi:type="xs:decimal">1</dcscor:value>
+			<viewMode>Inaccessible</viewMode>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>ДанныеОтчета</dcscor:parameter>
+			<dcscor:value xsi:type="xs:decimal">1</dcscor:value>
+			<viewMode>Normal</viewMode>
+			<userSettingID>ff67cbd0-46f9-4bb1-bf4f-2f7e59b66ce7</userSettingID>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>Валюта</dcscor:parameter>
+			<dcscor:value xsi:type="dcscor:DesignTimeValue">Справочник.Валюты.ПустаяСсылка</dcscor:value>
+			<viewMode>Inaccessible</viewMode>
+		</dcscor:item>
+	</dataParameters>
+	<order>
+		<viewMode>Normal</viewMode>
+		<userSettingID>5935eb4b-2479-4845-aba4-96afac45cd56</userSettingID>
+	</order>
+	<conditionalAppearance>
+		<viewMode>Normal</viewMode>
+		<userSettingID>f77777eb-0743-400e-bbfd-f3dc270fe8c1</userSettingID>
+	</conditionalAppearance>
+	<outputParameters>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>Заголовок</dcscor:parameter>
+			<dcscor:value xsi:type="xs:string">Динамика продаж</dcscor:value>
+		</dcscor:item>
+	</outputParameters>
+	<item xsi:type="StructureItemGroup">
+		<groupItems>
+			<item xsi:type="GroupItemField">
+				<field>ПериодГод</field>
+				<groupType>Items</groupType>
+				<periodAdditionType>None</periodAdditionType>
+				<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+				<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+			</item>
+		</groupItems>
+		<order>
+			<item xsi:type="OrderItemAuto"/>
+		</order>
+		<selection>
+			<item xsi:type="SelectedItemAuto"/>
+			<item xsi:type="SelectedItemField">
+				<field>ПериодГод</field>
+				<lwsTitle>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>ПериодГод</v8:content>
+					</v8:item>
+				</lwsTitle>
+			</item>
+		</selection>
+		<item xsi:type="StructureItemGroup">
+			<groupItems>
+				<item xsi:type="GroupItemField">
+					<field>ПериодМесяц</field>
+					<groupType>Items</groupType>
+					<periodAdditionType>Month</periodAdditionType>
+					<periodAdditionBegin xsi:type="dcscor:Field">ПараметрыДанных.НачалоПериода</periodAdditionBegin>
+					<periodAdditionEnd xsi:type="dcscor:Field">ПараметрыДанных.ОкончаниеПериода</periodAdditionEnd>
+				</item>
+			</groupItems>
+			<order>
+				<item xsi:type="OrderItemAuto"/>
+			</order>
+			<selection>
+				<item xsi:type="SelectedItemAuto"/>
+				<item xsi:type="SelectedItemField">
+					<field>ПериодМесяц</field>
+					<lwsTitle>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ПериодМесяц</v8:content>
+						</v8:item>
+					</lwsTitle>
+				</item>
+			</selection>
+			<item xsi:type="StructureItemGroup">
+				<use>false</use>
+				<groupItems>
+					<item xsi:type="GroupItemField">
+						<field>ПериодДень</field>
+						<groupType>Items</groupType>
+						<periodAdditionType>None</periodAdditionType>
+						<periodAdditionBegin xsi:type="dcscor:Field">ПараметрыДанных.НачалоПериода</periodAdditionBegin>
+						<periodAdditionEnd xsi:type="dcscor:Field">ПараметрыДанных.ОкончаниеПериода</periodAdditionEnd>
+					</item>
+				</groupItems>
+				<order>
+					<item xsi:type="OrderItemAuto"/>
+				</order>
+				<selection>
+					<item xsi:type="SelectedItemAuto"/>
+					<item xsi:type="SelectedItemField">
+						<field>ПериодДень</field>
+						<lwsTitle>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>ПериодДень</v8:content>
+							</v8:item>
+						</lwsTitle>
+					</item>
+				</selection>
+				<viewMode>Normal</viewMode>
+				<userSettingID>d8d98209-2529-476b-8cf8-ecb27dc76985</userSettingID>
+				<userSettingPresentation xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>По дням</v8:content>
+					</v8:item>
+				</userSettingPresentation>
+			</item>
+		</item>
+	</item>
+	<itemsViewMode>Normal</itemsViewMode>
+	<itemsUserSettingID>40ab49f5-9ab1-4e85-8758-d3ae20d047ed</itemsUserSettingID>
+</Settings>﻿<?xml version="1.0" encoding="UTF-8"?>
+<SchemaFile xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema"/>
+</SchemaFile>
