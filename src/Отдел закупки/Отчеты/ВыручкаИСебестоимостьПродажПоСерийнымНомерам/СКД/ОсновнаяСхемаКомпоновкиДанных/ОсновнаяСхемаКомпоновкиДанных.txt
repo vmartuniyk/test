@@ -1634,6 +1634,7 @@
 	<selection>
 		<item xsi:type="SelectedItemAuto"/>
 		<item xsi:type="SelectedItemField">
+			<use>false</use>
 			<field>Количество</field>
 		</item>
 		<item xsi:type="SelectedItemField">
