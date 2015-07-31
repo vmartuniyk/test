@@ -1871,7 +1871,6 @@
 			</dcscor:item>
 		</outputParameters>
 		<item xsi:type="StructureItemGroup">
-			<use>false</use>
 			<groupItems>
 				<item xsi:type="GroupItemField">
 					<field>Номенклатура</field>
@@ -1895,7 +1894,6 @@
 				<item xsi:type="SelectedItemAuto"/>
 			</selection>
 			<item xsi:type="StructureItemGroup">
-				<use>false</use>
 				<groupItems>
 					<item xsi:type="GroupItemField">
 						<field>СерийныйНомерНоменклатуры</field>
