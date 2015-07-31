@@ -1870,6 +1870,7 @@
 			</dcscor:item>
 		</outputParameters>
 		<item xsi:type="StructureItemGroup">
+			<use>false</use>
 			<groupItems>
 				<item xsi:type="GroupItemField">
 					<field>Номенклатура</field>
@@ -1893,6 +1894,7 @@
 				<item xsi:type="SelectedItemAuto"/>
 			</selection>
 			<item xsi:type="StructureItemGroup">
+				<use>false</use>
 				<groupItems>
 					<item xsi:type="GroupItemField">
 						<field>СерийныйНомерНоменклатуры</field>
@@ -2932,6 +2934,7 @@
 		</dcscor:item>
 		<dcscor:item xsi:type="SettingsParameterValue">
 			<dcscor:parameter>ОтслеживаемыеАналитики</dcscor:parameter>
+			<dcscor:value xsi:nil="true"/>
 			<viewMode>Normal</viewMode>
 			<userSettingID>e68d0189-e6da-4ca6-a33e-18aae6951803</userSettingID>
 		</dcscor:item>
@@ -3940,6 +3943,7 @@
 		</dcscor:item>
 		<dcscor:item xsi:type="SettingsParameterValue">
 			<dcscor:parameter>ОтслеживаемыеАналитики</dcscor:parameter>
+			<dcscor:value xsi:nil="true"/>
 			<viewMode>Normal</viewMode>
 			<userSettingID>e68d0189-e6da-4ca6-a33e-18aae6951803</userSettingID>
 		</dcscor:item>
