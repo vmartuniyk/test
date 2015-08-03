@@ -67,7 +67,7 @@
 				</appearance>
 			</field>
 			<dataSource>ИсточникДанных1</dataSource>
-			<query>ВЫБРАТЬ
+			<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
 	КурсыВалютСрезПоследних.Валюта КАК Валюта,
 	ВЫРАЗИТЬ(КурсыВалютСрезПоследних.Курс / КурсыВалютСрезПоследних.Кратность КАК ЧИСЛО(15, 4)) КАК Курс
 ПОМЕСТИТЬ КурсыВалют
@@ -79,7 +79,7 @@
 ;
 
 ////////////////////////////////////////////////////////////////////////////////
-ВЫБРАТЬ
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
 	ТоварыНаСкладахОстатки.Номенклатура КАК Номенклатура,
 	СУММА(ТоварыНаСкладахОстатки.ВНаличииОстаток) КАК Количество
 ПОМЕСТИТЬ ОстаткиНоменклатуры
@@ -94,7 +94,7 @@
 ;
 
 ////////////////////////////////////////////////////////////////////////////////
-ВЫБРАТЬ
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
 	КПП_Розница_ЗначениеКоефициентаПриоритетностиПродажСрезПоследних.Номенклатура КАК Номенклатура,
 	КПП_Розница_ЗначениеКоефициентаПриоритетностиПродажСрезПоследних.Значение
 ПОМЕСТИТЬ Таблица_КПП
@@ -112,7 +112,7 @@
 ;
 
 ////////////////////////////////////////////////////////////////////////////////
-ВЫБРАТЬ
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
 	ЦеныНоменклатурыСрезПоследних.Номенклатура КАК Номенклатура,
 	ВЫБОР
 		КОГДА ЦеныНоменклатурыСрезПоследних.Валюта = ЦеныНоменклатурыСрезПоследних.ВидЦены.ВалютаЦены
@@ -143,7 +143,7 @@
 ;
 
 ////////////////////////////////////////////////////////////////////////////////
-ВЫБРАТЬ
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
 	ОстаткиНоменклатуры.Номенклатура,
 	ОстаткиНоменклатуры.Количество,
 	ЕСТЬNULL(Таблица_КПП.Значение, ЗНАЧЕНИЕ(Справочник.КоефициентПриоритетностиНоменклатуры.ПустаяСсылка)) КАК КПП,
@@ -171,6 +171,14 @@
 ////////////////////////////////////////////////////////////////////////////////
 УНИЧТОЖИТЬ ЦеныНоменклатуры</query>
 		</dataSet>
+		<totalField>
+			<dataPath>Количество</dataPath>
+			<expression>Сумма(Количество)</expression>
+		</totalField>
+		<totalField>
+			<dataPath>Цена</dataPath>
+			<expression>Сумма(Цена)</expression>
+		</totalField>
 		<parameter>
 			<name>ДатаОтбора</name>
 			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
@@ -213,7 +221,7 @@
 			<valueType>
 				<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.ВидыЦен</Type>
 			</valueType>
-			<value xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xsi:type="dcscor:DesignTimeValue"/>
+			<value xsi:nil="true"/>
 			<useRestriction>false</useRestriction>
 			<denyIncompleteValues>true</denyIncompleteValues>
 			<use>Always</use>
@@ -268,6 +276,12 @@
 	<conditionalAppearance>
 		<userSettingID>948ac504-28c4-4b43-9249-3b278e592a3a</userSettingID>
 	</conditionalAppearance>
+	<outputParameters>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>ВертикальноеРасположениеОбщихИтогов</dcscor:parameter>
+			<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">BeginAndEnd</dcscor:value>
+		</dcscor:item>
+	</outputParameters>
 	<item xsi:type="StructureItemGroup">
 		<order>
 			<item xsi:type="OrderItemAuto"/>
