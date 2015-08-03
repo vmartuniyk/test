@@ -1,0 +1,280 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<SchemaFile xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema">
+		<dataSource>
+			<name>ИсточникДанных1</name>
+			<dataSourceType>Local</dataSourceType>
+		</dataSource>
+		<dataSet xsi:type="DataSetQuery">
+			<name>ОсновнойЗапрос</name>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Количество</dataPath>
+				<field>Количество</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Количество</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Помещение</dataPath>
+				<field>Помещение</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Склад</dataPath>
+				<field>Склад</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Характеристика</dataPath>
+				<field>Характеристика</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Номенклатура</dataPath>
+				<field>Номенклатура</field>
+				<role>
+					<dimension xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</dimension>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Серия</dataPath>
+				<field>Серия</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>КПП</dataPath>
+				<field>КПП</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>КПП</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Цена</dataPath>
+				<field>Цена</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Цена</d5p1:content>
+					</d5p1:item>
+				</title>
+				<appearance>
+					<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+						<parameter>Format</parameter>
+						<value xsi:type="xs:string">ЧДЦ=2</value>
+					</item>
+				</appearance>
+			</field>
+			<dataSource>ИсточникДанных1</dataSource>
+			<query>ВЫБРАТЬ
+	КурсыВалютСрезПоследних.Валюта КАК Валюта,
+	ВЫРАЗИТЬ(КурсыВалютСрезПоследних.Курс / КурсыВалютСрезПоследних.Кратность КАК ЧИСЛО(15, 4)) КАК Курс
+ПОМЕСТИТЬ КурсыВалют
+ИЗ
+	РегистрСведений.КурсыВалют.СрезПоследних({(&amp;ДатаОтбора)}, ) КАК КурсыВалютСрезПоследних
+
+ИНДЕКСИРОВАТЬ ПО
+	Валюта
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ТоварыНаСкладахОстатки.Номенклатура КАК Номенклатура,
+	СУММА(ТоварыНаСкладахОстатки.ВНаличииОстаток) КАК Количество
+ПОМЕСТИТЬ ОстаткиНоменклатуры
+ИЗ
+	РегистрНакопления.ТоварыНаСкладах.Остатки({(&amp;ДатаОтбора)}, {(Склад В (&amp;Склады))}) КАК ТоварыНаСкладахОстатки
+
+СГРУППИРОВАТЬ ПО
+	ТоварыНаСкладахОстатки.Номенклатура
+
+ИНДЕКСИРОВАТЬ ПО
+	Номенклатура
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	КПП_Розница_ЗначениеКоефициентаПриоритетностиПродажСрезПоследних.Номенклатура,
+	КПП_Розница_ЗначениеКоефициентаПриоритетностиПродажСрезПоследних.Значение
+ПОМЕСТИТЬ Таблица_КПП
+ИЗ
+	РегистрСведений.КПП_Розница_ЗначениеКоефициентаПриоритетностиПродаж.СрезПоследних(
+			{(&amp;ДатаОтбора)},
+			Номенклатура В
+				(ВЫБРАТЬ
+					ОстаткиНоменклатуры.Номенклатура
+				ИЗ
+					ОстаткиНоменклатуры КАК ОстаткиНоменклатуры)) КАК КПП_Розница_ЗначениеКоефициентаПриоритетностиПродажСрезПоследних
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ЦеныНоменклатурыСрезПоследних.Номенклатура КАК Номенклатура,
+	ВЫБОР
+		КОГДА ЦеныНоменклатурыСрезПоследних.Валюта = ЦеныНоменклатурыСрезПоследних.ВидЦены.ВалютаЦены
+			ТОГДА ЦеныНоменклатурыСрезПоследних.Цена
+		ИНАЧЕ ЦеныНоменклатурыСрезПоследних.Цена * (ЕСТЬNULL(КурсыРегистра.Курс, 0) / ЕСТЬNULL(КурсыВидыЦены.Курс, 1))
+	КОНЕЦ * ВЫБОР
+		КОГДА ЦеныНоменклатурыСрезПоследних.Упаковка = ЗНАЧЕНИЕ(Справочник.УпаковкиНоменклатуры.ПустаяСсылка)
+			ТОГДА 1
+		ИНАЧЕ ЦеныНоменклатурыСрезПоследних.Упаковка.Коэффициент
+	КОНЕЦ КАК Цена
+ПОМЕСТИТЬ ЦеныНоменклатуры
+ИЗ
+	РегистрСведений.ЦеныНоменклатуры.СрезПоследних(
+			{(&amp;ДатаОтбора)},
+			Номенклатура В
+					(ВЫБРАТЬ
+						ОстаткиНоменклатуры.Номенклатура
+					ИЗ
+						ОстаткиНоменклатуры КАК ОстаткиНоменклатуры)
+				И ВидЦены = &amp;ВидЦены) КАК ЦеныНоменклатурыСрезПоследних
+		ЛЕВОЕ СОЕДИНЕНИЕ КурсыВалют КАК КурсыРегистра
+		ПО ЦеныНоменклатурыСрезПоследних.Валюта = КурсыРегистра.Валюта
+		ЛЕВОЕ СОЕДИНЕНИЕ КурсыВалют КАК КурсыВидыЦены
+		ПО ЦеныНоменклатурыСрезПоследних.ВидЦены.ВалютаЦены = КурсыВидыЦены.Валюта
+
+ИНДЕКСИРОВАТЬ ПО
+	Номенклатура
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ОстаткиНоменклатуры.Номенклатура,
+	ОстаткиНоменклатуры.Количество,
+	ЕСТЬNULL(Таблица_КПП.Значение, ЗНАЧЕНИЕ(Справочник.КоефициентПриоритетностиНоменклатуры.ПустаяСсылка)) КАК КПП,
+	ЕСТЬNULL(ЦеныНоменклатуры.Цена, 0) КАК Цена
+ИЗ
+	ОстаткиНоменклатуры КАК ОстаткиНоменклатуры
+		ЛЕВОЕ СОЕДИНЕНИЕ Таблица_КПП КАК Таблица_КПП
+		ПО ОстаткиНоменклатуры.Номенклатура = Таблица_КПП.Номенклатура
+		ЛЕВОЕ СОЕДИНЕНИЕ ЦеныНоменклатуры КАК ЦеныНоменклатуры
+		ПО ОстаткиНоменклатуры.Номенклатура = ЦеныНоменклатуры.Номенклатура
+;
+
+////////////////////////////////////////////////////////////////////////////////
+УНИЧТОЖИТЬ КурсыВалют
+;
+
+////////////////////////////////////////////////////////////////////////////////
+УНИЧТОЖИТЬ ОстаткиНоменклатуры
+;
+
+////////////////////////////////////////////////////////////////////////////////
+УНИЧТОЖИТЬ Таблица_КПП
+;
+
+////////////////////////////////////////////////////////////////////////////////
+УНИЧТОЖИТЬ ЦеныНоменклатуры</query>
+		</dataSet>
+		<parameter>
+			<name>ДатаОтбора</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Дата отбора</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:dateTime</Type>
+				<DateQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
+					<DateFractions>DateTime</DateFractions>
+				</DateQualifiers>
+			</valueType>
+			<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+			<useRestriction>false</useRestriction>
+		</parameter>
+		<parameter>
+			<name>Склады</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Склады</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.Склады</Type>
+			</valueType>
+			<useRestriction>false</useRestriction>
+			<valueListAllowed>true</valueListAllowed>
+		</parameter>
+		<parameter>
+			<name>ВидЦены</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Вид цены</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.ВидыЦен</Type>
+			</valueType>
+			<value xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xsi:type="dcscor:DesignTimeValue"/>
+			<useRestriction>false</useRestriction>
+			<denyIncompleteValues>true</denyIncompleteValues>
+			<use>Always</use>
+		</parameter>
+		<settingsVariant>
+			<name xmlns="http://v8.1c.ru/8.1/data-composition-system/settings">Основной</name>
+			<presentation xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="xs:string">Основной</presentation>
+		</settingsVariant>
+	</dataCompositionSchema>
+</SchemaFile>﻿<?xml version="1.0" encoding="UTF-8"?>
+<Settings xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<selection>
+		<item xsi:type="SelectedItemField">
+			<field>Номенклатура</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>Количество</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>КПП</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>Цена</field>
+		</item>
+		<userSettingID>d6b86ca9-91d0-4a38-804f-159107a006ed</userSettingID>
+	</selection>
+	<filter>
+		<userSettingID>4f80c87b-09ef-4149-a8e3-dd7ac11f24c4</userSettingID>
+	</filter>
+	<dataParameters>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:use>false</dcscor:use>
+			<dcscor:parameter>ДатаОтбора</dcscor:parameter>
+			<dcscor:value xsi:type="xs:dateTime">0001-01-01T00:00:00</dcscor:value>
+			<userSettingID>22c141de-8cc2-44df-a1c2-f5fc3e4e79e4</userSettingID>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:use>false</dcscor:use>
+			<dcscor:parameter>Склады</dcscor:parameter>
+			<userSettingID>eb57b1e1-9bd8-4a95-8323-ca9e0d208efe</userSettingID>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:use>false</dcscor:use>
+			<dcscor:parameter>ВидЦены</dcscor:parameter>
+			<dcscor:value xsi:nil="true"/>
+			<userSettingID>9f3d7a4a-d10c-48a6-9ef6-a77825d0d0fa</userSettingID>
+		</dcscor:item>
+	</dataParameters>
+	<order>
+		<userSettingID>5ee0ba0c-9bd8-4af6-aa46-3973088c0811</userSettingID>
+	</order>
+	<conditionalAppearance>
+		<userSettingID>948ac504-28c4-4b43-9249-3b278e592a3a</userSettingID>
+	</conditionalAppearance>
+	<item xsi:type="StructureItemGroup">
+		<order>
+			<item xsi:type="OrderItemAuto"/>
+		</order>
+		<selection>
+			<item xsi:type="SelectedItemAuto"/>
+		</selection>
+	</item>
+	<itemsUserSettingID>f489e35e-4377-4593-8ec8-60c846edd808</itemsUserSettingID>
+</Settings>﻿<?xml version="1.0" encoding="UTF-8"?>
+<SchemaFile xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema"/>
+</SchemaFile>
