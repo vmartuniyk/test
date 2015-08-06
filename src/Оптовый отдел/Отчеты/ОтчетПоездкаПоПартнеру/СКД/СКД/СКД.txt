@@ -91,12 +91,12 @@
 				</valueType>
 			</field>
 			<field xsi:type="DataSetFieldField">
-				<dataPath>Цена</dataPath>
-				<field>Цена</field>
+				<dataPath>ЦенаUSD</dataPath>
+				<field>ЦенаUSD</field>
 				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
 					<d5p1:item>
 						<d5p1:lang>ru</d5p1:lang>
-						<d5p1:content>Цена</d5p1:content>
+						<d5p1:content>Цена USD</d5p1:content>
 					</d5p1:item>
 				</title>
 				<valueType>
@@ -122,12 +122,12 @@
 				</valueType>
 			</field>
 			<field xsi:type="DataSetFieldField">
-				<dataPath>СуммаКОплате</dataPath>
-				<field>СуммаКОплате</field>
+				<dataPath>СуммаКОплатеUSD</dataPath>
+				<field>СуммаКОплатеUSD</field>
 				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
 					<d5p1:item>
 						<d5p1:lang>ru</d5p1:lang>
-						<d5p1:content>Сумма к оплате</d5p1:content>
+						<d5p1:content>Сумма к оплате USD</d5p1:content>
 					</d5p1:item>
 				</title>
 				<valueType>
@@ -165,16 +165,76 @@
 					<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:CatalogRef.ВариантыМаршрутов</Type>
 				</valueType>
 			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>СуммаКОплатеUAH</dataPath>
+				<field>СуммаКОплатеUAH</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Сумма к оплате UAH</d5p1:content>
+					</d5p1:item>
+				</title>
+				<valueType>
+					<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:decimal</Type>
+					<NumberQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
+						<Digits>15</Digits>
+						<FractionDigits>2</FractionDigits>
+						<AllowedSign>Any</AllowedSign>
+					</NumberQualifiers>
+				</valueType>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ЦенаUAH</dataPath>
+				<field>ЦенаUAH</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Цена UAH</d5p1:content>
+					</d5p1:item>
+				</title>
+				<valueType>
+					<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:decimal</Type>
+					<NumberQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
+						<Digits>15</Digits>
+						<FractionDigits>2</FractionDigits>
+						<AllowedSign>Any</AllowedSign>
+					</NumberQualifiers>
+				</valueType>
+			</field>
 			<dataSource>ИсточникДанных1</dataSource>
 			<objectName>Отчет</objectName>
 		</dataSet>
 		<calculatedField>
-			<dataPath>Сумма</dataPath>
-			<expression>Количество*Цена</expression>
+			<dataPath>СуммаUSD</dataPath>
+			<expression>Количество*ЦенаUSD</expression>
 			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
 				<d4p1:item>
 					<d4p1:lang>ru</d4p1:lang>
-					<d4p1:content>Сумма</d4p1:content>
+					<d4p1:content>Сумма USD</d4p1:content>
+				</d4p1:item>
+			</title>
+			<appearance>
+				<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+					<parameter>Формат</parameter>
+					<value xsi:type="xs:string">ЧДЦ=2</value>
+				</item>
+			</appearance>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:decimal</Type>
+				<NumberQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
+					<Digits>15</Digits>
+					<FractionDigits>2</FractionDigits>
+					<AllowedSign>Any</AllowedSign>
+				</NumberQualifiers>
+			</valueType>
+		</calculatedField>
+		<calculatedField>
+			<dataPath>СуммаUAH</dataPath>
+			<expression>Количество*ЦенаUAH</expression>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Сумма UAH</d4p1:content>
 				</d4p1:item>
 			</title>
 			<appearance>
@@ -197,12 +257,20 @@
 			<expression>Сумма(Количество)</expression>
 		</totalField>
 		<totalField>
-			<dataPath>Цена</dataPath>
-			<expression>Сумма(Цена)</expression>
+			<dataPath>ЦенаUSD</dataPath>
+			<expression>Сумма(ЦенаUSD)</expression>
 		</totalField>
 		<totalField>
-			<dataPath>Сумма</dataPath>
-			<expression>Сумма(Сумма)</expression>
+			<dataPath>ЦенаUAH</dataPath>
+			<expression>Сумма(ЦенаUAH)</expression>
+		</totalField>
+		<totalField>
+			<dataPath>СуммаUAH</dataPath>
+			<expression>Сумма(СуммаUAH)</expression>
+		</totalField>
+		<totalField>
+			<dataPath>СуммаUSD</dataPath>
+			<expression>Сумма(СуммаUSD)</expression>
 		</totalField>
 		<parameter>
 			<name>НачалоДня</name>
@@ -267,10 +335,22 @@
 			<field>Количество</field>
 		</item>
 		<item xsi:type="SelectedItemField">
-			<field>Цена</field>
+			<field>ЦенаUAH</field>
 		</item>
 		<item xsi:type="SelectedItemField">
-			<field>Сумма</field>
+			<field>СуммаUAH</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>ЦенаUSD</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>СуммаUSD</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>СуммаКОплатеUAH</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>СуммаКОплатеUSD</field>
 		</item>
 		<viewMode>Normal</viewMode>
 		<userSettingID>5e116398-e524-406f-a049-a10eaf4f8311</userSettingID>
@@ -358,7 +438,14 @@
 						<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
 					</item>
 					<item xsi:type="GroupItemField">
-						<field>СуммаКОплате</field>
+						<field>СуммаКОплатеUAH</field>
+						<groupType>Items</groupType>
+						<periodAdditionType>None</periodAdditionType>
+						<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+						<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+					</item>
+					<item xsi:type="GroupItemField">
+						<field>СуммаКОплатеUSD</field>
 						<groupType>Items</groupType>
 						<periodAdditionType>None</periodAdditionType>
 						<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
@@ -437,7 +524,10 @@
 			<field>ВариантМаршрута</field>
 		</item>
 		<item xsi:type="SelectedItemField">
-			<field>СуммаКОплате</field>
+			<field>СуммаКОплатеUAH</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>СуммаКОплатеUSD</field>
 		</item>
 		<viewMode>Normal</viewMode>
 		<userSettingID>5e116398-e524-406f-a049-a10eaf4f8311</userSettingID>
@@ -478,7 +568,14 @@
 				<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
 			</item>
 			<item xsi:type="GroupItemField">
-				<field>СуммаКОплате</field>
+				<field>СуммаКОплатеUAH</field>
+				<groupType>Items</groupType>
+				<periodAdditionType>None</periodAdditionType>
+				<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+				<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+			</item>
+			<item xsi:type="GroupItemField">
+				<field>СуммаКОплатеUSD</field>
 				<groupType>Items</groupType>
 				<periodAdditionType>None</periodAdditionType>
 				<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
