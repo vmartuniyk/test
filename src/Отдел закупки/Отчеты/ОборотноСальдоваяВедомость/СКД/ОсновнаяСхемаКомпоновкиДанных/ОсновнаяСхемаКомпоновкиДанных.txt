@@ -777,7 +777,6 @@
 			<use>false</use>
 			<left xsi:type="dcscor:Field">Склад1</left>
 			<comparisonType>Equal</comparisonType>
-			<right xsi:type="dcscor:DesignTimeValue"/>
 			<userSettingID>af7aecf3-15f0-426a-88ff-9330d2e1aee8</userSettingID>
 		</item>
 	</filter>
