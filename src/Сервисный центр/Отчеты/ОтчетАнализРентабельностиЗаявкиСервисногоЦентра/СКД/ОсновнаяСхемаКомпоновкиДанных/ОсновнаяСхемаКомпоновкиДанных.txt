@@ -79,6 +79,12 @@
 						<AllowedSign>Any</AllowedSign>
 					</NumberQualifiers>
 				</valueType>
+				<appearance>
+					<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+						<parameter>ВыделятьОтрицательные</parameter>
+						<value xsi:type="xs:boolean">true</value>
+					</item>
+				</appearance>
 			</field>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>Себестоимость</dataPath>
@@ -97,6 +103,12 @@
 						<AllowedSign>Any</AllowedSign>
 					</NumberQualifiers>
 				</valueType>
+				<appearance>
+					<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+						<parameter>ВыделятьОтрицательные</parameter>
+						<value xsi:type="xs:boolean">true</value>
+					</item>
+				</appearance>
 			</field>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>ВаловаяПрибыль</dataPath>
@@ -115,6 +127,12 @@
 						<AllowedSign>Any</AllowedSign>
 					</NumberQualifiers>
 				</valueType>
+				<appearance>
+					<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+						<parameter>ВыделятьОтрицательные</parameter>
+						<value xsi:type="xs:boolean">true</value>
+					</item>
+				</appearance>
 			</field>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>ТекущееМесторасположениеФактическое</dataPath>
@@ -208,6 +226,12 @@
 					<d4p1:content>Рентабельность</d4p1:content>
 				</d4p1:item>
 			</title>
+			<appearance>
+				<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+					<parameter>ВыделятьОтрицательные</parameter>
+					<value xsi:type="xs:boolean">true</value>
+				</item>
+			</appearance>
 			<valueType>
 				<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:decimal</Type>
 				<NumberQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
