@@ -117,24 +117,6 @@
 				</valueType>
 			</field>
 			<field xsi:type="DataSetFieldField">
-				<dataPath>Рентабельность</dataPath>
-				<field>Рентабельность</field>
-				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
-					<d5p1:item>
-						<d5p1:lang>ru</d5p1:lang>
-						<d5p1:content>Рентабельность, %</d5p1:content>
-					</d5p1:item>
-				</title>
-				<valueType>
-					<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:decimal</Type>
-					<NumberQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
-						<Digits>15</Digits>
-						<FractionDigits>2</FractionDigits>
-						<AllowedSign>Any</AllowedSign>
-					</NumberQualifiers>
-				</valueType>
-			</field>
-			<field xsi:type="DataSetFieldField">
 				<dataPath>ТекущееМесторасположениеФактическое</dataPath>
 				<field>ТекущееМесторасположениеФактическое</field>
 				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
@@ -211,6 +193,30 @@
 			<dataSource>ИсточникДанных1</dataSource>
 			<objectName>Таблица</objectName>
 		</dataSet>
+		<calculatedField>
+			<dataPath>Рентабельность</dataPath>
+			<expression>ВЫРАЗИТЬ(
+    ВЫБОР КОГДА СУММА(Выручка) &lt;&gt; 0 ТОГДА
+            (СУММА(Выручка)- СУММА(Себестоимость))
+            / СУММА(Выручка)
+    ИНАЧЕ
+        0
+    КОНЕЦ * 100, "ЧИСЛО(15,2)")</expression>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Рентабельность</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:decimal</Type>
+				<NumberQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
+					<Digits>15</Digits>
+					<FractionDigits>2</FractionDigits>
+					<AllowedSign>Any</AllowedSign>
+				</NumberQualifiers>
+			</valueType>
+		</calculatedField>
 		<totalField>
 			<dataPath>ВаловаяПрибыль</dataPath>
 			<expression>Сумма(ВаловаяПрибыль)</expression>
@@ -220,12 +226,18 @@
 			<expression>Сумма(Выручка)</expression>
 		</totalField>
 		<totalField>
-			<dataPath>Рентабельность</dataPath>
-			<expression>Сумма(Рентабельность)</expression>
-		</totalField>
-		<totalField>
 			<dataPath>Себестоимость</dataPath>
 			<expression>Сумма(Себестоимость)</expression>
+		</totalField>
+		<totalField>
+			<dataPath>Рентабельность</dataPath>
+			<expression>ВЫРАЗИТЬ(
+    ВЫБОР КОГДА СУММА(Выручка) &lt;&gt; 0 ТОГДА
+            (СУММА(Выручка)- СУММА(Себестоимость))
+            / СУММА(Выручка)
+    ИНАЧЕ
+        0
+    КОНЕЦ * 100, "ЧИСЛО(15,2)")</expression>
 		</totalField>
 		<parameter>
 			<name>ПериодОтчета</name>
@@ -394,9 +406,7 @@
 		<dcscor:item xsi:type="SettingsParameterValue">
 			<dcscor:parameter>ПериодОтчета</dcscor:parameter>
 			<dcscor:value xsi:type="v8:StandardPeriod">
-				<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
-				<v8:startDate>2015-06-02T00:00:00</v8:startDate>
-				<v8:endDate>2015-06-02T23:59:59</v8:endDate>
+				<v8:variant xsi:type="v8:StandardPeriodVariant">ThisMonth</v8:variant>
 			</dcscor:value>
 			<userSettingID>24f32ed3-443a-451e-87b2-4c37c756af94</userSettingID>
 		</dcscor:item>
@@ -467,7 +477,6 @@
 			<use>false</use>
 			<left xsi:type="dcscor:Field">ЗаявкаСервисногоЦентра</left>
 			<comparisonType>Equal</comparisonType>
-			<right xsi:type="dcscor:DesignTimeValue"/>
 		</item>
 		<viewMode>Normal</viewMode>
 	</filter>
