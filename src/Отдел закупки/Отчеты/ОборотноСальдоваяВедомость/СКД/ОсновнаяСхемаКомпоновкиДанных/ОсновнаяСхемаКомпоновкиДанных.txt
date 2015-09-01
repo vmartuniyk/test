@@ -442,6 +442,19 @@
 					</DateQualifiers>
 				</valueType>
 			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Склад1</dataPath>
+				<field>Склад1</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Склад</d5p1:content>
+					</d5p1:item>
+				</title>
+				<valueType>
+					<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:CatalogRef.Склады</Type>
+				</valueType>
+			</field>
 			<dataSource>ИсточникДанных1</dataSource>
 			<objectName>ОбъектЗапроса</objectName>
 		</dataSet>
@@ -759,6 +772,12 @@
 			<left xsi:type="dcscor:Field">Номенклатура1.ВидНоменклатуры</left>
 			<comparisonType>Equal</comparisonType>
 			<userSettingID>a9add15f-f831-4f2b-af18-c7d5755b3a4d</userSettingID>
+		</item>
+		<item xsi:type="FilterItemComparison">
+			<use>false</use>
+			<left xsi:type="dcscor:Field">Склад1</left>
+			<comparisonType>Equal</comparisonType>
+			<userSettingID>af7aecf3-15f0-426a-88ff-9330d2e1aee8</userSettingID>
 		</item>
 	</filter>
 	<dataParameters>
