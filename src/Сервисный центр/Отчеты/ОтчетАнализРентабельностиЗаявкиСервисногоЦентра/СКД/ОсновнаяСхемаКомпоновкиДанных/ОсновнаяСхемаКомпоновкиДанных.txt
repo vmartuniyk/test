@@ -81,7 +81,7 @@
 				</valueType>
 				<appearance>
 					<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
-						<parameter>ВыделятьОтрицательные</parameter>
+						<parameter>MarkNegatives</parameter>
 						<value xsi:type="xs:boolean">true</value>
 					</item>
 				</appearance>
@@ -105,7 +105,7 @@
 				</valueType>
 				<appearance>
 					<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
-						<parameter>ВыделятьОтрицательные</parameter>
+						<parameter>MarkNegatives</parameter>
 						<value xsi:type="xs:boolean">true</value>
 					</item>
 				</appearance>
@@ -129,7 +129,7 @@
 				</valueType>
 				<appearance>
 					<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
-						<parameter>ВыделятьОтрицательные</parameter>
+						<parameter>MarkNegatives</parameter>
 						<value xsi:type="xs:boolean">true</value>
 					</item>
 				</appearance>
@@ -228,7 +228,7 @@
 			</title>
 			<appearance>
 				<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
-					<parameter>ВыделятьОтрицательные</parameter>
+					<parameter>MarkNegatives</parameter>
 					<value xsi:type="xs:boolean">true</value>
 				</item>
 			</appearance>
