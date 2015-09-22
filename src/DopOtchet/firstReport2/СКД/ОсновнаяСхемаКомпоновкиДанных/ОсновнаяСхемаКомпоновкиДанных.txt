@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<SchemaFile xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema">
+		<dataSource>
+			<name>ИсточникДанных1</name>
+			<dataSourceType>Local</dataSourceType>
+		</dataSource>
+		<dataSet xsi:type="DataSetQuery">
+			<name>НаборДанных1</name>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Номенклатура</dataPath>
+				<field>Номенклатура</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Номенклатура</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
+			<dataSource>ИсточникДанных1</dataSource>
+			<query>ВЫБРАТЬ 
+	Номенклатура.Ссылка КАК Номенклатура 
+ИЗ
+	Справочник.Номенклатура КАК Номенклатура ГДЕ  
+Номенклатура.Артикул В	
+(ВЫБРАТЬ
+	//КОЛИЧЕСТВО(РАЗЛИЧНЫЕ Номенклатура.Наименование) КАК Наименование,
+	Номенклатура.Артикул
+ИЗ
+	Справочник.Номенклатура КАК Номенклатура
+ГДЕ
+	Номенклатура.Артикул &lt;&gt; &amp;NULL
+
+СГРУППИРОВАТЬ ПО
+	Номенклатура.Артикул
+
+ИМЕЮЩИЕ
+	КОЛИЧЕСТВО(Номенклатура.Наименование) &gt;= 2)</query>
+		</dataSet>
+		<parameter>
+			<name>Артикул</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Артикул</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:string</Type>
+				<StringQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
+					<Length>35</Length>
+					<AllowedLength>Variable</AllowedLength>
+				</StringQualifiers>
+			</valueType>
+			<value xsi:type="xs:string"/>
+			<useRestriction>true</useRestriction>
+		</parameter>
+		<parameter>
+			<name>NULL</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>NULL</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:string</Type>
+				<StringQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
+					<Length>35</Length>
+					<AllowedLength>Variable</AllowedLength>
+				</StringQualifiers>
+			</valueType>
+			<value xsi:type="xs:string"/>
+			<useRestriction>true</useRestriction>
+		</parameter>
+		<settingsVariant>
+			<name xmlns="http://v8.1c.ru/8.1/data-composition-system/settings">Основной</name>
+			<presentation xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="xs:string">Основной</presentation>
+		</settingsVariant>
+	</dataCompositionSchema>
+</SchemaFile>﻿<?xml version="1.0" encoding="UTF-8"?>
+<Settings xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<selection>
+		<item xsi:type="SelectedItemField">
+			<field>СистемныеПоля.НомерПоПорядку</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>Номенклатура</field>
+		</item>
+		<userSettingID>e15d07ca-5482-45c5-9579-5fa3e1cfb22a</userSettingID>
+	</selection>
+	<filter>
+		<userSettingID>a45f2796-58c6-4331-9ed5-9dd67be3f658</userSettingID>
+	</filter>
+	<order>
+		<userSettingID>1d4e98e8-404c-4bc6-8013-1356d4e28d22</userSettingID>
+	</order>
+	<conditionalAppearance>
+		<userSettingID>6b2ab04d-c4eb-4111-a8f6-f308f4f3b250</userSettingID>
+	</conditionalAppearance>
+	<item xsi:type="StructureItemGroup">
+		<order>
+			<item xsi:type="OrderItemAuto"/>
+		</order>
+		<selection>
+			<item xsi:type="SelectedItemAuto"/>
+		</selection>
+	</item>
+	<itemsUserSettingID>0f0391db-a37e-470c-94bd-f1b5ef5e8055</itemsUserSettingID>
+</Settings>﻿<?xml version="1.0" encoding="UTF-8"?>
+<SchemaFile xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema"/>
+</SchemaFile>
