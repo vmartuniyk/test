@@ -1,414 +1,86 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<SchemaFile xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-	<dataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema">
-		<dataSource>
-			<name>ИсточникДанных1</name>
-			<dataSourceType>Local</dataSourceType>
-		</dataSource>
-		<dataSet xsi:type="DataSetQuery">
-			<name>НаборДанных1</name>
-			<field xsi:type="DataSetFieldField">
-				<dataPath>Ответственный</dataPath>
-				<field>Ответственный</field>
-			</field>
-			<field xsi:type="DataSetFieldField">
-				<dataPath>МестоДоставки</dataPath>
-				<field>МестоДоставки</field>
-				<role>
-					<dimension xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</dimension>
-				</role>
-			</field>
-			<field xsi:type="DataSetFieldField">
-				<dataPath>Поездка</dataPath>
-				<field>Поездка</field>
-				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
-					<d5p1:item>
-						<d5p1:lang>ru</d5p1:lang>
-						<d5p1:content>Поездка</d5p1:content>
-					</d5p1:item>
-				</title>
-				<role>
-					<dimension xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</dimension>
-				</role>
-			</field>
-			<field xsi:type="DataSetFieldField">
-				<dataPath>ПричинаУдаления</dataPath>
-				<field>ПричинаУдаления</field>
-				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
-					<d5p1:item>
-						<d5p1:lang>ru</d5p1:lang>
-						<d5p1:content>Причина удаления</d5p1:content>
-					</d5p1:item>
-				</title>
-			</field>
-			<field xsi:type="DataSetFieldField">
-				<dataPath>ДатаПоездки</dataPath>
-				<field>ДатаПоездки</field>
-				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
-					<d5p1:item>
-						<d5p1:lang>ru</d5p1:lang>
-						<d5p1:content>Дата поездки</d5p1:content>
-					</d5p1:item>
-				</title>
-			</field>
-			<field xsi:type="DataSetFieldField">
-				<dataPath>ПериодГод</dataPath>
-				<field>ПериодГод</field>
-				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
-					<d5p1:item>
-						<d5p1:lang>ru</d5p1:lang>
-						<d5p1:content>Период год</d5p1:content>
-					</d5p1:item>
-				</title>
-				<role>
-					<periodNumber xmlns="http://v8.1c.ru/8.1/data-composition-system/common">10</periodNumber>
-					<periodType xmlns="http://v8.1c.ru/8.1/data-composition-system/common">Main</periodType>
-				</role>
-			</field>
-			<field xsi:type="DataSetFieldField">
-				<dataPath>ПериодСекунда</dataPath>
-				<field>ПериодСекунда</field>
-				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
-					<d5p1:item>
-						<d5p1:lang>ru</d5p1:lang>
-						<d5p1:content>Период секунда</d5p1:content>
-					</d5p1:item>
-				</title>
-				<role>
-					<periodNumber xmlns="http://v8.1c.ru/8.1/data-composition-system/common">1</periodNumber>
-					<periodType xmlns="http://v8.1c.ru/8.1/data-composition-system/common">Main</periodType>
-				</role>
-			</field>
-			<field xsi:type="DataSetFieldField">
-				<dataPath>ПериодКвартал</dataPath>
-				<field>ПериодКвартал</field>
-				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
-					<d5p1:item>
-						<d5p1:lang>ru</d5p1:lang>
-						<d5p1:content>Период квартал</d5p1:content>
-					</d5p1:item>
-				</title>
-				<role>
-					<periodNumber xmlns="http://v8.1c.ru/8.1/data-composition-system/common">8</periodNumber>
-					<periodType xmlns="http://v8.1c.ru/8.1/data-composition-system/common">Main</periodType>
-				</role>
-			</field>
-			<field xsi:type="DataSetFieldField">
-				<dataPath>ПериодЧас</dataPath>
-				<field>ПериодЧас</field>
-				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
-					<d5p1:item>
-						<d5p1:lang>ru</d5p1:lang>
-						<d5p1:content>Период час</d5p1:content>
-					</d5p1:item>
-				</title>
-				<role>
-					<periodNumber xmlns="http://v8.1c.ru/8.1/data-composition-system/common">3</periodNumber>
-					<periodType xmlns="http://v8.1c.ru/8.1/data-composition-system/common">Main</periodType>
-				</role>
-			</field>
-			<field xsi:type="DataSetFieldField">
-				<dataPath>ПериодПолугодие</dataPath>
-				<field>ПериодПолугодие</field>
-				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
-					<d5p1:item>
-						<d5p1:lang>ru</d5p1:lang>
-						<d5p1:content>Период полугодие</d5p1:content>
-					</d5p1:item>
-				</title>
-				<role>
-					<periodNumber xmlns="http://v8.1c.ru/8.1/data-composition-system/common">9</periodNumber>
-					<periodType xmlns="http://v8.1c.ru/8.1/data-composition-system/common">Main</periodType>
-				</role>
-			</field>
-			<field xsi:type="DataSetFieldField">
-				<dataPath>ПериодДень</dataPath>
-				<field>ПериодДень</field>
-				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
-					<d5p1:item>
-						<d5p1:lang>ru</d5p1:lang>
-						<d5p1:content>Период день</d5p1:content>
-					</d5p1:item>
-				</title>
-				<role>
-					<periodNumber xmlns="http://v8.1c.ru/8.1/data-composition-system/common">4</periodNumber>
-					<periodType xmlns="http://v8.1c.ru/8.1/data-composition-system/common">Main</periodType>
-				</role>
-			</field>
-			<field xsi:type="DataSetFieldField">
-				<dataPath>ПериодМинута</dataPath>
-				<field>ПериодМинута</field>
-				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
-					<d5p1:item>
-						<d5p1:lang>ru</d5p1:lang>
-						<d5p1:content>Период минута</d5p1:content>
-					</d5p1:item>
-				</title>
-				<role>
-					<periodNumber xmlns="http://v8.1c.ru/8.1/data-composition-system/common">2</periodNumber>
-					<periodType xmlns="http://v8.1c.ru/8.1/data-composition-system/common">Main</periodType>
-				</role>
-			</field>
-			<field xsi:type="DataSetFieldField">
-				<dataPath>ПериодНеделя</dataPath>
-				<field>ПериодНеделя</field>
-				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
-					<d5p1:item>
-						<d5p1:lang>ru</d5p1:lang>
-						<d5p1:content>Период неделя</d5p1:content>
-					</d5p1:item>
-				</title>
-				<role>
-					<periodNumber xmlns="http://v8.1c.ru/8.1/data-composition-system/common">5</periodNumber>
-					<periodType xmlns="http://v8.1c.ru/8.1/data-composition-system/common">Main</periodType>
-				</role>
-			</field>
-			<field xsi:type="DataSetFieldField">
-				<dataPath>ПериодДекада</dataPath>
-				<field>ПериодДекада</field>
-				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
-					<d5p1:item>
-						<d5p1:lang>ru</d5p1:lang>
-						<d5p1:content>Период декада</d5p1:content>
-					</d5p1:item>
-				</title>
-				<role>
-					<periodNumber xmlns="http://v8.1c.ru/8.1/data-composition-system/common">6</periodNumber>
-					<periodType xmlns="http://v8.1c.ru/8.1/data-composition-system/common">Main</periodType>
-				</role>
-			</field>
-			<field xsi:type="DataSetFieldField">
-				<dataPath>ПериодМесяц</dataPath>
-				<field>ПериодМесяц</field>
-				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
-					<d5p1:item>
-						<d5p1:lang>ru</d5p1:lang>
-						<d5p1:content>Период месяц</d5p1:content>
-					</d5p1:item>
-				</title>
-				<role>
-					<periodNumber xmlns="http://v8.1c.ru/8.1/data-composition-system/common">7</periodNumber>
-					<periodType xmlns="http://v8.1c.ru/8.1/data-composition-system/common">Main</periodType>
-				</role>
-			</field>
-			<dataSource>ИсточникДанных1</dataSource>
-			<query>ВЫБРАТЬ
-	КТС_ПричиныУдаленияМестаИзПоездки.Период КАК ДатаПоездки,
-	КТС_ПричиныУдаленияМестаИзПоездки.ДокументПоездки КАК Поездка,
-	КТС_ПричиныУдаленияМестаИзПоездки.МестоДоставки,
-	КТС_ПричиныУдаленияМестаИзПоездки.Комментарий КАК ПричинаУдаления,
-	КТС_ПричиныУдаленияМестаИзПоездки.Ответственный,
-	НАЧАЛОПЕРИОДА(КТС_ПричиныУдаленияМестаИзПоездки.Период, ГОД) КАК ПериодГод,
-	НАЧАЛОПЕРИОДА(КТС_ПричиныУдаленияМестаИзПоездки.Период, ПОЛУГОДИЕ) КАК ПериодПолугодие,
-	НАЧАЛОПЕРИОДА(КТС_ПричиныУдаленияМестаИзПоездки.Период, КВАРТАЛ) КАК ПериодКвартал,
-	НАЧАЛОПЕРИОДА(КТС_ПричиныУдаленияМестаИзПоездки.Период, МЕСЯЦ) КАК ПериодМесяц,
-	НАЧАЛОПЕРИОДА(КТС_ПричиныУдаленияМестаИзПоездки.Период, ДЕКАДА) КАК ПериодДекада,
-	НАЧАЛОПЕРИОДА(КТС_ПричиныУдаленияМестаИзПоездки.Период, НЕДЕЛЯ) КАК ПериодНеделя,
-	НАЧАЛОПЕРИОДА(КТС_ПричиныУдаленияМестаИзПоездки.Период, ДЕНЬ) КАК ПериодДень,
-	НАЧАЛОПЕРИОДА(КТС_ПричиныУдаленияМестаИзПоездки.Период, ЧАС) КАК ПериодЧас,
-	НАЧАЛОПЕРИОДА(КТС_ПричиныУдаленияМестаИзПоездки.Период, МИНУТА) КАК ПериодМинута,
-	КТС_ПричиныУдаленияМестаИзПоездки.Период КАК ПериодСекунда
-ИЗ
-	РегистрСведений.КТС_ПричиныУдаленияМестаИзПоездки КАК КТС_ПричиныУдаленияМестаИзПоездки
-ГДЕ
-	КТС_ПричиныУдаленияМестаИзПоездки.Период &gt;= &amp;НачалоПериода
-	И КТС_ПричиныУдаленияМестаИзПоездки.Период &lt;= &amp;КонецПериода
+﻿
+#Область СведенияОВнешнейОбработке
 
-СГРУППИРОВАТЬ ПО
-	НАЧАЛОПЕРИОДА(КТС_ПричиныУдаленияМестаИзПоездки.Период, МЕСЯЦ),
-	КТС_ПричиныУдаленияМестаИзПоездки.Период,
-	КТС_ПричиныУдаленияМестаИзПоездки.ДокументПоездки,
-	КТС_ПричиныУдаленияМестаИзПоездки.МестоДоставки,
-	КТС_ПричиныУдаленияМестаИзПоездки.Комментарий,
-	КТС_ПричиныУдаленияМестаИзПоездки.Ответственный,
-	КТС_ПричиныУдаленияМестаИзПоездки.Период</query>
-		</dataSet>
-		<parameter>
-			<name>Период</name>
-			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
-				<d4p1:item>
-					<d4p1:lang>ru</d4p1:lang>
-					<d4p1:content>Период</d4p1:content>
-				</d4p1:item>
-			</title>
-			<valueType>
-				<Type xmlns="http://v8.1c.ru/8.1/data/core">StandardPeriod</Type>
-			</valueType>
-			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:StandardPeriod">
-				<d4p1:variant xsi:type="d4p1:StandardPeriodVariant">Custom</d4p1:variant>
-				<d4p1:startDate>0001-01-01T00:00:00</d4p1:startDate>
-				<d4p1:endDate>0001-01-01T00:00:00</d4p1:endDate>
-			</value>
-			<useRestriction>false</useRestriction>
-			<use>Always</use>
-		</parameter>
-		<parameter>
-			<name>КонецПериода</name>
-			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
-				<d4p1:item>
-					<d4p1:lang>ru</d4p1:lang>
-					<d4p1:content>Конец периода</d4p1:content>
-				</d4p1:item>
-			</title>
-			<valueType>
-				<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:dateTime</Type>
-				<DateQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
-					<DateFractions>DateTime</DateFractions>
-				</DateQualifiers>
-			</valueType>
-			<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
-			<useRestriction>true</useRestriction>
-			<expression>&amp;Период.ДатаОкончания</expression>
-		</parameter>
-		<parameter>
-			<name>НачалоПериода</name>
-			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
-				<d4p1:item>
-					<d4p1:lang>ru</d4p1:lang>
-					<d4p1:content>Начало периода</d4p1:content>
-				</d4p1:item>
-			</title>
-			<valueType>
-				<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:dateTime</Type>
-				<DateQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
-					<DateFractions>DateTime</DateFractions>
-				</DateQualifiers>
-			</valueType>
-			<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
-			<useRestriction>true</useRestriction>
-			<expression>&amp;Период.ДатаНачала</expression>
-		</parameter>
-		<settingsVariant>
-			<name xmlns="http://v8.1c.ru/8.1/data-composition-system/settings">Основной</name>
-			<presentation xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="xs:string">Основной</presentation>
-		</settingsVariant>
-	</dataCompositionSchema>
-</SchemaFile>﻿<?xml version="1.0" encoding="UTF-8"?>
-<Settings xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-	<selection>
-		<item xsi:type="SelectedItemField">
-			<field>МестоДоставки</field>
-		</item>
-		<item xsi:type="SelectedItemField">
-			<field>Ответственный</field>
-		</item>
-		<item xsi:type="SelectedItemField">
-			<field>Поездка</field>
-		</item>
-		<item xsi:type="SelectedItemField">
-			<field>ПричинаУдаления</field>
-		</item>
-		<item xsi:type="SelectedItemField">
-			<field>ДатаПоездки</field>
-		</item>
-		<userSettingID>70124a90-bdfa-4f65-b958-d008efae756d</userSettingID>
-	</selection>
-	<filter>
-		<userSettingID>41f8cead-0520-4678-a387-dfbd97ae22cc</userSettingID>
-	</filter>
-	<dataParameters>
-		<dcscor:item xsi:type="SettingsParameterValue">
-			<dcscor:parameter>Период</dcscor:parameter>
-			<dcscor:value xsi:type="v8:StandardPeriod">
-				<v8:variant xsi:type="v8:StandardPeriodVariant">ThisMonth</v8:variant>
-			</dcscor:value>
-			<userSettingID>f375ee8b-6f9a-42e6-94e2-30a5bf10e649</userSettingID>
-		</dcscor:item>
-	</dataParameters>
-	<order>
-		<userSettingID>e4f48a1e-24a8-431d-a424-40bd1cd91d94</userSettingID>
-	</order>
-	<conditionalAppearance>
-		<userSettingID>e6df94ab-f97c-4041-a8cd-1a2ca7913d24</userSettingID>
-	</conditionalAppearance>
-	<outputParameters>
-		<dcscor:item xsi:type="SettingsParameterValue">
-			<dcscor:parameter>Заголовок</dcscor:parameter>
-			<dcscor:value xsi:type="v8:LocalStringType">
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Причини удаления мест отгрузки</v8:content>
-				</v8:item>
-			</dcscor:value>
-		</dcscor:item>
-		<dcscor:item xsi:type="SettingsParameterValue">
-			<dcscor:use>false</dcscor:use>
-			<dcscor:parameter>ВыводитьОтбор</dcscor:parameter>
-			<dcscor:value xsi:type="DataCompositionTextOutputType">Output</dcscor:value>
-		</dcscor:item>
-	</outputParameters>
-	<item xsi:type="StructureItemGroup">
-		<groupItems>
-			<item xsi:type="GroupItemField">
-				<field>ПериодМесяц</field>
-				<groupType>Items</groupType>
-				<periodAdditionType>None</periodAdditionType>
-				<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
-				<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
-			</item>
-		</groupItems>
-		<filter/>
-		<order>
-			<item xsi:type="OrderItemAuto"/>
-		</order>
-		<selection>
-			<item xsi:type="SelectedItemAuto"/>
-		</selection>
-		<conditionalAppearance/>
-		<item xsi:type="StructureItemGroup">
-			<groupItems>
-				<item xsi:type="GroupItemField">
-					<field>Поездка</field>
-					<groupType>Hierarchy</groupType>
-					<periodAdditionType>None</periodAdditionType>
-					<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
-					<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
-				</item>
-			</groupItems>
-			<order>
-				<item xsi:type="OrderItemAuto"/>
-			</order>
-			<selection>
-				<item xsi:type="SelectedItemAuto"/>
-			</selection>
-			<item xsi:type="StructureItemGroup">
-				<groupItems>
-					<item xsi:type="GroupItemField">
-						<field>МестоДоставки</field>
-						<groupType>Hierarchy</groupType>
-						<periodAdditionType>None</periodAdditionType>
-						<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
-						<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
-					</item>
-				</groupItems>
-				<order>
-					<item xsi:type="OrderItemAuto"/>
-				</order>
-				<selection>
-					<item xsi:type="SelectedItemAuto"/>
-				</selection>
-				<item xsi:type="StructureItemGroup">
-					<order>
-						<item xsi:type="OrderItemAuto"/>
-					</order>
-					<selection>
-						<item xsi:type="SelectedItemAuto"/>
-						<item xsi:type="SelectedItemField">
-							<field>ДатаПоездки</field>
-						</item>
-						<item xsi:type="SelectedItemField">
-							<field>ПричинаУдаления</field>
-						</item>
-						<item xsi:type="SelectedItemField">
-							<field>Ответственный</field>
-						</item>
-					</selection>
-				</item>
-			</item>
-		</item>
-	</item>
-	<itemsUserSettingID>94334ffe-3e58-4551-8212-793219e37695</itemsUserSettingID>
-</Settings>﻿<?xml version="1.0" encoding="UTF-8"?>
-<SchemaFile xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-	<dataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema"/>
-</SchemaFile>
+Функция СведенияОВнешнейОбработке() Экспорт
+	
+	// Объявим переменную, в которой мы сохраним и вернем "наружу" необходимые данные
+    ПараметрыРегистрации = Новый Структура;
+
+    // Объявим еще одну переменную, которая нам потребуется ниже
+    МассивНазначений = Новый Массив;
+    
+    // Первый параметр, который мы должны указать - это какой вид обработки системе должна зарегистрировать. 
+    // Допустимые типы: ДополнительнаяОбработка, ДополнительныйОтчет, ЗаполнениеОбъекта, Отчет, ПечатнаяФорма, СозданиеСвязанныхОбъектов
+    ПараметрыРегистрации.Вставить("Вид", "ДополнительныйОтчет");
+
+    // Теперь нам необходимо передать в виде массива имен, к чему будет подключена наша ВПФ
+    // Имейте ввиду, что можно задать имя в таком виде: Документ.* - в этом случае обработка будет подключена ко всем документам в системе, 
+    // которые поддерживают механизм ВПФ
+	//СчитатьДокументыНазначений(МассивНазначений);
+	
+	ПараметрыРегистрации.Вставить("Назначение", МассивНазначений);
+    
+    // Теперь зададим имя, под которым ВПФ будет зарегистрирована в справочнике внешних обработок
+    ПараметрыРегистрации.Вставить("Наименование", "Причини удаления мест отгрузки");
+    
+    // Зададим право обработке на использование безопасного режима. Более подробно можно узнать в справке к платформе (метод УстановитьБезопасныйРежим)
+    ПараметрыРегистрации.Вставить("БезопасныйРежим", Ложь);
+
+    // Следующие два параметра играют больше информационную роль, т.е. это то, что будет видеть пользователь в информации к обработке
+    ПараметрыРегистрации.Вставить("Версия", "1.0.0");    
+    ПараметрыРегистрации.Вставить("Информация", "Причини удаления мест отгрузки");
+    
+    // Создадим таблицу команд (подробнее смотрим ниже)
+    ТаблицаКоманд = ПолучитьТаблицуКоманд();
+    
+    // Добавим команду в таблицу
+    ДобавитьКоманду(ТаблицаКоманд, "Причини удаления мест отгрузки", "ФормаОтчета", "ОткрытиеФормы", Ложь, "");
+    
+    // Сохраним таблицу команд в параметры регистрации обработки
+    ПараметрыРегистрации.Вставить("Команды", ТаблицаКоманд);
+    
+    // Теперь вернем системе наши параметры
+    Возврат ПараметрыРегистрации;
+КонецФункции
+
+Функция ПолучитьТаблицуКоманд()
+
+   // Создадим пустую таблицу команд и колонки в ней
+   Команды = Новый ТаблицаЗначений;
+
+   // Как будет выглядеть описание печатной формы для пользователя
+   Команды.Колонки.Добавить("Представление", Новый ОписаниеТипов("Строка")); 
+
+   // Имя нашего макета, что бы могли отличить вызванную команду в обработке печати
+   Команды.Колонки.Добавить("Идентификатор", Новый ОписаниеТипов("Строка"));
+
+   // Тут задается, как должна вызваться команда обработки
+   // Возможные варианты:
+   // - ОткрытиеФормы - в этом случае в колонке идентификатор должно быть указано имя формы, которое должна будет открыть система
+   // - ВызовКлиентскогоМетода - вызвать клиентскую экспортную процедуру из модуля формы обработки
+   // - ВызовСерверногоМетода - вызвать серверную экспортную процедуру из модуля объекта обработки
+   Команды.Колонки.Добавить("Использование", Новый ОписаниеТипов("Строка"));
+
+   // Следующий параметр указывает, необходимо ли показывать оповещение при начале и завершению работы обработки. Не имеет смысла при открытии формы
+   Команды.Колонки.Добавить("ПоказыватьОповещение", Новый ОписаниеТипов("Булево"));
+
+   // Для печатной формы должен содержать строку ПечатьMXL 
+   Команды.Колонки.Добавить("Модификатор", Новый ОписаниеТипов("Строка"));
+   
+   Возврат Команды;
+   
+КонецФункции
+
+Процедура ДобавитьКоманду(ТаблицаКоманд, Представление, Идентификатор, Использование, ПоказыватьОповещение = Ложь, Модификатор = "")
+  // Добавляем команду в таблицу команд по переданному описанию.
+  // Параметры и их значения можно посмотреть в функции ПолучитьТаблицуКоманд
+  НоваяКоманда = ТаблицаКоманд.Добавить();
+  НоваяКоманда.Представление = Представление;
+  НоваяКоманда.Идентификатор = Идентификатор;
+  НоваяКоманда.Использование = Использование;
+  НоваяКоманда.ПоказыватьОповещение = ПоказыватьОповещение;
+  НоваяКоманда.Модификатор = Модификатор;
+
+КонецПроцедуры
+
+#КонецОбласти
