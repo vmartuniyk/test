@@ -1,0 +1,318 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<SchemaFile xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema">
+		<dataSource>
+			<name>ИсточникДанных1</name>
+			<dataSourceType>Local</dataSourceType>
+		</dataSource>
+		<dataSet xsi:type="DataSetQuery">
+			<name>НаборДанных1</name>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ДокументОтгрузки</dataPath>
+				<field>ДокументОтгрузки</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Номенклатура</dataPath>
+				<field>Номенклатура</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Серия</dataPath>
+				<field>Серия</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Склад</dataPath>
+				<field>Склад</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Характеристика</dataPath>
+				<field>Характеристика</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Регистратор</dataPath>
+				<field>Регистратор</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Место</dataPath>
+				<field>Место</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Период</dataPath>
+				<field>Период</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ВариантМаршрута</dataPath>
+				<field>ВариантМаршрута</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Пользователь</dataPath>
+				<field>Пользователь</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>СтатусОтгрузки</dataPath>
+				<field>СтатусОтгрузки</field>
+			</field>
+			<dataSource>ИсточникДанных1</dataSource>
+			<query>ВЫБРАТЬ
+	КТС_ОтгрузкаИзБезордерныхСкладовОбороты.Регистратор,
+	КТС_ОтгрузкаИзБезордерныхСкладовОбороты.ДокументОтгрузки КАК ДокументОтгрузки
+ПОМЕСТИТЬ ДокументыОтгрузки
+ИЗ
+	РегистрНакопления.КТС_ОтгрузкаИзБезордерныхСкладов.Обороты(, , Регистратор, ДокументОтгрузки = &amp;Документ) КАК КТС_ОтгрузкаИзБезордерныхСкладовОбороты
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	ТоварыКОтгрузкеОбороты.Регистратор,
+	ТоварыКОтгрузкеОбороты.ДокументОтгрузки
+ИЗ
+	РегистрНакопления.ТоварыКОтгрузке.Обороты(, , Регистратор, ДокументОтгрузки = &amp;Документ) КАК ТоварыКОтгрузкеОбороты
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	МестаПоДокументам.Место,
+	МестаПоДокументам.Документ
+ПОМЕСТИТЬ МестаПоДокументам
+ИЗ
+	РегистрСведений.МестаПоДокументам КАК МестаПоДокументам
+ГДЕ
+	МестаПоДокументам.Документ В
+			(ВЫБРАТЬ
+				ДокументыОтгрузки.Регистратор
+			ИЗ
+				ДокументыОтгрузки КАК ДокументыОтгрузки)
+				
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	Ссылка,
+	ЗаявкаСЦ
+ИЗ
+	Справочник.МестаДоставки.Товары
+ГДЕ
+	ЗаявкаСЦ = &amp;Документ
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ОтгрузкаМест.Период,
+	ОтгрузкаМест.Склад,
+	ОтгрузкаМест.Место,
+	ОтгрузкаМест.СтатусОтгрузки,
+	ОтгрузкаМест.ВариантМаршрута,
+	ОтгрузкаМест.Пользователь
+ПОМЕСТИТЬ ОтгрузкаМест
+ИЗ
+	РегистрСведений.ОтгрузкаМест КАК ОтгрузкаМест
+ГДЕ
+	ОтгрузкаМест.Место В
+			(ВЫБРАТЬ
+				МестаПоДокументам.Место
+			ИЗ
+				МестаПоДокументам КАК МестаПоДокументам)
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ОтгрузкаМест.Период,
+	ОтгрузкаМест.Отправитель КАК Склад,
+	ОтгрузкаМест.Место,
+	ОтгрузкаМест.СтатусОтгрузки,
+	ОтгрузкаМест.ВариантМаршрута,
+	ОтгрузкаМест.Пользователь
+ПОМЕСТИТЬ ОтгрузкаЗадач
+ИЗ
+	РегистрСведений.ЗадачиНаМаршрут КАК ОтгрузкаМест
+ГДЕ
+	ОтгрузкаМест.Место В
+			(ВЫБРАТЬ
+				МестаПоДокументам.Место
+			ИЗ
+				МестаПоДокументам КАК МестаПоДокументам)
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ДокументыОтгрузки.Регистратор,
+	МестаПоДокументам.Место,
+	ОтгрузкаМест.Период,
+	ОтгрузкаМест.Склад,
+	ОтгрузкаМест.СтатусОтгрузки,
+	ОтгрузкаМест.ВариантМаршрута,
+	ОтгрузкаМест.Пользователь
+ИЗ
+	ДокументыОтгрузки КАК ДокументыОтгрузки
+		ЛЕВОЕ СОЕДИНЕНИЕ МестаПоДокументам КАК МестаПоДокументам
+			ЛЕВОЕ СОЕДИНЕНИЕ ОтгрузкаМест КАК ОтгрузкаМест
+			ПО МестаПоДокументам.Место = ОтгрузкаМест.Место
+		ПО ДокументыОтгрузки.Регистратор = МестаПоДокументам.Документ
+ГДЕ
+	(ДокументыОтгрузки.Регистратор ССЫЛКА Документ.КТС_ОтгрузкаТоваров
+			ИЛИ ДокументыОтгрузки.Регистратор ССЫЛКА Документ.РасходныйОрдерНаТовары)
+			
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	МестаПоДокументам.Документ,
+	МестаПоДокументам.Место,
+	ОтгрузкаЗадач.Период,
+	ОтгрузкаЗадач.Склад,
+	ОтгрузкаЗадач.СтатусОтгрузки,
+	ОтгрузкаЗадач.ВариантМаршрута,
+	ОтгрузкаЗадач.Пользователь
+ИЗ
+	МестаПоДокументам КАК МестаПоДокументам
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ ОтгрузкаЗадач КАК ОтгрузкаЗадач
+		ПО МестаПоДокументам.Место = ОтгрузкаЗадач.Место</query>
+		</dataSet>
+		<parameter>
+			<name>НачалоПериода</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Начало периода</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:dateTime</Type>
+				<DateQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
+					<DateFractions>DateTime</DateFractions>
+				</DateQualifiers>
+			</valueType>
+			<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+			<useRestriction>true</useRestriction>
+		</parameter>
+		<parameter>
+			<name>КонецПериода</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Конец периода</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:dateTime</Type>
+				<DateQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
+					<DateFractions>DateTime</DateFractions>
+				</DateQualifiers>
+			</valueType>
+			<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+			<useRestriction>true</useRestriction>
+		</parameter>
+		<parameter>
+			<name>Документ</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Документ</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:DocumentRef.ВнутреннееПотреблениеТоваров</Type>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:DocumentRef.ВозвратТоваровПоставщику</Type>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:DocumentRef.ПеремещениеТоваров</Type>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:DocumentRef.РеализацияТоваровУслуг</Type>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:DocumentRef.СборкаТоваров</Type>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:DocumentRef.ГНАТ_ЗаявкаСервисногоЦентра</Type>
+			</valueType>
+			<value xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xsi:type="dcscor:DesignTimeValue"/>
+			<useRestriction>false</useRestriction>
+		</parameter>
+		<settingsVariant>
+			<name xmlns="http://v8.1c.ru/8.1/data-composition-system/settings">Основной</name>
+			<presentation xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="xs:string">Основной</presentation>
+		</settingsVariant>
+	</dataCompositionSchema>
+</SchemaFile>﻿<?xml version="1.0" encoding="UTF-8"?>
+<Settings xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataParameters>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:use>false</dcscor:use>
+			<dcscor:parameter>Документ</dcscor:parameter>
+			<dcscor:value xsi:nil="true"/>
+			<userSettingID>9a379f64-4cd6-4600-b834-7c8c2d9b7e79</userSettingID>
+		</dcscor:item>
+	</dataParameters>
+	<item xsi:type="StructureItemGroup">
+		<groupItems>
+			<item xsi:type="GroupItemField">
+				<field>Регистратор</field>
+				<groupType>Items</groupType>
+				<periodAdditionType>None</periodAdditionType>
+				<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+				<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+			</item>
+		</groupItems>
+		<order>
+			<item xsi:type="OrderItemAuto"/>
+		</order>
+		<selection>
+			<item xsi:type="SelectedItemAuto"/>
+		</selection>
+	</item>
+	<item xsi:type="StructureItemGroup">
+		<groupItems>
+			<item xsi:type="GroupItemField">
+				<field>Место</field>
+				<groupType>Items</groupType>
+				<periodAdditionType>None</periodAdditionType>
+				<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+				<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+			</item>
+		</groupItems>
+		<order>
+			<item xsi:type="OrderItemAuto"/>
+		</order>
+		<selection>
+			<item xsi:type="SelectedItemAuto"/>
+		</selection>
+	</item>
+	<item xsi:type="StructureItemGroup">
+		<groupItems>
+			<item xsi:type="GroupItemField">
+				<field>Период</field>
+				<groupType>Items</groupType>
+				<periodAdditionType>None</periodAdditionType>
+				<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+				<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+			</item>
+			<item xsi:type="GroupItemField">
+				<field>Место</field>
+				<groupType>Items</groupType>
+				<periodAdditionType>None</periodAdditionType>
+				<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+				<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+			</item>
+			<item xsi:type="GroupItemField">
+				<field>СтатусОтгрузки</field>
+				<groupType>Items</groupType>
+				<periodAdditionType>None</periodAdditionType>
+				<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+				<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+			</item>
+			<item xsi:type="GroupItemField">
+				<field>Склад</field>
+				<groupType>Items</groupType>
+				<periodAdditionType>None</periodAdditionType>
+				<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+				<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+			</item>
+			<item xsi:type="GroupItemField">
+				<field>Пользователь</field>
+				<groupType>Items</groupType>
+				<periodAdditionType>None</periodAdditionType>
+				<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+				<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+			</item>
+		</groupItems>
+		<order>
+			<item xsi:type="OrderItemAuto"/>
+		</order>
+		<selection>
+			<item xsi:type="SelectedItemAuto"/>
+		</selection>
+	</item>
+</Settings>﻿<?xml version="1.0" encoding="UTF-8"?>
+<SchemaFile xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema"/>
+</SchemaFile>

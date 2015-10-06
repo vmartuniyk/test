@@ -1,0 +1,438 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<SchemaFile xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema">
+		<dataSource>
+			<name>ИсточникДанных1</name>
+			<dataSourceType>Local</dataSourceType>
+		</dataSource>
+		<dataSet xsi:type="DataSetQuery">
+			<name>НаборДанных</name>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>СуммаДокумента</dataPath>
+				<field>СуммаДокумента</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Сума</d5p1:content>
+					</d5p1:item>
+					<d5p1:item>
+						<d5p1:lang>uk</d5p1:lang>
+						<d5p1:content>Сума</d5p1:content>
+					</d5p1:item>
+				</title>
+				<role>
+					<periodNumber xmlns="http://v8.1c.ru/8.1/data-composition-system/common">7</periodNumber>
+					<periodType xmlns="http://v8.1c.ru/8.1/data-composition-system/common">Main</periodType>
+				</role>
+				<appearance>
+					<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+						<parameter>Формат</parameter>
+						<value xsi:type="xs:string">ЧЦ=15; ЧДЦ=2</value>
+					</item>
+				</appearance>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ДоговорНомер</dataPath>
+				<field>ДоговорНомер</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Номер договору</d5p1:content>
+					</d5p1:item>
+					<d5p1:item>
+						<d5p1:lang>uk</d5p1:lang>
+						<d5p1:content>Номер договору</d5p1:content>
+					</d5p1:item>
+				</title>
+				<role>
+					<periodNumber xmlns="http://v8.1c.ru/8.1/data-composition-system/common">5</periodNumber>
+					<periodType xmlns="http://v8.1c.ru/8.1/data-composition-system/common">Main</periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Контрагент</dataPath>
+				<field>Контрагент</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Контрагент</d5p1:content>
+					</d5p1:item>
+					<d5p1:item>
+						<d5p1:lang>uk</d5p1:lang>
+						<d5p1:content>Контрагент</d5p1:content>
+					</d5p1:item>
+				</title>
+				<role>
+					<periodNumber xmlns="http://v8.1c.ru/8.1/data-composition-system/common">3</periodNumber>
+					<periodType xmlns="http://v8.1c.ru/8.1/data-composition-system/common">Main</periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Дата</dataPath>
+				<field>Дата</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Дата</d5p1:content>
+					</d5p1:item>
+					<d5p1:item>
+						<d5p1:lang>uk</d5p1:lang>
+						<d5p1:content>Дата</d5p1:content>
+					</d5p1:item>
+				</title>
+				<role>
+					<periodNumber xmlns="http://v8.1c.ru/8.1/data-composition-system/common">2</periodNumber>
+					<periodType xmlns="http://v8.1c.ru/8.1/data-composition-system/common">Main</periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Ссылка</dataPath>
+				<field>Ссылка</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Документ</d5p1:content>
+					</d5p1:item>
+					<d5p1:item>
+						<d5p1:lang>uk</d5p1:lang>
+						<d5p1:content>Документ</d5p1:content>
+					</d5p1:item>
+				</title>
+				<role>
+					<periodNumber xmlns="http://v8.1c.ru/8.1/data-composition-system/common">1</periodNumber>
+					<periodType xmlns="http://v8.1c.ru/8.1/data-composition-system/common">Main</periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ДоговорДата</dataPath>
+				<field>ДоговорДата</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Дата договору</d5p1:content>
+					</d5p1:item>
+					<d5p1:item>
+						<d5p1:lang>uk</d5p1:lang>
+						<d5p1:content>Дата договору</d5p1:content>
+					</d5p1:item>
+				</title>
+				<role>
+					<periodNumber xmlns="http://v8.1c.ru/8.1/data-composition-system/common">6</periodNumber>
+					<periodType xmlns="http://v8.1c.ru/8.1/data-composition-system/common">Main</periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ФактАдресКонтрагента</dataPath>
+				<field>ФактАдресКонтрагента</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Фактична адреса контрагента</d5p1:content>
+					</d5p1:item>
+					<d5p1:item>
+						<d5p1:lang>uk</d5p1:lang>
+						<d5p1:content>Фактична адреса контрагента</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ЮрАдресКонтрагента</dataPath>
+				<field>ЮрАдресКонтрагента</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Юридична адреса контрагента</d5p1:content>
+					</d5p1:item>
+					<d5p1:item>
+						<d5p1:lang>uk</d5p1:lang>
+						<d5p1:content>Юридична адреса контрагента</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Счет</dataPath>
+				<field>Счет</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>КорСчет</dataPath>
+				<field>КорСчет</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ВалютаКор</dataPath>
+				<field>ВалютаКор</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>КорСубконто1</dataPath>
+				<field>КорСубконто1</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>КорСубконто2</dataPath>
+				<field>КорСубконто2</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Организация</dataPath>
+				<field>Организация</field>
+				<role>
+					<periodNumber xmlns="http://v8.1c.ru/8.1/data-composition-system/common">8</periodNumber>
+					<periodType xmlns="http://v8.1c.ru/8.1/data-composition-system/common">Main</periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>КорСубконто3</dataPath>
+				<field>КорСубконто3</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Субконто1</dataPath>
+				<field>Субконто1</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Субконто2</dataPath>
+				<field>Субконто2</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Субконто3</dataPath>
+				<field>Субконто3</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>НалоговоеНазначение</dataPath>
+				<field>НалоговоеНазначение</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>НалоговоеНазначениеКор</dataPath>
+				<field>НалоговоеНазначениеКор</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Валюта</dataPath>
+				<field>Валюта</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Договор</dataPath>
+				<field>Договор</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Договор</d5p1:content>
+					</d5p1:item>
+				</title>
+				<role>
+					<periodNumber xmlns="http://v8.1c.ru/8.1/data-composition-system/common">4</periodNumber>
+					<periodType xmlns="http://v8.1c.ru/8.1/data-composition-system/common">Main</periodType>
+				</role>
+			</field>
+			<dataSource>ИсточникДанных1</dataSource>
+			<query>ВЫБРАТЬ
+	Обороты.Регистратор КАК Ссылка,
+	ВЫРАЗИТЬ(Обороты.Регистратор КАК Документ.РеализацияТоваровУслуг).Дата КАК Дата,
+	ВЫРАЗИТЬ(Обороты.Регистратор КАК Документ.РеализацияТоваровУслуг).Контрагент КАК Контрагент,
+	ВЫРАЗИТЬ(Обороты.Регистратор КАК Документ.РеализацияТоваровУслуг).ДоговорКонтрагента КАК Договор,
+	ВЫРАЗИТЬ(Обороты.Регистратор КАК Документ.РеализацияТоваровУслуг).ДоговорКонтрагента.Номер КАК ДоговорНомер,
+	ВЫРАЗИТЬ(Обороты.Регистратор КАК Документ.РеализацияТоваровУслуг).ДоговорКонтрагента.Дата КАК ДоговорДата,
+	ВЫРАЗИТЬ(Обороты.Регистратор КАК Документ.РеализацияТоваровУслуг).СуммаДокумента КАК СуммаДокумента,
+	ЕСТЬNULL(ИнформацияФактическая.Представление, "") КАК ФактАдресКонтрагента,
+	ЕСТЬNULL(ИнформацияЮредическая.Представление, "") КАК ЮрАдресКонтрагента,
+	ВЫРАЗИТЬ(Обороты.Регистратор КАК Документ.РеализацияТоваровУслуг).Организация КАК Организация
+ИЗ
+	РегистрБухгалтерии.Хозрасчетный.Обороты(&amp;НачалоПериода, &amp;КонецПериода, Регистратор, , , , , ) КАК Обороты
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.КонтактнаяИнформация КАК ИнформацияФактическая
+		ПО (ВЫРАЗИТЬ(Обороты.Регистратор КАК Документ.РеализацияТоваровУслуг).Контрагент = (ВЫРАЗИТЬ(ИнформацияФактическая.Объект КАК Справочник.Контрагенты)))
+			И (ИнформацияФактическая.Тип = ЗНАЧЕНИЕ(Перечисление.ТипыКонтактнойИнформации.Адрес))
+			И (ИнформацияФактическая.Вид = ЗНАЧЕНИЕ(Справочник.ВидыКонтактнойИнформации.ФактАдресКонтрагента))
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.КонтактнаяИнформация КАК ИнформацияЮредическая
+		ПО (ВЫРАЗИТЬ(Обороты.Регистратор КАК Документ.РеализацияТоваровУслуг).Контрагент = (ВЫРАЗИТЬ(ИнформацияЮредическая.Объект КАК Справочник.Контрагенты)))
+			И (ИнформацияЮредическая.Тип = ЗНАЧЕНИЕ(Перечисление.ТипыКонтактнойИнформации.Адрес))
+			И (ИнформацияЮредическая.Вид = ЗНАЧЕНИЕ(Справочник.ВидыКонтактнойИнформации.ЮрАдресКонтрагента))
+ГДЕ
+	Обороты.Регистратор ССЫЛКА Документ.РеализацияТоваровУслуг</query>
+		</dataSet>
+		<totalField>
+			<dataPath>СуммаДокумента</dataPath>
+			<expression>Сумма(СуммаДокумента)</expression>
+		</totalField>
+		<parameter>
+			<name>НачалоПериода</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Начало периода</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:dateTime</Type>
+				<DateQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
+					<DateFractions>DateTime</DateFractions>
+				</DateQualifiers>
+			</valueType>
+			<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+			<useRestriction>false</useRestriction>
+		</parameter>
+		<parameter>
+			<name>КонецПериода</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Конец периода</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:dateTime</Type>
+				<DateQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
+					<DateFractions>DateTime</DateFractions>
+				</DateQualifiers>
+			</valueType>
+			<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+			<useRestriction>false</useRestriction>
+		</parameter>
+		<settingsVariant>
+			<name xmlns="http://v8.1c.ru/8.1/data-composition-system/settings">Основной</name>
+			<presentation xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="xs:string">Основний</presentation>
+		</settingsVariant>
+	</dataCompositionSchema>
+</SchemaFile>﻿<?xml version="1.0" encoding="UTF-8"?>
+<Settings xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<selection>
+		<item xsi:type="SelectedItemField">
+			<field>Дата</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>Контрагент</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>ФактАдресКонтрагента</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>ЮрАдресКонтрагента</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>Ссылка</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>ДоговорНомер</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>ДоговорДата</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>СуммаДокумента</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<use>false</use>
+			<field>Организация</field>
+		</item>
+	</selection>
+	<filter>
+		<item xsi:type="FilterItemComparison">
+			<use>false</use>
+			<left xsi:type="dcscor:Field">Организация</left>
+			<comparisonType>Equal</comparisonType>
+			<right xsi:type="dcscor:DesignTimeValue">Справочник.Организации.ПустаяСсылка</right>
+		</item>
+		<item xsi:type="FilterItemComparison">
+			<use>false</use>
+			<left xsi:type="dcscor:Field">Контрагент</left>
+			<comparisonType>Equal</comparisonType>
+			<right xsi:type="dcscor:DesignTimeValue">Справочник.Контрагенты.ПустаяСсылка</right>
+		</item>
+	</filter>
+	<order>
+		<item xsi:type="OrderItemField">
+			<field>Дата</field>
+			<orderType>Asc</orderType>
+		</item>
+	</order>
+	<conditionalAppearance>
+		<item>
+			<selection>
+				<item>
+					<field>Контрагент</field>
+				</item>
+			</selection>
+			<filter/>
+			<appearance>
+				<dcscor:item xsi:type="SettingsParameterValue">
+					<dcscor:parameter>МаксимальнаяШирина</dcscor:parameter>
+					<dcscor:value xsi:type="xs:decimal">25</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</item>
+		<item>
+			<selection>
+				<item>
+					<field>Дата</field>
+				</item>
+			</selection>
+			<filter/>
+			<appearance>
+				<dcscor:item xsi:type="SettingsParameterValue">
+					<dcscor:parameter>МаксимальнаяШирина</dcscor:parameter>
+					<dcscor:value xsi:type="xs:decimal">15</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</item>
+		<item>
+			<selection>
+				<item>
+					<field>ДоговорДата</field>
+				</item>
+			</selection>
+			<filter/>
+			<appearance>
+				<dcscor:item xsi:type="SettingsParameterValue">
+					<dcscor:parameter>МаксимальнаяШирина</dcscor:parameter>
+					<dcscor:value xsi:type="xs:decimal">9</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</item>
+		<item>
+			<selection>
+				<item>
+					<field>ФактАдресКонтрагента</field>
+				</item>
+				<item>
+					<field>ЮрАдресКонтрагента</field>
+				</item>
+			</selection>
+			<filter/>
+			<appearance>
+				<dcscor:item xsi:type="SettingsParameterValue">
+					<dcscor:parameter>МаксимальнаяШирина</dcscor:parameter>
+					<dcscor:value xsi:type="xs:decimal">35</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</item>
+		<item>
+			<selection>
+				<item>
+					<field>Ссылка</field>
+				</item>
+			</selection>
+			<filter/>
+			<appearance>
+				<dcscor:item xsi:type="SettingsParameterValue">
+					<dcscor:parameter>МаксимальнаяШирина</dcscor:parameter>
+					<dcscor:value xsi:type="xs:decimal">50</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</item>
+	</conditionalAppearance>
+	<outputParameters>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>ВыводитьПараметрыДанных</dcscor:parameter>
+			<dcscor:value xsi:type="DataCompositionTextOutputType">DontOutput</dcscor:value>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>ВыводитьОтбор</dcscor:parameter>
+			<dcscor:value xsi:type="DataCompositionTextOutputType">DontOutput</dcscor:value>
+		</dcscor:item>
+	</outputParameters>
+	<item xsi:type="StructureItemGroup">
+		<order>
+			<item xsi:type="OrderItemAuto"/>
+		</order>
+		<selection>
+			<item xsi:type="SelectedItemAuto"/>
+		</selection>
+	</item>
+</Settings>﻿<?xml version="1.0" encoding="UTF-8"?>
+<SchemaFile xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema"/>
+</SchemaFile>

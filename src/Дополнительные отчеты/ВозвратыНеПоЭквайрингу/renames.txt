@@ -1,0 +1,11 @@
+﻿0284a3c1-2824-459c-8dad-12a80eb0598c-->und\0284a3c1-2824-459c-8dad-12a80eb0598c
+0284a3c1-2824-459c-8dad-12a80eb0598c.0-->und\0284a3c1-2824-459c-8dad-12a80eb0598c.0
+0be197ba-1695-49ea-9588-b225294e99d6-->und\0be197ba-1695-49ea-9588-b225294e99d6
+0be197ba-1695-49ea-9588-b225294e99d6.0-->und\0be197ba-1695-49ea-9588-b225294e99d6.0
+1709ccea-4d4f-484f-8231-db928dc7f8e2-->und\1709ccea-4d4f-484f-8231-db928dc7f8e2
+1dc8e8ac-98d3-485e-b825-4af9d8278a86.0\info-->C:\Users\gplusuk\AppData\Local\Temp\5\ВозвратыНеПоЭквайрингу.erf.und\1dc8e8ac-98d3-485e-b825-4af9d8278a86.0\info
+1dc8e8ac-98d3-485e-b825-4af9d8278a86.0\text-->ObjectModule.txt
+copyinfo-->und\copyinfo
+root-->und\root
+version-->und\version
+versions-->und\versions

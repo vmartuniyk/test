@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<uilog xmlns:d1p1="http://v8.1c.ru/8.3/uilog">
+	<ClientApplicationWindow caption="Начисление зарплаты">
+		<Form title="Начисление зарплаты">
+			<FormGroup name="ГруппаПартнеры" title="Дерево сотрудников">
+				<FormTable name="ДеревоПартнеров" title="ДеревоПартнеров">
+					<activate/>
+					<expand/>
+				</FormTable>
+			</FormGroup>
+			<FormGroup name="ГруппаЗаголовок" title="Группа заголовок">
+				<FormField name="ПредставлениеМесяц" title="Месяц">
+					<activate/>
+					<startChoosingFromChoiceList/>
+				</FormField>
+			</FormGroup>
+			<FormGroup name="ГруппаПартнеры" title="Дерево сотрудников">
+				<FormTable name="ДеревоПартнеров" title="ДеревоПартнеров">
+					<expand>
+						<Field title="02.2015" cellText=""/>
+						<Field title="Подразделение" cellText="Комерційний департамент"/>
+						<Field title="Организация" cellText=""/>
+						<Field title="Пустышка" cellText=""/>
+					</expand>
+				</FormTable>
+			</FormGroup>
+			<FormGroup name="ГруппаЗаголовок" title="Группа заголовок">
+				<FormField name="КоличествоМесяцев" title="Количество месяцев">
+					<activate/>
+					<inputText text="1"/>
+				</FormField>
+				<FormGroup name="ГруппаКнопки" title="Группа кнопки">
+					<FormButton name="ОбновитьДеревоПартнеров" title="Обновить">
+						<click/>
+					</FormButton>
+				</FormGroup>
+			</FormGroup>
+			<FormGroup name="ГруппаПартнеры" title="Дерево сотрудников">
+				<FormTable name="ДеревоПартнеров" title="ДеревоПартнеров">
+					<activate/>
+					<expand>
+						<Field title="02.2015" cellText=""/>
+						<Field title="Подразделение" cellText="Відділ закупівлі"/>
+						<Field title="Организация" cellText=""/>
+						<Field title="Пустышка" cellText=""/>
+					</expand>
+					<gotoRow direction="down">
+						<Field title="02.2015" cellText=""/>
+						<Field title="Подразделение" cellText="Процишин Юрій Олександрович ЗП"/>
+						<Field title="Организация" cellText=""/>
+						<Field title="Пустышка" cellText=""/>
+					</gotoRow>
+					<FormField name="СуммаНачислено1" title="02.2015">
+						<activate/>
+					</FormField>
+				</FormTable>
+			</FormGroup>
+		</Form>
+	</ClientApplicationWindow>
+</uilog>

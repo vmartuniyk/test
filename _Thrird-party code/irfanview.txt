@@ -1,0 +1,1 @@
+/c start /wait c:\IrfanView\i_view32.exe D:\pbazelyuk\chart.png /crop=(17,17,270,270) /bright=100 /advancedbatch /aspectratio /resample /silent /convert=D:\pbazelyuk\res.png

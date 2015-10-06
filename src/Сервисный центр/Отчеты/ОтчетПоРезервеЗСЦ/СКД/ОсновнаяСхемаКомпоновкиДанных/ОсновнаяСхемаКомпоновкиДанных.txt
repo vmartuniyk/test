@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<SchemaFile xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema">
+		<dataSource>
+			<name>ИсточникДанных1</name>
+			<dataSourceType>Local</dataSourceType>
+		</dataSource>
+		<dataSet xsi:type="DataSetQuery">
+			<name>НаборДанных1</name>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>СерийныеНомера</dataPath>
+				<field>СерийныеНомера</field>
+				<role>
+					<dimension xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</dimension>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ЗаявкаСервисногоЦентра</dataPath>
+				<field>ЗаявкаСервисногоЦентра</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Заявка сервисного центра</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Склад</dataPath>
+				<field>Склад</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Характеристика</dataPath>
+				<field>Характеристика</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Номенклатура</dataPath>
+				<field>Номенклатура</field>
+				<role>
+					<dimension xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</dimension>
+				</role>
+			</field>
+			<dataSource>ИсточникДанных1</dataSource>
+			<query>ВЫБРАТЬ
+	ПересчетТоваровТовары.Номенклатура,
+	ПересчетТоваровТовары.Ссылка.Склад
+ПОМЕСТИТЬ ДокТаб
+ИЗ
+	Документ.ПересчетТоваров.Товары КАК ПересчетТоваровТовары
+ГДЕ
+	ПересчетТоваровТовары.Ссылка = &amp;ДокументСсылка
+	И ПересчетТоваровТовары.КоличествоУпаковок &gt; 0
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	СерийныеНомераНоменклатурыОстатки.Номенклатура,
+	СерийныеНомераНоменклатурыОстатки.СерийныеНомера
+ПОМЕСТИТЬ СерийныеНомераПоОстаткам
+ИЗ
+	РегистрНакопления.СерийныеНомераНоменклатуры.Остатки(
+			,
+			(Номенклатура, Склад) В
+				(ВЫБРАТЬ
+					ДокТаб.Номенклатура,
+					ДокТаб.Склад
+				ИЗ
+					ДокТаб КАК ДокТаб
+				ГДЕ
+					ДокТаб.Номенклатура.ИспользоватьСерийныеНомера = ИСТИНА)) КАК СерийныеНомераНоменклатурыОстатки
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ГНАТ_ЗаявкиСервисногоЦентра.Регистратор,
+	ГНАТ_ЗаявкиСервисногоЦентра.Номенклатура,
+	ГНАТ_ЗаявкиСервисногоЦентра.СерийныйНомер
+ПОМЕСТИТЬ ЗСЦПоНоменклатуре
+ИЗ
+	РегистрСведений.ГНАТ_ЗаявкиСервисногоЦентра КАК ГНАТ_ЗаявкиСервисногоЦентра
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ РегистрСведений.ГНАТ_ЭтапыРаботЗаявокСервисногоЦентра.СрезПоследних КАК ГНАТ_ЭтапыРаботЗаявокСервисногоЦентраСрезПоследних
+		ПО ГНАТ_ЗаявкиСервисногоЦентра.Регистратор = ГНАТ_ЭтапыРаботЗаявокСервисногоЦентраСрезПоследних.ЗаявкаСервисногоЦентра
+			И (ГНАТ_ЭтапыРаботЗаявокСервисногоЦентраСрезПоследних.ЭтапРаботы &lt;&gt; ЗНАЧЕНИЕ(Справочник.ГНАТ_ЭтапыРаботы.Выдано))
+ГДЕ
+	ГНАТ_ЗаявкиСервисногоЦентра.Номенклатура В
+			(ВЫБРАТЬ
+				ДокТаб.Номенклатура
+			ИЗ
+				СерийныеНомераПоОстаткам КАК ДокТаб)
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	СерийныеНомераПоОстаткам.Номенклатура,
+	СерийныеНомераПоОстаткам.СерийныеНомера,
+	ЗСЦПоНоменклатуре.Регистратор КАК ЗаявкаСервисногоЦентра
+ИЗ
+	СерийныеНомераПоОстаткам КАК СерийныеНомераПоОстаткам
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ ЗСЦПоНоменклатуре КАК ЗСЦПоНоменклатуре
+		ПО СерийныеНомераПоОстаткам.Номенклатура = ЗСЦПоНоменклатуре.Номенклатура
+			И СерийныеНомераПоОстаткам.СерийныеНомера = ЗСЦПоНоменклатуре.СерийныйНомер
+
+ОБЪЕДИНИТЬ
+
+ВЫБРАТЬ
+	ЗСЦПоНоменклатуре.Номенклатура,
+	ЗСЦПоНоменклатуре.СерийныйНомер,
+	ЗСЦПоНоменклатуре.Регистратор
+ИЗ
+	ЗСЦПоНоменклатуре КАК ЗСЦПоНоменклатуре
+ГДЕ
+	ЗСЦПоНоменклатуре.Номенклатура.ИспользоватьСерийныеНомера = ЛОЖЬ</query>
+		</dataSet>
+		<parameter>
+			<name>Период</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Период</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:dateTime</Type>
+				<DateQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
+					<DateFractions>DateTime</DateFractions>
+				</DateQualifiers>
+			</valueType>
+			<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+			<useRestriction>false</useRestriction>
+		</parameter>
+		<parameter>
+			<name>ДокументСсылка</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Документ ссылка</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:DocumentRef.ПересчетТоваров</Type>
+			</valueType>
+			<value xsi:nil="true"/>
+			<useRestriction>true</useRestriction>
+		</parameter>
+		<settingsVariant>
+			<name xmlns="http://v8.1c.ru/8.1/data-composition-system/settings">Основной</name>
+			<presentation xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="xs:string">Основной</presentation>
+		</settingsVariant>
+	</dataCompositionSchema>
+</SchemaFile>﻿<?xml version="1.0" encoding="UTF-8"?>
+<Settings xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<selection>
+		<item xsi:type="SelectedItemField">
+			<field>ЗаявкаСервисногоЦентра</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>Номенклатура</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>СерийныеНомера</field>
+		</item>
+	</selection>
+	<dataParameters>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:use>false</dcscor:use>
+			<dcscor:parameter>Период</dcscor:parameter>
+			<dcscor:value xsi:type="v8:StandardBeginningDate">
+				<v8:variant xsi:type="v8:StandardBeginningDateVariant">Custom</v8:variant>
+				<v8:date>0001-01-01T00:00:00</v8:date>
+			</dcscor:value>
+			<userSettingID>4b8b6882-8f7c-4fdb-b452-5f8cdbf55b0a</userSettingID>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:use>false</dcscor:use>
+			<dcscor:parameter>ДокументСсылка</dcscor:parameter>
+			<dcscor:value xsi:nil="true"/>
+			<userSettingID>cc8a1802-d1ea-4fdb-9261-2a22a54d42ff</userSettingID>
+		</dcscor:item>
+	</dataParameters>
+	<item xsi:type="StructureItemGroup">
+		<groupItems>
+			<item xsi:type="GroupItemField">
+				<field>Номенклатура</field>
+				<groupType>Items</groupType>
+				<periodAdditionType>None</periodAdditionType>
+				<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+				<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+			</item>
+		</groupItems>
+		<order>
+			<item xsi:type="OrderItemAuto"/>
+		</order>
+		<selection>
+			<item xsi:type="SelectedItemAuto"/>
+		</selection>
+		<item xsi:type="StructureItemGroup">
+			<order>
+				<item xsi:type="OrderItemAuto"/>
+			</order>
+			<selection>
+				<item xsi:type="SelectedItemAuto"/>
+			</selection>
+		</item>
+	</item>
+</Settings>﻿<?xml version="1.0" encoding="UTF-8"?>
+<SchemaFile xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema"/>
+</SchemaFile>

@@ -1,0 +1,576 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<SchemaFile xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema">
+		<dataSource>
+			<name>ИсточникДанных1</name>
+			<dataSourceType>Local</dataSourceType>
+		</dataSource>
+		<dataSet xsi:type="DataSetQuery">
+			<name>НаборДанных1</name>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Документ</dataPath>
+				<field>Документ</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Документ</d5p1:content>
+					</d5p1:item>
+				</title>
+				<role>
+					<periodNumber xmlns="http://v8.1c.ru/8.1/data-composition-system/common">1</periodNumber>
+					<periodType xmlns="http://v8.1c.ru/8.1/data-composition-system/common">Main</periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Характеристика</dataPath>
+				<field>Характеристика</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Назначение</dataPath>
+				<field>Назначение</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Место</dataPath>
+				<field>Место</field>
+				<role>
+					<dimension xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</dimension>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Склад</dataPath>
+				<field>Склад</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Количество</dataPath>
+				<field>Количество</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Количество</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Номенклатура</dataPath>
+				<field>Номенклатура</field>
+				<role>
+					<dimension xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</dimension>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Период</dataPath>
+				<field>Период</field>
+				<role>
+					<periodNumber xmlns="http://v8.1c.ru/8.1/data-composition-system/common">2</periodNumber>
+					<periodType xmlns="http://v8.1c.ru/8.1/data-composition-system/common">Main</periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>СтатусОтгрузки</dataPath>
+				<field>СтатусОтгрузки</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Статус отгрузки</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
+			<dataSource>ИсточникДанных1</dataSource>
+			<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	Назначения.Ссылка
+ПОМЕСТИТЬ ВТ_Назначения
+ИЗ
+	Справочник.Назначения КАК Назначения
+ГДЕ
+	Назначения.ПометкаУдаления = ЛОЖЬ
+	И Назначения.Заказ = &amp;Заказ
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗРЕШЕННЫЕ РАЗЛИЧНЫЕ
+	ОбеспечениеЗаказов.Регистратор,
+	ОбеспечениеЗаказов.Номенклатура,
+	ВЫБОР
+		КОГДА ОбеспечениеЗаказов.НаличиеПодЗаказ + ОбеспечениеЗаказов.НаличиеСоСклада = 0
+			ТОГДА ОбеспечениеЗаказов.Заказано
+		ИНАЧЕ ОбеспечениеЗаказов.НаличиеПодЗаказ + ОбеспечениеЗаказов.НаличиеСоСклада
+	КОНЕЦ КАК Количество
+ПОМЕСТИТЬ ВТ_Обеспечение
+ИЗ
+	РегистрНакопления.ОбеспечениеЗаказов КАК ОбеспечениеЗаказов
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ ВТ_Назначения КАК ВТ_Назначения
+		ПО ОбеспечениеЗаказов.Назначение = ВТ_Назначения.Ссылка
+			И (ОбеспечениеЗаказов.Склад = &amp;Склад)
+ГДЕ
+	ОбеспечениеЗаказов.Назначение В
+			(ВЫБРАТЬ
+				ВТ_Назначения.Ссылка
+			ИЗ
+				ВТ_Назначения КАК ВТ_Назначения)
+	И ОбеспечениеЗаказов.Регистратор &lt;&gt; &amp;Заказ
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	МестаДоставки.Ссылка КАК Место
+ПОМЕСТИТЬ ВТ_МестаПоНазначениюОжидаются
+ИЗ
+	Справочник.МестаДоставки КАК МестаДоставки
+ГДЕ
+	МестаДоставки.ПометкаУдаления = ЛОЖЬ
+	И МестаДоставки.Назначение В
+			(ВЫБРАТЬ
+				ВТ_Назначения.Ссылка
+			ИЗ
+				ВТ_Назначения КАК ВТ_Назначения)
+	И МестаДоставки.Транзит = ИСТИНА
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	МАКСИМУМ(ОтгрузкаМест.Период) КАК Период,
+	ОтгрузкаМест.Место
+ПОМЕСТИТЬ ВТ_ЗначениеОтгрузкиОжидаются
+ИЗ
+	РегистрСведений.ОтгрузкаМест КАК ОтгрузкаМест
+ГДЕ
+	ОтгрузкаМест.Место В
+			(ВЫБРАТЬ
+				ВТ_МестаПоНазначению.Место
+			ИЗ
+				ВТ_МестаПоНазначениюОжидаются КАК ВТ_МестаПоНазначению)
+
+СГРУППИРОВАТЬ ПО
+	ОтгрузкаМест.Место
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	ОтгрузкаМест.Место,
+	ВЫБОР
+		КОГДА ОтгрузкаМест.СтатусОтгрузки = ЗНАЧЕНИЕ(Перечисление.СтатусыОтгрузкиМест.ОтгруженоПартнеру)
+			ТОГДА ИСТИНА
+		ИНАЧЕ ЛОЖЬ
+	КОНЕЦ КАК НаТранзитномСкладе,
+	ВЫБОР
+		КОГДА ОтгрузкаМест.СтатусОтгрузки = ЗНАЧЕНИЕ(Перечисление.СтатусыОтгрузкиМест.ОтгруженоПартнеру)
+			ТОГДА ЛОЖЬ
+		ИНАЧЕ ИСТИНА
+	КОНЕЦ КАК Ожидается,
+	ОтгрузкаМест.СтатусОтгрузки
+ПОМЕСТИТЬ ВТ_ОтгруженыеМестаОжидаются
+ИЗ
+	РегистрСведений.ОтгрузкаМест КАК ОтгрузкаМест
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ ВТ_ЗначениеОтгрузкиОжидаются КАК ВТ_ЗначениеОтгрузкиОжидаются
+		ПО ОтгрузкаМест.Место = ВТ_ЗначениеОтгрузкиОжидаются.Место
+			И ОтгрузкаМест.Период = ВТ_ЗначениеОтгрузкиОжидаются.Период
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	МестаПоДокументам.Место,
+	ВЫБОР
+		КОГДА МестаПоДокументам.Документ ССЫЛКА Документ.РасходныйОрдерНаТовары
+			ТОГДА ВЫРАЗИТЬ(МестаПоДокументам.Документ КАК Документ.РасходныйОрдерНаТовары).Распоряжение
+		КОГДА МестаПоДокументам.Документ ССЫЛКА Документ.КТС_ОтгрузкаТоваров
+			ТОГДА ВЫРАЗИТЬ(МестаПоДокументам.Документ КАК Документ.КТС_ОтгрузкаТоваров).Распоряжение
+	КОНЕЦ КАК Документ
+ПОМЕСТИТЬ ВТ_ДокументПоМестуОжидается
+ИЗ
+	РегистрСведений.МестаПоДокументам КАК МестаПоДокументам
+ГДЕ
+	МестаПоДокументам.Место В
+			(ВЫБРАТЬ
+				ВТ_ОтгруженыеМеста.Место
+			ИЗ
+				ВТ_ОтгруженыеМестаОжидаются КАК ВТ_ОтгруженыеМеста)
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	МестаНоменклатуры.Номенклатура КАК Номенклатура,
+	СУММА(МестаНоменклатуры.Количество) КАК Количество,
+	ВТ_ДокументПоМестуОжидается.Документ,
+	ВТ_ДокументПоМестуОжидается.Место,
+	ВТ_ОтгруженыеМестаОжидаются.СтатусОтгрузки
+ПОМЕСТИТЬ ВТ_ОжидаетсяМестом
+ИЗ
+	РегистрСведений.МестаНоменклатуры КАК МестаНоменклатуры
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ ВТ_ОтгруженыеМестаОжидаются КАК ВТ_ОтгруженыеМестаОжидаются
+		ПО МестаНоменклатуры.Место = ВТ_ОтгруженыеМестаОжидаются.Место
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ ВТ_ДокументПоМестуОжидается КАК ВТ_ДокументПоМестуОжидается
+		ПО МестаНоменклатуры.Место = ВТ_ДокументПоМестуОжидается.Место
+ГДЕ
+	МестаНоменклатуры.Номенклатура = &amp;Номенклатура
+
+СГРУППИРОВАТЬ ПО
+	МестаНоменклатуры.Номенклатура,
+	ВТ_ДокументПоМестуОжидается.Место,
+	ВТ_ДокументПоМестуОжидается.Документ,
+	ВТ_ОтгруженыеМестаОжидаются.СтатусОтгрузки
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	МестаДоставки.Ссылка КАК Место
+ПОМЕСТИТЬ ВТ_МестаПоНазначению
+ИЗ
+	Справочник.МестаДоставки КАК МестаДоставки
+ГДЕ
+	МестаДоставки.ПометкаУдаления = ЛОЖЬ
+	И МестаДоставки.Назначение В
+			(ВЫБРАТЬ
+				ВТ_Назначения.Ссылка
+			ИЗ
+				ВТ_Назначения КАК ВТ_Назначения)
+	И МестаДоставки.Транзит = ЛОЖЬ
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	МАКСИМУМ(ОтгрузкаМест.Период) КАК Период,
+	ОтгрузкаМест.Место
+ПОМЕСТИТЬ ВТ_ЗначениеОтгрузки
+ИЗ
+	РегистрСведений.ОтгрузкаМест КАК ОтгрузкаМест
+ГДЕ
+	ОтгрузкаМест.Место В
+			(ВЫБРАТЬ
+				ВТ_МестаПоНазначению.Место
+			ИЗ
+				ВТ_МестаПоНазначению КАК ВТ_МестаПоНазначению)
+
+СГРУППИРОВАТЬ ПО
+	ОтгрузкаМест.Место
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	ОтгрузкаМест.Место,
+	ВЫБОР
+		КОГДА ОтгрузкаМест.СтатусОтгрузки = ЗНАЧЕНИЕ(Перечисление.СтатусыОтгрузкиМест.ОтгруженоПартнеру)
+			ТОГДА ИСТИНА
+		ИНАЧЕ ЛОЖЬ
+	КОНЕЦ КАК НаСкладеОтгрузки,
+	ВЫБОР
+		КОГДА ОтгрузкаМест.СтатусОтгрузки = ЗНАЧЕНИЕ(Перечисление.СтатусыОтгрузкиМест.ОтгруженоПартнеру)
+			ТОГДА ЛОЖЬ
+		ИНАЧЕ ИСТИНА
+	КОНЕЦ КАК ВПути,
+	ОтгрузкаМест.СтатусОтгрузки
+ПОМЕСТИТЬ ВТ_ОтгруженыеМеста
+ИЗ
+	РегистрСведений.ОтгрузкаМест КАК ОтгрузкаМест
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ ВТ_ЗначениеОтгрузки КАК ВТ_ЗначениеОтгрузки
+		ПО ОтгрузкаМест.Период = ВТ_ЗначениеОтгрузки.Период
+			И ОтгрузкаМест.Место = ВТ_ЗначениеОтгрузки.Место
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	МестаПоДокументам.Место,
+	ВЫБОР
+		КОГДА МестаПоДокументам.Документ ССЫЛКА Документ.РасходныйОрдерНаТовары
+			ТОГДА ВЫРАЗИТЬ(МестаПоДокументам.Документ КАК Документ.РасходныйОрдерНаТовары).Распоряжение
+		КОГДА МестаПоДокументам.Документ ССЫЛКА Документ.КТС_ОтгрузкаТоваров
+			ТОГДА ВЫРАЗИТЬ(МестаПоДокументам.Документ КАК Документ.КТС_ОтгрузкаТоваров).Распоряжение
+	КОНЕЦ КАК Документ
+ПОМЕСТИТЬ ВТ_ДокументПоМесту
+ИЗ
+	РегистрСведений.МестаПоДокументам КАК МестаПоДокументам
+ГДЕ
+	МестаПоДокументам.Место В
+			(ВЫБРАТЬ
+				ВТ_ОтгруженыеМеста.Место
+			ИЗ
+				ВТ_ОтгруженыеМеста КАК ВТ_ОтгруженыеМеста)
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	МестаНоменклатуры.Номенклатура,
+	СУММА(МестаНоменклатуры.Количество) КАК Количество,
+	ЛОЖЬ КАК НетВНаличии,
+	ЛОЖЬ КАК Отгружено,
+	ЛОЖЬ КАК Ожидается,
+	ВТ_ОтгруженыеМеста.НаСкладеОтгрузки КАК НаТранзитномСкладе,
+	ЛОЖЬ КАК НаСкладеОтгрузки,
+	ВТ_ОтгруженыеМеста.ВПути КАК ВПути,
+	ВТ_ДокументПоМесту.Документ,
+	МестаНоменклатуры.Место,
+	ВТ_ОтгруженыеМеста.СтатусОтгрузки
+ПОМЕСТИТЬ ВТ_НоменклатураПоМесту
+ИЗ
+	РегистрСведений.МестаНоменклатуры КАК МестаНоменклатуры
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ ВТ_ОтгруженыеМеста КАК ВТ_ОтгруженыеМеста
+		ПО МестаНоменклатуры.Место = ВТ_ОтгруженыеМеста.Место
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ ВТ_ДокументПоМесту КАК ВТ_ДокументПоМесту
+		ПО МестаНоменклатуры.Место = ВТ_ДокументПоМесту.Место
+
+СГРУППИРОВАТЬ ПО
+	ВТ_ОтгруженыеМеста.НаСкладеОтгрузки,
+	ВТ_ОтгруженыеМеста.ВПути,
+	ВТ_ДокументПоМесту.Документ,
+	МестаНоменклатуры.Номенклатура,
+	МестаНоменклатуры.Место,
+	ВТ_ОтгруженыеМеста.СтатусОтгрузки
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	КТС_ТоварыКПоступлениюПодОбеспечениеОстаткиИОбороты.Период КАК Период,
+	КТС_ТоварыКПоступлениюПодОбеспечениеОстаткиИОбороты.Номенклатура,
+	КТС_ТоварыКПоступлениюПодОбеспечениеОстаткиИОбороты.КПоступлениюКонечныйОстаток - КТС_ТоварыКПоступлениюПодОбеспечениеОстаткиИОбороты.КПоступлениюНачальныйОстаток КАК Количество,
+	КТС_ТоварыКПоступлениюПодОбеспечениеОстаткиИОбороты.Регистратор КАК Документ,
+	NULL КАК Место,
+	NULL КАК СтатусОтгрузки
+ИЗ
+	РегистрНакопления.КТС_ТоварыКПоступлениюПодОбеспечение.ОстаткиИОбороты(
+			,
+			,
+			Регистратор,
+			,
+			Назначение В
+					(ВЫБРАТЬ
+						ВТ_Назначения.Ссылка
+					ИЗ
+						ВТ_Назначения КАК ВТ_Назначения)
+				И Номенклатура = &amp;Номенклатура) КАК КТС_ТоварыКПоступлениюПодОбеспечениеОстаткиИОбороты
+ГДЕ
+	КТС_ТоварыКПоступлениюПодОбеспечениеОстаткиИОбороты.КПоступлениюКонечныйОстаток &gt; 0
+	И НЕ (КТС_ТоварыКПоступлениюПодОбеспечениеОстаткиИОбороты.Номенклатура, КТС_ТоварыКПоступлениюПодОбеспечениеОстаткиИОбороты.Регистратор) В
+				(ВЫБРАТЬ
+					Номенклатура,
+					Документ
+				ИЗ
+					ВТ_ОжидаетсяМестом )
+	И КТС_ТоварыКПоступлениюПодОбеспечениеОстаткиИОбороты.КПоступлениюОборот &lt;&gt; 0
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	ОбеспечениеЗаказовОбороты.Период,
+	ОбеспечениеЗаказовОбороты.Номенклатура,
+	ОбеспечениеЗаказовОбороты.ЗаказаноОборот,
+	ОбеспечениеЗаказовОбороты.Регистратор,
+	NULL,
+	NULL
+ИЗ
+	РегистрНакопления.ОбеспечениеЗаказов.Обороты(
+			,
+			,
+			Регистратор,
+			Назначение В
+				(ВЫБРАТЬ
+					ВТ_Назначения.Ссылка
+				ИЗ
+					ВТ_Назначения КАК ВТ_Назначения)) КАК ОбеспечениеЗаказовОбороты
+ГДЕ
+	ОбеспечениеЗаказовОбороты.Регистратор &lt;&gt; &amp;Заказ
+	И НЕ ОбеспечениеЗаказовОбороты.Регистратор ССЫЛКА Документ.ЗаказНаПеремещение
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	NULL,
+	Номенклатура,
+	Количество,
+	Документ,
+	Место,
+	СтатусОтгрузки
+ИЗ
+	ВТ_ОжидаетсяМестом
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	NULL,
+	ВТ_НоменклатураПоМесту.Номенклатура,
+	ВТ_НоменклатураПоМесту.Количество - ЕСТЬNULL(ВТ_Обеспечение.Количество, 0),
+	ВТ_НоменклатураПоМесту.Документ,
+	ВТ_НоменклатураПоМесту.Место,
+	ВТ_НоменклатураПоМесту.СтатусОтгрузки
+ИЗ
+	ВТ_НоменклатураПоМесту КАК ВТ_НоменклатураПоМесту
+		ЛЕВОЕ СОЕДИНЕНИЕ ВТ_Обеспечение КАК ВТ_Обеспечение
+		ПО ВТ_НоменклатураПоМесту.Номенклатура = ВТ_Обеспечение.Номенклатура
+			И ВТ_НоменклатураПоМесту.Документ = ВТ_Обеспечение.Регистратор
+ГДЕ
+	НЕ (ВТ_НоменклатураПоМесту.Документ, ВТ_НоменклатураПоМесту.Номенклатура) В
+				(ВЫБРАТЬ
+					ВТ_Обеспечение.Регистратор,
+					ВТ_Обеспечение.Номенклатура
+				ИЗ
+					ВТ_Обеспечение КАК ВТ_Обеспечение)
+
+УПОРЯДОЧИТЬ ПО
+	Период</query>
+		</dataSet>
+		<totalField>
+			<dataPath>Количество</dataPath>
+			<expression>Сумма(Количество)</expression>
+		</totalField>
+		<parameter>
+			<name>НачалоПериода</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Начало периода</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:dateTime</Type>
+				<DateQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
+					<DateFractions>DateTime</DateFractions>
+				</DateQualifiers>
+			</valueType>
+			<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+			<useRestriction>false</useRestriction>
+		</parameter>
+		<parameter>
+			<name>КонецПериода</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Конец периода</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:dateTime</Type>
+				<DateQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
+					<DateFractions>DateTime</DateFractions>
+				</DateQualifiers>
+			</valueType>
+			<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+			<useRestriction>false</useRestriction>
+		</parameter>
+		<parameter>
+			<name>Заказ</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Заказ</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:DocumentRef.ВнутреннееПотреблениеТоваров</Type>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:DocumentRef.ПоступлениеТоваровУслуг</Type>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:DocumentRef.ЗаказПоставщику</Type>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:DocumentRef.КорректировкаРегистров</Type>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:DocumentRef.ЗаявкаНаВозвратТоваровОтКлиента</Type>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:DocumentRef.ПеремещениеТоваров</Type>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:DocumentRef.ЗаказНаСборку</Type>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:DocumentRef.РеализацияТоваровУслуг</Type>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:DocumentRef.КорректировкаНазначенияТоваров</Type>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:DocumentRef.ЗаказНаПеремещение</Type>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:DocumentRef.СборкаТоваров</Type>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:DocumentRef.ЗаказНаВнутреннееПотребление</Type>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:DocumentRef.ЗаказКлиента</Type>
+			</valueType>
+			<value xsi:nil="true"/>
+			<useRestriction>false</useRestriction>
+		</parameter>
+		<parameter>
+			<name>Номенклатура</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Номенклатура</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.Номенклатура</Type>
+			</valueType>
+			<value xsi:nil="true"/>
+			<useRestriction>false</useRestriction>
+		</parameter>
+		<parameter>
+			<name>Склад</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Склад</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.Склады</Type>
+			</valueType>
+			<value xsi:nil="true"/>
+			<useRestriction>false</useRestriction>
+		</parameter>
+		<settingsVariant>
+			<name xmlns="http://v8.1c.ru/8.1/data-composition-system/settings">Основной</name>
+			<presentation xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="xs:string">Основной</presentation>
+		</settingsVariant>
+	</dataCompositionSchema>
+</SchemaFile>﻿<?xml version="1.0" encoding="UTF-8"?>
+<Settings xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<selection>
+		<item xsi:type="SelectedItemField">
+			<field>Номенклатура</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>Количество</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>Период</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>Место</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>СтатусОтгрузки</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>Документ</field>
+		</item>
+	</selection>
+	<order>
+		<item xsi:type="OrderItemField">
+			<field>Период</field>
+			<orderType>Asc</orderType>
+		</item>
+	</order>
+	<outputParameters>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>ВертикальноеРасположениеОбщихИтогов</dcscor:parameter>
+			<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">None</dcscor:value>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>ВыводитьПараметрыДанных</dcscor:parameter>
+			<dcscor:value xsi:type="DataCompositionTextOutputType">DontOutput</dcscor:value>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>ВыводитьОтбор</dcscor:parameter>
+			<dcscor:value xsi:type="DataCompositionTextOutputType">DontOutput</dcscor:value>
+		</dcscor:item>
+	</outputParameters>
+	<item xsi:type="StructureItemGroup">
+		<groupItems>
+			<item xsi:type="GroupItemField">
+				<field>Номенклатура</field>
+				<groupType>Items</groupType>
+				<periodAdditionType>None</periodAdditionType>
+				<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+				<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+			</item>
+		</groupItems>
+		<order>
+			<item xsi:type="OrderItemAuto"/>
+		</order>
+		<selection>
+			<item xsi:type="SelectedItemAuto"/>
+		</selection>
+		<item xsi:type="StructureItemGroup">
+			<order>
+				<item xsi:type="OrderItemAuto"/>
+			</order>
+			<selection>
+				<item xsi:type="SelectedItemAuto"/>
+			</selection>
+		</item>
+	</item>
+</Settings>﻿<?xml version="1.0" encoding="UTF-8"?>
+<SchemaFile xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema"/>
+</SchemaFile>

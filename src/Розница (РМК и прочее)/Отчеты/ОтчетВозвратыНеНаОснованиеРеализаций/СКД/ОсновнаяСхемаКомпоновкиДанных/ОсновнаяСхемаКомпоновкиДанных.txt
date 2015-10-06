@@ -1,0 +1,700 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<SchemaFile xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema">
+		<dataSource>
+			<name>ИсточникДанных1</name>
+			<dataSourceType>Local</dataSourceType>
+		</dataSource>
+		<dataSet xsi:type="DataSetQuery">
+			<name>НаборДанных1</name>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПериодДень</dataPath>
+				<field>ПериодДень</field>
+				<role>
+					<periodNumber xmlns="http://v8.1c.ru/8.1/data-composition-system/common">6</periodNumber>
+					<periodType xmlns="http://v8.1c.ru/8.1/data-composition-system/common">Additional</periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПериодПолугодие</dataPath>
+				<field>ПериодПолугодие</field>
+				<role>
+					<periodNumber xmlns="http://v8.1c.ru/8.1/data-composition-system/common">11</periodNumber>
+					<periodType xmlns="http://v8.1c.ru/8.1/data-composition-system/common">Additional</periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПериодЧас</dataPath>
+				<field>ПериодЧас</field>
+				<role>
+					<periodNumber xmlns="http://v8.1c.ru/8.1/data-composition-system/common">5</periodNumber>
+					<periodType xmlns="http://v8.1c.ru/8.1/data-composition-system/common">Additional</periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПериодМинута</dataPath>
+				<field>ПериодМинута</field>
+				<role>
+					<periodNumber xmlns="http://v8.1c.ru/8.1/data-composition-system/common">4</periodNumber>
+					<periodType xmlns="http://v8.1c.ru/8.1/data-composition-system/common">Additional</periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПериодМесяц</dataPath>
+				<field>ПериодМесяц</field>
+				<role>
+					<periodNumber xmlns="http://v8.1c.ru/8.1/data-composition-system/common">9</periodNumber>
+					<periodType xmlns="http://v8.1c.ru/8.1/data-composition-system/common">Additional</periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПериодКвартал</dataPath>
+				<field>ПериодКвартал</field>
+				<role>
+					<periodNumber xmlns="http://v8.1c.ru/8.1/data-composition-system/common">10</periodNumber>
+					<periodType xmlns="http://v8.1c.ru/8.1/data-composition-system/common">Additional</periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПериодСекунда</dataPath>
+				<field>ПериодСекунда</field>
+				<role>
+					<periodNumber xmlns="http://v8.1c.ru/8.1/data-composition-system/common">3</periodNumber>
+					<periodType xmlns="http://v8.1c.ru/8.1/data-composition-system/common">Main</periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПериодДекада</dataPath>
+				<field>ПериодДекада</field>
+				<role>
+					<periodNumber xmlns="http://v8.1c.ru/8.1/data-composition-system/common">8</periodNumber>
+					<periodType xmlns="http://v8.1c.ru/8.1/data-composition-system/common">Additional</periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПериодНеделя</dataPath>
+				<field>ПериодНеделя</field>
+				<role>
+					<periodNumber xmlns="http://v8.1c.ru/8.1/data-composition-system/common">7</periodNumber>
+					<periodType xmlns="http://v8.1c.ru/8.1/data-composition-system/common">Additional</periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПериодГод</dataPath>
+				<field>ПериодГод</field>
+				<role>
+					<periodNumber xmlns="http://v8.1c.ru/8.1/data-composition-system/common">12</periodNumber>
+					<periodType xmlns="http://v8.1c.ru/8.1/data-composition-system/common">Additional</periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>АналитикаУчетаНоменклатуры</dataPath>
+				<field>АналитикаУчетаНоменклатуры</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>АналитикаУчетаПоПартнерам</dataPath>
+				<field>АналитикаУчетаПоПартнерам</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ВаловаяПрыбыль</dataPath>
+				<field>ВаловаяПрыбыль</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Валовая прыбыль</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ВаловаяПрыбыльБезНДС</dataPath>
+				<field>ВаловаяПрыбыльБезНДС</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Валовая прыбыль без НДС</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ВаловаяПрыбыльРегл</dataPath>
+				<field>ВаловаяПрыбыльРегл</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Валовая прыбыль регл</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ВидЗапасов</dataPath>
+				<field>ВидЗапасов</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Выручка</dataPath>
+				<field>Выручка</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Выручка</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ВыручкаБезНДС</dataPath>
+				<field>ВыручкаБезНДС</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Выручка без НДС</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ВыручкаРегл</dataPath>
+				<field>ВыручкаРегл</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Выручка регл</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ДопРасходы</dataPath>
+				<field>ДопРасходы</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Доп расходы</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ДопРасходыБезНДС</dataPath>
+				<field>ДопРасходыБезНДС</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Доп расходы без НДС</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ЗаказКлиента</dataPath>
+				<field>ЗаказКлиента</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Количество</dataPath>
+				<field>Количество</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Количество</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Менеджер</dataPath>
+				<field>Менеджер</field>
+				<role>
+					<dimension xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</dimension>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Номенклатура</dataPath>
+				<field>Номенклатура</field>
+				<role>
+					<dimension xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</dimension>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Организация</dataPath>
+				<field>Организация</field>
+				<role>
+					<dimension xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</dimension>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Партнер</dataPath>
+				<field>Партнер</field>
+				<role>
+					<dimension xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</dimension>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Подразделение</dataPath>
+				<field>Подразделение</field>
+				<role>
+					<dimension xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</dimension>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Регистратор</dataPath>
+				<field>Регистратор</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Регистратор</d5p1:content>
+					</d5p1:item>
+				</title>
+				<role>
+					<periodNumber xmlns="http://v8.1c.ru/8.1/data-composition-system/common">1</periodNumber>
+					<periodType xmlns="http://v8.1c.ru/8.1/data-composition-system/common">Main</periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Рентабельность</dataPath>
+				<field>Рентабельность</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Рентабельность</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>РентабельностьБезНДС</dataPath>
+				<field>РентабельностьБезНДС</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Рентабельность без НДС</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>РентабельностьРегл</dataPath>
+				<field>РентабельностьРегл</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Рентабельность регл</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Себестоимость</dataPath>
+				<field>Себестоимость</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Себестоимость</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>СебестоимостьБезНДС</dataPath>
+				<field>СебестоимостьБезНДС</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Себестоимость без НДС</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>СебестоимостьРегл</dataPath>
+				<field>СебестоимостьРегл</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Себестоимость регл</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Склад</dataPath>
+				<field>Склад</field>
+				<role>
+					<dimension xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</dimension>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ТипЗапасов</dataPath>
+				<field>ТипЗапасов</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Коментарий</dataPath>
+				<field>Коментарий</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Коментарий</d5p1:content>
+					</d5p1:item>
+				</title>
+				<role>
+					<periodNumber xmlns="http://v8.1c.ru/8.1/data-composition-system/common">2</periodNumber>
+					<periodType xmlns="http://v8.1c.ru/8.1/data-composition-system/common">Main</periodType>
+				</role>
+			</field>
+			<dataSource>ИсточникДанных1</dataSource>
+			<query>ВЫБРАТЬ
+	Продажи.ПериодСекунда,
+	Продажи.ПериодМинута,
+	Продажи.ПериодЧас,
+	Продажи.ПериодДень,
+	Продажи.ПериодНеделя,
+	Продажи.ПериодДекада,
+	Продажи.ПериодМесяц,
+	Продажи.ПериодКвартал,
+	Продажи.ПериодПолугодие,
+	Продажи.ПериодГод,
+	АналитикаНоменклатуры.Номенклатура,
+	АналитикаНоменклатуры.Склад,
+	АналитикаПоПартнерам.Партнер,
+	АналитикаПоПартнерам.Организация,
+	Продажи.Подразделение,
+	Продажи.Менеджер,
+	ВЫРАЗИТЬ(Продажи.Регистратор КАК Документ.ВозвратТоваровОтКлиента) КАК Регистратор,
+	Продажи.КоличествоОборот КАК Количество,
+	Продажи.СуммаВыручкиОборот КАК Выручка,
+	Продажи.СуммаВыручкиРеглОборот КАК ВыручкаРегл,
+	Продажи.СуммаВыручкиБезНДСОборот КАК ВыручкаБезНДС,
+	Продажи.СебестоимостьОборот КАК Себестоимость,
+	Продажи.СебестоимостьБезНДСОборот КАК СебестоимостьБезНДС,
+	Продажи.СебестоимостьРеглОборот КАК СебестоимостьРегл,
+	Продажи.СуммаДополнительныхРасходовОборот КАК ДопРасходы,
+	Продажи.СуммаДополнительныхРасходовБезНДСОборот КАК ДопРасходыБезНДС,
+	СУММА(Продажи.СуммаВыручкиОборот) - СУММА(Продажи.СебестоимостьОборот) - СУММА(Продажи.СуммаДополнительныхРасходовОборот) КАК ВаловаяПрыбыль,
+	СУММА(Продажи.СуммаВыручкиРеглОборот) - СУММА(Продажи.СебестоимостьРеглОборот) КАК ВаловаяПрыбыльРегл,
+	СУММА(Продажи.СуммаВыручкиБезНДСОборот) - СУММА(Продажи.СебестоимостьБезНДСОборот) - СУММА(Продажи.СуммаДополнительныхРасходовБезНДСОборот) КАК ВаловаяПрыбыльБезНДС,
+	ВЫРАЗИТЬ(ВЫБОР
+			КОГДА СУММА(Продажи.СуммаВыручкиОборот) &lt;&gt; 0
+				ТОГДА (СУММА(Продажи.СуммаВыручкиОборот) - СУММА(Продажи.СебестоимостьОборот) - СУММА(Продажи.СуммаДополнительныхРасходовОборот)) / СУММА(Продажи.СуммаВыручкиОборот)
+			ИНАЧЕ 0
+		КОНЕЦ * 100 КАК ЧИСЛО(15, 2)) КАК Рентабельность,
+	ВЫРАЗИТЬ(ВЫБОР
+			КОГДА СУММА(Продажи.СуммаВыручкиРеглОборот) &lt;&gt; 0
+				ТОГДА (СУММА(Продажи.СуммаВыручкиРеглОборот) - СУММА(Продажи.СебестоимостьРеглОборот)) / СУММА(Продажи.СуммаВыручкиРеглОборот)
+			ИНАЧЕ 0
+		КОНЕЦ * 100 КАК ЧИСЛО(15, 2)) КАК РентабельностьРегл,
+	ВЫРАЗИТЬ(ВЫБОР
+			КОГДА СУММА(Продажи.СуммаВыручкиБезНДСОборот) &lt;&gt; 0
+				ТОГДА (СУММА(Продажи.СуммаВыручкиБезНДСОборот) - СУММА(Продажи.СебестоимостьБезНДСОборот) - СУММА(Продажи.СуммаДополнительныхРасходовБезНДСОборот)) / СУММА(Продажи.СуммаВыручкиБезНДСОборот)
+			ИНАЧЕ 0
+		КОНЕЦ * 100 КАК ЧИСЛО(15, 2)) КАК РентабельностьБезНДС,
+	ПОДСТРОКА(ВЫРАЗИТЬ(Продажи.Регистратор КАК Документ.ВозвратТоваровОтКлиента).Комментарий, 0, 200) КАК Коментарий
+ИЗ
+	РегистрНакопления.ВыручкаИСебестоимостьПродаж.Обороты(&amp;НачалоПериода, &amp;КонецПериода, Авто, ) КАК Продажи
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ РегистрСведений.АналитикаУчетаНоменклатуры КАК АналитикаНоменклатуры
+		ПО (Продажи.Регистратор ССЫЛКА Документ.ВозвратТоваровОтКлиента)
+			И (ВЫРАЗИТЬ(Продажи.Регистратор КАК Документ.ВозвратТоваровОтКлиента).ДокументРеализации = НЕОПРЕДЕЛЕНО)
+			И Продажи.АналитикаУчетаНоменклатуры = АналитикаНоменклатуры.КлючАналитики
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ РегистрСведений.АналитикаУчетаПоПартнерам КАК АналитикаПоПартнерам
+		ПО Продажи.АналитикаУчетаПоПартнерам = АналитикаПоПартнерам.КлючАналитики
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СтоимостьТоваров КАК СтоимостьНоменклатуры
+		ПО Продажи.АналитикаУчетаНоменклатуры = СтоимостьНоменклатуры.АналитикаУчетаНоменклатуры
+			И (АналитикаПоПартнерам.Организация = СтоимостьНоменклатуры.Организация)
+			И Продажи.ВидЗапасов = СтоимостьНоменклатуры.ВидЗапасов
+			И (СтоимостьНоменклатуры.Период = НАЧАЛОПЕРИОДА(Продажи.ПериодМесяц, МЕСЯЦ))
+		ЛЕВОЕ СОЕДИНЕНИЕ Документ.РасчетСебестоимостиТоваров.Организации КАК РасчетСебестоимости
+		ПО (НАЧАЛОПЕРИОДА(Продажи.ПериодМесяц, МЕСЯЦ) = НАЧАЛОПЕРИОДА(РасчетСебестоимости.Ссылка.Дата, МЕСЯЦ))
+			И (АналитикаПоПартнерам.Организация = РасчетСебестоимости.Организация)
+			И (РасчетСебестоимости.Ссылка.Проведен)
+ГДЕ
+	Продажи.Регистратор ССЫЛКА Документ.ВозвратТоваровОтКлиента
+
+СГРУППИРОВАТЬ ПО
+	Продажи.ПериодСекунда,
+	Продажи.ПериодМинута,
+	Продажи.ПериодЧас,
+	Продажи.ПериодДень,
+	Продажи.ПериодНеделя,
+	Продажи.ПериодДекада,
+	Продажи.ПериодМесяц,
+	Продажи.ПериодКвартал,
+	Продажи.ПериодПолугодие,
+	Продажи.ПериодГод,
+	АналитикаНоменклатуры.Номенклатура,
+	АналитикаНоменклатуры.Склад,
+	АналитикаПоПартнерам.Партнер,
+	АналитикаПоПартнерам.Организация,
+	Продажи.Подразделение,
+	Продажи.Менеджер,
+	Продажи.КоличествоОборот,
+	Продажи.СуммаВыручкиОборот,
+	Продажи.СуммаВыручкиРеглОборот,
+	Продажи.СуммаВыручкиБезНДСОборот,
+	Продажи.СебестоимостьОборот,
+	Продажи.СебестоимостьБезНДСОборот,
+	Продажи.СебестоимостьРеглОборот,
+	Продажи.СуммаДополнительныхРасходовОборот,
+	Продажи.СуммаДополнительныхРасходовБезНДСОборот,
+	ВЫРАЗИТЬ(Продажи.Регистратор КАК Документ.ВозвратТоваровОтКлиента),
+	ПОДСТРОКА(ВЫРАЗИТЬ(Продажи.Регистратор КАК Документ.ВозвратТоваровОтКлиента).Комментарий, 0, 200)</query>
+		</dataSet>
+		<totalField>
+			<dataPath>Рентабельность</dataPath>
+			<expression>ВЫРАЗИТЬ(
+    ВЫБОР КОГДА СУММА(Выручка) &lt;&gt; 0 ТОГДА
+            (СУММА(Выручка)- СУММА(Себестоимость) - СУММА(ДопРасходы))
+            / СУММА(Выручка)
+    ИНАЧЕ
+        0
+    КОНЕЦ * 100, "ЧИСЛО(15,2)")</expression>
+		</totalField>
+		<totalField>
+			<dataPath>РентабельностьБезНДС</dataPath>
+			<expression>ВЫРАЗИТЬ(
+    ВЫБОР КОГДА СУММА(ВыручкаБезНДС) &lt;&gt; 0 ТОГДА
+            (СУММА(ВыручкаБезНДС)- СУММА(СебестоимостьБезНДС) - СУММА(ДопРасходыБезНДС))
+            / СУММА(ВыручкаБезНДС)
+    ИНАЧЕ
+        0
+    КОНЕЦ * 100, "ЧИСЛО(15,2)")</expression>
+		</totalField>
+		<totalField>
+			<dataPath>РентабельностьРегл</dataPath>
+			<expression>ВЫРАЗИТЬ(
+    ВЫБОР КОГДА СУММА(ВыручкаРегл) &lt;&gt; 0 ТОГДА
+            (СУММА(ВыручкаРегл)- СУММА(СебестоимостьРегл) )
+            / СУММА(ВыручкаРегл)
+    ИНАЧЕ
+        0
+    КОНЕЦ * 100, "ЧИСЛО(15,2)")</expression>
+		</totalField>
+		<totalField>
+			<dataPath>ВаловаяПрыбыль</dataPath>
+			<expression>Сумма(ВаловаяПрыбыль)</expression>
+		</totalField>
+		<totalField>
+			<dataPath>ВаловаяПрыбыльБезНДС</dataPath>
+			<expression>Сумма(ВаловаяПрыбыльБезНДС)</expression>
+		</totalField>
+		<totalField>
+			<dataPath>ВаловаяПрыбыльРегл</dataPath>
+			<expression>Сумма(ВаловаяПрыбыльРегл)</expression>
+		</totalField>
+		<totalField>
+			<dataPath>Выручка</dataPath>
+			<expression>Сумма(Выручка)</expression>
+		</totalField>
+		<totalField>
+			<dataPath>ВыручкаБезНДС</dataPath>
+			<expression>Сумма(ВыручкаБезНДС)</expression>
+		</totalField>
+		<totalField>
+			<dataPath>ВыручкаРегл</dataPath>
+			<expression>Сумма(ВыручкаРегл)</expression>
+		</totalField>
+		<totalField>
+			<dataPath>ДопРасходы</dataPath>
+			<expression>Сумма(ДопРасходы)</expression>
+		</totalField>
+		<totalField>
+			<dataPath>ДопРасходыБезНДС</dataPath>
+			<expression>Сумма(ДопРасходыБезНДС)</expression>
+		</totalField>
+		<totalField>
+			<dataPath>Количество</dataPath>
+			<expression>Сумма(Количество)</expression>
+		</totalField>
+		<totalField>
+			<dataPath>Себестоимость</dataPath>
+			<expression>Сумма(Себестоимость)</expression>
+		</totalField>
+		<totalField>
+			<dataPath>СебестоимостьБезНДС</dataPath>
+			<expression>Сумма(СебестоимостьБезНДС)</expression>
+		</totalField>
+		<totalField>
+			<dataPath>СебестоимостьРегл</dataPath>
+			<expression>Сумма(СебестоимостьРегл)</expression>
+		</totalField>
+		<parameter>
+			<name>НачалоПериода</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Начало периода</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:dateTime</Type>
+				<DateQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
+					<DateFractions>DateTime</DateFractions>
+				</DateQualifiers>
+			</valueType>
+			<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+			<useRestriction>true</useRestriction>
+			<expression>&amp;ПериодОтчета.ДатаНачала</expression>
+		</parameter>
+		<parameter>
+			<name>КонецПериода</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Конец периода</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:dateTime</Type>
+				<DateQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
+					<DateFractions>DateTime</DateFractions>
+				</DateQualifiers>
+			</valueType>
+			<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+			<useRestriction>true</useRestriction>
+			<expression>КонецПериода(&amp;ПериодОтчета.ДатаОкончания, "День")</expression>
+		</parameter>
+		<parameter>
+			<name>ПериодОтчета</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Период отчета</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core">StandardPeriod</Type>
+			</valueType>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:StandardPeriod">
+				<d4p1:variant xsi:type="d4p1:StandardPeriodVariant">Custom</d4p1:variant>
+				<d4p1:startDate>0001-01-01T00:00:00</d4p1:startDate>
+				<d4p1:endDate>0001-01-01T00:00:00</d4p1:endDate>
+			</value>
+			<useRestriction>false</useRestriction>
+		</parameter>
+		<settingsVariant>
+			<name xmlns="http://v8.1c.ru/8.1/data-composition-system/settings">Основной</name>
+			<presentation xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="xs:string">Основной</presentation>
+		</settingsVariant>
+	</dataCompositionSchema>
+</SchemaFile>﻿<?xml version="1.0" encoding="UTF-8"?>
+<Settings xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<selection>
+		<item xsi:type="SelectedItemField">
+			<field>Регистратор</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>Количество</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>Выручка</field>
+		</item>
+		<item xsi:type="SelectedItemFolder">
+			<item xsi:type="SelectedItemField">
+				<field>Коментарий</field>
+			</item>
+			<placement>Auto</placement>
+		</item>
+		<viewMode>Normal</viewMode>
+		<userSettingID>159b88ec-eb97-4c53-8abb-46a89dc23c08</userSettingID>
+	</selection>
+	<filter>
+		<viewMode>Normal</viewMode>
+		<userSettingID>305c1fe9-543a-452f-a57d-e3c6825140a0</userSettingID>
+	</filter>
+	<dataParameters>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:use>false</dcscor:use>
+			<dcscor:parameter>ПериодОтчета</dcscor:parameter>
+			<dcscor:value xsi:type="v8:StandardPeriod">
+				<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+				<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+				<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+			</dcscor:value>
+			<userSettingID>353ef651-b8b7-4915-9c21-f8ac316bc265</userSettingID>
+		</dcscor:item>
+	</dataParameters>
+	<order>
+		<viewMode>Normal</viewMode>
+		<userSettingID>794419f8-9c81-426f-9d8c-a8e278d45dd0</userSettingID>
+	</order>
+	<conditionalAppearance>
+		<viewMode>Normal</viewMode>
+		<userSettingID>e59d35df-d63f-47d0-91f4-ce780db38818</userSettingID>
+	</conditionalAppearance>
+	<outputParameters>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>Заголовок</dcscor:parameter>
+			<dcscor:value xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отчет по возвратам не на основание реализаций</v8:content>
+				</v8:item>
+			</dcscor:value>
+		</dcscor:item>
+	</outputParameters>
+	<item xsi:type="StructureItemGroup">
+		<groupItems>
+			<item xsi:type="GroupItemField">
+				<field>ПериодМесяц</field>
+				<groupType>Items</groupType>
+				<periodAdditionType>None</periodAdditionType>
+				<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+				<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+			</item>
+		</groupItems>
+		<order>
+			<item xsi:type="OrderItemAuto"/>
+		</order>
+		<selection>
+			<item xsi:type="SelectedItemAuto"/>
+		</selection>
+		<item xsi:type="StructureItemGroup">
+			<groupItems>
+				<item xsi:type="GroupItemField">
+					<field>Организация</field>
+					<groupType>Items</groupType>
+					<periodAdditionType>None</periodAdditionType>
+					<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+					<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+				</item>
+			</groupItems>
+			<order>
+				<item xsi:type="OrderItemAuto"/>
+			</order>
+			<selection>
+				<item xsi:type="SelectedItemAuto"/>
+			</selection>
+			<item xsi:type="StructureItemGroup">
+				<groupItems>
+					<item xsi:type="GroupItemField">
+						<field>Менеджер</field>
+						<groupType>Items</groupType>
+						<periodAdditionType>None</periodAdditionType>
+						<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+						<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+					</item>
+				</groupItems>
+				<order>
+					<item xsi:type="OrderItemAuto"/>
+				</order>
+				<selection>
+					<item xsi:type="SelectedItemAuto"/>
+				</selection>
+				<item xsi:type="StructureItemGroup">
+					<groupItems>
+						<item xsi:type="GroupItemField">
+							<field>Номенклатура</field>
+							<groupType>Items</groupType>
+							<periodAdditionType>None</periodAdditionType>
+							<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+							<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+						</item>
+					</groupItems>
+					<order>
+						<item xsi:type="OrderItemAuto"/>
+					</order>
+					<selection>
+						<item xsi:type="SelectedItemAuto"/>
+					</selection>
+					<item xsi:type="StructureItemGroup">
+						<order>
+							<item xsi:type="OrderItemAuto"/>
+						</order>
+						<selection>
+							<item xsi:type="SelectedItemAuto"/>
+						</selection>
+					</item>
+				</item>
+			</item>
+		</item>
+	</item>
+	<itemsViewMode>Normal</itemsViewMode>
+	<itemsUserSettingID>e941b458-8f16-4f07-be99-fe4f4396f2c5</itemsUserSettingID>
+</Settings>﻿<?xml version="1.0" encoding="UTF-8"?>
+<SchemaFile xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema"/>
+</SchemaFile>

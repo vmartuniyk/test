@@ -1,0 +1,519 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<SchemaFile xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema">
+		<dataSource>
+			<name>ИсточникДанных1</name>
+			<dataSourceType>Local</dataSourceType>
+		</dataSource>
+		<dataSet xsi:type="DataSetQuery">
+			<name>НаборДанных1</name>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>АналитикаУчетаНоменклатуры</dataPath>
+				<field>АналитикаУчетаНоменклатуры</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ВидЗапасов</dataPath>
+				<field>ВидЗапасов</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ВидНоменклатуры</dataPath>
+				<field>ВидНоменклатуры</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Вид номенклатуры</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Количество</dataPath>
+				<field>Количество</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Количество</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>КоличествоОргнанизации</dataPath>
+				<field>КоличествоОргнанизации</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Количество оргнанизации</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Маржа</dataPath>
+				<field>Маржа</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Маржа</d5p1:content>
+					</d5p1:item>
+				</title>
+				<appearance>
+					<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+						<parameter>Формат</parameter>
+						<value xsi:type="xs:string">ЧДЦ=2</value>
+					</item>
+				</appearance>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Наценка</dataPath>
+				<field>Наценка</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Наценка</d5p1:content>
+					</d5p1:item>
+				</title>
+				<appearance>
+					<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+						<parameter>Формат</parameter>
+						<value xsi:type="xs:string">ЧДЦ=2</value>
+					</item>
+				</appearance>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>НаценкаПроцент</dataPath>
+				<field>НаценкаПроцент</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Наценка процент</d5p1:content>
+					</d5p1:item>
+				</title>
+				<appearance>
+					<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+						<parameter>Формат</parameter>
+						<value xsi:type="xs:string">ЧДЦ=2</value>
+					</item>
+				</appearance>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Номенклатура</dataPath>
+				<field>Номенклатура</field>
+				<role>
+					<dimension xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</dimension>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>НомерГТД</dataPath>
+				<field>НомерГТД</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Организация</dataPath>
+				<field>Организация</field>
+				<role>
+					<dimension xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</dimension>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>РазделУчета</dataPath>
+				<field>РазделУчета</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Склад</dataPath>
+				<field>Склад</field>
+				<role>
+					<dimension xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</dimension>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>СтоимостьБезНДС</dataPath>
+				<field>СтоимостьБезНДС</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Стоимость без НДС</d5p1:content>
+					</d5p1:item>
+				</title>
+				<appearance>
+					<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+						<parameter>Формат</parameter>
+						<value xsi:type="xs:string">ЧДЦ=2</value>
+					</item>
+				</appearance>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>СтоимостьЗаВесьТовар</dataPath>
+				<field>СтоимостьЗаВесьТовар</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Стоимость за весь товар</d5p1:content>
+					</d5p1:item>
+				</title>
+				<appearance>
+					<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+						<parameter>Формат</parameter>
+						<value xsi:type="xs:string">ЧДЦ=2</value>
+					</item>
+				</appearance>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Характеристика</dataPath>
+				<field>Характеристика</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ЦенаНоменклатуры</dataPath>
+				<field>ЦенаНоменклатуры</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Цена номенклатуры</d5p1:content>
+					</d5p1:item>
+				</title>
+				<appearance>
+					<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+						<parameter>Формат</parameter>
+						<value xsi:type="xs:string">ЧДЦ=2</value>
+					</item>
+				</appearance>
+			</field>
+			<dataSource>ИсточникДанных1</dataSource>
+			<query>ВЫБРАТЬ
+	Аналитика.Номенклатура КАК Номенклатура
+ПОМЕСТИТЬ КешНоменклатура
+ИЗ
+	РегистрНакопления.СебестоимостьТоваров.Остатки(&amp;Период, ) КАК СебестоимостьТоваровОстатки
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ РегистрСведений.АналитикаУчетаНоменклатуры КАК Аналитика
+		ПО СебестоимостьТоваровОстатки.АналитикаУчетаНоменклатуры = Аналитика.КлючАналитики
+
+ИНДЕКСИРОВАТЬ ПО
+	Номенклатура
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	Аналитика.Номенклатура КАК Номенклатура,
+	Аналитика.Склад КАК Склад,
+	Себестоимость.Организация,
+	Себестоимость.КоличествоОстаток КАК Количество,
+	Себестоимость.СтоимостьОстаток + Себестоимость.СуммаДопРасходовОстаток КАК СтоимостьЗаВесьТовар,
+	Себестоимость.СтоимостьБезНДСОстаток + Себестоимость.СуммаДопРасходовБезНДСОстаток КАК СтоимостьБезНДС,
+	ВЫБОР
+		КОГДА Себестоимость.КоличествоОстаток = 0
+			ТОГДА NULL
+		ИНАЧЕ (Себестоимость.СтоимостьОстаток + Себестоимость.СуммаДопРасходовОстаток) / Себестоимость.КоличествоОстаток
+	КОНЕЦ КАК Стоимость
+ПОМЕСТИТЬ КешСтоимостьТоваров
+ИЗ
+	РегистрНакопления.СебестоимостьТоваров.Остатки(
+			&amp;Период,
+			АналитикаУчетаНоменклатуры.Номенклатура В
+				(ВЫБРАТЬ
+					КешНоменклатура.Номенклатура
+				ИЗ
+					КешНоменклатура)) КАК Себестоимость
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ РегистрСведений.АналитикаУчетаНоменклатуры КАК Аналитика
+		ПО Себестоимость.АналитикаУчетаНоменклатуры = Аналитика.КлючАналитики
+
+ИНДЕКСИРОВАТЬ ПО
+	Номенклатура,
+	Склад
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ЦеныНоменклатуры.Номенклатура КАК Номенклатура,
+	ЦеныНоменклатуры.Цена * (КурсыВалют.Курс / КурсыВалют.Кратность) / (КурсыУпрУч.Курс / КурсыУпрУч.Кратность) КАК Цена
+ПОМЕСТИТЬ КешЦеныНоменклатуры
+ИЗ
+	РегистрСведений.ЦеныНоменклатуры.СрезПоследних(
+			,
+			Номенклатура В
+					(ВЫБРАТЬ
+						КешНоменклатура.Номенклатура
+					ИЗ
+						КешНоменклатура)
+				И ВидЦены = &amp;ВидЦены) КАК ЦеныНоменклатуры
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ РегистрСведений.КурсыВалют.СрезПоследних(, Валюта = &amp;Валюта) КАК КурсыУпрУч
+		ПО (ИСТИНА)
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ РегистрСведений.КурсыВалют.СрезПоследних(, ) КАК КурсыВалют
+		ПО ЦеныНоменклатуры.Валюта = КурсыВалют.Валюта
+
+ИНДЕКСИРОВАТЬ ПО
+	Номенклатура
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	КешСтоимостьТоваров.Номенклатура.ВидНоменклатуры КАК ВидНоменклатуры,
+	КешСтоимостьТоваров.Номенклатура КАК Номенклатура,
+	КешСтоимостьТоваров.Склад КАК Склад,
+	КешСтоимостьТоваров.Организация КАК Организация,
+	КешСтоимостьТоваров.Количество КАК Количество,
+	ВЫБОР
+		КОГДА ЕСТЬNULL(КешСтоимостьТоваров.Количество, 0) &lt;&gt; 0
+			ТОГДА ЕСТЬNULL(КешЦеныНоменклатуры.Цена, 0) * КешСтоимостьТоваров.Количество
+		ИНАЧЕ ЕСТЬNULL(КешЦеныНоменклатуры.Цена, 0)
+	КОНЕЦ КАК ЦенаНоменклатуры,
+	ЕСТЬNULL(КешСтоимостьТоваров.СтоимостьЗаВесьТовар, 0) КАК СтоимостьЗаВесьТовар,
+	ЕСТЬNULL(КешСтоимостьТоваров.СтоимостьБезНДС, 0) КАК СтоимостьБезНДС
+ПОМЕСТИТЬ КешСтоимостьИЦенаНоменклатуры
+ИЗ
+	КешСтоимостьТоваров КАК КешСтоимостьТоваров
+		ЛЕВОЕ СОЕДИНЕНИЕ КешЦеныНоменклатуры КАК КешЦеныНоменклатуры
+		ПО КешСтоимостьТоваров.Номенклатура = КешЦеныНоменклатуры.Номенклатура
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	КешСтоимостьИЦенаНоменклатуры.ВидНоменклатуры,
+	КешСтоимостьИЦенаНоменклатуры.Номенклатура,
+	КешСтоимостьИЦенаНоменклатуры.Склад,
+	КешСтоимостьИЦенаНоменклатуры.Организация,
+	КешСтоимостьИЦенаНоменклатуры.Количество,
+	ЕСТЬNULL(ТоварыОрганизацийОстатки.КоличествоОстаток, 0) КАК КоличествоОргнанизации,
+	КешСтоимостьИЦенаНоменклатуры.ЦенаНоменклатуры,
+	КешСтоимостьИЦенаНоменклатуры.СтоимостьЗаВесьТовар,
+	КешСтоимостьИЦенаНоменклатуры.СтоимостьБезНДС,
+	ВЫБОР
+		КОГДА ЕСТЬNULL(КешСтоимостьИЦенаНоменклатуры.СтоимостьЗаВесьТовар, 0) &lt;&gt; 0
+				И ЕСТЬNULL(КешСтоимостьИЦенаНоменклатуры.ЦенаНоменклатуры, 0) &lt;&gt; 0
+			ТОГДА ((ВЫРАЗИТЬ(КешСтоимостьИЦенаНоменклатуры.ЦенаНоменклатуры КАК ЧИСЛО(15, 2))) - (ВЫРАЗИТЬ(КешСтоимостьИЦенаНоменклатуры.СтоимостьЗаВесьТовар КАК ЧИСЛО(15, 2)))) / (ВЫРАЗИТЬ(КешСтоимостьИЦенаНоменклатуры.СтоимостьЗаВесьТовар КАК ЧИСЛО(15, 2)))
+		ИНАЧЕ 0
+	КОНЕЦ КАК Наценка,
+	ВЫБОР
+		КОГДА ЕСТЬNULL(КешСтоимостьИЦенаНоменклатуры.СтоимостьЗаВесьТовар, 0) &lt;&gt; 0
+				И ЕСТЬNULL(КешСтоимостьИЦенаНоменклатуры.ЦенаНоменклатуры, 0) &lt;&gt; 0
+			ТОГДА 100 * ((ВЫРАЗИТЬ(КешСтоимостьИЦенаНоменклатуры.ЦенаНоменклатуры КАК ЧИСЛО(15, 2))) - (ВЫРАЗИТЬ(КешСтоимостьИЦенаНоменклатуры.СтоимостьЗаВесьТовар КАК ЧИСЛО(15, 2)))) / (ВЫРАЗИТЬ(КешСтоимостьИЦенаНоменклатуры.СтоимостьЗаВесьТовар КАК ЧИСЛО(15, 2)))
+		ИНАЧЕ 0
+	КОНЕЦ КАК НаценкаПроцент,
+	ВЫБОР
+		КОГДА ЕСТЬNULL(КешСтоимостьИЦенаНоменклатуры.СтоимостьЗаВесьТовар, 0) &lt;&gt; 0
+				И ЕСТЬNULL(КешСтоимостьИЦенаНоменклатуры.ЦенаНоменклатуры, 0) &lt;&gt; 0
+			ТОГДА (ВЫРАЗИТЬ(КешСтоимостьИЦенаНоменклатуры.ЦенаНоменклатуры КАК ЧИСЛО(15, 2))) - (ВЫРАЗИТЬ(КешСтоимостьИЦенаНоменклатуры.СтоимостьЗаВесьТовар КАК ЧИСЛО(15, 2)))
+		ИНАЧЕ 0
+	КОНЕЦ КАК Маржа
+ИЗ
+	КешСтоимостьИЦенаНоменклатуры КАК КешСтоимостьИЦенаНоменклатуры
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрНакопления.ТоварыОрганизаций.Остатки(&amp;Период, ) КАК ТоварыОрганизацийОстатки
+		ПО КешСтоимостьИЦенаНоменклатуры.Номенклатура = ТоварыОрганизацийОстатки.Номенклатура
+			И КешСтоимостьИЦенаНоменклатуры.Склад = ТоварыОрганизацийОстатки.Склад
+			И КешСтоимостьИЦенаНоменклатуры.Организация = ТоварыОрганизацийОстатки.Организация</query>
+		</dataSet>
+		<totalField>
+			<dataPath>Количество</dataPath>
+			<expression>Сумма(Количество)</expression>
+		</totalField>
+		<totalField>
+			<dataPath>КоличествоОргнанизации</dataPath>
+			<expression>Сумма(КоличествоОргнанизации)</expression>
+		</totalField>
+		<totalField>
+			<dataPath>Маржа</dataPath>
+			<expression>Сумма(Маржа)</expression>
+		</totalField>
+		<totalField>
+			<dataPath>Наценка</dataPath>
+			<expression>Сумма(Наценка)</expression>
+		</totalField>
+		<totalField>
+			<dataPath>СтоимостьБезНДС</dataPath>
+			<expression>Сумма(СтоимостьБезНДС)</expression>
+		</totalField>
+		<totalField>
+			<dataPath>СтоимостьЗаВесьТовар</dataPath>
+			<expression>Сумма(СтоимостьЗаВесьТовар)</expression>
+		</totalField>
+		<totalField>
+			<dataPath>ЦенаНоменклатуры</dataPath>
+			<expression>Сумма(ЦенаНоменклатуры)</expression>
+		</totalField>
+		<parameter>
+			<name>Период</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Период</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:dateTime</Type>
+				<DateQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
+					<DateFractions>DateTime</DateFractions>
+				</DateQualifiers>
+			</valueType>
+			<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+			<useRestriction>false</useRestriction>
+		</parameter>
+		<parameter>
+			<name>Валюта</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Валюта</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.Валюты</Type>
+			</valueType>
+			<value xsi:nil="true"/>
+			<useRestriction>false</useRestriction>
+		</parameter>
+		<parameter>
+			<name>ВидЦены</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Вид цены</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.ВидыЦен</Type>
+			</valueType>
+			<value xsi:nil="true"/>
+			<useRestriction>false</useRestriction>
+		</parameter>
+		<settingsVariant>
+			<name xmlns="http://v8.1c.ru/8.1/data-composition-system/settings">Основной</name>
+			<presentation xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="xs:string">Основной</presentation>
+		</settingsVariant>
+	</dataCompositionSchema>
+</SchemaFile>﻿<?xml version="1.0" encoding="UTF-8"?>
+<Settings xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<selection>
+		<item xsi:type="SelectedItemField">
+			<field>Номенклатура</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>Количество</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>КоличествоОргнанизации</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>ЦенаНоменклатуры</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>СтоимостьЗаВесьТовар</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>СтоимостьБезНДС</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>Маржа</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>Наценка</field>
+		</item>
+	</selection>
+	<dataParameters>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:use>false</dcscor:use>
+			<dcscor:parameter>Период</dcscor:parameter>
+			<dcscor:value xsi:type="xs:dateTime">0001-01-01T00:00:00</dcscor:value>
+			<userSettingID>012b3c1d-f5a4-4f03-a817-d8f35733ab24</userSettingID>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>Валюта</dcscor:parameter>
+			<dcscor:value xsi:nil="true"/>
+			<viewMode>Normal</viewMode>
+			<userSettingID>e02a2e26-82e9-4b26-811b-a0e33802723a</userSettingID>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>ВидЦены</dcscor:parameter>
+			<dcscor:value xsi:nil="true"/>
+			<viewMode>Normal</viewMode>
+			<userSettingID>30e95e94-93e1-4478-9ed4-a185a750e63f</userSettingID>
+		</dcscor:item>
+	</dataParameters>
+	<conditionalAppearance>
+		<item>
+			<selection>
+				<item>
+					<field>Количество</field>
+				</item>
+				<item>
+					<field>КоличествоОргнанизации</field>
+				</item>
+			</selection>
+			<filter>
+				<item xsi:type="FilterItemComparison">
+					<left xsi:type="dcscor:Field">Количество</left>
+					<comparisonType>NotEqual</comparisonType>
+					<right xsi:type="dcscor:Field">КоличествоОргнанизации</right>
+				</item>
+			</filter>
+			<appearance>
+				<dcscor:item xsi:type="SettingsParameterValue">
+					<dcscor:parameter>ЦветФона</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:Color">web:MistyRose</dcscor:value>
+				</dcscor:item>
+			</appearance>
+			<useInHierarchicalGroup>DontUse</useInHierarchicalGroup>
+			<useInOverall>DontUse</useInOverall>
+			<useInFieldsHeader>DontUse</useInFieldsHeader>
+			<useInHeader>DontUse</useInHeader>
+			<useInParameters>DontUse</useInParameters>
+			<useInFilter>DontUse</useInFilter>
+		</item>
+	</conditionalAppearance>
+	<item xsi:type="StructureItemGroup">
+		<groupItems>
+			<item xsi:type="GroupItemField">
+				<field>Организация</field>
+				<groupType>Items</groupType>
+				<periodAdditionType>None</periodAdditionType>
+				<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+				<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+			</item>
+		</groupItems>
+		<order>
+			<item xsi:type="OrderItemAuto"/>
+		</order>
+		<selection>
+			<item xsi:type="SelectedItemAuto"/>
+		</selection>
+		<item xsi:type="StructureItemGroup">
+			<groupItems>
+				<item xsi:type="GroupItemField">
+					<field>Склад</field>
+					<groupType>Items</groupType>
+					<periodAdditionType>None</periodAdditionType>
+					<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+					<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+				</item>
+			</groupItems>
+			<order>
+				<item xsi:type="OrderItemAuto"/>
+			</order>
+			<selection>
+				<item xsi:type="SelectedItemAuto"/>
+			</selection>
+			<item xsi:type="StructureItemGroup">
+				<groupItems>
+					<item xsi:type="GroupItemField">
+						<field>ВидНоменклатуры</field>
+						<groupType>Items</groupType>
+						<periodAdditionType>None</periodAdditionType>
+						<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+						<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+					</item>
+				</groupItems>
+				<order>
+					<item xsi:type="OrderItemAuto"/>
+				</order>
+				<selection>
+					<item xsi:type="SelectedItemAuto"/>
+				</selection>
+				<item xsi:type="StructureItemGroup">
+					<order>
+						<item xsi:type="OrderItemAuto"/>
+					</order>
+					<selection>
+						<item xsi:type="SelectedItemAuto"/>
+					</selection>
+				</item>
+			</item>
+		</item>
+	</item>
+</Settings>﻿<?xml version="1.0" encoding="UTF-8"?>
+<SchemaFile xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema"/>
+</SchemaFile>

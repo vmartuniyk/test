@@ -1,0 +1,476 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<SchemaFile xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema">
+		<dataSource>
+			<name>ИсточникДанных1</name>
+			<dataSourceType>Local</dataSourceType>
+		</dataSource>
+		<dataSet xsi:type="DataSetQuery">
+			<name>НаборДанных1</name>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Организация</dataPath>
+				<field>Организация</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Организация</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ОснованиеПлатежа</dataPath>
+				<field>ОснованиеПлатежа</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Документ</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Партнер</dataPath>
+				<field>Партнер</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Клиент</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>СуммаРеализации</dataPath>
+				<field>СуммаРеализации</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>СуммаЭквайринга</dataPath>
+				<field>СуммаЭквайринга</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>СуммаПКО</dataPath>
+				<field>СуммаПКО</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>СуммаРКО</dataPath>
+				<field>СуммаРКО</field>
+			</field>
+			<dataSource>ИсточникДанных1</dataSource>
+			<query>ВЫБРАТЬ
+	РеализацияТоваровУслуг.Ссылка
+ПОМЕСТИТЬ КешДокументов
+ИЗ
+	Документ.РеализацияТоваровУслуг КАК РеализацияТоваровУслуг
+ГДЕ
+	РеализацияТоваровУслуг.Дата МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода
+	И РеализацияТоваровУслуг.Проведен
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ВЫРАЗИТЬ(ЗаявкаНаРасходованиеДенежныхСредств.ДокументОснование КАК Документ.ВозвратТоваровОтКлиента).ДокументРеализации КАК Реализация,
+	СУММА(ЗаявкаНаРасходованиеДенежныхСредств.СуммаДокумента) КАК СуммаВозврату,
+	ВЫРАЗИТЬ(ЗаявкаНаРасходованиеДенежныхСредств.ДокументОснование КАК Документ.ВозвратТоваровОтКлиента).ДокументРеализации.СуммаДокумента КАК СуммаРеализации
+ПОМЕСТИТЬ КешРеализаций
+ИЗ
+	Документ.ЗаявкаНаРасходованиеДенежныхСредств КАК ЗаявкаНаРасходованиеДенежныхСредств
+ГДЕ
+	ЗаявкаНаРасходованиеДенежныхСредств.ДокументОснование ССЫЛКА Документ.ВозвратТоваровОтКлиента
+	И ВЫРАЗИТЬ(ЗаявкаНаРасходованиеДенежныхСредств.ДокументОснование КАК Документ.ВозвратТоваровОтКлиента).ДокументРеализации В
+			(ВЫБРАТЬ
+				КешДокументов.Ссылка
+			ИЗ
+				КешДокументов КАК КешДокументов)
+	И ЗаявкаНаРасходованиеДенежныхСредств.Статус = ЗНАЧЕНИЕ(Перечисление.СтатусыЗаявокНаРасходованиеДенежныхСредств.Утверждена)
+	И ЗаявкаНаРасходованиеДенежныхСредств.Проведен
+	И ВЫРАЗИТЬ(ЗаявкаНаРасходованиеДенежныхСредств.ДокументОснование КАК Документ.ВозвратТоваровОтКлиента).Проведен
+	И ЗаявкаНаРасходованиеДенежныхСредств.ФормаОплатыЗаявки = ЗНАЧЕНИЕ(Перечисление.ФормыОплаты.Наличная)
+
+СГРУППИРОВАТЬ ПО
+	ВЫРАЗИТЬ(ЗаявкаНаРасходованиеДенежныхСредств.ДокументОснование КАК Документ.ВозвратТоваровОтКлиента).ДокументРеализации,
+	ВЫРАЗИТЬ(ЗаявкаНаРасходованиеДенежныхСредств.ДокументОснование КАК Документ.ВозвратТоваровОтКлиента).ДокументРеализации.СуммаДокумента
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	ВЫРАЗИТЬ(РасходныйКассовыйОрдер.ДокументОснование КАК Документ.ВозвратТоваровОтКлиента).ДокументРеализации,
+	СУММА(РасходныйКассовыйОрдер.СуммаДокумента),
+	ВЫРАЗИТЬ(РасходныйКассовыйОрдер.ДокументОснование КАК Документ.ВозвратТоваровОтКлиента).ДокументРеализации.СуммаДокумента
+ИЗ
+	Документ.РасходныйКассовыйОрдер КАК РасходныйКассовыйОрдер
+ГДЕ
+	РасходныйКассовыйОрдер.ДокументОснование ССЫЛКА Документ.ВозвратТоваровОтКлиента
+	И ВЫРАЗИТЬ(РасходныйКассовыйОрдер.ДокументОснование КАК Документ.ВозвратТоваровОтКлиента).ДокументРеализации В
+			(ВЫБРАТЬ
+				КешДокументов.Ссылка
+			ИЗ
+				КешДокументов КАК КешДокументов)
+	И РасходныйКассовыйОрдер.Проведен
+	И ВЫРАЗИТЬ(РасходныйКассовыйОрдер.ДокументОснование КАК Документ.ВозвратТоваровОтКлиента).Проведен
+
+СГРУППИРОВАТЬ ПО
+	ВЫРАЗИТЬ(РасходныйКассовыйОрдер.ДокументОснование КАК Документ.ВозвратТоваровОтКлиента).ДокументРеализации,
+	ВЫРАЗИТЬ(РасходныйКассовыйОрдер.ДокументОснование КАК Документ.ВозвратТоваровОтКлиента).ДокументРеализации.СуммаДокумента
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	КешРеализаций.Реализация.ЗаказКлиента КАК ЗаказКлиента,
+	СУММА(КешРеализаций.СуммаВозврату) КАК СуммаВозврату,
+	КешРеализаций.СуммаРеализации КАК СуммаРеализации
+ПОМЕСТИТЬ КешЗаказов
+ИЗ
+	КешРеализаций КАК КешРеализаций
+ГДЕ
+	КешРеализаций.Реализация.РеализацияПоЗаказам
+	И КешРеализаций.Реализация.ЗаказКлиента.Проведен
+	И КешРеализаций.Реализация.ЗаказКлиента ССЫЛКА Документ.ЗаказКлиента
+
+СГРУППИРОВАТЬ ПО
+	КешРеализаций.Реализация.ЗаказКлиента,
+	КешРеализаций.СуммаРеализации
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ВложенныйЗапрос.ЗаказКлиента,
+	ВложенныйЗапрос.Валюта,
+	ВложенныйЗапрос.Сумма
+ПОМЕСТИТЬ ПКОпоЗаказу
+ИЗ
+	(ВЫБРАТЬ
+		РасчетыСКлиентами.ЗаказКлиента КАК ЗаказКлиента,
+		РасчетыСКлиентами.Валюта КАК Валюта,
+		СУММА(РасчетыСКлиентами.Сумма) КАК Сумма
+	ИЗ
+		РегистрНакопления.РасчетыСКлиентами КАК РасчетыСКлиентами
+	ГДЕ
+		РасчетыСКлиентами.Регистратор ССЫЛКА Документ.ПриходныйКассовыйОрдер
+		И РасчетыСКлиентами.ЗаказКлиента В
+				(ВЫБРАТЬ
+					КешЗаказов.ЗаказКлиента
+				ИЗ
+					КешЗаказов КАК КешЗаказов)
+	
+	СГРУППИРОВАТЬ ПО
+		РасчетыСКлиентами.ЗаказКлиента,
+		РасчетыСКлиентами.Валюта) КАК ВложенныйЗапрос
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ВложенныйЗапрос.ЗаказКлиента,
+	ВложенныйЗапрос.Валюта,
+	ВложенныйЗапрос.Сумма
+ПОМЕСТИТЬ ПКОпоРеализации
+ИЗ
+	(ВЫБРАТЬ
+		РасчетыСКлиентами.ЗаказКлиента КАК ЗаказКлиента,
+		РасчетыСКлиентами.Валюта КАК Валюта,
+		СУММА(РасчетыСКлиентами.Сумма) КАК Сумма
+	ИЗ
+		РегистрНакопления.РасчетыСКлиентами КАК РасчетыСКлиентами
+	ГДЕ
+		РасчетыСКлиентами.Регистратор ССЫЛКА Документ.ПриходныйКассовыйОрдер
+		И РасчетыСКлиентами.ЗаказКлиента В
+				(ВЫБРАТЬ
+					КешРеализаций.Реализация
+				ИЗ
+					КешРеализаций КАК КешРеализаций
+				ГДЕ
+					НЕ КешРеализаций.Реализация.РеализацияПоЗаказам)
+	
+	СГРУППИРОВАТЬ ПО
+		РасчетыСКлиентами.ЗаказКлиента,
+		РасчетыСКлиентами.Валюта) КАК ВложенныйЗапрос
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ОперацияПоПлатежнойКартеРасшифровкаПлатежа.ОснованиеПлатежа,
+	ОперацияПоПлатежнойКартеРасшифровкаПлатежа.Партнер,
+	ОперацияПоПлатежнойКартеРасшифровкаПлатежа.Ссылка.Организация,
+	КешРеализаций.СуммаВозврату КАК СуммаРКО,
+	КешРеализаций.СуммаРеализации,
+	СУММА(ОперацияПоПлатежнойКартеРасшифровкаПлатежа.СуммаВзаиморасчетов) КАК СуммаЭквайринга,
+	ЕСТЬNULL(ПКОпоРеализации.Сумма, 0) КАК СуммаПКО
+ИЗ
+	Документ.ОперацияПоПлатежнойКарте.РасшифровкаПлатежа КАК ОперацияПоПлатежнойКартеРасшифровкаПлатежа
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ КешРеализаций КАК КешРеализаций
+		ПО ОперацияПоПлатежнойКартеРасшифровкаПлатежа.ОснованиеПлатежа = КешРеализаций.Реализация
+		ЛЕВОЕ СОЕДИНЕНИЕ ПКОпоРеализации КАК ПКОпоРеализации
+		ПО ОперацияПоПлатежнойКартеРасшифровкаПлатежа.ОснованиеПлатежа = ПКОпоРеализации.ЗаказКлиента
+ГДЕ
+	ВЫРАЗИТЬ(ОперацияПоПлатежнойКартеРасшифровкаПлатежа.ОснованиеПлатежа КАК Документ.РеализацияТоваровУслуг) В
+			(ВЫБРАТЬ
+				КешРеализаций.Реализация
+			ИЗ
+				КешРеализаций КАК КешРеализаций
+			ГДЕ
+				НЕ КешРеализаций.Реализация.РеализацияПоЗаказам)
+	И ОперацияПоПлатежнойКартеРасшифровкаПлатежа.Ссылка.Проведен
+
+СГРУППИРОВАТЬ ПО
+	ОперацияПоПлатежнойКартеРасшифровкаПлатежа.ОснованиеПлатежа,
+	ОперацияПоПлатежнойКартеРасшифровкаПлатежа.Партнер,
+	ОперацияПоПлатежнойКартеРасшифровкаПлатежа.Ссылка.Организация,
+	КешРеализаций.СуммаВозврату,
+	КешРеализаций.СуммаРеализации,
+	ЕСТЬNULL(ПКОпоРеализации.Сумма, 0)
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	ОперацияПоПлатежнойКартеРасшифровкаПлатежа.ОснованиеПлатежа,
+	ОперацияПоПлатежнойКартеРасшифровкаПлатежа.Партнер,
+	ОперацияПоПлатежнойКартеРасшифровкаПлатежа.Ссылка.Организация,
+	КешЗаказов.СуммаВозврату,
+	КешЗаказов.СуммаРеализации,
+	СУММА(ОперацияПоПлатежнойКартеРасшифровкаПлатежа.СуммаВзаиморасчетов),
+	ЕСТЬNULL(ПКОпоЗаказу.Сумма, 0)
+ИЗ
+	Документ.ОперацияПоПлатежнойКарте.РасшифровкаПлатежа КАК ОперацияПоПлатежнойКартеРасшифровкаПлатежа
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ КешЗаказов КАК КешЗаказов
+		ПО ОперацияПоПлатежнойКартеРасшифровкаПлатежа.ОснованиеПлатежа = КешЗаказов.ЗаказКлиента
+		ЛЕВОЕ СОЕДИНЕНИЕ ПКОпоЗаказу КАК ПКОпоЗаказу
+		ПО ОперацияПоПлатежнойКартеРасшифровкаПлатежа.ОснованиеПлатежа = ПКОпоЗаказу.ЗаказКлиента
+ГДЕ
+	ВЫРАЗИТЬ(ОперацияПоПлатежнойКартеРасшифровкаПлатежа.ОснованиеПлатежа КАК Документ.ЗаказКлиента) В
+			(ВЫБРАТЬ
+				КешЗаказов.ЗаказКлиента
+			ИЗ
+				КешЗаказов КАК КешЗаказов)
+
+СГРУППИРОВАТЬ ПО
+	ОперацияПоПлатежнойКартеРасшифровкаПлатежа.ОснованиеПлатежа,
+	ОперацияПоПлатежнойКартеРасшифровкаПлатежа.Партнер,
+	ОперацияПоПлатежнойКартеРасшифровкаПлатежа.Ссылка.Организация,
+	КешЗаказов.СуммаВозврату,
+	КешЗаказов.СуммаРеализации,
+	ЕСТЬNULL(ПКОпоЗаказу.Сумма, 0)</query>
+		</dataSet>
+		<totalField>
+			<dataPath>СуммаПКО</dataPath>
+			<expression>Сумма(СуммаПКО)</expression>
+		</totalField>
+		<totalField>
+			<dataPath>СуммаРеализации</dataPath>
+			<expression>Сумма(СуммаРеализации)</expression>
+		</totalField>
+		<totalField>
+			<dataPath>СуммаРКО</dataPath>
+			<expression>Сумма(СуммаРКО)</expression>
+		</totalField>
+		<totalField>
+			<dataPath>СуммаЭквайринга</dataPath>
+			<expression>Сумма(СуммаЭквайринга)</expression>
+		</totalField>
+		<parameter>
+			<name>НачалоПериода</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Начало периода</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:dateTime</Type>
+				<DateQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
+					<DateFractions>DateTime</DateFractions>
+				</DateQualifiers>
+			</valueType>
+			<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+			<useRestriction>true</useRestriction>
+			<expression>&amp;Период.ДатаНачала</expression>
+			<availableAsField>false</availableAsField>
+		</parameter>
+		<parameter>
+			<name>КонецПериода</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Конец периода</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:dateTime</Type>
+				<DateQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
+					<DateFractions>DateTime</DateFractions>
+				</DateQualifiers>
+			</valueType>
+			<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+			<useRestriction>true</useRestriction>
+			<expression>&amp;Период.ДатаОкончания</expression>
+			<availableAsField>false</availableAsField>
+		</parameter>
+		<parameter>
+			<name>Период</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Период</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core">StandardPeriod</Type>
+			</valueType>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:StandardPeriod">
+				<d4p1:variant xsi:type="d4p1:StandardPeriodVariant">Custom</d4p1:variant>
+				<d4p1:startDate>0001-01-01T00:00:00</d4p1:startDate>
+				<d4p1:endDate>0001-01-01T00:00:00</d4p1:endDate>
+			</value>
+			<useRestriction>false</useRestriction>
+		</parameter>
+		<settingsVariant>
+			<name xmlns="http://v8.1c.ru/8.1/data-composition-system/settings">Основной</name>
+			<presentation xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="xs:string">Основной</presentation>
+		</settingsVariant>
+	</dataCompositionSchema>
+</SchemaFile>﻿<?xml version="1.0" encoding="UTF-8"?>
+<Settings xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<selection>
+		<item xsi:type="SelectedItemField">
+			<field>Организация</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>Партнер</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>ОснованиеПлатежа</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>СуммаРеализации</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>СуммаЭквайринга</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>СуммаРКО</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>СуммаПКО</field>
+		</item>
+	</selection>
+	<filter>
+		<userSettingID>29a69387-56fa-40e5-8baf-89cbc38786e8</userSettingID>
+	</filter>
+	<dataParameters>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>Период</dcscor:parameter>
+			<dcscor:value xsi:type="v8:StandardPeriod">
+				<v8:variant xsi:type="v8:StandardPeriodVariant">ThisMonth</v8:variant>
+			</dcscor:value>
+			<userSettingID>38ffa1ff-2b2a-41d5-8cd1-ae91dc08ffa5</userSettingID>
+		</dcscor:item>
+	</dataParameters>
+	<order>
+		<item xsi:type="OrderItemField">
+			<field>Организация</field>
+			<orderType>Asc</orderType>
+		</item>
+		<item xsi:type="OrderItemField">
+			<field>Партнер</field>
+			<orderType>Asc</orderType>
+		</item>
+		<item xsi:type="OrderItemField">
+			<field>ОснованиеПлатежа</field>
+			<orderType>Asc</orderType>
+		</item>
+	</order>
+	<outputParameters>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:use>false</dcscor:use>
+			<dcscor:parameter>ВертикальноеРасположениеОбщихИтогов</dcscor:parameter>
+			<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">End</dcscor:value>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:use>false</dcscor:use>
+			<dcscor:parameter>ТипДиаграммы</dcscor:parameter>
+			<dcscor:value xsi:type="v8ui:ChartType">Column3D</dcscor:value>
+			<dcscor:item xsi:type="SettingsParameterValue">
+				<dcscor:use>false</dcscor:use>
+				<dcscor:parameter>ТипДиаграммы.ВидПодписей</dcscor:parameter>
+				<dcscor:value xsi:type="v8ui:ChartLabelType">None</dcscor:value>
+			</dcscor:item>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>ВыводитьОтбор</dcscor:parameter>
+			<dcscor:value xsi:type="DataCompositionTextOutputType">DontOutput</dcscor:value>
+		</dcscor:item>
+	</outputParameters>
+	<item xsi:type="StructureItemGroup">
+		<groupItems>
+			<item xsi:type="GroupItemField">
+				<field>Организация</field>
+				<groupType>Items</groupType>
+				<periodAdditionType>None</periodAdditionType>
+				<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+				<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+			</item>
+		</groupItems>
+		<order>
+			<item xsi:type="OrderItemAuto"/>
+		</order>
+		<selection>
+			<item xsi:type="SelectedItemAuto"/>
+		</selection>
+		<item xsi:type="StructureItemGroup">
+			<groupItems>
+				<item xsi:type="GroupItemField">
+					<field>Партнер</field>
+					<groupType>Items</groupType>
+					<periodAdditionType>None</periodAdditionType>
+					<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+					<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+				</item>
+			</groupItems>
+			<order>
+				<item xsi:type="OrderItemAuto"/>
+			</order>
+			<selection>
+				<item xsi:type="SelectedItemAuto"/>
+			</selection>
+			<item xsi:type="StructureItemGroup">
+				<order>
+					<item xsi:type="OrderItemAuto"/>
+				</order>
+				<selection>
+					<item xsi:type="SelectedItemAuto"/>
+				</selection>
+				<conditionalAppearance>
+					<item>
+						<selection>
+							<item>
+								<field>СуммаПКО</field>
+							</item>
+							<item>
+								<field>СуммаРеализации</field>
+							</item>
+							<item>
+								<field>СуммаРКО</field>
+							</item>
+							<item>
+								<field>СуммаЭквайринга</field>
+							</item>
+						</selection>
+						<filter>
+							<item xsi:type="FilterItemComparison">
+								<left xsi:type="dcscor:Field">СуммаПКО</left>
+								<comparisonType>Less</comparisonType>
+								<right xsi:type="dcscor:Field">СуммаРКО</right>
+							</item>
+						</filter>
+						<appearance>
+							<dcscor:item xsi:type="SettingsParameterValue">
+								<dcscor:parameter>ЦветФона</dcscor:parameter>
+								<dcscor:value xsi:type="v8ui:Color">#CCFFCC</dcscor:value>
+							</dcscor:item>
+						</appearance>
+					</item>
+				</conditionalAppearance>
+			</item>
+		</item>
+	</item>
+	<itemsUserSettingID>1e8f9076-fb9d-4055-b7fb-59df985fe82c</itemsUserSettingID>
+</Settings>﻿<?xml version="1.0" encoding="UTF-8"?>
+<SchemaFile xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema"/>
+</SchemaFile>

@@ -1,0 +1,600 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<SchemaFile xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema">
+		<dataSource>
+			<name>ИсточникДанных1</name>
+			<dataSourceType>Local</dataSourceType>
+		</dataSource>
+		<dataSet xsi:type="DataSetQuery">
+			<name>ОРсновнойНаборДанных</name>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Регистратор</dataPath>
+				<field>Регистратор</field>
+				<role>
+					<periodNumber xmlns="http://v8.1c.ru/8.1/data-composition-system/common">1</periodNumber>
+					<periodType xmlns="http://v8.1c.ru/8.1/data-composition-system/common">Main</periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ВалютаПлатежа</dataPath>
+				<field>ВалютаПлатежа</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ДенежныеСредства</dataPath>
+				<field>ДенежныеСредства</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Договор</dataPath>
+				<field>Договор</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Контрагент</dataPath>
+				<field>Контрагент</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ОбъектРасчетов</dataPath>
+				<field>ОбъектРасчетов</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Организация</dataPath>
+				<field>Организация</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Партнер</dataPath>
+				<field>Партнер</field>
+				<role>
+					<dimension xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</dimension>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Подразделение</dataPath>
+				<field>Подразделение</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>РасчетныйДокумент</dataPath>
+				<field>РасчетныйДокумент</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>СтатьяДвиженияДенежныхСредств</dataPath>
+				<field>СтатьяДвиженияДенежныхСредств</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ТипДенежныхСредств</dataPath>
+				<field>ТипДенежныхСредств</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ХозяйственнаяОперация</dataPath>
+				<field>ХозяйственнаяОперация</field>
+				<role>
+					<dimension xmlns="http://v8.1c.ru/8.1/data-composition-system/common">true</dimension>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Тип</dataPath>
+				<field>Тип</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Тип оплаты</d5p1:content>
+					</d5p1:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>СуммаОплаты</dataPath>
+				<field>СуммаОплаты</field>
+				<title xmlns:d5p1="http://v8.1c.ru/8.1/data/core" xsi:type="d5p1:LocalStringType">
+					<d5p1:item>
+						<d5p1:lang>ru</d5p1:lang>
+						<d5p1:content>Сумма оплаты</d5p1:content>
+					</d5p1:item>
+				</title>
+				<appearance>
+					<item xmlns="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="dcsset:SettingsParameterValue">
+						<parameter>Формат</parameter>
+						<value xsi:type="xs:string">ЧЦ=15; ЧДЦ=2</value>
+					</item>
+				</appearance>
+			</field>
+			<dataSource>ИсточникДанных1</dataSource>
+			<query>ВЫБРАТЬ
+	ДвиженияДенежныеСредстваКонтрагентОбороты.ХозяйственнаяОперация,
+	ВЫБОР
+		КОГДА ДвиженияДенежныеСредстваКонтрагентОбороты.ТипДенежныхСредств &lt;&gt; ЗНАЧЕНИЕ(Перечисление.ТипыДенежныхСредств.Наличные)
+			ТОГДА ЗНАЧЕНИЕ(Перечисление.ТипыДенежныхСредств.Безналичные)
+		ИНАЧЕ ДвиженияДенежныеСредстваКонтрагентОбороты.ТипДенежныхСредств
+	КОНЕЦ КАК Тип,
+	ДвиженияДенежныеСредстваКонтрагентОбороты.Партнер,
+	ВЫБОР
+		КОГДА ДвиженияДенежныеСредстваКонтрагентОбороты.ХозяйственнаяОперация = ЗНАЧЕНИЕ(Перечисление.ХозяйственныеОперации.ОплатаПоставщику)
+				ИЛИ ДвиженияДенежныеСредстваКонтрагентОбороты.ХозяйственнаяОперация = ЗНАЧЕНИЕ(Перечисление.ХозяйственныеОперации.ВозвратОплатыКлиенту)
+				ИЛИ ДвиженияДенежныеСредстваКонтрагентОбороты.ХозяйственнаяОперация = ЗНАЧЕНИЕ(Перечисление.ХозяйственныеОперации.ВозвратОплатыНаПлатежнуюКарту)
+				ИЛИ ДвиженияДенежныеСредстваКонтрагентОбороты.ХозяйственнаяОперация = ЗНАЧЕНИЕ(Перечисление.ХозяйственныеОперации.ВозвратОплатыКлиентуНаПлатежнуюКарту)
+					И ДвиженияДенежныеСредстваКонтрагентОбороты.ВалютаПлатежа = &amp;УпрВалюта
+			ТОГДА -ДвиженияДенежныеСредстваКонтрагентОбороты.СуммаОплатыВВалютеПлатежаОборот
+		КОГДА ДвиженияДенежныеСредстваКонтрагентОбороты.ХозяйственнаяОперация &lt;&gt; ЗНАЧЕНИЕ(Перечисление.ХозяйственныеОперации.ОплатаПоставщику)
+				И ДвиженияДенежныеСредстваКонтрагентОбороты.ХозяйственнаяОперация &lt;&gt; ЗНАЧЕНИЕ(Перечисление.ХозяйственныеОперации.ВозвратОплатыКлиенту)
+				И ДвиженияДенежныеСредстваКонтрагентОбороты.ХозяйственнаяОперация &lt;&gt; ЗНАЧЕНИЕ(Перечисление.ХозяйственныеОперации.ВозвратОплатыНаПлатежнуюКарту)
+				И ДвиженияДенежныеСредстваКонтрагентОбороты.ХозяйственнаяОперация &lt;&gt; ЗНАЧЕНИЕ(Перечисление.ХозяйственныеОперации.ВозвратОплатыКлиентуНаПлатежнуюКарту)
+				И ДвиженияДенежныеСредстваКонтрагентОбороты.ВалютаПлатежа = &amp;УпрВалюта
+			ТОГДА ДвиженияДенежныеСредстваКонтрагентОбороты.СуммаОплатыВВалютеПлатежаОборот
+		КОГДА ДвиженияДенежныеСредстваКонтрагентОбороты.ХозяйственнаяОперация = ЗНАЧЕНИЕ(Перечисление.ХозяйственныеОперации.ОплатаПоставщику)
+				ИЛИ ДвиженияДенежныеСредстваКонтрагентОбороты.ХозяйственнаяОперация = ЗНАЧЕНИЕ(Перечисление.ХозяйственныеОперации.ВозвратОплатыКлиенту)
+				ИЛИ ДвиженияДенежныеСредстваКонтрагентОбороты.ХозяйственнаяОперация = ЗНАЧЕНИЕ(Перечисление.ХозяйственныеОперации.ВозвратОплатыНаПлатежнуюКарту)
+				ИЛИ ДвиженияДенежныеСредстваКонтрагентОбороты.ХозяйственнаяОперация = ЗНАЧЕНИЕ(Перечисление.ХозяйственныеОперации.ВозвратОплатыКлиентуНаПлатежнуюКарту)
+					И ДвиженияДенежныеСредстваКонтрагентОбороты.ВалютаПлатежа &lt;&gt; &amp;УпрВалюта
+			ТОГДА -ДвиженияДенежныеСредстваКонтрагентОбороты.СуммаОплатыОборот
+		КОГДА ДвиженияДенежныеСредстваКонтрагентОбороты.ХозяйственнаяОперация &lt;&gt; ЗНАЧЕНИЕ(Перечисление.ХозяйственныеОперации.ОплатаПоставщику)
+				И ДвиженияДенежныеСредстваКонтрагентОбороты.ХозяйственнаяОперация &lt;&gt; ЗНАЧЕНИЕ(Перечисление.ХозяйственныеОперации.ВозвратОплатыКлиенту)
+				И ДвиженияДенежныеСредстваКонтрагентОбороты.ХозяйственнаяОперация &lt;&gt; ЗНАЧЕНИЕ(Перечисление.ХозяйственныеОперации.ВозвратОплатыНаПлатежнуюКарту)
+				И ДвиженияДенежныеСредстваКонтрагентОбороты.ХозяйственнаяОперация &lt;&gt; ЗНАЧЕНИЕ(Перечисление.ХозяйственныеОперации.ВозвратОплатыКлиентуНаПлатежнуюКарту)
+				И ДвиженияДенежныеСредстваКонтрагентОбороты.ВалютаПлатежа &lt;&gt; &amp;УпрВалюта
+			ТОГДА ДвиженияДенежныеСредстваКонтрагентОбороты.СуммаОплатыОборот
+	КОНЕЦ КАК СуммаОплаты,
+	ДвиженияДенежныеСредстваКонтрагентОбороты.Регистратор
+ИЗ
+	РегистрНакопления.ДвиженияДенежныеСредстваКонтрагент.Обороты(&amp;НачалоПериода, &amp;КонецПериода, Регистратор, Партнер &lt;&gt; ЗНАЧЕНИЕ(Справочник.Партнеры.НашеПредприятие)) КАК ДвиженияДенежныеСредстваКонтрагентОбороты
+ГДЕ
+	(ДвиженияДенежныеСредстваКонтрагентОбороты.Регистратор ССЫЛКА Документ.ПоступлениеБезналичныхДенежныхСредств
+			ИЛИ ДвиженияДенежныеСредстваКонтрагентОбороты.Регистратор ССЫЛКА Документ.ПриходныйКассовыйОрдер
+			ИЛИ ДвиженияДенежныеСредстваКонтрагентОбороты.Регистратор ССЫЛКА Документ.РасходныйКассовыйОрдер
+			ИЛИ ДвиженияДенежныеСредстваКонтрагентОбороты.Регистратор ССЫЛКА Документ.СписаниеБезналичныхДенежныхСредств
+			ИЛИ ДвиженияДенежныеСредстваКонтрагентОбороты.Регистратор ССЫЛКА Документ.ОперацияПоПлатежнойКарте)</query>
+		</dataSet>
+		<totalField>
+			<dataPath>СуммаОплаты</dataPath>
+			<expression>Сумма(СуммаОплаты)</expression>
+		</totalField>
+		<parameter>
+			<name>НачалоПериода</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Начало периода</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:dateTime</Type>
+				<DateQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
+					<DateFractions>DateTime</DateFractions>
+				</DateQualifiers>
+			</valueType>
+			<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+			<useRestriction>false</useRestriction>
+			<expression>&amp;Период.ДатаНачала</expression>
+		</parameter>
+		<parameter>
+			<name>КонецПериода</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Конец периода</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core">xs:dateTime</Type>
+				<DateQualifiers xmlns="http://v8.1c.ru/8.1/data/core">
+					<DateFractions>DateTime</DateFractions>
+				</DateQualifiers>
+			</valueType>
+			<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+			<useRestriction>false</useRestriction>
+			<expression>&amp;Период.ДатаОкончания</expression>
+		</parameter>
+		<parameter>
+			<name>Период</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Период</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core">StandardPeriod</Type>
+			</valueType>
+			<value xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:StandardPeriod">
+				<d4p1:variant xsi:type="d4p1:StandardPeriodVariant">Custom</d4p1:variant>
+				<d4p1:startDate>0001-01-01T00:00:00</d4p1:startDate>
+				<d4p1:endDate>0001-01-01T00:00:00</d4p1:endDate>
+			</value>
+			<useRestriction>false</useRestriction>
+		</parameter>
+		<parameter>
+			<name>УпрВалюта</name>
+			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Упр валюта</d4p1:content>
+				</d4p1:item>
+			</title>
+			<valueType>
+				<Type xmlns="http://v8.1c.ru/8.1/data/core" xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.Валюты</Type>
+			</valueType>
+			<value xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xsi:type="dcscor:DesignTimeValue"/>
+			<useRestriction>false</useRestriction>
+		</parameter>
+		<settingsVariant>
+			<name xmlns="http://v8.1c.ru/8.1/data-composition-system/settings">Основной</name>
+			<presentation xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="xs:string">Основной</presentation>
+		</settingsVariant>
+	</dataCompositionSchema>
+</SchemaFile>﻿<?xml version="1.0" encoding="UTF-8"?>
+<Settings xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<selection>
+		<item xsi:type="SelectedItemField">
+			<field>Партнер</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>Регистратор</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>Тип</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>ХозяйственнаяОперация</field>
+		</item>
+		<item xsi:type="SelectedItemField">
+			<field>СуммаОплаты</field>
+		</item>
+	</selection>
+	<filter>
+		<item xsi:type="FilterItemComparison">
+			<use>false</use>
+			<left xsi:type="dcscor:Field">Партнер</left>
+			<comparisonType>InList</comparisonType>
+			<right xsi:type="v8:ValueListType">
+				<v8:valueType/>
+				<v8:lastId xsi:type="xs:decimal">-1</v8:lastId>
+			</right>
+			<userSettingID>85418e0e-521b-4412-882e-452d2e2871aa</userSettingID>
+		</item>
+	</filter>
+	<dataParameters>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>НачалоПериода</dcscor:parameter>
+			<dcscor:value xsi:type="xs:dateTime">0001-01-01T00:00:00</dcscor:value>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>КонецПериода</dcscor:parameter>
+			<dcscor:value xsi:type="xs:dateTime">0001-01-01T00:00:00</dcscor:value>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>Период</dcscor:parameter>
+			<dcscor:value xsi:type="v8:StandardPeriod">
+				<v8:variant xsi:type="v8:StandardPeriodVariant">ThisMonth</v8:variant>
+			</dcscor:value>
+			<userSettingID>2c7bd83c-a210-4aa1-a387-11c2c97c6968</userSettingID>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>УпрВалюта</dcscor:parameter>
+			<dcscor:value xsi:nil="true"/>
+		</dcscor:item>
+	</dataParameters>
+	<conditionalAppearance>
+		<item>
+			<selection>
+				<item>
+					<field>Партнер</field>
+				</item>
+				<item>
+					<field>Регистратор</field>
+				</item>
+				<item>
+					<field>СуммаОплаты</field>
+				</item>
+				<item>
+					<field>Тип</field>
+				</item>
+				<item>
+					<field>ХозяйственнаяОперация</field>
+				</item>
+			</selection>
+			<filter>
+				<item xsi:type="FilterItemComparison">
+					<left xsi:type="dcscor:Field">ХозяйственнаяОперация</left>
+					<comparisonType>Equal</comparisonType>
+					<right xsi:type="dcscor:DesignTimeValue">Перечисление.ХозяйственныеОперации.ОплатаПоставщику</right>
+				</item>
+			</filter>
+			<appearance>
+				<dcscor:item xsi:type="SettingsParameterValue">
+					<dcscor:parameter>ЦветТекста</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:Color">style:NegativeTextColor</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</item>
+		<item>
+			<selection>
+				<item>
+					<field>Партнер</field>
+				</item>
+				<item>
+					<field>Регистратор</field>
+				</item>
+				<item>
+					<field>СуммаОплаты</field>
+				</item>
+				<item>
+					<field>Тип</field>
+				</item>
+				<item>
+					<field>ХозяйственнаяОперация</field>
+				</item>
+			</selection>
+			<filter>
+				<item xsi:type="FilterItemComparison">
+					<left xsi:type="dcscor:Field">ХозяйственнаяОперация</left>
+					<comparisonType>Equal</comparisonType>
+					<right xsi:type="dcscor:DesignTimeValue">Перечисление.ХозяйственныеОперации.ВозвратОплатыКлиенту</right>
+				</item>
+			</filter>
+			<appearance>
+				<dcscor:item xsi:type="SettingsParameterValue">
+					<dcscor:parameter>ЦветТекста</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:Color">style:NegativeTextColor</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</item>
+		<item>
+			<selection>
+				<item>
+					<field>Партнер</field>
+				</item>
+				<item>
+					<field>Регистратор</field>
+				</item>
+				<item>
+					<field>СуммаОплаты</field>
+				</item>
+				<item>
+					<field>Тип</field>
+				</item>
+				<item>
+					<field>ХозяйственнаяОперация</field>
+				</item>
+			</selection>
+			<filter>
+				<item xsi:type="FilterItemComparison">
+					<left xsi:type="dcscor:Field">ХозяйственнаяОперация</left>
+					<comparisonType>Equal</comparisonType>
+					<right xsi:type="dcscor:DesignTimeValue">Перечисление.ХозяйственныеОперации.ВозвратОплатыНаПлатежнуюКарту</right>
+				</item>
+			</filter>
+			<appearance>
+				<dcscor:item xsi:type="SettingsParameterValue">
+					<dcscor:parameter>ЦветТекста</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:Color">style:NegativeTextColor</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</item>
+		<item>
+			<selection>
+				<item>
+					<field>Партнер</field>
+				</item>
+				<item>
+					<field>Регистратор</field>
+				</item>
+				<item>
+					<field>СуммаОплаты</field>
+				</item>
+				<item>
+					<field>Тип</field>
+				</item>
+				<item>
+					<field>ХозяйственнаяОперация</field>
+				</item>
+			</selection>
+			<filter>
+				<item xsi:type="FilterItemComparison">
+					<left xsi:type="dcscor:Field">ХозяйственнаяОперация</left>
+					<comparisonType>Equal</comparisonType>
+					<right xsi:type="dcscor:DesignTimeValue">Перечисление.ХозяйственныеОперации.ВозвратОплатыКлиентуНаПлатежнуюКарту</right>
+				</item>
+			</filter>
+			<appearance>
+				<dcscor:item xsi:type="SettingsParameterValue">
+					<dcscor:parameter>ЦветТекста</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:Color">style:NegativeTextColor</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</item>
+		<item>
+			<selection>
+				<item>
+					<field>Партнер</field>
+				</item>
+				<item>
+					<field>Регистратор</field>
+				</item>
+				<item>
+					<field>СуммаОплаты</field>
+				</item>
+				<item>
+					<field>Тип</field>
+				</item>
+				<item>
+					<field>ХозяйственнаяОперация</field>
+				</item>
+			</selection>
+			<filter>
+				<item xsi:type="FilterItemComparison">
+					<left xsi:type="dcscor:Field">Регистратор.ХозяйственнаяОперация</left>
+					<comparisonType>Equal</comparisonType>
+					<right xsi:type="dcscor:DesignTimeValue">Перечисление.ХозяйственныеОперации.ОплатаПоставщику</right>
+				</item>
+			</filter>
+			<appearance>
+				<dcscor:item xsi:type="SettingsParameterValue">
+					<dcscor:parameter>ЦветТекста</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:Color">style:NegativeTextColor</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</item>
+		<item>
+			<selection>
+				<item>
+					<field>Партнер</field>
+				</item>
+				<item>
+					<field>Регистратор</field>
+				</item>
+				<item>
+					<field>СуммаОплаты</field>
+				</item>
+				<item>
+					<field>Тип</field>
+				</item>
+				<item>
+					<field>ХозяйственнаяОперация</field>
+				</item>
+			</selection>
+			<filter>
+				<item xsi:type="FilterItemComparison">
+					<left xsi:type="dcscor:Field">Регистратор.ХозяйственнаяОперация</left>
+					<comparisonType>Equal</comparisonType>
+					<right xsi:type="dcscor:DesignTimeValue">Перечисление.ХозяйственныеОперации.ВозвратОплатыКлиенту</right>
+				</item>
+			</filter>
+			<appearance>
+				<dcscor:item xsi:type="SettingsParameterValue">
+					<dcscor:parameter>ЦветТекста</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:Color">style:NegativeTextColor</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</item>
+		<item>
+			<selection>
+				<item>
+					<field>Партнер</field>
+				</item>
+				<item>
+					<field>Регистратор</field>
+				</item>
+				<item>
+					<field>Тип</field>
+				</item>
+				<item>
+					<field>ХозяйственнаяОперация</field>
+				</item>
+				<item>
+					<field>СуммаОплаты</field>
+				</item>
+			</selection>
+			<filter>
+				<item xsi:type="FilterItemComparison">
+					<left xsi:type="dcscor:Field">Регистратор.ХозяйственнаяОперация</left>
+					<comparisonType>Equal</comparisonType>
+					<right xsi:type="dcscor:DesignTimeValue">Перечисление.ХозяйственныеОперации.ВозвратОплатыНаПлатежнуюКарту</right>
+				</item>
+			</filter>
+			<appearance>
+				<dcscor:item xsi:type="SettingsParameterValue">
+					<dcscor:parameter>ЦветТекста</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:Color">style:NegativeTextColor</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</item>
+		<item>
+			<selection>
+				<item>
+					<field>Партнер</field>
+				</item>
+				<item>
+					<field>Регистратор</field>
+				</item>
+				<item>
+					<field>СуммаОплаты</field>
+				</item>
+				<item>
+					<field>Тип</field>
+				</item>
+				<item>
+					<field>ХозяйственнаяОперация</field>
+				</item>
+			</selection>
+			<filter>
+				<item xsi:type="FilterItemComparison">
+					<left xsi:type="dcscor:Field">Регистратор.ХозяйственнаяОперация</left>
+					<comparisonType>Equal</comparisonType>
+					<right xsi:type="dcscor:DesignTimeValue">Перечисление.ХозяйственныеОперации.ВозвратОплатыКлиентуНаПлатежнуюКарту</right>
+				</item>
+			</filter>
+			<appearance>
+				<dcscor:item xsi:type="SettingsParameterValue">
+					<dcscor:parameter>ЦветТекста</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:Color">style:NegativeTextColor</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</item>
+	</conditionalAppearance>
+	<outputParameters>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>ВыводитьПараметрыДанных</dcscor:parameter>
+			<dcscor:value xsi:type="DataCompositionTextOutputType">DontOutput</dcscor:value>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>ВыводитьОтбор</dcscor:parameter>
+			<dcscor:value xsi:type="DataCompositionTextOutputType">DontOutput</dcscor:value>
+		</dcscor:item>
+	</outputParameters>
+	<item xsi:type="StructureItemGroup">
+		<groupItems>
+			<item xsi:type="GroupItemField">
+				<field>Партнер</field>
+				<groupType>Items</groupType>
+				<periodAdditionType>None</periodAdditionType>
+				<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+				<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+			</item>
+		</groupItems>
+		<order>
+			<item xsi:type="OrderItemField">
+				<field>СуммаОплаты</field>
+				<orderType>Desc</orderType>
+			</item>
+		</order>
+		<selection>
+			<item xsi:type="SelectedItemAuto"/>
+		</selection>
+		<item xsi:type="StructureItemGroup">
+			<groupItems>
+				<item xsi:type="GroupItemField">
+					<field>Тип</field>
+					<groupType>Items</groupType>
+					<periodAdditionType>None</periodAdditionType>
+					<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+					<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+				</item>
+			</groupItems>
+			<order>
+				<item xsi:type="OrderItemAuto"/>
+			</order>
+			<selection>
+				<item xsi:type="SelectedItemAuto"/>
+			</selection>
+			<item xsi:type="StructureItemGroup">
+				<groupItems>
+					<item xsi:type="GroupItemField">
+						<field>Регистратор</field>
+						<groupType>Items</groupType>
+						<periodAdditionType>None</periodAdditionType>
+						<periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionBegin>
+						<periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</periodAdditionEnd>
+					</item>
+				</groupItems>
+				<order>
+					<item xsi:type="OrderItemField">
+						<field>Регистратор.Дата</field>
+						<orderType>Asc</orderType>
+					</item>
+				</order>
+				<selection>
+					<item xsi:type="SelectedItemAuto"/>
+				</selection>
+			</item>
+		</item>
+	</item>
+</Settings>﻿<?xml version="1.0" encoding="UTF-8"?>
+<SchemaFile xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema"/>
+</SchemaFile>
